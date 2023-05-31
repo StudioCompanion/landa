@@ -1,0 +1,31 @@
+<script>
+	import 'modern-normalize/modern-normalize.css';
+	import '../styles/index.css';
+	import { fade } from 'svelte/transition';
+	import Header from '../components/Header.svelte';
+
+	export let data;
+
+	$: pathname = data.pathname;
+</script>
+
+{#key pathname}
+	<div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
+		<Header />
+		<main>
+			<slot />
+		</main>
+	</div>
+{/key}
+
+<style>
+	div {
+		background-color: white;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	main {
+		flex: 1;
+	}
+</style>

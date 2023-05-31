@@ -1,0 +1,103 @@
+:root {
+	--section-margin: 4rem;
+	--max-width: 1400px;
+	--red: #ff0000;
+	--white: #ffffff;
+	--black: #000000;
+	--font-serif: 'JJannon Book', serif;
+	--font-display: 'JJannon Display';
+	--font-sans: 'Bitstream - Swiss';
+	--section-padding: 2rem;
+	--rounded: 3rem;
+	--logo-color: black;
+}
+
+@font-face {
+	font-family: 'Bitstream - Swiss';
+	src: url('/fonts/Bitstream - Swiss721 BT Regular.woff2') format('woff2'),
+		url('/fonts/Bitstream - Swiss721 BT Regular.woff') format('woff');
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Book';
+	src: url('/fonts/JJannon Book.woff2') format('woff2'),
+		url('/fonts/JJannon Book.woff') format('woff');
+	font-weight: 450;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Display';
+	src: url('/fonts/JJannonDisplay-Regular.woff2') format('woff2'),
+		url('/fonts/JJannonDisplay-Regular.woff2') format('woff');
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Display';
+	src: url('/fonts/JJannonDisplay-Italic.woff2') format('woff2'),
+		url('/fonts/JJannonDisplay-Italic.woff2') format('woff');
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MinionPro';
+	src: url('/fonts/MinionPro-Regular.woff2') format('woff2'),
+		url('/fonts/MinionPro-Regular.woff') format('woff');
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	background-color: red;
+}
+
+html,
+body,
+p,
+span {
+	font-family: var(--font-serif);
+	font-weight: 450;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-display);
+	font-weight: 450;
+}
+
+#content {
+	font-family: var(--font-serif);
+	font-weight: 450;
+	font-size: 1.25rem;
+	text-align: center;
+}
+#content .caption {
+	font-size: 0.8rem;
+}
+
+@media screen and (min-width: 1024px) {
+	#content {
+		font-size: 1.87rem;
+	}
+	#content .caption {
+		font-size: 1.125rem;
+	}
+}
+#content blockquote {
+	font-style: italic;
+}
