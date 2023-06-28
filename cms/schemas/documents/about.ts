@@ -1,4 +1,4 @@
-import {SchemaTypeDefinition} from 'sanity'
+import { SchemaTypeDefinition } from 'sanity'
 
 const about: SchemaTypeDefinition = {
   title: 'About',
@@ -9,6 +9,25 @@ const about: SchemaTypeDefinition = {
       title: 'Description',
       name: 'description',
       type: 'content',
+    },
+    {
+      title: "Services",
+      name: 'services',
+      type: 'array',
+      of: [{ type: 'object', name: 'service', title: "Service", fields: [{ title: "Title", name: 'title', type: 'string' }, { title: "Content", type: 'text', name: 'content' }] }]
+    },
+    {
+      title: "Clients Title",
+      name: 'clients_title',
+      type: 'string',
+    },
+    {
+      title: "Logos",
+      name: 'logos',
+      type: 'array',
+      of: [{
+        name: 'image', title: "image", type: "image"
+      }]
     },
     {
       title: 'Contact',
@@ -40,6 +59,49 @@ const about: SchemaTypeDefinition = {
           ],
         },
       ],
+    },
+    {
+      title: 'Addresses',
+      name: 'addresses',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              title: "Location",
+              name: 'location',
+              type: 'string'
+            },
+            {
+              title: 'Address',
+              name: 'address',
+              type: 'text',
+            },
+
+            {
+              title: 'URL',
+              name: 'url',
+              type: 'url',
+              validation: (Rule) =>
+                Rule.uri({
+                  scheme: ['http', 'https', 'mailto', 'tel'],
+                }),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Biography',
+      name: 'biography',
+      type: 'content',
+    },
+    {
+      title: 'Collaborators',
+      name: 'collaborators',
+      type: 'content',
+
     },
   ],
 }

@@ -84,3 +84,18 @@ export const settingsQuery = groq`*[_type == "settings"][0] {
     seo_image,
     canonical_url
 }`;
+
+
+export const aboutQuery = groq`*[_type == "about"][0] {
+    description,
+    services[],
+    logos[],
+    addresses[],
+    contact[],
+    clients_title,
+    biography,
+    collaborators
+
+}`
+
+
