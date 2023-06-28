@@ -61,6 +61,7 @@
 	#project #image img {
 		height: 100%;
 		width: auto;
+		max-width: 100%;
 		object-fit: contain;
 	}
 </style>

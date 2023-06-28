@@ -5,7 +5,12 @@
 	import Media from '../Media.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';
 	import inView from '$lib/inView';
+	import { imageBuilder } from '$lib/sanity';
+	import Lightbox from './Lightbox.svelte';
 
+	export let module: CarouselModule;
+	let show = false;
+	let imageShowingIndex = 0;
 	let siema: any, slider: any, prev, next;
 	let select = 0;
 	type CarouselModule = {
@@ -16,6 +21,7 @@
 		slides: ((MediaType & { _type: 'media' }) | { _type: 'block_slide'; items: MediaType[] })[];
 	};
 
+	let images;
 	onMount(() => {
 		slider = new Siema({
 			selector: siema,
@@ -41,9 +47,22 @@
 				select++;
 			}
 		};
+
+		let slideModules = [];
+		module.slides.map((slide) => {
+			if (slide._type === 'media' && slide.media_type === 'image') {
+				const url = imageBuilder.image(slide.image).url();
+				slideModules.push({
+					href: url,
+					type: 'image',
+					alt: module.caption
+				});
+			}
+		});
+
+		images = slideModules;
 	});
 
-	export let module: CarouselModule;
 	let caption = module.caption;
 	let visible = false;
 </script>
@@ -57,8 +76,14 @@
 	}}
 >
 	<div id="carousel" bind:this={siema}>
-		{#each module.slides as slide}
-			<div id="slide">
+		{#each module.slides as slide, index}
+			<div
+				id="slide"
+				on:click={() => {
+					imageShowingIndex = index;
+					show = true;
+				}}
+			>
 				<div id="inner">
 					{#if slide._type === 'media'}
 						<Media carousel media={slide} />
@@ -73,10 +98,19 @@
 			</div>
 		{/each}
 	</div>
+
 	{#if caption}
 		<ModuleCaption {caption} />
 	{/if}
 </section>
+<Lightbox
+	{show}
+	onClose={() => {
+		show = false;
+	}}
+	{imageShowingIndex}
+	{images}
+/>
 
 <style>
 	#grid {
