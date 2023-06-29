@@ -10,6 +10,7 @@
 
 	export let media: Media | undefined;
 	export let carousel: boolean = false;
+	export let onClick: () => void | undefined = undefined;
 </script>
 
 {#if media}
@@ -26,7 +27,11 @@
 				};aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`}
 			/>
 		{:else if media.media_type === 'image' && media.image}
-			<img alt="Hello" {...getImageProps({ image: media.image, maxWidth: 2000 })} />
+			<img
+				on:mouseup={onClick}
+				alt="Hello"
+				{...getImageProps({ image: media.image, maxWidth: 2000 })}
+			/>
 		{/if}
 	</div>
 {/if}

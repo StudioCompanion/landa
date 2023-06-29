@@ -5,7 +5,7 @@
 	export let images: any = [];
 	export let onClose: any;
 	export let imageShowingIndex = 0;
-	$: console.log(imageShowingIndex);
+
 	$: image = images[imageShowingIndex];
 
 	const nextSlide = () => {
@@ -49,14 +49,38 @@
 
 {#if show}
 	<div id="lightbox" transition:fade>
-		<button on:click={prevSlide} id="previous">Previous</button>
-		<button on:click={nextSlide} id="next">Next</button>
+		<button on:click={onClose} id="close">Close</button>
+		<button on:click={prevSlide} id="previous"
+			><svg
+				width="27"
+				height="23"
+				viewBox="0 0 27 23"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
+			</svg></button
+		>
+		<button on:click={nextSlide} id="next">
+			<svg
+				width="27"
+				height="23"
+				viewBox="0 0 27 23"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
+			</svg></button
+		>
 		<div id="container">
 			{#if images && image}
 				{#key imageShowingIndex}
 					<img id="image" transition:fade src={image.href} alt={image.alt} />
 				{/key}
 			{/if}
+			<div id="caption" style="text-align:center;">
+				<span>{image.alt}</span>
+			</div>
 		</div>
 	</div>
 {/if}
@@ -89,11 +113,21 @@
 		transform: translateY(-50%);
 	}
 
+	#close {
+		position: absolute;
+		top: 1rem;
+		border: none;
+		background-color: transparent;
+		right: 1rem;
+	}
+
 	#lightbox #container {
 		padding: 5rem;
 		width: 100%;
 		height: 100%;
 		position: relative;
+		display: flex;
+		flex-direction: column;
 	}
 
 	#lightbox #image {
@@ -104,5 +138,32 @@
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+		padding-bottom: 3rem;
+	}
+
+	#caption {
+		position: absolute;
+		bottom: 0rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	#previous {
+		z-index: 10;
+		border: none;
+		background-color: transparent;
+		position: absolute;
+		top: 50%;
+		left: 1rem;
+		transform: translateY(-50%);
+	}
+	#next {
+		z-index: 10;
+		border: none;
+		background-color: transparent;
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
 	}
 </style>

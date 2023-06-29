@@ -13,6 +13,8 @@
 	let imageShowingIndex = 0;
 	let siema: any, slider: any, prev, next;
 	let select = 0;
+
+	let drag = false;
 	type CarouselModule = {
 		_type: 'carousel_module';
 		full_width: boolean;
@@ -52,19 +54,54 @@
 		module.slides.map((slide) => {
 			if (slide._type === 'media' && slide.media_type === 'image') {
 				const url = imageBuilder.image(slide.image).url();
+
 				slideModules.push({
+					// @ts-ignore
+					id: slide.image.asset._ref,
 					href: url,
 					type: 'image',
 					alt: module.caption
 				});
 			}
+
+			if (slide._type === 'block_slide') {
+				slide.items.map((i) => {
+					if (i.media_type === 'image') {
+						console.log(i);
+						const url = imageBuilder.image(i.image).url();
+						slideModules.push({
+							// @ts-ignore
+							id: i.image.asset._ref,
+							href: url,
+							type: 'image',
+							alt: module.caption
+						});
+					}
+				});
+			}
 		});
 
 		images = slideModules;
+
+		siema.addEventListener('mousedown', () => (drag = false));
+
+		siema.addEventListener('mousemove', () => (drag = true));
+
+		return () => {
+			siema.removeEventListener('mousedown', () => (drag = false));
+			siema.removeEventListener('mousemove', () => (drag = true));
+		};
 	});
 
 	let caption = module.caption;
 	let visible = false;
+
+	let onClick = (ref) => {
+		if (!drag) {
+			imageShowingIndex = images.findIndex((i) => i.id === ref);
+			show = true;
+		}
+	};
 </script>
 
 <section
@@ -75,33 +112,64 @@
 		visible = true;
 	}}
 >
-	<div id="carousel" bind:this={siema}>
-		{#each module.slides as slide, index}
-			<div
-				id="slide"
-				on:click={() => {
-					imageShowingIndex = index;
-					show = true;
-				}}
+	<div id="carousel_container">
+		<button on:click={prev} id="carousel_previous"
+			><svg
+				width="27"
+				height="23"
+				viewBox="0 0 27 23"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
 			>
-				<div id="inner">
-					{#if slide._type === 'media'}
-						<Media carousel media={slide} />
-					{:else if slide._type === 'block_slide'}
-						<div id="block">
-							{#each slide.items as item}
-								<Media media={item} />
-							{/each}
-						</div>
-					{/if}
+				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
+			</svg>
+		</button>
+		<button on:click={next} id="carousel_next">
+			<svg
+				width="27"
+				height="23"
+				viewBox="0 0 27 23"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
+			</svg>
+		</button>
+		<div id="carousel" bind:this={siema}>
+			{#each module.slides as slide, index}
+				<div id="slide">
+					<div id="inner">
+						{#if slide._type === 'media'}
+							<Media
+								carousel
+								media={slide}
+								onClick={() => {
+									// @ts-ignore
+									onClick(slide.image.asset._ref);
+								}}
+							/>
+						{:else if slide._type === 'block_slide'}
+							<div id="block">
+								{#each slide.items as item}
+									<Media
+										media={item}
+										onClick={() => {
+											// @ts-ignore
+											onClick(item.image.asset._ref);
+										}}
+									/>
+								{/each}
+							</div>
+						{/if}
+					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
 
-	{#if caption}
-		<ModuleCaption {caption} />
-	{/if}
+		{#if caption}
+			<ModuleCaption {caption} />
+		{/if}
+	</div>
 </section>
 <Lightbox
 	{show}
@@ -144,5 +212,28 @@
 		display: flex;
 		gap: 2rem;
 		align-items: center;
+	}
+
+	#carousel_container {
+		position: relative;
+	}
+
+	#carousel_previous {
+		z-index: 10;
+		border: none;
+		background-color: transparent;
+		position: absolute;
+		top: 50%;
+		left: 1rem;
+		transform: translateY(-50%);
+	}
+	#carousel_next {
+		z-index: 10;
+		border: none;
+		background-color: transparent;
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
 	}
 </style>
