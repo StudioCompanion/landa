@@ -88,9 +88,16 @@
 </div>
 
 <style>
+	#description,
+	div#main,
+	#section_title {
+		font-size: 20px;
+		padding: 0 1rem;
+	}
+
 	#description {
 		text-align: center;
-		font-size: 24px;
+
 		font-family: JJannon;
 		max-width: 876px;
 		letter-spacing: -0.48px;
@@ -109,7 +116,7 @@
 		background-color: var(--red);
 		color: var(--white);
 		padding-top: 5rem;
-		font-size: 24px;
+
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
@@ -119,7 +126,6 @@
 
 	#section_title {
 		text-align: center;
-
 		font-family: var(--font-display);
 		font-weight: 600;
 		line-height: 115%;
@@ -157,7 +163,7 @@
 		margin-top: 2rem;
 		display: grid;
 		width: 100%;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
@@ -168,6 +174,10 @@
 		justify-content: center;
 		align-items: center;
 	}
+	#logo_grid > div > img {
+		width: 100%;
+		height: auto;
+	}
 
 	#contact_link a {
 		color: var(--white);
@@ -176,21 +186,22 @@
 
 	#contact_link {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
-		font-size: 24px;
-		margin-bottom: 0.5rem;
+
+		font-size: 20px;
+		margin-bottom: 2rem;
 	}
 
 	#contact_link h3 {
 		margin: 0;
 		padding: 0;
 
-		font-size: 24px;
+		font-size: 20px;
 	}
 	#addresses {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(1, 1fr);
 		gap: 1rem;
 		width: 100%;
 	}
@@ -198,5 +209,29 @@
 		text-align: center;
 		word-break: break-all;
 		white-space: pre-line;
+		margin-bottom: 2rem;
+	}
+
+	@media screen and (min-width: 1024px) {
+		#description,
+		div#main,
+		#section_title,
+		#contact_link,
+		#contact_link h3 {
+			font-size: 24px;
+		}
+
+		#logo_grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		#contact_link {
+			flex-direction: row;
+			gap: 1rem;
+		}
+
+		#addresses {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 </style>
