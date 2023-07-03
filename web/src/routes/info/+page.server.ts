@@ -13,3 +13,10 @@ export const load = async () => {
         settings
     };
 };
+
+export const config = {
+    isr: {
+        expiration: 0,
+        group: 1
+    }
+}

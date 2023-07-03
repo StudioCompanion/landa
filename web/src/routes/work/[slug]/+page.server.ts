@@ -12,3 +12,11 @@ export const load = async ({ params }) => {
 		slug
 	};
 };
+
+
+export const config = {
+	isr: {
+		expiration: 0,
+		group: 1
+	}
+}
