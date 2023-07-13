@@ -3,6 +3,7 @@
 	import '../styles/index.css';
 	import { fade } from 'svelte/transition';
 	import Header from '../components/Header.svelte';
+	import Footer from '../components/Footer.svelte';
 
 	export let data;
 
@@ -15,6 +16,7 @@
 		<main>
 			<slot />
 		</main>
+		<Footer />
 	</div>
 {/key}
 

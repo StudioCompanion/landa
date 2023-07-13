@@ -1,5 +1,9 @@
+<script>
+	import { page } from '$app/stores';
+</script>
+
 <header>
-	<a href="/work">Work</a>
+	<a class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a href="/">
 		<svg
 			width="173"
@@ -83,5 +87,16 @@
 		transform: translate(-50%, -50%);
 		color: var(--logo-color);
 		transition: all 0.3s;
+	}
+
+	a {
+		transition: all 0.2s ease-in-out;
+	}
+
+	a.active {
+		color: var(--red);
+	}
+	a:hover {
+		color: var(--red);
 	}
 </style>

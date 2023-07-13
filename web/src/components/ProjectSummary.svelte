@@ -51,7 +51,9 @@
 	}
 
 	#project #image {
-		aspect-ratio: 5/3;
+		width: 100%;
+		height: auto;
+
 		overflow: hidden;
 		display: flex;
 		align-items: center;
@@ -59,9 +61,8 @@
 	}
 
 	#project #image img {
-		height: 100%;
-		width: auto;
-		max-width: 100%;
+		width: 100%;
+		height: auto;
 		object-fit: contain;
 	}
 </style>

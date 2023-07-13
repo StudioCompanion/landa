@@ -19,6 +19,10 @@ media_type,
   }
 }`;
 
+export const homepageQuery = groq`*[_type == "homepage"][0] { 
+    bio
+}`;
+
 export const splashscreen = groq`*[_type == "splashscreen"][0] {
     images
 }`;

@@ -5,6 +5,9 @@
 	import Cookies from 'js-cookie';
 	import ProjectSummary from '../components/ProjectSummary.svelte';
 	import { imageBuilder } from '$lib/sanity';
+	import Content from '../components/Content.svelte';
+	import { ClientError } from '@sanity/client';
+
 	let loading = true;
 	let show = false;
 	onMount(() => {
@@ -43,6 +46,9 @@
 	{#if data.splashscreen && !show}
 		<Flicker images={data.splashscreen} />
 	{/if}
+	<div id="bio">
+		<Content value={data.homepage.bio} />
+	</div>
 	<section id="projects">
 		{#each data.projects as project, index}
 			<ProjectSummary {project} {index} homepage />
@@ -50,24 +56,40 @@
 	</section>
 
 	<style>
-		#projects {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: 1rem;
-
+		#bio {
 			padding-top: 5rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			max-width: 60rem;
 			margin: 0 auto;
 		}
 
-		@media screen and (min-width: 768px) {
-			#projects {
-				grid-template-columns: repeat(3, 1fr);
-			}
+		#projects {
+			display: grid;
+			grid-template-columns: repeat(1, 1fr);
+			gap: 3rem;
+			align-items: center;
+
+			padding-top: 5rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			margin: 0 auto;
+			padding-bottom: 10rem;
 		}
 
 		@media screen and (min-width: 1024px) {
 			#projects {
-				grid-template-columns: repeat(4, 1fr);
+				grid-template-columns: repeat(2, 1fr);
+				padding-left: 3rem;
+				padding-right: 3rem;
+			}
+		}
+
+		@media screen and (min-width: 1500px) {
+			#projects {
+				grid-template-columns: repeat(3, 1fr);
+				padding-left: 6rem;
+				padding-right: 6rem;
 			}
 		}
 	</style>

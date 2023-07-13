@@ -39,24 +39,31 @@
 
 <style>
 	#projects {
-		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 3rem;
+		align-items: center;
 
 		padding-top: 5rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
 		margin: 0 auto;
-	}
-
-	@media screen and (min-width: 768px) {
-		#projects {
-			grid-template-columns: repeat(3, 1fr);
-		}
+		padding-bottom: 10rem;
 	}
 
 	@media screen and (min-width: 1024px) {
 		#projects {
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(2, 1fr);
+			padding-left: 3rem;
+			padding-right: 3rem;
+		}
+	}
+
+	@media screen and (min-width: 1500px) {
+		#projects {
+			grid-template-columns: repeat(3, 1fr);
+			padding-left: 6rem;
+			padding-right: 6rem;
 		}
 	}
 </style>

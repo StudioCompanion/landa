@@ -1,11 +1,11 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
-import {muxInput} from 'sanity-plugin-mux-input'
-import {colorInput} from '@sanity/color-input'
-import {CaseIcon, DocumentIcon, JoystickIcon, UserIcon, CogIcon, ImagesIcon} from '@sanity/icons'
-import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
+import { defineConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas'
+import { muxInput } from 'sanity-plugin-mux-input'
+import { colorInput } from '@sanity/color-input'
+import { CaseIcon, DocumentIcon, JoystickIcon, UserIcon, CogIcon, ImagesIcon, HomeIcon } from '@sanity/icons'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 export default defineConfig({
   name: 'default',
   title: 'Lanes and Associates',
@@ -40,6 +40,11 @@ export default defineConfig({
               .title('Splashscreen')
               .id('splashscreen')
               .icon(ImagesIcon),
+            S.documentListItem()
+              .schemaType('homepage')
+              .title('homepage')
+              .id('homepage')
+              .icon(HomeIcon),
             S.documentListItem()
               .schemaType('settings')
               .title('Settings')
