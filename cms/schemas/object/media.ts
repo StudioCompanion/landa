@@ -34,6 +34,7 @@ const media: SchemaTypeDefinition = {
       name: 'autoplay',
       type: 'boolean',
       initialValue: false,
+      hidden: (r) => r.parent?.media_type !== 'video',
     },
     {
       title: 'Rounded corners',
