@@ -6,6 +6,7 @@
 	import CarouselModule from '../../../components/modules/CarouselModule.svelte';
 	import ContentModule from '../../../components/modules/ContentModule.svelte';
 	import GridModule from '../../../components/modules/GridModule.svelte';
+	import QuoteModule from '../../../components/modules/QuoteModule.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import { page } from '$app/stores';
 	export let data;
@@ -84,8 +85,17 @@
 			<ContentModule {module} />
 		{:else if module._type === 'carousel_module'}
 			<CarouselModule {module} />
+		{:else if module._type === 'quote_module'}
+			<QuoteModule {module} />
 		{/if}
 	{/each}
+{/if}
+
+{#if data.project.credits}
+	<section id="credits">
+		Project credits:<br />
+		{data.project.credits}
+	</section>
 {/if}
 
 <style>
@@ -107,5 +117,10 @@
 		max-width: 100vw;
 
 		overflow: hidden;
+	}
+
+	section#credits {
+		font-size: 1.5rem;
+		text-align: center;
 	}
 </style>
