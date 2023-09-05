@@ -1,6 +1,7 @@
 <script lang="ts">
 	import inView from '$lib/inView';
 	import { onDestroy, onMount } from 'svelte';
+	import { PortableText } from '@portabletext/svelte';
 	import Content from '../../../components/Content.svelte';
 	import Media from '../../../components/Media.svelte';
 	import CarouselModule from '../../../components/modules/CarouselModule.svelte';
@@ -92,9 +93,9 @@
 {/if}
 
 {#if data.project.credits}
-	<section id="credits">
-		Project credits:<br />
-		{data.project.credits}
+	<section class="credits">
+		<p>Project credits:</p>
+		<PortableText value={data.project.credits} />
 	</section>
 {/if}
 
@@ -119,8 +120,12 @@
 		overflow: hidden;
 	}
 
-	section#credits {
+	.credits {
 		font-size: 1.5rem;
 		text-align: center;
+	}
+
+	.credits > p {
+		margin: 0;
 	}
 </style>

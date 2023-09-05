@@ -96,7 +96,13 @@ const project: SchemaTypeDefinition = {
         {type: 'quote_module'},
       ],
     },
-    {title: 'Credits', name: 'credits', type: 'text', group: 'modules'},
+    {
+      title: 'Credits',
+      name: 'credits',
+      type: 'array',
+      of: [{ type: 'block' }],
+      group: 'modules'
+    },
     {
       title: 'SEO Title',
       name: 'seo_title',
