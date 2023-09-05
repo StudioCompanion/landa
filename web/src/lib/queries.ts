@@ -4,7 +4,7 @@ media_type,
 (media_type == "image") => {
     image {
       "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-        asset   
+        asset
     }
   },
   (media_type == "video") => {
@@ -12,14 +12,14 @@ media_type,
         "aspect_ratio": asset->data.aspect_ratio,
         "playback_id": asset->playbackId,
           "upload_id": asset->uploadId,
-          "asset_id": asset->assetId, 
+          "asset_id": asset->assetId,
         },
         autoplay,
         rounded
   }
 }`;
 
-export const homepageQuery = groq`*[_type == "homepage"][0] { 
+export const homepageQuery = groq`*[_type == "homepage"][0] {
     bio
 }`;
 
@@ -54,7 +54,7 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     hero ${media},
     modules[] {
         _type,
-        
+
         (_type == "carousel_module") => {
             full_width,
             autoplay,
@@ -78,6 +78,11 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
         },
         (_type == 'content_module') => {
             content
+        },
+        (_type == 'quote_module') => {
+            quote,
+            full_name,
+            job_title
         }
     }
 }`;
