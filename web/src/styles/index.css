@@ -118,3 +118,11 @@ h6 {
 #content blockquote {
 	font-style: italic;
 }
+
+a {
+  color: inherit;
+}
+
+.credits > p {
+  margin: 0;
+}
