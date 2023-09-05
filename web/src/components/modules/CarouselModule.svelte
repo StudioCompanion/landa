@@ -14,6 +14,8 @@
 	let siema: any, slider: any, prev, next;
 	let select = 0;
 
+	const SLIDE_AUTOPLAY_DURATION = 3500;
+
 	let drag = false;
 	type CarouselModule = {
 		_type: 'carousel_module';
@@ -25,6 +27,16 @@
 
 	let images;
 	onMount(() => {
+		let timeout = null;
+
+		const handleTimer = () => {
+			clearTimeout(timeout);
+			if (module.autoplay) {
+				timeout = setTimeout(() => {
+					next();
+				}, SLIDE_AUTOPLAY_DURATION);
+			}
+		};
 		slider = new Siema({
 			selector: siema,
 			duration: 200,
@@ -38,6 +50,7 @@
 		});
 		prev = () => {
 			slider.prev();
+			handleTimer();
 			if (select > 0) {
 				select--;
 			}
@@ -45,6 +58,7 @@
 
 		next = () => {
 			slider.next();
+			handleTimer();
 			if (select >= 0) {
 				select++;
 			}
@@ -86,9 +100,12 @@
 
 		siema.addEventListener('mousemove', () => (drag = true));
 
+		handleTimer();
+
 		return () => {
 			siema.removeEventListener('mousedown', () => (drag = false));
 			siema.removeEventListener('mousemove', () => (drag = true));
+			clearTimeout(timeout);
 		};
 	});
 
