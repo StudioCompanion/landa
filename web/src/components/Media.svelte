@@ -63,10 +63,7 @@
 	.carousel {
 		width: auto;
 		height: 100%;
-	}
-
-	.carousel > img {
-		width: auto;
-		height: 100%;
+		display: flex;
+		align-items: center;
 	}
 </style>
