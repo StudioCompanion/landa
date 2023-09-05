@@ -1,21 +1,22 @@
 import groq from 'groq';
 export const media = groq`{
-media_type,
-(media_type == "image") => {
+  media_type,
+  caption,
+  rounded,
+  (media_type == "image") => {
     image {
       "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-        asset
-    }
+      asset
+    },
   },
   (media_type == "video") => {
     video {
-        "aspect_ratio": asset->data.aspect_ratio,
-        "playback_id": asset->playbackId,
-          "upload_id": asset->uploadId,
-          "asset_id": asset->assetId,
-        },
-        autoplay,
-        rounded
+      "aspect_ratio": asset->data.aspect_ratio,
+      "playback_id": asset->playbackId,
+      "upload_id": asset->uploadId,
+      "asset_id": asset->assetId,
+    },
+    autoplay
   }
 }`;
 

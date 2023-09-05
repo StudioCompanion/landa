@@ -75,12 +75,12 @@
 		<div id="container">
 			{#if images && image}
 				{#key imageShowingIndex}
-					<img id="image" transition:fade src={image.href} alt={image.alt} />
+					<img id="image" transition:fade src={image.href} alt={image.caption || ''} />
+					<div id="caption" transition:fade style="text-align:center;">
+						{image.caption || ''}
+					</div>
 				{/key}
 			{/if}
-			<div id="caption" style="text-align:center;">
-				<span>{image.alt}</span>
-			</div>
 		</div>
 	</div>
 {/if}
