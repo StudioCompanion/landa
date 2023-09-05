@@ -76,8 +76,13 @@
 			{#if images && image}
 				{#key imageShowingIndex}
 					<img id="image" transition:fade src={image.href} alt={image.caption || ''} />
-					<div id="caption" transition:fade style="text-align:center;">
-						{image.caption || ''}
+					<div id="caption" class="caption" transition:fade>
+						{#if image.mainCaption}
+							<p>{image.mainCaption}</p>
+						{/if}
+						{#if image.caption}
+							<p>{image.caption}</p>
+						{/if}
 					</div>
 				{/key}
 			{/if}
@@ -141,11 +146,17 @@
 		padding-bottom: 3rem;
 	}
 
-	#caption {
+	.caption {
 		position: absolute;
 		bottom: 0rem;
 		left: 50%;
 		transform: translateX(-50%);
+		min-height: 2.5em;
+	}
+
+	.caption > p {
+		margin: 0;
+		text-align: center;
 	}
 
 	#previous {

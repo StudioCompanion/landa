@@ -74,7 +74,8 @@
 					id: slide.image.asset._ref,
 					href: url,
 					type: 'image',
-					caption: slide.caption
+					caption: slide.caption,
+					mainCaption: module.caption
 				});
 			}
 
@@ -87,7 +88,8 @@
 							id: i.image.asset._ref,
 							href: url,
 							type: 'image',
-							caption: i.caption
+							caption: i.caption,
+							mainCaption: module.caption
 						});
 					}
 				});
