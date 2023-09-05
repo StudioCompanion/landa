@@ -14,17 +14,21 @@
 </script>
 
 {#if media}
-	<div class:carousel class:rounded={media.rounded}>
+	<div
+		class:carousel
+		class:rounded={media.rounded}
+		style={media.media_type === 'video'
+			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
+			: ''}
+	>
 		{#if media.media_type === 'video'}
 			<mux-player
+				class="mux-player"
 				muted={true}
 				autoplay={media.autoplay}
 				loop={media.autoplay}
 				stream-type="on-demand"
 				playback-id={media.video.playback_id}
-				style={`${
-					media.autoplay ? '--controls:none' : ''
-				};aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`}
 			/>
 		{:else if media.media_type === 'image' && media.image}
 			<img
@@ -41,7 +45,7 @@
 		width: 100%;
 	}
 
-	div.rounded {
+	.rounded {
 		border-radius: var(--rounded);
 		overflow: hidden;
 	}
@@ -50,18 +54,18 @@
 		height: auto;
 	}
 
-	mux-player {
+	.mux-player {
+		height: 100%;
 		width: 100%;
-		height: auto;
 		--controls: none;
 	}
 
-	div.carousel {
+	.carousel {
 		width: auto;
 		height: 100%;
 	}
 
-	div.carousel > img {
+	.carousel > img {
 		width: auto;
 		height: 100%;
 	}
