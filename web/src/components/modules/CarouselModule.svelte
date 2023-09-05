@@ -60,21 +60,20 @@
 					id: slide.image.asset._ref,
 					href: url,
 					type: 'image',
-					alt: module.caption
+					caption: slide.caption
 				});
 			}
 
 			if (slide._type === 'block_slide') {
 				slide.items.map((i) => {
 					if (i.media_type === 'image') {
-						console.log(i);
 						const url = imageBuilder.image(i.image).url();
 						slideModules.push({
 							// @ts-ignore
 							id: i.image.asset._ref,
 							href: url,
 							type: 'image',
-							alt: module.caption
+							caption: i.caption
 						});
 					}
 				});

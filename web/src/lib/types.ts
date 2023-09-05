@@ -7,6 +7,7 @@ export type Image = {
 	};
 	autoplay: boolean;
 	rounded: boolean;
+  caption: string | null;
 };
 
 export type Video = {
