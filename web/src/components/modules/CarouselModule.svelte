@@ -154,34 +154,36 @@
 			</svg>
 		</button>
 		<div id="carousel" bind:this={siema}>
-			{#each module.slides as slide, index}
-				<div id="slide">
-					<div id="inner">
-						{#if slide._type === 'media'}
-							<Media
-								carousel
-								media={slide}
-								onClick={() => {
-									// @ts-ignore
-									onClick(slide.image.asset._ref);
-								}}
-							/>
-						{:else if slide._type === 'block_slide'}
-							<div id="block">
-								{#each slide.items as item}
-									<Media
-										media={item}
-										onClick={() => {
-											// @ts-ignore
-											onClick(item.image.asset._ref);
-										}}
-									/>
-								{/each}
-							</div>
-						{/if}
+			{#if module.slides}
+				{#each module.slides as slide, index}
+					<div id="slide">
+						<div id="inner">
+							{#if slide._type === 'media'}
+								<Media
+									carousel
+									media={slide}
+									onClick={() => {
+										// @ts-ignore
+										onClick(slide.image.asset._ref);
+									}}
+								/>
+							{:else if slide._type === 'block_slide'}
+								<div id="block">
+									{#each slide.items as item}
+										<Media
+											media={item}
+											onClick={() => {
+												// @ts-ignore
+												onClick(item.image.asset._ref);
+											}}
+										/>
+									{/each}
+								</div>
+							{/if}
+						</div>
 					</div>
-				</div>
-			{/each}
+				{/each}
+			{/if}
 		</div>
 
 		{#if caption}

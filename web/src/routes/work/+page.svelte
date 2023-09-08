@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { imageBuilder } from '$lib/sanity';
-	import ProjectSummary from '../../components/ProjectSummary.svelte';
+	import ProjectSummaryList from '../../components/ProjectSummaryList.svelte';
 	export let data;
 </script>
 
@@ -31,39 +31,4 @@
 	/>
 </svelte:head>
 
-<section id="projects">
-	{#each data.projects as project, index}
-		<ProjectSummary {project} {index} />
-	{/each}
-</section>
-
-<style>
-	#projects {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		gap: 3rem;
-		align-items: center;
-
-		padding-top: 5rem;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		margin: 0 auto;
-		padding-bottom: 10rem;
-	}
-
-	@media screen and (min-width: 1024px) {
-		#projects {
-			grid-template-columns: repeat(2, 1fr);
-			padding-left: 3rem;
-			padding-right: 3rem;
-		}
-	}
-
-	@media screen and (min-width: 1500px) {
-		#projects {
-			grid-template-columns: repeat(3, 1fr);
-			padding-left: 6rem;
-			padding-right: 6rem;
-		}
-	}
-</style>
+<ProjectSummaryList projects={data.projects} />

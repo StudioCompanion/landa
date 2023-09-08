@@ -53,6 +53,11 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     description,
     credits,
     hero ${media},
+    tags[]-> {
+        _id,
+        name,
+        "slug": slug.current
+    },
     modules[] {
         _type,
 
@@ -85,6 +90,19 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
             full_name,
             job_title
         }
+    }
+}`;
+
+export const tagQuery = groq`*[_type == "tag" && slug.current == $slug][0] {
+    _id,
+    name,
+    "slug": slug.current,
+    description,
+    "projects": *[_type == "project" && references(^._id)] {
+      title,
+      _id,
+      featured_image,
+      "slug": slug.current,
     }
 }`;
 

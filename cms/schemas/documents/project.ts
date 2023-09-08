@@ -41,6 +41,13 @@ const project: SchemaTypeDefinition = {
       group: 'general',
     },
     {
+      title: 'Tags',
+      name: 'tags',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'tag'}]}],
+      group: 'general',
+    },
+    {
       title: 'Featured Image',
       name: 'featured_image',
       description: 'This is used in the project gallery',
