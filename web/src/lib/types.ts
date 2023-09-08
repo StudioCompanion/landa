@@ -8,6 +8,7 @@ export type Image = {
 	autoplay: boolean;
 	rounded: boolean;
   caption: string | null;
+  alt: string | null;
 };
 
 export type Video = {

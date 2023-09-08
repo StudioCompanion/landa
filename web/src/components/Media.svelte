@@ -37,7 +37,7 @@
 		{:else if media.media_type === 'image' && media.image}
 			<img
 				on:mouseup={onClick}
-				alt="Hello"
+				alt={media.alt}
 				{...getImageProps({ image: media.image, maxWidth: 2000 })}
 			/>
 		{/if}

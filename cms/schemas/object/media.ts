@@ -24,6 +24,12 @@ const media: SchemaTypeDefinition = {
       hidden: (r) => r.parent?.media_type !== 'image',
     },
     {
+      title: 'Alt text',
+      name: 'alt',
+      type: 'string',
+      hidden: (r) => r.parent?.media_type !== 'image',
+    },
+    {
       title: 'Video',
       name: 'video',
       type: 'mux.video',

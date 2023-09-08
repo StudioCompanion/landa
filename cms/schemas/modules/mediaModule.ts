@@ -11,6 +11,11 @@ const mediaModule: SchemaTypeDefinition = {
       type: 'media',
     },
   ],
+  preview: {
+    select: {
+      title: 'media.caption'
+    }
+  }
 }
 
 export default mediaModule
