@@ -3,7 +3,7 @@
 	import Flicker from '../components/Flicker.svelte';
 	export let data;
 	import Cookies from 'js-cookie';
-	import ProjectSummary from '../components/ProjectSummary.svelte';
+	import ProjectSummaryList from '../components/ProjectSummaryList.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
@@ -46,51 +46,18 @@
 	{#if data.splashscreen && !show}
 		<Flicker images={data.splashscreen} />
 	{/if}
-	<div id="bio">
+	<div class="bio">
 		<Content value={data.homepage.bio} />
 	</div>
-	<section id="projects">
-		{#each data.projects as project, index}
-			<ProjectSummary {project} {index} homepage />
-		{/each}
-	</section>
+	<ProjectSummaryList projects={data.projects} homepage />
 
 	<style>
-		#bio {
+		.bio {
 			padding-top: 5rem;
 			padding-left: 1rem;
 			padding-right: 1rem;
 			max-width: 60rem;
 			margin: 0 auto;
-		}
-
-		#projects {
-			display: grid;
-			grid-template-columns: repeat(1, 1fr);
-			gap: 3rem;
-			align-items: center;
-
-			padding-top: 5rem;
-			padding-left: 1rem;
-			padding-right: 1rem;
-			margin: 0 auto;
-			padding-bottom: 10rem;
-		}
-
-		@media screen and (min-width: 1024px) {
-			#projects {
-				grid-template-columns: repeat(2, 1fr);
-				padding-left: 3rem;
-				padding-right: 3rem;
-			}
-		}
-
-		@media screen and (min-width: 1500px) {
-			#projects {
-				grid-template-columns: repeat(3, 1fr);
-				padding-left: 6rem;
-				padding-right: 6rem;
-			}
 		}
 	</style>
 {/if}

@@ -1,5 +1,6 @@
 import client from './documents/client'
 import project from './documents/project'
+import tag from './documents/tag'
 import settings from './documents/settings'
 import splashscreen from './documents/splashscreen'
 import carouselModule from './modules/carouselModule'
@@ -21,6 +22,7 @@ export const schemaTypes = [
   quoteModule,
   homepage,
   project,
+  tag,
   client,
   splashscreen,
   settings,

@@ -34,6 +34,14 @@ export default defineConfig({
               S,
               context,
             }),
+            orderableDocumentListDeskItem({
+              type: 'tag',
+              title: 'Tags',
+              icon: CaseIcon,
+              S,
+              context,
+            }),
+
             S.divider(),
             S.documentListItem()
               .schemaType('splashscreen')

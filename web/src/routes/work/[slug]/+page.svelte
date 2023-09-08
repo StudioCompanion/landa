@@ -77,6 +77,17 @@
 	{#if data.project.description}
 		<Content value={data.project.description} />
 	{/if}
+	{#if data.project.tags}
+		<div class="tags">
+			{#each data.project.tags as tag, index}
+				{#if tag.name}
+					<a href={`/tag/${tag.slug}`}>
+						{`${tag.name}${index < data.project.tags.length - 1 ? ', ' : ''}`}
+					</a>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 </section>
 {#if data.project.modules}
 	{#each data?.project.modules as module}
@@ -127,5 +138,25 @@
 
 	.credits > p {
 		margin: 0;
+	}
+
+	.tags {
+		text-align: center;
+		font-size: 16px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.tags {
+			font-size: 20px;
+		}
+	}
+
+	.tags a {
+		color: #919191;
+		text-decoration: none;
+	}
+
+	.tags a:hover {
+		text-decoration: underline;
 	}
 </style>
