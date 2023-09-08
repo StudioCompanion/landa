@@ -28,6 +28,11 @@ const gridModule: SchemaTypeDefinition = {
       type: 'color',
     },
   ],
+  preview: {
+    select: {
+      title: 'caption'
+    }
+  }
 }
 
 export default gridModule

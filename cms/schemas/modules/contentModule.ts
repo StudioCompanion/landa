@@ -8,6 +8,11 @@ const contentModule: SchemaTypeDefinition = {
     {title: 'Content', name: 'content', type: 'content'},
     {title: 'Background Color', name: 'background_color', type: 'color'},
   ],
+  preview: {
+    select: {
+      title: 'content'
+    }
+  }
 }
 
 export default contentModule
