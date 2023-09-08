@@ -77,7 +77,8 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
                 (_type == "block_slide") => {
                     items[] ${media}
                 }
-            }
+            },
+            background_color
         },
         (_type == "media_module") => {
             "caption": media.caption,
