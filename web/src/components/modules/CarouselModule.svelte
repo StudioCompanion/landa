@@ -23,6 +23,7 @@
 		autoplay: boolean;
 		caption?: string;
 		slides: ((MediaType & { _type: 'media' }) | { _type: 'block_slide'; items: MediaType[] })[];
+		background_color?: { hex: string };
 	};
 
 	let images;
@@ -124,7 +125,9 @@
 
 <section
 	id={module._type}
-	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;`}
+	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;${
+		module.background_color ? `background-color: ${module.background_color.hex}` : ''
+	}`}
 	use:inView={{ threshold: 0.5 }}
 	on:enter={() => {
 		visible = true;
