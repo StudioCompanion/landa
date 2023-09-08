@@ -30,8 +30,28 @@ const media: SchemaTypeDefinition = {
       hidden: (r) => r.parent?.media_type !== 'video',
     },
     {
+      title: 'Video thumbnail',
+      name: 'video_thumbnail',
+      type: 'image',
+      hidden: (r) => r.parent?.media_type !== 'video',
+    },
+    {
       title: 'Autoplay',
       name: 'autoplay',
+      type: 'boolean',
+      initialValue: false,
+      hidden: (r) => r.parent?.media_type !== 'video',
+    },
+    {
+      title: 'Muted',
+      name: 'muted',
+      type: 'boolean',
+      initialValue: true,
+      hidden: (r) => r.parent?.media_type !== 'video',
+    },
+    {
+      title: 'Video controls',
+      name: 'video_controls',
       type: 'boolean',
       initialValue: false,
       hidden: (r) => r.parent?.media_type !== 'video',

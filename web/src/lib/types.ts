@@ -19,7 +19,12 @@ export type Video = {
 		asset_id: string;
 	};
 	autoplay: boolean;
+  muted: boolean;
 	rounded: boolean;
+  video_controls: boolean;
+  video_thumbnail: SanityImageSource & {
+    aspect_ratio: number;
+  };
 };
 
 export type Media = Video | Image;

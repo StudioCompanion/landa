@@ -23,12 +23,16 @@
 	>
 		{#if media.media_type === 'video'}
 			<mux-player
-				class="mux-player"
-				muted={true}
-				autoplay={media.autoplay}
-				loop={media.autoplay}
+				class={`mux-player${media.autoplay || !media.video_controls ? ' no-controls' : ''}`}
+				muted={media.muted}
+				autoplay={media.muted && media.autoplay}
+				loop={media.muted && media.autoplay}
+				playsinline={media.muted && media.autoplay}
 				stream-type="on-demand"
 				playback-id={media.video.playback_id}
+				poster={media.video_thumbnail
+					? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src
+					: undefined}
 			/>
 		{:else if media.media_type === 'image' && media.image}
 			<img
@@ -57,6 +61,9 @@
 	.mux-player {
 		height: 100%;
 		width: 100%;
+	}
+
+	.mux-player.no-controls {
 		--controls: none;
 	}
 
