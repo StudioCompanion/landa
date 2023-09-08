@@ -7,62 +7,75 @@
 	export let homepage = false;
 	let visible = false;
 	onMount(() => {
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			visible = true;
 		}, Math.min(index * 10, 1500));
+
+		return () => {
+			clearTimeout(timeout);
+		};
 	});
 </script>
 
-<a style={`opacity: ${visible ? 1 : 0}; transition: all .3s;`} href={`/work/${project.slug}`}>
-	<div id="project">
-		<div id="image">
-			<img alt="Hello" {...getImageProps({ image: project.featured_image, maxWidth: 500 })} />
+<a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
+	<div class="project-summary">
+		<div class="project-image-container">
+			<img
+				class="project-image"
+				alt="Hello"
+				{...getImageProps({ image: project.featured_image, maxWidth: 500 })}
+			/>
 		</div>
 
-		<div id="title">
-			<h2>{project.title}</h2>
+		<div class="project-description">
+			<h2 class="project-title">{project.title}</h2>
 			{#if homepage}<span>{project.caption}</span>{/if}
 		</div>
 	</div></a
 >
 
 <style>
-	#project {
-		text-align: center;
+	.project-summary {
 		color: var(--black);
+		text-align: center;
 	}
-	a {
+	.project-boxlink {
+		opacity: 0;
 		text-decoration: none;
+		transition: opacity 0.3s;
 	}
 
-	#projects a:hover h2 {
+	.project-boxlink.visible {
+		opacity: 1;
+	}
+
+	.project-boxlink:hover .project-title {
 		border-bottom: solid 1px black;
 	}
 
-	#project #title {
+	.project-description {
+		align-items: center;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 	}
-	#project h2 {
+	.project-title {
+		border-bottom: solid 1px transparent;
 		display: inline-block;
 		margin-bottom: 0.5rem;
-		border-bottom: solid 1px transparent;
 	}
 
-	#project #image {
-		width: 100%;
-		height: auto;
-
-		overflow: hidden;
-		display: flex;
+	.project-image-container {
 		align-items: center;
+		display: flex;
+		height: auto;
 		justify-content: center;
+		overflow: hidden;
+		width: 100%;
 	}
 
-	#project #image img {
-		width: 100%;
+	.project-image {
 		height: auto;
 		object-fit: contain;
+		width: 100%;
 	}
 </style>
