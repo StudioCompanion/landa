@@ -4,7 +4,7 @@
 	export let value: any;
 </script>
 
-<div id="content">
+<div class="content">
 	<PortableText
 		{value}
 		components={{

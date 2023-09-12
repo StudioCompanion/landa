@@ -18,7 +18,7 @@
 		gap: 3rem;
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
-		padding: 5rem 1rem 10rem 1rem;
+		padding: 0rem 1rem 10rem 1rem;
 	}
 
 	@media screen and (min-width: 1024px) {

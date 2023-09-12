@@ -101,28 +101,28 @@ h6 {
 	font-weight: 450;
 }
 
-#content {
+.content {
 	font-family: var(--font-serif);
 	font-weight: 450;
 	font-size: 1.25rem;
 	text-align: center;
 }
 
-#content .caption {
+.content .caption {
 	font-size: 0.8rem;
 }
 
 @media screen and (min-width: 1024px) {
-	#content {
+	.content {
 		font-size: 1.87rem;
 	}
 
-	#content .caption {
+	.content .caption {
 		font-size: 1.125rem;
 	}
 }
 
-#content blockquote {
+.content blockquote {
 	font-style: italic;
 }
 
