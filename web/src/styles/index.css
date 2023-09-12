@@ -5,7 +5,11 @@
 	--white: #ffffff;
 	--black: #000000;
 	--font-serif: 'JJannon Book', monospace;
+	--font-serif-italic: 'JJannon Book Italic', monospace;
+	--font-serif-bold: 'JJannon Bold', monospace;
+	--font-serif-bold-italic: 'JJannon Bold Italic', monospace;
 	--font-display: 'JJannon Display';
+	--font-display-italic: 'JJannon Display Italic';
 	--section-padding: 2rem;
 	--rounded: 3rem;
 	--logo-color: black;
