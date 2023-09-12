@@ -129,6 +129,7 @@ a {
   color: inherit;
 }
 
+/* This seems to be here because even though it's in the module, it doesn't apply */
 .credits > p {
   margin: 0;
 }
