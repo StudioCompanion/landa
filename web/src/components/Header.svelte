@@ -3,7 +3,7 @@
 </script>
 
 <header>
-	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
+	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">All work</a>
 	<a href="/">
 		<svg
 			width="173"
