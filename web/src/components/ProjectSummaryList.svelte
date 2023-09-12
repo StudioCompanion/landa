@@ -24,8 +24,8 @@
 	@media screen and (min-width: 1024px) {
 		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
-			padding-left: 3rem;
-			padding-right: 3rem;
+			padding-left: 2rem;
+			padding-right: 2rem;
 		}
 	}
 
