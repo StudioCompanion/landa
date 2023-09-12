@@ -6,7 +6,6 @@
 	--black: #000000;
 	--font-serif: 'JJannon Book', monospace;
 	--font-display: 'JJannon Display';
-	--font-sans: 'Bitstream - Swiss';
 	--section-padding: 2rem;
 	--rounded: 3rem;
 	--logo-color: black;
@@ -22,7 +21,7 @@
 }
 
 @font-face {
-	font-family: 'JJannon Display';
+	font-family: 'JJannon Display Regular';
 	src: url('/fonts/JJannonDisplay-Regular.woff2') format('woff2'),
 		url('/fonts/JJannonDisplay-Regular.woff2') format('woff');
 	font-style: normal;
@@ -30,7 +29,7 @@
 }
 
 @font-face {
-	font-family: 'JJannon Display';
+	font-family: 'JJannon Display Italic';
 	src: url('/fonts/JJannonDisplay-Italic.woff2') format('woff2'),
 		url('/fonts/JJannonDisplay-Italic.woff2') format('woff');
 	font-style: italic;
@@ -38,7 +37,7 @@
 }
 
 @font-face {
-	font-family: 'JJannon Display';
+	font-family: 'JJannon Display Bold Italic';
 	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
 	font-style: italic;
 	font-weight: 700;
@@ -46,7 +45,7 @@
 }
 
 @font-face {
-	font-family: 'JJannon Display';
+	font-family: 'JJannon Display Bold';
 	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
 	font-weight: 700;
