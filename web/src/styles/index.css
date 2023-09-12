@@ -123,9 +123,13 @@ a {
 
 strong {
 	font-weight: 700;
-	font-family: 'JJannon Bold';
+	font-family: var(--font-serif-bold);
 }
 
 em {
-	background-color: pink;
+	font-family: var(--font-serif-italic);
+}
+
+strong em {
+	font-family: var(--font-serif-bold-italic);
 }
