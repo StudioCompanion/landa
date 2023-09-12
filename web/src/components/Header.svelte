@@ -3,7 +3,7 @@
 </script>
 
 <header>
-	<a class:active={$page.route.id === '/work'} href="/work">Work</a>
+	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a href="/">
 		<svg
 			width="173"
@@ -56,10 +56,10 @@
 				d="M168.034 19.5334C166.834 21.0334 167.167 22.7 168.734 23.5334C171.367 24.9 173.8 21.8667 171.967 19.5334C171.434 18.8667 171 18.6667 170 18.6667C169 18.6667 168.567 18.8667 168.034 19.5334Z"
 				fill="currentColor"
 			/>
-		</svg></a
-	>
+		</svg>
+	</a>
 
-	<a href="/info">Info</a>
+	<a class="text-link" href="/info">Info</a>
 </header>
 
 <style>
@@ -70,21 +70,29 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: 1rem 2rem;
+		padding: 1rem;
 		z-index: 50;
+	}
+
+	@media screen and (min-width: 1024px) {
+		header {
+			padding: 2rem;
+		}
+	}
+
+	.text-link {
+		line-height: 190%;
 	}
 
 	header a {
 		text-decoration: none;
 		color: var(--logo-color);
 		transition: all 0.3s;
+		height: 24px;
 	}
 
 	header svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		position: relative;
 		color: var(--logo-color);
 		transition: all 0.3s;
 	}
