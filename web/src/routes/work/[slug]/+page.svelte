@@ -8,6 +8,7 @@
 	import ContentModule from '../../../components/modules/ContentModule.svelte';
 	import GridModule from '../../../components/modules/GridModule.svelte';
 	import QuoteModule from '../../../components/modules/QuoteModule.svelte';
+	import MediaModule from '../../../components/modules/MediaModule.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import { page } from '$app/stores';
 	export let data;
@@ -99,6 +100,8 @@
 			<CarouselModule {module} />
 		{:else if module._type === 'quote_module'}
 			<QuoteModule {module} />
+		{:else if module._type === 'media_module'}
+			<MediaModule {module} />
 		{/if}
 	{/each}
 {/if}

@@ -25,7 +25,7 @@
 			<mux-player
 				class={`mux-player${media.autoplay || !media.video_controls ? ' no-controls' : ''}`}
 				muted={media.muted}
-				autoplay={media.muted && media.autoplay}
+				autoplay={media.muted && media.autoplay ? 'muted' : false}
 				loop={media.muted && media.autoplay}
 				playsinline={media.muted && media.autoplay}
 				stream-type="on-demand"
