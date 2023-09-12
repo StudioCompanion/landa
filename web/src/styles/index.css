@@ -12,6 +12,16 @@
 	--font-serif-bold-italic: 'JJannon Bold Italic', monospace;
 	--font-display: 'JJannon Display';
 	--font-display-italic: 'JJannon Display Italic';
+	--font-size-xl-d: 2.25rem;
+	--font-size-xl-m: 1.875rem;
+	--font-size-l-d: 1.875rem;
+	--font-size-l-m: 1.625rem;
+	--font-size-m-d: 1.5rem;
+	--font-size-m-m: 1.25rem;
+	--font-size-s-d: 1.125rem;
+	--font-size-s-m: 0.875rem;
+	--font-size-xs-d: 0.875rem;
+	--font-size-xs-m: 0.625rem;
 	--section-padding: 2rem;
 	--rounded: 3rem;
 	--logo-color: black;
