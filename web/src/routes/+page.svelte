@@ -68,8 +68,6 @@
 				margin: 5.75rem auto 2.75rem auto;
 				max-width: 60rem;
 			}
-		}
-
-		
+		}		
 	</style>
 {/if}
