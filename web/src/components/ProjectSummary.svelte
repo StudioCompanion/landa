@@ -30,7 +30,7 @@
 
 		<div class="project-description">
 			<h2 class="project-title">{project.title}</h2>
-			{#if homepage}<span>{project.caption}</span>{/if}
+			{#if homepage}<span class="project-caption">{project.caption}</span>{/if}
 		</div>
 	</div></a
 >
@@ -40,18 +40,23 @@
 		color: var(--black);
 		text-align: center;
 	}
+
 	.project-boxlink {
 		opacity: 0;
 		text-decoration: none;
-		transition: opacity 0.3s;
+		transition: opacity 1s ease-in-out;
 	}
 
 	.project-boxlink.visible {
 		opacity: 1;
 	}
 
-	.project-boxlink:hover .project-title {
-		border-bottom: solid 1px black;
+	.project-boxlink:hover .project-title, .project-boxlink:hover .project-caption {
+		color: var(--red);
+	}
+
+	.project-title, .project-caption {
+		transition: color 0.35s ease-in-out;
 	}
 
 	.project-description {
@@ -59,10 +64,22 @@
 		display: flex;
 		flex-direction: column;
 	}
+	
 	.project-title {
-		border-bottom: solid 1px transparent;
-		display: inline-block;
-		margin-bottom: 0.5rem;
+		font-size: var(--font-size-m-m);
+		font-family: var(--font-family-serif);
+		margin-bottom: 0rem;
+	}
+
+	.project-caption {
+		font-size: var(--font-size-m-m);
+		font-family: var(--font-family-serif);
+	}
+
+	@media screen and (min-width: 1024px) {
+		.project-title, .project-caption {
+			font-size: var(--font-size-m-d);
+		}
 	}
 
 	.project-image-container {
