@@ -24,21 +24,21 @@
 		gap: 3rem;
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
-		padding: 0rem 1rem 10rem 1rem;
+		padding: 0rem 1rem 7rem 1rem;
 	}
 
 	.work-route {
-		padding: 7rem 1rem 10rem 1rem;
+		padding: 7rem 1rem 7rem 1rem;
 		grid-template-columns: repeat(2, 1fr);
 	}
 
 	@media screen and (min-width: 768px) {
 		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
-			padding: 0 3rem;
+			padding: 0rem 3rem 7rem 3rem;
 		}
 		.work-route {
-			padding: 7rem 4rem 10rem 4rem;
+			padding: 7rem 4rem 7rem 4rem;
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
@@ -46,21 +46,21 @@
 	@media screen and (min-width: 1024px) {
 		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
-			padding: 0 6rem;
+			padding: 0rem 6rem 7rem 6rem;
 		}
 		.work-route {
-			padding: 7rem 4rem 10rem 4rem;
+			padding: 7rem 4rem 7rem 4rem;
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
 	@media screen and (min-width: 1500px) {
 		.project-summary-list {
-			padding: 0 6rem;
+			padding: 0 6rem 7rem 6rem;
 			grid-template-columns: repeat(2, 1fr);
 		}
 		.work-route {
-			padding: 7rem 4rem 10rem 4rem;
+			padding: 7rem 4rem 7rem 4rem;
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
