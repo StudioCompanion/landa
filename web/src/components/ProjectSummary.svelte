@@ -15,6 +15,7 @@
 			clearTimeout(timeout);
 		};
 	});
+	
 </script>
 
 <a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
@@ -22,7 +23,7 @@
 		<div class="project-image-container">
 			<img
 				class="project-image"
-				alt="Hello"
+				alt="REPLACE"
 				{...getImageProps({ image: project.featured_image, maxWidth: 500 })}
 			/>
 		</div>
