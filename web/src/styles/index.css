@@ -13,10 +13,35 @@
 
 @font-face {
 	font-family: 'JJannon Book';
-	src: url('/fonts/JJannon Book.woff2') format('woff2'),
-		url('/fonts/JJannon Book.woff') format('woff');
+	src: url('/fonts/JJannon-Book.woff2') format('woff2'),
+		url('/fonts/JJannon-Book.woff') format('woff');
 	font-weight: 450;
 	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Book Italic';
+	src: url('/fonts/JJannon-Italic.woff2') format('woff2'),
+		url('/fonts/JJannon-Italic.woff') format('woff');
+	font-weight: 450;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Bold';
+	src: url('/fonts/JJannon-Bold.woff') format('woff');
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Bold Italic';
+	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
+	font-style: italic;
+	font-weight: 700;
 	font-display: swap;
 }
 
@@ -36,28 +61,10 @@
 	font-display: swap;
 }
 
-@font-face {
-	font-family: 'JJannon Display Bold Italic';
-	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
-	font-style: italic;
-	font-weight: 700;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Display Bold';
-	src: url('/fonts/JJannon-Bold.woff') format('woff');
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-}
-
 * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-
 
 html,
 body,
@@ -108,4 +115,13 @@ a {
 
 .credits > p {
   margin: 0;
+}
+
+strong {
+	font-weight: 700;
+	font-family: 'JJannon Bold';
+}
+
+em {
+	background-color: pink;
 }
