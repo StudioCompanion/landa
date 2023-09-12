@@ -1,5 +1,6 @@
 :root {
-	--section-margin: 4rem;
+	--section-margin-d: 4rem;
+	--section-margin-m: 3rem;
 	--max-width: 1400px;
 	--red: #ff0000;
 	--white: #ffffff;

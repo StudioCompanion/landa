@@ -117,9 +117,16 @@
 	}
 	section {
 		max-width: var(--max-width);
-		margin: var(--section-margin) auto;
+		margin: var(--section-margin-m) auto;
 		padding: 0 var(--section-padding);
 	}
+
+	@media screen and (min-width: 1024px) {
+		section {
+			margin: var(--section-margin-d) auto;
+		}
+	}
+
 	section#hero {
 		margin-top: 0;
 		padding: 0;
@@ -132,8 +139,16 @@
 	}
 
 	.credits {
-		font-size: 1.5rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
 		text-align: center;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.credits {
+			font-family: var(--font-serif);
+			font-size: var(--font-size-m-d);
+		}
 	}
 
 	.credits > p {

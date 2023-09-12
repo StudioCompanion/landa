@@ -20,7 +20,7 @@
 <style>
 	section {
 		max-width: var(--max-width);
-		margin: var(--section-margin) auto;
+		margin: var(--section-margin-d) auto;
 		padding: 0 var(--section-padding);
 	}
 </style>
