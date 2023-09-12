@@ -13,14 +13,6 @@
 }
 
 @font-face {
-	font-family: 'Bitstream - Swiss';
-	src: url('/fonts/Bitstream - Swiss721 BT Regular.woff2') format('woff2'),
-		url('/fonts/Bitstream - Swiss721 BT Regular.woff') format('woff');
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: 'JJannon Book';
 	src: url('/fonts/JJannon Book.woff2') format('woff2'),
 		url('/fonts/JJannon Book.woff') format('woff');
@@ -58,14 +50,6 @@
 	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
 	font-weight: 700;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'MinionPro';
-	src: url('/fonts/MinionPro-Regular.woff2') format('woff2'),
-		url('/fonts/MinionPro-Regular.woff') format('woff');
-	font-style: normal;
 	font-display: swap;
 }
 
