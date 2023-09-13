@@ -93,24 +93,23 @@
 		justify-content: space-between;
 		padding: 1rem;
 		z-index: 50;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-s-m);
 	}
 
-	@media screen and (min-width: 1024px) {
-		header {
-			padding: 2rem;
-		}
-	}
-
-	/* Logo Positioning */
+	/* Logo Colour */
 	header svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
 		color: var(--logo-color);
+		max-width: 100%;
 	}
 
 	.logo {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 144px;
+		overflow: hidden;
 		transform: translateY(0rem);
 		transition: transform 0.1s ease-in-out;
 	}
@@ -119,7 +118,6 @@
 	header a {
 		text-decoration: none;
 		color: var(--logo-color);
-		/* transition: all 0.3s; */
 		height: 24px;
 	}
 
@@ -134,7 +132,7 @@
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
-		line-height: 190%;
+		line-height: 200%;
 		transition: opacity 0.4s ease-out;
 	}
 
@@ -149,9 +147,21 @@
 
 
 	@media screen and (min-width: 1024px) {
+		header {
+			padding: 2rem;
+			font-size: var(--font-size-s-d);
+		}
+
+		.logo {
+			width: 173px;
+		}
+
 		.scrolled .logo {
-			background: pink;
 			transform: translateY(1.5rem);
 		}
-	}	
+
+		.text-link {
+			line-height: 190%;
+		}
+	}
 </style>
