@@ -1,4 +1,5 @@
 <script lang="ts">
+	import inView from '$lib/inView'; 
 	import { PortableText } from '@portabletext/svelte';
 
 	type QuoteModule = {
@@ -8,10 +9,25 @@
 		job_title: string;
 	};
 
+	let visible = false;
+
 	export let module: QuoteModule;
 </script>
 
-<section id={module._type}>
+<section 
+id={module._type}
+style={`opacity: ${visible ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${visible ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		visible = true;
+	}}
+use:inView={{ threshold: 0.5 }}
+on:enter={() => {
+	visible = true;
+}}
+>
 	<blockquote>
 		<PortableText value={module.quote} />
 	</blockquote>
