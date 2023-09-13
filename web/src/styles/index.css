@@ -33,7 +33,7 @@
 	font-family: 'JJannon Book';
 	src: url('/fonts/JJannon-Book.woff2') format('woff2'),
 		url('/fonts/JJannon-Book.woff') format('woff');
-	font-weight: 450;
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
@@ -42,7 +42,7 @@
 	font-family: 'JJannon Book Italic';
 	src: url('/fonts/JJannon-Italic.woff2') format('woff2'),
 		url('/fonts/JJannon-Italic.woff') format('woff');
-	font-weight: 450;
+	font-weight: 400;
 	font-style: italic;
 	font-display: swap;
 }
@@ -89,7 +89,7 @@ body,
 p,
 span {
 	font-family: var(--font-serif);
-	font-weight: 450;
+	font-weight: 400;
 }
 
 /* Removing default margin on P so it can be overriden at a component level */
@@ -111,7 +111,7 @@ h6 {
 /* The below font size declarations were being used  and meaning any component level wasn't applying, so commented out whilst I move to the component level definitions and then I'll remove.*/
 .content {
 	font-family: var(--font-serif);
-	font-weight: 450;
+	font-weight: 400;
 	/* font-size: 1.25rem; */
 	text-align: center;
 }
