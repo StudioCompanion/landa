@@ -39,6 +39,7 @@
 	.project-summary {
 		color: var(--black);
 		text-align: center;
+		font-family: var(--font-serif);
 	}
 
 	.project-boxlink {
