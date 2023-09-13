@@ -13,6 +13,8 @@
 	export let data;
 	let root;
 
+	let visible = false;
+
 	onMount(() => {
 		root = document.querySelector(':root');
 	});
@@ -106,7 +108,19 @@
 {/if}
 
 {#if data.project.credits}
-	<section class="credits">
+	<section class="credits"
+	style={`opacity: ${visible ? 1 : 0}; 
+		transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+		transform: translateY(${visible ? '0px' : '55px'});`}
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			visible = true;
+		}}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		visible = true;
+	}}
+	>
 		<p>Project credits:</p>
 		<PortableText value={data.project.credits} />
 	</section>
