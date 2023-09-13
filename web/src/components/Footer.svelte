@@ -18,8 +18,8 @@
 
 <style>
 	footer {
-		background-color: #f2f2f2;
-		color: #919191;
+		background-color: var(--light-grey);
+		color: var(--dark-grey);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -28,7 +28,7 @@
 	}
 
 	footer a {
-		color: #919191;
+		color: var(--dark-grey);
 		text-decoration: none;
 	}
 
