@@ -7,12 +7,13 @@
 		<a href="/work">Work</a>
 		<a href="/info">Info</a>
 		<a href="mailto:studio@laneandassociates.co">Contact</a>
+		<a href="mailto:careers@laneandassociates.co">Careers</a>
 		<a href="https://www.instagram.com/lane_and_associates/" target="_blank" rel="noreferrer"
 			>Instagram</a
 		>
 	</nav>
 	<div>
-		&copy; Lane & Associates &dot; {date}
+		&copy; Lane & Associates {date}
 	</div>
 </footer>
 
@@ -24,12 +25,15 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: flex-start;
-		padding: 1rem;
+		padding: 2rem 1rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-s-m);
 	}
 
 	footer a {
 		color: var(--dark-grey);
 		text-decoration: none;
+		transition: color 0.4s ease-out;
 	}
 
 	footer nav {
@@ -39,7 +43,12 @@
 		margin-bottom: 3rem;
 	}
 
-	@media screen and (min-width: 768px) {
+	footer a:hover {
+		color: var(--red);
+		transition: color 0.4s ease-out;
+	}
+
+	@media screen and (min-width: 1024px) {
 		footer nav {
 			flex-direction: row;
 			gap: 2rem;
@@ -49,6 +58,10 @@
 		footer {
 			flex-direction: row;
 			align-items: center;
+			padding: 1.5rem 2rem;
+			font-size: var(--font-size-s-d);
 		}
 	}
+
+	
 </style>

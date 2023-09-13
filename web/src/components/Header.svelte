@@ -119,21 +119,24 @@
 		text-decoration: none;
 		color: var(--logo-color);
 		height: 24px;
+		transition: color 0.4s ease-out;
 	}
 
 	a.active {
 		color: var(--red);
+		transition: color 0.4s ease-out;
 	}
 
 	a:hover {
 		color: var(--red);
+		transition: color 0.4s ease-out;
 	}
 
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
 		line-height: 200%;
-		transition: opacity 0.4s ease-out;
+		transition: all 0.4s ease-out;
 	}
 
 	/* Dealing with the logo positioning on root animation */
