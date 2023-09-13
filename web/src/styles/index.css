@@ -1,6 +1,6 @@
 :root {
 	--section-margin-d: 4rem;
-	--section-margin-m: 3rem;
+	--section-margin-m: 2.5rem;
 	--max-width: 1400px;
 	--red: #ff0000;
 	--white: #ffffff;
@@ -23,7 +23,8 @@
 	--font-size-s-m: 0.875rem;
 	--font-size-xs-d: 0.875rem;
 	--font-size-xs-m: 0.625rem;
-	--section-padding: 2rem;
+	--section-padding-m: 1rem;
+	--section-padding-d: 3rem;
 	--rounded: 3rem;
 	--logo-color: black;
 }
@@ -91,34 +92,41 @@ span {
 	font-weight: 450;
 }
 
+/* Removing default margin on P so it can be overriden at a component level */
+/* Tried definiing this at the component level (i.e .project-description .content > p but didn't work, so doing this for now */
+p {
+	margin: 0;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-display);
-	font-weight: 450;
+	font-family: var(--font-serif);
+	font-weight: 400;
 }
 
+/* The below font size declarations were being used  and meaning any component level wasn't applying, so commented out whilst I move to the component level definitions and then I'll remove.*/
 .content {
 	font-family: var(--font-serif);
 	font-weight: 450;
-	font-size: 1.25rem;
+	/* font-size: 1.25rem; */
 	text-align: center;
 }
 
 .content .caption {
-	font-size: 0.8rem;
+	/* font-size: 0.8rem; */
 }
 
 @media screen and (min-width: 1024px) {
 	.content {
-		font-size: 1.87rem;
+		/* font-size: 1.87rem; */
 	}
 
 	.content .caption {
-		font-size: 1.125rem;
+		/* font-size: 1.125rem; */
 	}
 }
 
