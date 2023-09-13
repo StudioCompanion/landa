@@ -46,4 +46,11 @@
 		margin: var(--section-margin-m) auto;
 		padding: 0 var(--section-padding-m);
 	}
+
+	@media (min-width: 1024px) {
+		section {
+			margin: var(--section-margin-d) auto;
+			padding: 0 var(--section-padding-d);
+		}
+	}
 </style>
