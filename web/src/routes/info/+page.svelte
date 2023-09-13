@@ -1,4 +1,6 @@
 <script lang="ts">
+	import inView from '$lib/inView';
+	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import Content from '../../components/Content.svelte';
 	import Media from '../../components/Media.svelte';
@@ -7,6 +9,18 @@
 
 	export let data;
 	const { about } = data;
+
+	const visibilityStore = writable({
+		sections: {
+			description: false,
+			services: false,
+			logos: false,
+			contact: false,
+			biography: false,
+			collaborators: false
+		},
+		dots: Array(5).fill(false) 
+	});
 
 	onMount(() => {
 		if (document) {
@@ -22,14 +36,45 @@
 
 <div class="page-container" id="main">
 	{#if about.description}
-		<section class="description" id="description">
+		<section 
+		style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.description = true;
+			}}
+		class="description" 
+		id="description">
 			<Content value={about.description} />
 		</section>
 	{/if}
-	<div class="dot" />
+	<div 
+		class="dot" 
+		data-dot-index="1"
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			const index = 0; 
+			visibilityStore.update(store => {
+				store.dots[index] = true;
+				return store;
+			});
+		}}
+		style={`opacity: ${$visibilityStore.dots[0] ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.dots[0] ? '0px' : '55px'});`}
+	/>
 
 	{#if about.services}
-		<section class="services">
+		<section 
+		style={`opacity: ${$visibilityStore.services ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.services ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.services = true;
+			}}
+		class="services">
 		<h2 class="section-title" id="section_title">Services</h2>
 		{#each about.services as service}
 			<div class="service">
@@ -39,9 +84,32 @@
 		{/each}
 		</section>
 	{/if}
-	<div class="dot" />
+	<div 
+		class="dot" 
+		data-dot-index="2"
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			const index = 1; 
+			visibilityStore.update(store => {
+				store.dots[index] = true;
+				return store;
+			});
+		}}
+		style={`opacity: ${$visibilityStore.dots[1] ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.dots[1] ? '0px' : '55px'});`}
+	/>
 	{#if about.logos}
-		<div class="logo-section" id="logo_grid">
+		<div 
+		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.logos ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.logos = true;
+			}}
+		class="logo-section" 
+		id="logo_grid">
 			<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 			<div class="grid-container">
 				{#each about.logos as logo}
@@ -52,8 +120,30 @@
 			</div>
 		</div>
 	{/if}
-	<div class="dot" />
-	<section class="contact-section">
+	<div 
+		class="dot" 
+		data-dot-index="3"
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			const index = 2; 
+			visibilityStore.update(store => {
+				store.dots[index] = true;
+				return store;
+			});
+		}}
+		style={`opacity: ${$visibilityStore.dots[2] ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.dots[2] ? '0px' : '55px'});`}
+	/>
+	<section
+	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.contact ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.contact = true;
+			}}
+	class="contact-section">
 		{#if about.contact}
 			<section class="email-section" id="description">
 				<h2 class="section-title" id="section_title">Contact</h2>
@@ -80,16 +170,62 @@
 			</section>
 		{/if}
 	</section>
-	<div class="dot" />
+	<div 
+		class="dot" 
+		data-dot-index="4"
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			const index = 3; 
+			visibilityStore.update(store => {
+				store.dots[index] = true;
+				return store;
+			});
+		}}
+		style={`opacity: ${$visibilityStore.dots[3] ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.dots[3] ? '0px' : '55px'});`}
+	/>
 	{#if about.biography}
-		<section class="bio-section" id="description">
+		<section 
+		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.biography ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.biography = true;
+			}}
+		class="bio-section" 
+		id="description">
 			<h2 class="section-title" id="section_title">Biography</h2>
 			<Content value={about.biography} />
 		</section>
 	{/if}
-	<div class="dot" />
+	<div 
+		class="dot" 
+		data-dot-index="5"
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			const index = 4; 
+			visibilityStore.update(store => {
+				store.dots[index] = true;
+				return store;
+			});
+		}}
+		style={`opacity: ${$visibilityStore.dots[4] ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.dots[4] ? '0px' : '55px'});`}
+	/>
 	{#if about.collaborators}
-		<section class="collaborators-section" id="description">
+		<section 
+		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
+			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+			transform: translateY(${$visibilityStore.collaborators ? '0px' : '55px'});`}
+			use:inView={{ threshold: 0.5 }}
+			on:enter={() => {
+				$visibilityStore.collaborators = true;
+			}}
+		class="collaborators-section" 
+		id="description">
 			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<Content value={about.collaborators} />
 		</section>
