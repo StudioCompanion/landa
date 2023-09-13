@@ -68,9 +68,9 @@
 <style>
 	.tag-details {
 		font-size: 20px;
-		margin: var(--section-margin-d) auto;
+		margin: var(--section-margin-m) auto;
 		max-width: var(--max-width);
-		padding: 0 var(--section-padding);
+		padding: 0 var(--section-padding-m);
 		text-align: center;
 	}
 

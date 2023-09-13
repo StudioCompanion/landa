@@ -70,12 +70,14 @@
 >
 	<Media media={data.project.hero} />
 </section>
-<section id="description">
+<section class="description">
 	{#if data.project.title}
-		<h1>{data.project.title}</h1>
+		<h1 class="project-title">{data.project.title}</h1>
 	{/if}
 	{#if data.project.description}
-		<Content value={data.project.description} />
+		<div class="project-description">
+			<Content value={data.project.description} />
+		</div>
 	{/if}
 	{#if data.project.tags}
 		<div class="tags">
@@ -118,7 +120,7 @@
 	section {
 		max-width: var(--max-width);
 		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding);
+		padding: 0 var(--section-padding-m);
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -157,21 +159,53 @@
 
 	.tags {
 		text-align: center;
-		font-size: 16px;
+		font-size: var(--font-size-s-m);
 	}
 
 	@media screen and (min-width: 1024px) {
 		.tags {
-			font-size: 20px;
+			font-size: var(--font-size-s-d);
 		}
 	}
 
 	.tags a {
-		color: #919191;
+		color: var(--dark-grey);
 		text-decoration: none;
+		transition: color 0.25s ease-in-out;
 	}
 
 	.tags a:hover {
-		text-decoration: underline;
+		color: var(--red);
+	}
+
+	.description {
+		max-width: 35rem;
+		display: flex;
+		gap: 0.5rem;
+		flex-direction: column;
+	}
+
+	.project-title {
+		margin-block-start: 0px;
+		margin-block-end: 0px;
+		margin: 0px;
+		font-family: var(--font-serif-bold);
+		font-size: var(--font-size-m-m);
+	}
+
+	.project-description {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+	}
+
+	@media screen and (min-width: 1024px) {
+		.project-title, .project-description {
+			font-size: var(--font-size-m-d);
+		}
+
+		.description {
+			gap: 0.75rem;
+			max-width: 50rem;
+		}
 	}
 </style>
