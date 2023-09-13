@@ -212,8 +212,8 @@
 	}
 
 	section {
-		margin: var(--section-margin-d) auto;
-		padding: 0 var(--section-padding);
+		margin: var(--section-margin-m) auto;
+		padding: 0 var(--section-padding-m);
 	}
 
 	#slide {
