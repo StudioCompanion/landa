@@ -108,34 +108,15 @@ h6 {
 	font-weight: 400;
 }
 
+a {
+  color: inherit;
+}
+
 /* The below font size declarations were being used  and meaning any component level wasn't applying, so commented out whilst I move to the component level definitions and then I'll remove.*/
 .content {
 	font-family: var(--font-serif);
 	font-weight: 400;
-	/* font-size: 1.25rem; */
 	text-align: center;
-}
-
-.content .caption {
-	/* font-size: 0.8rem; */
-}
-
-@media screen and (min-width: 1024px) {
-	.content {
-		/* font-size: 1.87rem; */
-	}
-
-	.content .caption {
-		/* font-size: 1.125rem; */
-	}
-}
-
-.content blockquote {
-	font-style: italic;
-}
-
-a {
-  color: inherit;
 }
 
 /* This seems to be here because even though it's in the module, it doesn't apply */

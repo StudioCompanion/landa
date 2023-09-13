@@ -60,9 +60,15 @@
 	}
 
 	.project-description {
+		text-align: center;
 		align-items: center;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.project-description .content p {
+		background: blue;
+		text-align: center;
 	}
 	
 	.project-title {
