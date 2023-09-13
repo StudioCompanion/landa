@@ -20,218 +20,295 @@
 	});
 </script>
 
-<div id="main">
+<div class="page-container" id="main">
 	{#if about.description}
-		<section id="description">
+		<section class="description" id="description">
 			<Content value={about.description} />
 		</section>
 	{/if}
-	<div id="dot" />
+	<div class="dot" />
 
 	{#if about.services}
-		<h2 id="section_title">Services</h2>
+		<section class="services">
+		<h2 class="section-title" id="section_title">Services</h2>
 		{#each about.services as service}
-			<div id="service">
-				<h3>{service.title}</h3>
-				<span>{service.content}</span>
+			<div class="service">
+				<h3 class="service-title">{service.title}</h3>
+				<div class="service-description">{service.content}</div>
 			</div>
 		{/each}
+		</section>
 	{/if}
-	<div id="dot" />
+	<div class="dot" />
 	{#if about.logos}
-		<h2 id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
-		<div id="logo_grid">
-			{#each about.logos as logo}
-				<div>
-					<img src={imageBuilder.image(logo).url()} alt="logo" />
-				</div>
-			{/each}
+		<div class="logo-section" id="logo_grid">
+			<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
+			<div class="grid-container">
+				{#each about.logos as logo}
+					<div class="logo-container">
+						<img class="logo" src={imageBuilder.image(logo).url()} alt="logo" />
+					</div>
+				{/each}
+			</div>
 		</div>
 	{/if}
-	<div id="dot" />
-	{#if about.contact}
-		<section id="description">
-			<h2 id="section_title">Contact</h2>
-			{#each about.contact as contact}
-				<div id="contact_link">
-					<h3>{contact.label}</h3>
-					<a href={contact.url} target="_blank" rel="noreferrer">{contact.link_label}</a>
-				</div>
-			{/each}
-		</section>
-	{/if}
-	<div id="dot" />
-	{#if about.addresses}
-		<section id="addresses">
-			{#each about.addresses as address}
-				<div id="address">
-					<div><strong>{address.location}</strong></div>
-					{address.address}
-				</div>
-			{/each}
-		</section>
-	{/if}
-	<div id="dot" />
+	<div class="dot" />
+	<section class="contact-section">
+		{#if about.contact}
+			<section class="email-section" id="description">
+				<h2 class="section-title" id="section_title">Contact</h2>
+				{#each about.contact as contact}
+					<div class="email-container">
+						<h3 class="email-label">{contact.label}</h3>
+						<a class="email-link" href={contact.url} target="_blank" rel="noreferrer">{contact.link_label}</a>
+					</div>
+				{/each}
+			</section>
+		{/if}
+		{#if about.addresses}
+			<section class="address-section" id="addresses">
+				{#each about.addresses as address}
+					<div class="address-container">
+						<div class="location-title">
+							<strong>{address.location}</strong>
+						</div>
+						<div class="location-details">
+							{address.address}
+						</div>
+					</div>
+				{/each}
+			</section>
+		{/if}
+	</section>
+	<div class="dot" />
 	{#if about.biography}
-		<section id="description">
-			<h2 id="section_title">Biography</h2>
+		<section class="bio-section" id="description">
+			<h2 class="section-title" id="section_title">Biography</h2>
 			<Content value={about.biography} />
 		</section>
 	{/if}
-	<div id="dot" />
+	<div class="dot" />
 	{#if about.collaborators}
-		<section id="description">
-			<h2 id="section_title">Collaborators</h2>
+		<section class="collaborators-section" id="description">
+			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<Content value={about.collaborators} />
 		</section>
 	{/if}
 </div>
 
 <style>
-	#description,
-	div#main,
-	#section_title {
-		font-size: 20px;
-		padding: 0 1rem;
-	}
 
-	#description {
-		text-align: center;
-
-		font-family: JJannon;
-		max-width: 876px;
-		letter-spacing: -0.48px;
+	.page-container {
+		background-color: var(--red);
+		color: var(--white);
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		padding: 5rem 0rem 5rem 0rem;
 	}
-	#dot {
+
+	/* Reused Items */
+	.section-title {
+		font-family: var(--font-serif-bold);
+		font-size: var(--font-size-m-m);
+		margin: 0 auto 1rem auto;
+		text-align: center;
+		width: auto;
+	}
+
+	.dot {
 		width: 6px;
 		height: 6px;
 		border-radius: 999px;
 		background-color: var(--white);
 		margin: 2rem 0;
 	}
-	div#main {
-		background-color: var(--red);
-		color: var(--white);
-		padding-top: 5rem;
 
-		min-height: 100vh;
+	/* Intro Block */
+	.description {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+		max-width: 35rem;
+		padding: 0 var(--section-padding-m);
+	}
+
+	/* Services Block */
+	.services {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-bottom: 5rem;
+		padding: 0 var(--section-padding-m);
+		font-size: var(--font-size-m-m);
 	}
 
-	#section_title {
+
+	.service {
+		margin: 0rem 0 1.5rem 0;
+	}
+
+	/* Style the last .service element to have no margin */
+	.services .service:last-child {
+		margin: 0rem;
+	}
+
+	.service-title {
+		font-family: var(--font-serif-bold-italic);
+		font-size: var(--font-size-m-m);
+		margin: 0;
 		text-align: center;
-		font-family: var(--font-display);
-		font-weight: 600;
-		line-height: 115%;
-		letter-spacing: -0.48px;
+		margin-bottom: 0.25rem;
 	}
 
-	#service {
+	.service-description {
+		font-family: var(--font-serif-italic);
+		font-size: var(--font-size-m-m);
 		text-align: center;
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		margin-bottom: 0.5rem;
+		max-width: 30rem;
 	}
 
-	#service h3 {
-		text-align: center;
-
-		font-family: var(--font-display);
-		font-weight: 700;
-		line-height: 115%;
-		letter-spacing: -0.48px;
-		font-style: italic;
-		margin-bottom: 0;
+	/* Logo Block */
+	.logo-section {
+		max-width: var(--max-width);
+		padding: 0 var(--section-padding-m);
 	}
 
-	#service span {
-		display: block;
-		font-family: var(--font-display);
-		font-style: italic;
-		line-height: 125%;
-		max-width: 55ch;
-	}
-
-	#logo_grid {
-		margin-top: 2rem;
+	.grid-container {
 		display: grid;
 		width: 100%;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1rem;
 		align-items: center;
 		justify-content: center;
+		margin: 1rem 0 0 0;
 	}
 
-	#logo_grid > div {
+	.logo-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	#logo_grid > div > img {
+
+	.logo {
 		width: 100%;
 		height: auto;
+		padding: 5px;
 	}
 
-	#contact_link a {
-		color: var(--white);
-		font-style: italic;
+	/* Contact Block */
+
+	.contact-section {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+		text-align: center;
+		width: 100%;
+		max-width: var(--max-width);
+		padding: 0 var(--section-padding-m);
 	}
 
-	#contact_link {
+	.email-section {
+		margin: 0rem 0rem 2rem 0rem;
+	}
+
+	.email-container {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		font-size: 20px;
-		margin-bottom: 2rem;
+		flex-direction: row;
+		margin: 0.5rem 0;
+		align-items: baseline;
+		justify-content: center;
 	}
 
-	#contact_link h3 {
-		margin: 0;
-		padding: 0;
-
-		font-size: 20px;
+	.email-label {
+		margin: 0 0.5rem;
+		font-size: var(--font-size-m-m);
+		line-height: 100%;
 	}
-	#addresses {
+
+	.email-link {
+		font-family: var(--font-serif-italic);
+		font-size: var(--font-size-m-m);
+		line-height: 100%;
+	}
+
+	.email-link:hover {
+		text-decoration: none;
+	}
+
+	.address-section {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		gap: 1rem;
 		width: 100%;
 	}
-	#address {
-		text-align: center;
+
+	.location-title {
+		font-family: var(--font-serif-bold);
+		margin: 0 0 0.25rem 0;
+		font-size: var(--font-size-m-m);
+	}
+
+	.location-details {
+		font-family: var(--font-serif-italic);
 		word-break: break-all;
 		white-space: pre-line;
-		margin-bottom: 2rem;
+		font-size: var(--font-size-m-m);
+	}
+
+	/* Biography */
+	.bio-section {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+		max-width: 35rem;
+		padding: 0 var(--section-padding-m);
+	}
+	
+	/* Collaborators */
+	.collaborators-section {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+		max-width: 35rem;
+		padding: 0 var(--section-padding-m);
+	}
+
+	@media screen and (min-width: 768px){
+		.grid-container {
+			grid-template-columns: repeat(4, 1fr);
+		}
+		.address-section {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
+		}
 	}
 
 	@media screen and (min-width: 1024px) {
-		#description,
-		div#main,
-		#section_title,
-		#contact_link,
-		#contact_link h3 {
-			font-size: 24px;
+		.page-container {
+			padding: 7rem 0rem 7rem 0rem;
 		}
 
-		#logo_grid {
+		.dot {
+			margin: 4rem 0;
+		}
+
+		.description, .bio-section, .collaborators-section {
+			max-width: 50rem;
+			font-size: var(--font-size-m-d);
+			padding: 0 var(--section-padding-d);
+		}
+		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
+			font-size: var(--font-size-m-d);
+			max-width: 40rem;
+		}
+		.grid-container {
+			display: grid;
+			width: 100%;
 			grid-template-columns: repeat(4, 1fr);
-		}
-
-		#contact_link {
-			flex-direction: row;
 			gap: 1rem;
+			align-items: center;
+			justify-content: center;
 		}
-
-		#addresses {
+		.address-section {
 			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
 		}
 	}
 </style>

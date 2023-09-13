@@ -32,8 +32,8 @@
 			<h2 class="project-title">{project.title}</h2>
 			{#if homepage}<span class="project-caption">{project.caption}</span>{/if}
 		</div>
-	</div></a
->
+	</div>
+</a>
 
 <style>
 	.project-summary {
