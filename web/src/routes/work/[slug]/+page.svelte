@@ -161,12 +161,14 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-m-m);
 		text-align: center;
+		max-width: 35rem;
 	}
 
 	@media screen and (min-width: 1024px) {
 		.credits {
 			font-family: var(--font-serif);
 			font-size: var(--font-size-m-d);
+			max-width: 60rem;
 		}
 	}
 
