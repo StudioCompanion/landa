@@ -7,10 +7,10 @@
 	--black: #000000;
 	--dark-grey: #919191;
 	--light-grey: #F2F2F2;
-	--font-serif: 'JJannon Book', monospace;
-	--font-serif-italic: 'JJannon Book Italic', monospace;
-	--font-serif-bold: 'JJannon Bold', monospace;
-	--font-serif-bold-italic: 'JJannon Bold Italic', monospace;
+	--font-serif: 'JJannon Book', serif;
+	--font-serif-italic: 'JJannon Book Italic', serif;
+	--font-serif-bold: 'JJannon Bold', serif;
+	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	--font-display: 'JJannon Display';
 	--font-display-italic: 'JJannon Display Italic';
 	--font-size-xl-d: 2.25rem;
