@@ -194,7 +194,7 @@
 	}
 
 	.description {
-		max-width: 35rem;
+		max-width: 50rem;
 		display: flex;
 		gap: 0.5rem;
 		flex-direction: column;
@@ -215,12 +215,12 @@
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-description {
-			font-size: var(--font-size-m-d);
+			font-size: var(--font-size-l-d);
 		}
 
 		.description {
 			gap: 0.75rem;
-			max-width: 50rem;
+			max-width: 60rem;
 		}
 	}
 </style>
