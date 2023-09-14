@@ -1,10 +1,13 @@
 <script>
 	import { getImageProps } from '$lib/sanity';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+
 
 	export let project;
 	export let index;
 	export let homepage = false;
+
 	let visible = false;
 	onMount(() => {
 		const timeout = setTimeout(() => {
@@ -22,7 +25,8 @@
 	<div class="project-summary">
 		<div class="project-image-container">
 			<img
-				class="project-image"
+			class:work-route-class={$page.route.id === '/work'}
+			class="project-image" 
 				alt="REPLACE"
 				{...getImageProps({ image: project.featured_image, maxWidth: 500 })}
 			/>
@@ -68,7 +72,6 @@
 	}
 
 	.project-description .content p {
-		background: blue;
 		text-align: center;
 	}
 	
@@ -102,5 +105,9 @@
 		height: auto;
 		object-fit: contain;
 		width: 100%;
+	}
+
+	.work-route-class {
+		max-height: 325px;
 	}
 </style>
