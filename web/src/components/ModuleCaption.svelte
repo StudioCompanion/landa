@@ -8,14 +8,17 @@
 
 <style>
 	.caption {
-		font-size: 0.8rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-s-m);
 		text-align: center;
-		padding: 2rem 0 0 0;
+		padding: 1rem 0 0 0;
 	}
 
 	@media screen and (min-width: 1024px) {
 		.caption {
-			font-size: 1.185rem;
+			font-family: var(--font-serif);
+			font-size: var(--font-size-s-d);
+			padding: 1.5rem 0 0 0;
 		}
 	}
 </style>

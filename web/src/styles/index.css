@@ -1,60 +1,54 @@
 :root {
-	--section-margin: 4rem;
+	--section-margin-d: 4rem;
+	--section-margin-m: 2.5rem;
 	--max-width: 1400px;
 	--red: #ff0000;
 	--white: #ffffff;
 	--black: #000000;
-	--font-serif: 'JJannon Book', monospace;
+	--dark-grey: #919191;
+	--light-grey: #F2F2F2;
+	--font-serif: 'JJannon Book', serif;
+	--font-serif-italic: 'JJannon Book Italic', serif;
+	--font-serif-bold: 'JJannon Bold', serif;
+	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	--font-display: 'JJannon Display';
-	--font-sans: 'Bitstream - Swiss';
-	--section-padding: 2rem;
+	--font-display-italic: 'JJannon Display Italic';
+	--font-size-xl-d: 2.25rem;
+	--font-size-xl-m: 1.875rem;
+	--font-size-l-d: 1.875rem;
+	--font-size-l-m: 1.625rem;
+	--font-size-m-d: 1.375rem;
+	--font-size-m-m: 1.15rem;
+	--font-size-s-d: 1.125rem;
+	--font-size-s-m: 0.875rem;
+	--font-size-xs-d: 0.875rem;
+	--font-size-xs-m: 0.625rem;
+	--section-padding-m: 1rem;
+	--section-padding-d: 3rem;
 	--rounded: 3rem;
 	--logo-color: black;
 }
 
 @font-face {
-	font-family: 'Bitstream - Swiss';
-	src: url('/fonts/Bitstream - Swiss721 BT Regular.woff2') format('woff2'),
-		url('/fonts/Bitstream - Swiss721 BT Regular.woff') format('woff');
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: 'JJannon Book';
-	src: url('/fonts/JJannon Book.woff2') format('woff2'),
-		url('/fonts/JJannon Book.woff') format('woff');
-	font-weight: 450;
+	src: url('/fonts/JJannon-Book.woff2') format('woff2'),
+		url('/fonts/JJannon-Book.woff') format('woff');
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'JJannon Display';
-	src: url('/fonts/JJannonDisplay-Regular.woff2') format('woff2'),
-		url('/fonts/JJannonDisplay-Regular.woff2') format('woff');
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Display';
-	src: url('/fonts/JJannonDisplay-Italic.woff2') format('woff2'),
-		url('/fonts/JJannonDisplay-Italic.woff2') format('woff');
+	font-family: 'JJannon Book Italic';
+	src: url('/fonts/JJannon-Italic.woff2') format('woff2'),
+		url('/fonts/JJannon-Italic.woff') format('woff');
+	font-weight: 400;
 	font-style: italic;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'JJannon Display';
-	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
-	font-style: italic;
-	font-weight: 700;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Display';
+	font-family: 'JJannon Bold';
 	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
 	font-weight: 700;
@@ -62,10 +56,26 @@
 }
 
 @font-face {
-	font-family: 'MinionPro';
-	src: url('/fonts/MinionPro-Regular.woff2') format('woff2'),
-		url('/fonts/MinionPro-Regular.woff') format('woff');
+	font-family: 'JJannon Bold Italic';
+	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Display Regular';
+	src: url('/fonts/JJannonDisplay-Regular.woff2') format('woff2'),
+		url('/fonts/JJannonDisplay-Regular.woff2') format('woff');
 	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JJannon Display Italic';
+	src: url('/fonts/JJannonDisplay-Italic.woff2') format('woff2'),
+		url('/fonts/JJannonDisplay-Italic.woff2') format('woff');
+	font-style: italic;
 	font-display: swap;
 }
 
@@ -74,14 +84,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-
-
 html,
-body,
-p,
-span {
+body, {
 	font-family: var(--font-serif);
-	font-weight: 450;
+	font-weight: 400;
+}
+
+/* Removing default margin on P so it can be overriden at a component level */
+/* Tried definiing this at the component level (i.e .project-description .content > p but didn't work, so doing this for now */
+p {
+	margin: 0;
 }
 
 h1,
@@ -90,39 +102,35 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-display);
-	font-weight: 450;
-}
-
-#content {
 	font-family: var(--font-serif);
-	font-weight: 450;
-	font-size: 1.25rem;
-	text-align: center;
-}
-
-#content .caption {
-	font-size: 0.8rem;
-}
-
-@media screen and (min-width: 1024px) {
-	#content {
-		font-size: 1.87rem;
-	}
-
-	#content .caption {
-		font-size: 1.125rem;
-	}
-}
-
-#content blockquote {
-	font-style: italic;
+	font-weight: 400;
 }
 
 a {
   color: inherit;
 }
 
+/* The below font size declarations were being used  and meaning any component level wasn't applying, so commented out whilst I move to the component level definitions and then I'll remove.*/
+.content {
+	font-family: var(--font-serif);
+	font-weight: 400;
+	text-align: center;
+}
+
+/* This seems to be here because even though it's in the module, it doesn't apply */
 .credits > p {
   margin: 0;
+}
+
+strong {
+	font-weight: 700;
+	font-family: var(--font-serif-bold);
+}
+
+em {
+	font-family: var(--font-serif-italic);
+}
+
+strong em {
+	font-family: var(--font-serif-bold-italic);
 }

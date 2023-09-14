@@ -48,9 +48,9 @@
 </script>
 
 {#if show}
-	<div id="lightbox" transition:fade>
-		<button on:click={onClose} id="close">Close</button>
-		<button on:click={prevSlide} id="previous"
+	<div class="lightbox" transition:fade>
+		<button on:click={onClose} class="close">Close</button>
+		<button on:click={prevSlide} class="previous"
 			><svg
 				width="27"
 				height="23"
@@ -61,7 +61,7 @@
 				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
 			</svg></button
 		>
-		<button on:click={nextSlide} id="next">
+		<button on:click={nextSlide} class="next">
 			<svg
 				width="27"
 				height="23"
@@ -72,11 +72,11 @@
 				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
 			</svg></button
 		>
-		<div id="container">
+		<div class="container">
 			{#if images && image}
 				{#key imageShowingIndex}
-					<img id="image" transition:fade src={image.href} alt={image.caption || ''} />
-					<div id="caption" class="caption" transition:fade>
+					<img class="image" transition:fade src={image.href} alt={image.caption || ''} />
+					<div class="caption" transition:fade>
 						{#if image.mainCaption}
 							<p>{image.mainCaption}</p>
 						{/if}
@@ -91,7 +91,7 @@
 {/if}
 
 <style>
-	#lightbox {
+	.lightbox {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -102,31 +102,31 @@
 		padding: 5rem;
 	}
 
-	#next {
-		position: absolute;
-		top: 50%;
-		right: 1rem;
-		z-index: 999;
-		transform: translateY(-50%);
-	}
-
-	#previous {
-		position: absolute;
-		top: 50%;
-		left: 1rem;
-		z-index: 999;
-		transform: translateY(-50%);
-	}
-
-	#close {
+	.close {
 		position: absolute;
 		top: 1rem;
 		border: none;
 		background-color: transparent;
 		right: 1rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+		transition: color 0.25s ease-in-out;
 	}
 
-	#lightbox #container {
+	.close:hover {
+		color: var(--red);
+		cursor: pointer;
+		transition: color 0.25s ease-in-out;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.close {
+			top: 2rem;
+			right: 2rem;
+		}
+	}
+
+	.lightbox .container {
 		padding: 5rem;
 		width: 100%;
 		height: 100%;
@@ -135,7 +135,7 @@
 		flex-direction: column;
 	}
 
-	#lightbox #image {
+	.lightbox .image {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -147,19 +147,23 @@
 	}
 
 	.caption {
-		position: absolute;
-		bottom: 0rem;
+		position: fixed;
+		bottom: 1rem;
 		left: 50%;
 		transform: translateX(-50%);
-		min-height: 2.5em;
-	}
-
-	.caption > p {
-		margin: 0;
+		font-size: var(--font-size-m-m);
+		font-family: var(--font-serif);
 		text-align: center;
 	}
+	
+	@media screen and (min-width: 1024px) {
+		.caption {
+			bottom: 2rem;
+			font-size: var(--font-size-m-d);
+		}
+	}
 
-	#previous {
+	.previous {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
@@ -168,7 +172,8 @@
 		left: 1rem;
 		transform: translateY(-50%);
 	}
-	#next {
+
+	.next {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
@@ -176,5 +181,19 @@
 		top: 50%;
 		right: 1rem;
 		transform: translateY(-50%);
+	}
+
+	.previous svg path, .next svg path {
+		transition: stroke 0.25s ease-in-out;
+	}
+
+	.previous:hover svg path, .next:hover svg path {
+		stroke: var(--red);
+		transition: stroke 0.25s ease-in-out;
+		cursor: pointer;
+	}
+
+	.previous:hover, .next:hover {
+		cursor: pointer;
 	}
 </style>

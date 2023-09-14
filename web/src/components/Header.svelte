@@ -1,10 +1,31 @@
 <script>
+	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
+
+	let scrolled = false;
+
+	onMount(() => {
+		const handleScroll = () => {
+			// Checks if the page has been scrolled slightly
+			scrolled = window.scrollY < 25;
+		};
+
+		// Adds event listener
+		window.addEventListener('scroll', handleScroll);
+		
+		// Fire to check initial value
+		handleScroll();
+
+		return () => {
+			// Cleanup component is destroyed
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
-<header>
-	<a class:active={$page.route.id === '/work'} href="/work">Work</a>
-	<a href="/">
+<header class:scrolled={$page.route.id === '/' && scrolled}>
+	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">All work</a>
+	<a class="logo" href="/">
 		<svg
 			width="173"
 			height="24"
@@ -56,10 +77,10 @@
 				d="M168.034 19.5334C166.834 21.0334 167.167 22.7 168.734 23.5334C171.367 24.9 173.8 21.8667 171.967 19.5334C171.434 18.8667 171 18.6667 170 18.6667C169 18.6667 168.567 18.8667 168.034 19.5334Z"
 				fill="currentColor"
 			/>
-		</svg></a
-	>
+		</svg>
+	</a>
 
-	<a href="/info">Info</a>
+	<a class="text-link" href="/info">Info</a>
 </header>
 
 <style>
@@ -70,33 +91,80 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: 1rem 2rem;
+		padding: 1rem;
 		z-index: 50;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-s-m);
 	}
 
+	/* Logo Colour */
+	header svg {
+		color: var(--logo-color);
+		max-width: 100%;
+	}
+
+	.logo {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 144px;
+		overflow: hidden;
+		transform: translateY(0rem);
+		transition: transform 0.1s ease-in-out;
+	}
+
+	/* Default Link Styles */
 	header a {
 		text-decoration: none;
 		color: var(--logo-color);
-		transition: all 0.3s;
-	}
-
-	header svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: var(--logo-color);
-		transition: all 0.3s;
-	}
-
-	a {
-		transition: all 0.2s ease-in-out;
+		height: 24px;
+		transition: color 0.4s ease-out;
 	}
 
 	a.active {
 		color: var(--red);
+		transition: color 0.4s ease-out;
 	}
+
 	a:hover {
 		color: var(--red);
+		transition: color 0.4s ease-out;
+	}
+
+	/* Specific A Type Styles */
+	.text-link {
+		opacity: 1;
+		line-height: 200%;
+		transition: all 0.4s ease-out;
+	}
+
+	/* Dealing with the logo positioning on root animation */
+	.scrolled .text-link {
+		opacity: 0;
+	}
+
+	.scrolled .logo {
+		transform: translateY(2.5rem);
+	}
+
+
+	@media screen and (min-width: 1024px) {
+		header {
+			padding: 2rem;
+			font-size: var(--font-size-s-d);
+		}
+
+		.logo {
+			width: 173px;
+		}
+
+		.scrolled .logo {
+			transform: translateY(1.5rem);
+		}
+
+		.text-link {
+			line-height: 190%;
+		}
 	}
 </style>

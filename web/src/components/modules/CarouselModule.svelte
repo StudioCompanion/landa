@@ -125,7 +125,9 @@
 
 <section
 	id={module._type}
-	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;${
+	style={`opacity: ${visible ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${visible ? '0px' : '55px'});${
 		module.background_color ? `background-color: ${module.background_color.hex}` : ''
 	}`}
 	use:inView={{ threshold: 0.5 }}
@@ -133,8 +135,8 @@
 		visible = true;
 	}}
 >
-	<div id="carousel_container">
-		<button on:click={prev} id="carousel_previous"
+	<div class="carousel_container">
+		<button on:click={prev} class="carousel_previous"
 			><svg
 				width="27"
 				height="23"
@@ -145,7 +147,7 @@
 				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
 			</svg>
 		</button>
-		<button on:click={next} id="carousel_next">
+		<button on:click={next} class="carousel_next">
 			<svg
 				width="27"
 				height="23"
@@ -156,11 +158,11 @@
 				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
 			</svg>
 		</button>
-		<div id="carousel" bind:this={siema}>
+		<div class="carousel" bind:this={siema}>
 			{#if module.slides}
 				{#each module.slides as slide, index}
-					<div id="slide">
-						<div id="inner">
+					<div class="slide">
+						<div class="inner">
 							{#if slide._type === 'media'}
 								<Media
 									carousel
@@ -171,7 +173,7 @@
 									}}
 								/>
 							{:else if slide._type === 'block_slide'}
-								<div id="block">
+								<div class="block">
 									{#each slide.items as item}
 										<Media
 											media={item}
@@ -204,7 +206,7 @@
 />
 
 <style>
-	#grid {
+	.grid {
 		width: 100%;
 		display: grid;
 		gap: 2rem;
@@ -212,18 +214,18 @@
 	}
 
 	section {
-		margin: var(--section-margin) auto;
-		padding: 0 var(--section-padding);
+		margin: var(--section-margin-m) auto;
+		padding: 0 var(--section-padding-m);
 	}
 
-	#slide {
+	.slide {
 		margin: 0 auto;
 		max-width: var(--max-width);
 		aspect-ratio: 5/3;
 		width: 100%;
 	}
 
-	#inner {
+	.inner {
 		height: 100%;
 		width: 100%;
 		overflow: hidden;
@@ -231,17 +233,17 @@
 		align-items: center;
 		justify-content: center;
 	}
-	#block {
+	.block {
 		display: flex;
 		gap: 2rem;
 		align-items: center;
 	}
 
-	#carousel_container {
+	.carousel_container {
 		position: relative;
 	}
 
-	#carousel_previous {
+	.carousel_previous {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
@@ -250,7 +252,7 @@
 		left: 1rem;
 		transform: translateY(-50%);
 	}
-	#carousel_next {
+	.carousel_next {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
@@ -258,5 +260,19 @@
 		top: 50%;
 		right: 1rem;
 		transform: translateY(-50%);
+	}
+
+	.carousel_previous svg path, .carousel_next svg path {
+		transition: stroke 0.25s ease-in-out;
+	}
+
+	.carousel_previous:hover svg path, .carousel_next:hover svg path {
+		stroke: var(--red);
+		transition: stroke 0.25s ease-in-out;
+		cursor: pointer;
+	}
+
+	.carousel_previous:hover, .carousel_next:hover {
+		cursor: pointer;
 	}
 </style>

@@ -14,6 +14,8 @@
 	export let data;
 	let root;
 
+	let visible = false;
+
 	onMount(() => {
 		root = document.querySelector(':root');
 	});
@@ -71,12 +73,14 @@
 >
 	<Media media={data.project.hero} />
 </section>
-<section id="description">
+<section class="description">
 	{#if data.project.title}
-		<h1>{data.project.title}</h1>
+		<h1 class="project-title">{data.project.title}</h1>
 	{/if}
 	{#if data.project.description}
-		<Content value={data.project.description} />
+		<div class="project-description">
+			<Content value={data.project.description} />
+		</div>
 	{/if}
 	{#if data.project.tags}
 		<div class="tags">
@@ -107,7 +111,19 @@
 {/if}
 
 {#if data.project.credits}
-	<section class="credits">
+	<section class="credits"
+	style={`opacity: ${visible ? 1 : 0}; 
+		transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+		transform: translateY(${visible ? '0px' : '55px'});`}
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			visible = true;
+		}}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		visible = true;
+	}}
+	>
 		<p>Project credits:</p>
 		<PortableText value={data.project.credits} />
 	</section>
@@ -120,9 +136,16 @@
 	}
 	section {
 		max-width: var(--max-width);
-		margin: var(--section-margin) auto;
-		padding: 0 var(--section-padding);
+		margin: var(--section-margin-m) auto;
+		padding: 0 var(--section-padding-m);
 	}
+
+	@media screen and (min-width: 1024px) {
+		section {
+			margin: var(--section-margin-d) auto;
+		}
+	}
+
 	section#hero {
 		margin-top: 0;
 		padding: 0;
@@ -135,8 +158,16 @@
 	}
 
 	.credits {
-		font-size: 1.5rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
 		text-align: center;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.credits {
+			font-family: var(--font-serif);
+			font-size: var(--font-size-m-d);
+		}
 	}
 
 	.credits > p {
@@ -145,21 +176,54 @@
 
 	.tags {
 		text-align: center;
-		font-size: 16px;
+		font-size: var(--font-size-s-m);
+		font-family: var(--font-serif);
 	}
 
 	@media screen and (min-width: 1024px) {
 		.tags {
-			font-size: 20px;
+			font-size: var(--font-size-s-d);
 		}
 	}
 
 	.tags a {
-		color: #919191;
+		color: var(--dark-grey);
 		text-decoration: none;
+		transition: color 0.25s ease-in-out;
 	}
 
 	.tags a:hover {
-		text-decoration: underline;
+		color: var(--red);
+	}
+
+	.description {
+		max-width: 50rem;
+		display: flex;
+		gap: 0.5rem;
+		flex-direction: column;
+	}
+
+	.project-title {
+		margin-block-start: 0px;
+		margin-block-end: 0px;
+		margin: 0px;
+		font-family: var(--font-serif-bold);
+		font-size: var(--font-size-m-m);
+	}
+
+	.project-description {
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
+	}
+
+	@media screen and (min-width: 1024px) {
+		.project-title, .project-description {
+			font-size: var(--font-size-l-d);
+		}
+
+		.description {
+			gap: 0.75rem;
+			max-width: 60rem;
+		}
 	}
 </style>

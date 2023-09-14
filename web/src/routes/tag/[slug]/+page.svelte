@@ -67,27 +67,26 @@
 
 <style>
 	.tag-details {
-		font-size: 20px;
-		margin: var(--section-margin) auto;
-		max-width: var(--max-width);
-		padding: 0 var(--section-padding);
+		margin: 5.75rem auto 2.75rem auto;
+		max-width: 45rem;
+		padding: 0 var(--section-padding-m);
 		text-align: center;
 	}
 
-	@media screen and (min-width: 1024px) {
-		.tag-details {
-			font-size: 24px;
-		}
-	}
-
 	.tag-name {
-		font-size: 1em;
-		font-weight: bold;
-		margin-top: 4em;
+		font-size: var(--font-size-m-m);
+		font-family: var(--font-serif-bold);
+		margin: 0 auto 0.25rem auto;
 	}
 
 	.tag-description {
-		max-width: 765px;
-		margin: 0 auto;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-m-m);
 	}
+
+	@media screen and (min-width: 1024px) {
+		.tag-details, .tag-name, .tag-description {
+			font-size: var(--font-size-m-d);
+		}
+	}	
 </style>

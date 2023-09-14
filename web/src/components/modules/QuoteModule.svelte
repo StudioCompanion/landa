@@ -1,4 +1,5 @@
 <script lang="ts">
+	import inView from '$lib/inView'; 
 	import { PortableText } from '@portabletext/svelte';
 
 	type QuoteModule = {
@@ -8,10 +9,25 @@
 		job_title: string;
 	};
 
+	let visible = false;
+
 	export let module: QuoteModule;
 </script>
 
-<section id={module._type}>
+<section 
+	id={module._type}
+	style={`opacity: ${visible ? 1 : 0}; 
+		transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+		transform: translateY(${visible ? '0px' : '55px'});`}
+		use:inView={{ threshold: 0.5 }}
+		on:enter={() => {
+			visible = true;
+		}}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		visible = true;
+	}}
+>
 	<blockquote>
 		<PortableText value={module.quote} />
 	</blockquote>
@@ -24,12 +40,30 @@
 
 <style>
 	blockquote {
-		font-size: 1.875rem;
+		font-family: var(--font-display-italic);
+		font-size: var(--font-size-l-m);
 		text-align: center;
-		font-style: italic;
+		max-width: 35rem;
+		padding: 0 var(--section-padding-m);
+		margin: 0 auto;
 	}
+
 	.quote-author {
-		font-size: 0.8rem;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-s-m);
+		margin: 1rem 0 0 0;
 		text-align: center;
 	}
+
+	@media (min-width: 1024px) {
+		blockquote {
+			font-size: var(--font-size-l-d);
+			max-width: 60rem;
+			padding: 0 var(--section-padding-d);
+		}
+		.quote-author {
+			font-size: var(--font-size-s-d);
+		}
+	}
+
 </style>

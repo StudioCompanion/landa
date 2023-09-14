@@ -22,7 +22,7 @@
 				hideImages = true;
 				setTimeout(() => {
 					hide = true;
-					Cookies.set('splashscreen', true);
+					Cookies.set('splashscreen', false);
 				}, 50);
 			},
 			onUpdate: (v) => {
@@ -123,11 +123,12 @@
 	.splash-image {
 		position: absolute;
 		width: auto;
-		height: 90vh;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: none;
+		max-width: 90%;
+		max-height: 90%;
 	}
 
 	.splashscreen-logo {
