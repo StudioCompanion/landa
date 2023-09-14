@@ -50,9 +50,16 @@
 	}
 
 	.rounded {
-		border-radius: var(--rounded);
+		border-radius: 1rem;
 		overflow: hidden;
 	}
+
+	@media screen and (min-width: 768px) {
+		.rounded {
+			border-radius: 2rem;
+		}
+	}
+
 	img {
 		width: 100%;
 		height: auto;
