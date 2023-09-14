@@ -74,13 +74,13 @@
 	
 	.project-title {
 		font-size: var(--font-size-m-m);
-		font-family: var(--font-family-serif);
+		font-family: var(--font-serif);
 		margin-bottom: 0rem;
 	}
 
 	.project-caption {
 		font-size: var(--font-size-m-m);
-		font-family: var(--font-family-serif);
+		font-family: var(--font-serif);
 	}
 
 	@media screen and (min-width: 1024px) {
