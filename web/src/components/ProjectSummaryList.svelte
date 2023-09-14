@@ -36,6 +36,7 @@
 		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
 			padding: 0rem 3rem 7rem 3rem;
+			gap: 2rem;
 		}
 		.work-route {
 			padding: 7rem 4rem 7rem 4rem;
@@ -47,6 +48,7 @@
 		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
 			padding: 0rem 6rem 7rem 6rem;
+			gap: 4rem;
 		}
 		.work-route {
 			padding: 7rem 4rem 7rem 4rem;
