@@ -174,6 +174,7 @@
 	.tags {
 		text-align: center;
 		font-size: var(--font-size-s-m);
+		font-family: var(--font-serif);
 	}
 
 	@media screen and (min-width: 1024px) {
