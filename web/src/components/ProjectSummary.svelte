@@ -2,6 +2,7 @@
 	import { getImageProps } from '$lib/sanity';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import inView from '$lib/inView';
 
 
 	export let project;
@@ -10,18 +11,20 @@
 
 	let visible = false;
 	onMount(() => {
-		const timeout = setTimeout(() => {
-			visible = true;
-		}, Math.min(index * 10, 1500));
+			const timeout = setTimeout(() => {
+				visible = true;
+			}, Math.min(index * 100, 2500));
 
-		return () => {
-			clearTimeout(timeout);
-		};
+			return () => {
+				clearTimeout(timeout);
+			};
 	});
 	
 </script>
 
-<a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
+<a 
+
+class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
 	<div class="project-summary">
 		<div class="project-image-container">
 			<img
