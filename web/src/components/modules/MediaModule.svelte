@@ -14,7 +14,11 @@
 </script>
 
 <section
-	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;`}
+<section
+	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${visible ? '0px' : '55px'});
+	`}	
 	use:inView={{ threshold: 0.5 }}
 	on:enter={() => {
 		visible = true;
@@ -35,7 +39,6 @@
 		margin: var(--section-margin-m) auto;
 		padding: 0 var(--section-padding-m);
 	}
-
 	@media screen and (min-width: 1024px) {
 		section {
 			margin: var(--section-margin-d) auto;
