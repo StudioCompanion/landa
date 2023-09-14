@@ -11,7 +11,7 @@
 </script>
 
 {#key pathname}
-	<div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
+	<div in:fade={{ duration: 200, delay: 0 }}>
 		<Header />
 		<main>
 			<slot />
