@@ -135,8 +135,8 @@
 		visible = true;
 	}}
 >
-	<div id="carousel_container">
-		<button on:click={prev} id="carousel_previous"
+	<div class="carousel_container">
+		<button on:click={prev} class="carousel_previous"
 			><svg
 				width="27"
 				height="23"
@@ -147,7 +147,7 @@
 				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
 			</svg>
 		</button>
-		<button on:click={next} id="carousel_next">
+		<button on:click={next} class="carousel_next">
 			<svg
 				width="27"
 				height="23"
@@ -158,11 +158,11 @@
 				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
 			</svg>
 		</button>
-		<div id="carousel" bind:this={siema}>
+		<div class="carousel" bind:this={siema}>
 			{#if module.slides}
 				{#each module.slides as slide, index}
-					<div id="slide">
-						<div id="inner">
+					<div class="slide">
+						<div class="inner">
 							{#if slide._type === 'media'}
 								<Media
 									carousel
@@ -173,7 +173,7 @@
 									}}
 								/>
 							{:else if slide._type === 'block_slide'}
-								<div id="block">
+								<div class="block">
 									{#each slide.items as item}
 										<Media
 											media={item}
@@ -206,7 +206,7 @@
 />
 
 <style>
-	#grid {
+	.grid {
 		width: 100%;
 		display: grid;
 		gap: 2rem;
@@ -218,14 +218,14 @@
 		padding: 0 var(--section-padding-m);
 	}
 
-	#slide {
+	.slide {
 		margin: 0 auto;
 		max-width: var(--max-width);
 		aspect-ratio: 5/3;
 		width: 100%;
 	}
 
-	#inner {
+	.inner {
 		height: 100%;
 		width: 100%;
 		overflow: hidden;
@@ -233,17 +233,17 @@
 		align-items: center;
 		justify-content: center;
 	}
-	#block {
+	.block {
 		display: flex;
 		gap: 2rem;
 		align-items: center;
 	}
 
-	#carousel_container {
+	.carousel_container {
 		position: relative;
 	}
 
-	#carousel_previous {
+	.carousel_previous {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
@@ -252,7 +252,7 @@
 		left: 1rem;
 		transform: translateY(-50%);
 	}
-	#carousel_next {
+	.carousel_next {
 		z-index: 10;
 		border: none;
 		background-color: transparent;
