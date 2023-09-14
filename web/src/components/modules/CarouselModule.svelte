@@ -261,4 +261,18 @@
 		right: 1rem;
 		transform: translateY(-50%);
 	}
+
+	.carousel_previous svg path, .carousel_next svg path {
+		transition: stroke 0.25s ease-in-out;
+	}
+
+	.carousel_previous:hover svg path, .carousel_next:hover svg path {
+		stroke: var(--red);
+		transition: stroke 0.25s ease-in-out;
+		cursor: pointer;
+	}
+
+	.carousel_previous:hover, .carousel_next:hover {
+		cursor: pointer;
+	}
 </style>
