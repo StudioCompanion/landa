@@ -125,7 +125,8 @@
 
 <section
 	id={module._type}
-	style={`opacity: ${visible ? 1 : 0}; 
+	class="carousel-section"
+	style={`opacity: ${visible ? 1 : 0};
 	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
 	transform: translateY(${visible ? '0px' : '55px'});${
 		module.background_color ? `background-color: ${module.background_color.hex}` : ''
@@ -213,16 +214,15 @@
 		align-items: center;
 	}
 
-	section {
+	.carousel-section {
 		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
 	}
 
 	.slide {
 		margin: 0 auto;
 		max-width: var(--max-width);
-		aspect-ratio: 5/3;
 		width: 100%;
+		padding: 0 var(--section-padding-m);
 	}
 
 	.inner {
@@ -262,17 +262,20 @@
 		transform: translateY(-50%);
 	}
 
-	.carousel_previous svg path, .carousel_next svg path {
+	.carousel_previous svg path,
+	.carousel_next svg path {
 		transition: stroke 0.25s ease-in-out;
 	}
 
-	.carousel_previous:hover svg path, .carousel_next:hover svg path {
+	.carousel_previous:hover svg path,
+	.carousel_next:hover svg path {
 		stroke: var(--red);
 		transition: stroke 0.25s ease-in-out;
 		cursor: pointer;
 	}
 
-	.carousel_previous:hover, .carousel_next:hover {
+	.carousel_previous:hover,
+	.carousel_next:hover {
 		cursor: pointer;
 	}
 </style>
