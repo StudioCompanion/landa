@@ -13,6 +13,7 @@
 	let imageShowingIndex = 0;
 	let siema: any, slider: any, prev, next;
 	let select = 0;
+	let currentSlide = 0;
 
 	const SLIDE_AUTOPLAY_DURATION = 3500;
 
@@ -47,7 +48,10 @@
 			draggable: true,
 			multipleDrag: true,
 			threshold: 20,
-			loop: true
+			loop: true,
+			onChange: () => {
+				currentSlide = slider.currentSlide;
+			}
 		});
 		prev = () => {
 			slider.prev();
@@ -63,6 +67,10 @@
 			if (select >= 0) {
 				select++;
 			}
+		};
+
+		slider.onComplete = (e) => {
+			console.log(e, slider);
 		};
 
 		let slideModules = [];
@@ -191,10 +199,23 @@
 				{/each}
 			{/if}
 		</div>
-
 		{#if caption}
 			<ModuleCaption {caption} />
 		{/if}
+		<div class="carousel-mobile-navigation">
+			{#if module.slides}
+				{#each module.slides as slide, index}
+					<button
+						class={`carousel-mobile-navigation-button${
+							currentSlide === index ? ' carousel-mobile-navigation-button-selected' : ''
+						}`}
+						on:click={() => {
+							slider.goTo(index);
+						}}>{index + 1}</button
+					>
+				{/each}
+			{/if}
+		</div>
 	</div>
 </section>
 <Lightbox
@@ -251,6 +272,7 @@
 		top: 50%;
 		left: 1rem;
 		transform: translateY(-50%);
+		display: none;
 	}
 	.carousel_next {
 		z-index: 10;
@@ -260,6 +282,7 @@
 		top: 50%;
 		right: 1rem;
 		transform: translateY(-50%);
+		display: none;
 	}
 
 	.carousel_previous svg path,
@@ -277,5 +300,40 @@
 	.carousel_previous:hover,
 	.carousel_next:hover {
 		cursor: pointer;
+	}
+
+	.carousel-mobile-navigation {
+		display: flex;
+		gap: 0.4rem;
+		justify-content: center;
+		margin-top: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.carousel_previous,
+		.carousel_next {
+			display: initial;
+		}
+
+		.carousel-mobile-navigation {
+			display: none;
+		}
+	}
+
+	.carousel-mobile-navigation-button {
+		overflow: hidden;
+		text-indent: -100px;
+		font-size: 6px;
+		padding: 0;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		border: none;
+		background-color: var(--dark-grey);
+		transition: background-color 0.25s ease-in-out;
+	}
+
+	.carousel-mobile-navigation-button-selected {
+		background-color: var(--black);
 	}
 </style>
