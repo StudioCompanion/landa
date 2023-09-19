@@ -27,6 +27,7 @@
 	--section-padding-d: 3rem;
 	--rounded: 3rem;
 	--logo-color: black;
+  --paragraph-margin: 0;
 }
 
 @font-face {
@@ -90,10 +91,8 @@ body, {
 	font-weight: 400;
 }
 
-/* Removing default margin on P so it can be overriden at a component level */
-/* Tried definiing this at the component level (i.e .project-description .content > p but didn't work, so doing this for now */
 p {
-	margin: 0;
+	margin: var(--paragraph-margin);
 }
 
 h1,
@@ -115,11 +114,6 @@ a {
 	font-family: var(--font-serif);
 	font-weight: 400;
 	text-align: center;
-}
-
-/* This seems to be here because even though it's in the module, it doesn't apply */
-.credits > p {
-  margin: 0;
 }
 
 strong {
