@@ -122,6 +122,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.close {
+			font-size: var(--font-size-desk-sm);
 			top: 2rem;
 			right: 2rem;
 		}
