@@ -94,7 +94,7 @@
 		padding: 1rem;
 		z-index: 50;
 		font-family: var(--font-serif);
-		font-size: var(--font-size-s-m);
+		font-size: var(--font-size-m-m);
 	}
 
 	/* Logo Colour */

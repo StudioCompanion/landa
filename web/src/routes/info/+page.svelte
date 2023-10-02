@@ -293,7 +293,6 @@
 		font-size: var(--font-size-m-m);
 		margin: 0;
 		text-align: center;
-		margin-bottom: 0.25rem;
 	}
 
 	.service-description {
@@ -349,7 +348,6 @@
 	.email-container {
 		display: flex;
 		flex-direction: row;
-		margin: 0.5rem 0;
 		align-items: baseline;
 		justify-content: center;
 	}
@@ -379,7 +377,6 @@
 
 	.location-title {
 		font-family: var(--font-serif-bold);
-		margin: 0 0 0.25rem 0;
 		font-size: var(--font-size-m-m);
 	}
 
@@ -426,13 +423,13 @@
 		}
 
 		.description, .bio-section, .collaborators-section {
-			max-width: 50rem;
-			font-size: var(--font-size-m-d);
+			max-width: 70rem;
+			font-size: var(--font-size-l-d);
 			padding: 0 var(--section-padding-d);
 		}
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size-m-d);
-			max-width: 40rem;
+			font-size: var(--font-size-l-d);
+			max-width: 70rem;
 		}
 		.grid-container {
 			display: grid;
