@@ -133,7 +133,7 @@
 
 	.splashscreen-logo {
 		position: absolute;
-		width: auto;
+		width: 50%;
 		height: auto;
 		top: 50%;
 		left: 50%;
