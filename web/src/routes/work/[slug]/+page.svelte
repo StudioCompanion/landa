@@ -159,7 +159,7 @@
 
 	.credits {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		max-width: 35rem;
 	}
@@ -167,7 +167,15 @@
 	@media screen and (min-width: 1024px) {
 		.credits {
 			font-family: var(--font-serif);
-			font-size: var(--font-size-m-d);
+			font-size: var(--font-size-desk-lg);
+			max-width: 60rem;
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		.credits {
+			font-family: var(--font-serif);
+			font-size: var(--font-size-giant-lg);
 			max-width: 60rem;
 		}
 	}
@@ -178,13 +186,20 @@
 
 	.tags {
 		text-align: center;
-		font-size: var(--font-size-s-m);
-		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-sm);
+		font-family: var(--font-sans);
+		font-weight: 700;
 	}
 
 	@media screen and (min-width: 1024px) {
 		.tags {
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		.tags {
+			font-size: var(--font-size-giant-sm);
 		}
 	}
 
@@ -209,23 +224,30 @@
 		margin-block-start: 0px;
 		margin-block-end: 0px;
 		margin: 0px;
-		font-family: var(--font-serif-bold);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: var(--font-size-mob-lg);
 	}
 
 	.project-description {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-description {
-			font-size: var(--font-size-l-d);
+			font-size: var(--font-size-desk-lg);
 		}
 
 		.description {
 			gap: 0.75rem;
 			max-width: 60rem;
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		.project-title, .project-description {
+			font-size: var(--font-size-giant-lg);
 		}
 	}
 </style>

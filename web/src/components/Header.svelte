@@ -93,8 +93,9 @@
 		justify-content: space-between;
 		padding: 1rem;
 		z-index: 50;
-		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: var(--font-size-mob-sm);
 	}
 
 	/* Logo Colour */
@@ -152,7 +153,7 @@
 	@media screen and (min-width: 1024px) {
 		header {
 			padding: 2rem;
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 		}
 
 		.logo {
@@ -165,6 +166,12 @@
 
 		.text-link {
 			line-height: 190%;
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		header {
+			font-size: var(--font-size-giant-sm);
 		}
 	}
 </style>

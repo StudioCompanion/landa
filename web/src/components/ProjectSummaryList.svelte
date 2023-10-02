@@ -55,6 +55,7 @@
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
+	
 
 	@media screen and (min-width: 1500px) {
 		.project-summary-list {

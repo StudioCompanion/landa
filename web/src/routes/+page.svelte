@@ -53,7 +53,7 @@
 
 	<style>
 		.bio {
-			font-size: var(--font-size-l-m);
+			font-size: var(--font-size-mob-lg);
 			padding-left: 1rem;
 			padding-right: 1rem;
 			margin: 5.75rem auto 2.75rem auto;
@@ -62,12 +62,18 @@
 
 		@media screen and (min-width: 1024px) {
 			.bio {
-				font-size: var(--font-size-l-d);
+				font-size: var(--font-size-desk-lg);
 				padding-left: 1rem;
 				padding-right: 1rem;
 				margin: 5.75rem auto 2.75rem auto;
 				max-width: 60rem;
 			}
 		}		
+
+		@media screen and (min-width: 1920px) {
+			.bio {
+				font-size: var(--font-size-giant-lg);
+			}
+		}
 	</style>
 {/if}

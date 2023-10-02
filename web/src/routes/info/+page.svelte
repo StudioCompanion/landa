@@ -246,8 +246,9 @@
 
 	/* Reused Items */
 	.section-title {
-		font-family: var(--font-serif-bold);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: var(--font-size-mob-lg);
 		margin: 0 auto 1rem auto;
 		text-align: center;
 		width: auto;
@@ -264,7 +265,7 @@
 	/* Intro Block */
 	.description {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		max-width: 35rem;
 		padding: 0 var(--section-padding-m);
 	}
@@ -275,7 +276,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 0 var(--section-padding-m);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 
@@ -289,15 +290,15 @@
 	}
 
 	.service-title {
-		font-family: var(--font-serif-bold-italic);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-lg);
 		margin: 0;
 		text-align: center;
 	}
 
 	.service-description {
 		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		max-width: 30rem;
 	}
@@ -334,7 +335,7 @@
 
 	.contact-section {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		width: 100%;
 		max-width: var(--max-width);
@@ -354,13 +355,13 @@
 
 	.email-label {
 		margin: 0 0.5rem;
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
 	}
 
 	.email-link {
 		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
 	}
 
@@ -377,20 +378,20 @@
 
 	.location-title {
 		font-family: var(--font-serif-bold);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	.location-details {
 		font-family: var(--font-serif-italic);
 		word-break: break-all;
 		white-space: pre-line;
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	/* Biography */
 	.bio-section {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		max-width: 35rem;
 		padding: 0 var(--section-padding-m);
 	}
@@ -398,7 +399,7 @@
 	/* Collaborators */
 	.collaborators-section {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		max-width: 35rem;
 		padding: 0 var(--section-padding-m);
 	}
@@ -424,11 +425,11 @@
 
 		.description, .bio-section, .collaborators-section {
 			max-width: 70rem;
-			font-size: var(--font-size-l-d);
+			font-size: var(--font-size-desk-lg);
 			padding: 0 var(--section-padding-d);
 		}
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size-l-d);
+			font-size: var(--font-size-desk-lg);
 			max-width: 70rem;
 		}
 		.grid-container {
@@ -442,6 +443,15 @@
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
+			font-size: var(--font-size-giant-lg);
+		}
+		.description, .bio-section, .collaborators-section {
+			font-size: var(--font-size-giant-lg);
 		}
 	}
 </style>

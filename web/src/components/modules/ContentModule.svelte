@@ -25,6 +25,7 @@
 		max-width: 45rem;
 		font-size: 1.25rem;
 		text-align: center;
+		background-color: orange;
 	}
 	
 	@media screen and (min-width: 1024px) {

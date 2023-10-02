@@ -26,8 +26,9 @@
 		justify-content: space-between;
 		align-items: flex-start;
 		padding: 2rem 1rem;
-		font-family: var(--font-serif);
-		font-size: var(--font-size-s-m);
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: var(--font-size-mob-sm);
 	}
 
 	footer a {
@@ -59,9 +60,14 @@
 			flex-direction: row;
 			align-items: center;
 			padding: 1.5rem 2rem;
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 		}
 	}
 
+	@media screen and (min-width: 1920px) {
+		footer {
+			font-size: var(--font-size-giant-sm);
+		}
+	}
 	
 </style>

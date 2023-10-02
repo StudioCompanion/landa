@@ -79,22 +79,30 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	}
 	
 	.project-title {
-		font-size: var(--font-size-m-m);
-		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-lg);
+		font-family: var(--font-sans);
+		font-weight: 700;
 		margin-bottom: 0rem;
 		padding: 0rem 1rem;
 	}
 
 	.project-caption {
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		font-family: var(--font-serif);
 		padding: 0rem 1rem;
 	}
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-caption {
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 			max-width: 30rem;
+		}
+	}
+
+	@media screen and (min-width: 1920px) {
+		.project-title, .project-caption {
+			font-size: var(--font-size-giant-sm);
+			max-width: 40rem;
 		}
 	}
 

@@ -45,7 +45,7 @@
 <style>
 	blockquote {
 		font-family: var(--font-display-italic);
-		font-size: var(--font-size-l-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		max-width: 35rem;
 		padding: 0 var(--section-padding-m);
@@ -54,19 +54,19 @@
 
 	.quote-author {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-s-m);
+		font-size: var(--font-size-mob-sm);
 		margin: 1rem 0 0 0;
 		text-align: center;
 	}
 
 	@media (min-width: 1024px) {
 		blockquote {
-			font-size: var(--font-size-l-d);
+			font-size: var(--font-size-desk-lg);
 			max-width: 60rem;
 			padding: 0 var(--section-padding-d);
 		}
 		.quote-author {
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 		}
 	}
 

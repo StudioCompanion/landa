@@ -7,22 +7,23 @@
 	--black: #000000;
 	--dark-grey: #919191;
 	--light-grey: #F2F2F2;
+	--font-sans: 'Helvetica', courier, sans-serif;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	--font-serif-bold: 'JJannon Bold', serif;
 	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	--font-display: 'JJannon Display';
 	--font-display-italic: 'JJannon Display Italic';
-	--font-size-xl-d: 2.25rem;
-	--font-size-xl-m: 1.875rem;
-	--font-size-l-d: 1.875rem;
-	--font-size-l-m: 1.625rem;
-	--font-size-m-d: 1.375rem;
-	--font-size-m-m: 1.15rem;
-	--font-size-s-d: 1.125rem;
-	--font-size-s-m: 0.875rem;
-	--font-size-xs-d: 0.875rem;
-	--font-size-xs-m: 0.625rem;
+
+	
+	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
+	--font-size-giant-lg: 1.65rem;  /* 24 Px */
+	--font-size-desk-lg: 1.25rem; /* 20 Px */
+	--font-size-mob-lg: 1rem; /* 16 Px */
+	--font-size-giant-sm: 1.25rem; /* 20 Px */
+	--font-size-desk-sm: 1rem; /* 16 Px */
+	--font-size-mob-sm: 0.75rem; /* 12 Px */
+
 	--section-padding-m: 1rem;
 	--section-padding-d: 3rem;
 	--rounded: 3rem;
