@@ -82,16 +82,19 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 		font-size: var(--font-size-m-m);
 		font-family: var(--font-serif);
 		margin-bottom: 0rem;
+		padding: 0rem 1rem;
 	}
 
 	.project-caption {
 		font-size: var(--font-size-m-m);
 		font-family: var(--font-serif);
+		padding: 0rem 1rem;
 	}
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-caption {
-			font-size: var(--font-size-m-d);
+			font-size: var(--font-size-s-d);
+			max-width: 30rem;
 		}
 	}
 

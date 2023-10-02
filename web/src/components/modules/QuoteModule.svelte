@@ -32,9 +32,13 @@
 		<PortableText value={module.quote} />
 	</blockquote>
 	<div class="quote-author">
-		{module.full_name}
-		<br />
-		{module.job_title}
+		{#if module.full_name}
+			{module.full_name}	
+			<br />					
+		{/if}
+		{#if module.job_title}
+			{module.job_title}
+		{/if}
 	</div>
 </section>
 

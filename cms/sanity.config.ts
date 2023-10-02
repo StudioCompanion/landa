@@ -50,7 +50,7 @@ export default defineConfig({
               .icon(ImagesIcon),
             S.documentListItem()
               .schemaType('homepage')
-              .title('homepage')
+              .title('Homepage')
               .id('homepage')
               .icon(HomeIcon),
             S.documentListItem()

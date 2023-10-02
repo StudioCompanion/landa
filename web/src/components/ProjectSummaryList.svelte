@@ -24,11 +24,11 @@
 		gap: 3rem;
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
-		padding: 0rem 1rem 7rem 1rem;
+		padding: 0rem 3rem 7rem 3rem;
 	}
 
 	.work-route {
-		padding: 7rem 1rem 7rem 1rem;
+		padding: 7rem 3rem 7rem 3rem;
 		grid-template-columns: repeat(2, 1fr);
 	}
 
