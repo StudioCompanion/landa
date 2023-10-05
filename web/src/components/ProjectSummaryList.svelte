@@ -60,11 +60,11 @@
 	@media screen and (min-width: 1680px) {
 		.project-summary-list {
 			padding: 0 6rem 7rem 6rem;
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(3, 1fr);
 		}
 		.work-route {
 			padding: 7rem 4rem 7rem 4rem;
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(5, 1fr);
 		}
 	}
 </style>

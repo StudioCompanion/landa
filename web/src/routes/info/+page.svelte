@@ -246,8 +246,8 @@
 
 	/* Reused Items */
 	.section-title {
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		font-size: var(--font-size-mob-lg);
 		margin: 0 auto 1rem auto;
 		text-align: center;

@@ -5,7 +5,7 @@
 	--black: #000000;
 	--dark-grey: #919191;
 	--light-grey: #F2F2F2;
-	--font-sans: 'Helvetica', courier, sans-serif;
+	--font-serif: 'Helvetica', courier, sans-serif;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	--font-serif-bold: 'JJannon Bold', serif;
@@ -55,7 +55,7 @@
 	font-family: 'JJannon Bold';
 	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
-	font-weight: 700;
+	 
 	font-display: swap;
 }
 
@@ -63,7 +63,7 @@
 	font-family: 'JJannon Bold Italic';
 	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
 	font-style: italic;
-	font-weight: 700;
+	 
 	font-display: swap;
 }
 
@@ -120,7 +120,7 @@ a {
 }
 
 strong {
-	font-weight: 700;
+	 
 	font-family: var(--font-serif-bold);
 }
 

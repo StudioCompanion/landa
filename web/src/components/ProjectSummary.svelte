@@ -89,8 +89,8 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	
 	.project-title {
 		font-size: var(--font-size-mob-lg);
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		margin-bottom: 0rem;
 		padding: 0rem 1rem;
 	}

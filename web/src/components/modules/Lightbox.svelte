@@ -108,8 +108,8 @@
 		border: none;
 		background-color: transparent;
 		right: 1rem;
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		font-size: var(--font-size-mob-sm);
 		transition: color 0.25s ease-in-out;
 	}
@@ -154,8 +154,8 @@
 		left: 50%;
 		transform: translateX(-50%);
 		font-size: var(--font-size-mob-sm);
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		text-align: center;
 	}
 	

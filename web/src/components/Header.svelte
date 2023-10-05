@@ -21,12 +21,16 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
+
+	let isInfoPage = false;
+	$: isInfoPage = $page.route.id === '/info';
 </script>
 
 <header class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
 	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a class="logo" href="/">
 		<svg
+			class={isInfoPage ? 'no-hover-color' : ''}
 			width="173"
 			height="24"
 			viewBox="0 0 173 24"
@@ -80,7 +84,7 @@
 		</svg>
 	</a>
 
-	<a class="text-link" href="/info">Info</a>
+	<a class="text-link" class:active={isInfoPage} href="/info">Info</a>
 </header>
 
 <style>
@@ -117,6 +121,20 @@
 		transition: transform 0.1s ease-in-out;
 	}
 
+	.logo:hover svg {
+		color: var(--black);
+		transition: color 0.2s ease-in-out;
+	}
+
+	.logo svg {
+		transition: color 0.2s ease-in-out;
+	}
+
+	.logo:hover svg:not(.no-hover-color) {
+		color: var(--red);
+		transition: color 0.2s ease-in-out;
+	}
+
 	/* Default Link Styles */
 	header a {
 		text-decoration: none;
@@ -132,6 +150,18 @@
 
 	a:hover {
 		color: var(--red);
+		transition: color 0.4s ease-out;
+	}
+
+	    /* Adjust the Info link when active */
+	a.active {
+		color: white;  /* Black when active */
+		transition: color 0.4s ease-out;
+	}
+
+    /* Adjust the Info link on hover when active */
+	a.active:hover {
+		color: black;  /* White on rollover */
 		transition: color 0.4s ease-out;
 	}
 

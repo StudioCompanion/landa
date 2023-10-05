@@ -26,8 +26,8 @@
 		justify-content: space-between;
 		align-items: flex-start;
 		padding: 2rem 1rem;
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		font-size: var(--font-size-mob-sm);
 	}
 

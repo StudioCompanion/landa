@@ -187,8 +187,8 @@
 	.tags {
 		text-align: center;
 		font-size: var(--font-size-mob-sm);
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -224,8 +224,8 @@
 		margin-block-start: 0px;
 		margin-block-end: 0px;
 		margin: 0px;
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
+		 
 		font-size: var(--font-size-mob-lg);
 	}
 
