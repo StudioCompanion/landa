@@ -11,12 +11,13 @@
 	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
-	--font-size-giant-lg: 1.65rem;  /* 24 Px */
-	--font-size-desk-lg: 1.25rem; /* 20 Px */
-	--font-size-mob-lg: 1rem; /* 16 Px */
-	--font-size-giant-sm: 1.25rem; /* 20 Px */
-	--font-size-desk-sm: 1rem; /* 16 Px */
-	--font-size-mob-sm: 0.75rem; /* 12 Px */
+	--font-size-giant-lg: 3rem;  /* 48 Px */
+	--font-size-desk-lg: 2.375rem; /* 38 Px */
+	--font-size-mob-lg: 1.188rem; /* 16 Px */
+	--font-size-giant-sm: 1.5rem; /* 24 Px */
+	--font-size-desk-sm: 1.188rem; /* 19 Px */
+	--font-size-mob-sm: 1.188rem; /* 12 Px */
+	--font-global-line-height: 115%;
 
 	--section-padding-g: 4rem;
 	--section-padding-d: 3rem;
