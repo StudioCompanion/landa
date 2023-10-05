@@ -63,7 +63,7 @@
 </svelte:head>
 <section
 	id="hero"
-	use:inView={{ threshold: 0.5 }}
+	use:inView={{ threshold: 0.85 }}
 	on:enter={() => {
 		root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
 	}}
@@ -172,7 +172,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1680px) {
+	@media screen and (min-width: 1920px) {
 		.credits {
 			font-family: var(--font-serif);
 			font-size: var(--font-size-giant-lg);
@@ -197,7 +197,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1680px) {
+	@media screen and (min-width: 1920px) {
 		.tags {
 			font-size: var(--font-size-giant-sm);
 		}
@@ -245,7 +245,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1680px) {
+	@media screen and (min-width: 1920px) {
 		.project-title, .project-description {
 			font-size: var(--font-size-giant-lg);
 		}

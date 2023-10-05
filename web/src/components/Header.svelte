@@ -23,8 +23,8 @@
 	});
 </script>
 
-<header class:scrolled={$page.route.id === '/' && scrolled}>
-	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">All work</a>
+<header class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
+	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a class="logo" href="/">
 		<svg
 			width="173"
@@ -93,9 +93,11 @@
 		justify-content: space-between;
 		padding: 1rem;
 		z-index: 50;
-		font-family: var(--font-sans);
-		font-weight: 700;
+		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
+		background: white;
+		border-bottom: 1px solid var(--light-grey);
+		transition: all 0.1s ease-out;
 	}
 
 	/* Logo Colour */
@@ -136,7 +138,7 @@
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
-		line-height: 200%;
+		line-height: 220%;
 		transition: all 0.4s ease-out;
 	}
 
@@ -147,6 +149,21 @@
 
 	.scrolled .logo {
 		transform: translateY(2.5rem);
+	}
+
+	.scrolled {
+		background: none;
+		border-bottom: 1px solid transparent;
+	}
+
+	.globalScrolled {
+		background: none;
+		border-bottom: 1px solid transparent;
+	}
+
+	.infoScrolled {
+		background: red;
+		border-bottom: 1px solid var(--light-grey);
 	}
 
 
@@ -172,6 +189,13 @@
 	@media screen and (min-width: 1680px) {
 		header {
 			font-size: var(--font-size-giant-sm);
+		}
+		.text-link {
+			line-height: 160%;
+		}
+
+		.logo {
+			width: 200px;
 		}
 	}
 </style>
