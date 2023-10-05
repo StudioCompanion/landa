@@ -82,7 +82,7 @@
 			<Content value={data.project.description} />
 		</div>
 	{/if}
-	{#if data.project.tags}
+	<!-- {#if data.project.tags}
 		<div class="tags">
 			{#each data.project.tags as tag, index}
 				{#if tag.name}
@@ -92,7 +92,7 @@
 				{/if}
 			{/each}
 		</div>
-	{/if}
+	{/if} -->
 </section>
 {#if data.project.modules}
 	{#each data?.project.modules as module}

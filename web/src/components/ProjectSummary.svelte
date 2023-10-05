@@ -96,7 +96,7 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	}
 
 	.project-caption {
-		font-size: var(--font-size-mob-lg);
+		font-size: var(--font-size-mob-sm);
 		font-family: var(--font-serif);
 		padding: 0rem 1rem;
 	}
