@@ -5,14 +5,10 @@
 	--black: #000000;
 	--dark-grey: #919191;
 	--light-grey: #F2F2F2;
-	--font-serif: 'Helvetica', courier, sans-serif;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	--font-serif-bold: 'JJannon Bold', serif;
 	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
-	--font-display: 'JJannon Display';
-	--font-display-italic: 'JJannon Display Italic';
-
 	
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
 	--font-size-giant-lg: 1.65rem;  /* 24 Px */

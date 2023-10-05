@@ -44,7 +44,7 @@
 
 <style>
 	blockquote {
-		font-family: var(--font-display-italic);
+		font-family: var(--font-serif-italic);
 		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		max-width: 35rem;
