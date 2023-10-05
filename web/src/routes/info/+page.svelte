@@ -446,7 +446,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
 			font-size: var(--font-size-giant-lg);
 		}

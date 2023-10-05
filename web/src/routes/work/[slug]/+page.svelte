@@ -172,7 +172,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.credits {
 			font-family: var(--font-serif);
 			font-size: var(--font-size-giant-lg);
@@ -197,7 +197,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.tags {
 			font-size: var(--font-size-giant-sm);
 		}
@@ -245,7 +245,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.project-title, .project-description {
 			font-size: var(--font-size-giant-lg);
 		}

@@ -108,7 +108,7 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.project-title, .project-caption {
 			font-size: var(--font-size-giant-sm);
 			max-width: 40rem;

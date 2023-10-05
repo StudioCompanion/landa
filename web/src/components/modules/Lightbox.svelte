@@ -170,7 +170,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.caption {
 			font-size: var(--font-size-giant-sm);
 		}

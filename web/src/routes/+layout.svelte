@@ -38,7 +38,7 @@
 	}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		div {
 			background: rgb(215,215,215);
 		}

@@ -57,7 +57,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.project-summary-list {
 			padding: 0 6rem 7rem 6rem;
 			grid-template-columns: repeat(2, 1fr);

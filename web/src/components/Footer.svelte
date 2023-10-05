@@ -64,7 +64,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		footer {
 			font-size: var(--font-size-giant-sm);
 		}

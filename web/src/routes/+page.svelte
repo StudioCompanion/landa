@@ -70,7 +70,7 @@
 			}
 		}		
 
-		@media screen and (min-width: 1920px) {
+		@media screen and (min-width: 1680px) {
 			.bio {
 				font-size: var(--font-size-giant-lg);
 			}

@@ -90,7 +90,7 @@
 		}
 	}
 
-	@media screen and (min-width: 1920px) {
+	@media screen and (min-width: 1680px) {
 		.tag-details, .tag-name, .tag-description {
 			font-size: var(--font-size-giant-lg);
 		}
