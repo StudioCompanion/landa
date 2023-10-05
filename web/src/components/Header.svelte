@@ -115,10 +115,16 @@
 		left: 0;
 		right: 0;
 		margin: 0 auto;
-		width: 144px;
+		width: 200px;
+		height: 18px;
 		overflow: hidden;
-		transform: translateY(0rem);
+		transform: translateY(0.2rem);
 		transition: transform 0.1s ease-in-out;
+	}
+
+	.logo svg {
+		width: 100%;
+		height: 100%;
 	}
 
 	.logo:hover svg {
@@ -168,7 +174,7 @@
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
-		line-height: 220%;
+		line-height: 160%;
 		transition: all 0.4s ease-out;
 	}
 
@@ -178,7 +184,7 @@
 	}
 
 	.scrolled .logo {
-		transform: translateY(2.5rem);
+		transform: translateY(3rem);
 	}
 
 	.scrolled {
@@ -204,7 +210,9 @@
 		}
 
 		.logo {
-			width: 173px;
+			width: 200px;
+			height: 28px;
+			transform: translateY(-0.12rem);
 		}
 
 		.scrolled .logo {
@@ -212,7 +220,7 @@
 		}
 
 		.text-link {
-			line-height: 190%;
+			line-height: 155%;
 		}
 	}
 
@@ -221,11 +229,17 @@
 			font-size: var(--font-size-giant-sm);
 		}
 		.text-link {
-			line-height: 160%;
+			line-height: 120%;
 		}
 
 		.logo {
-			width: 200px;
+			width: 300px;
+			height: 38px;
+			transform: translateY(-0.48rem);
+		}
+
+		.scrolled .logo {
+			transform: translateY(1.2rem);
 		}
 	}
 </style>

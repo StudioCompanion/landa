@@ -57,7 +57,7 @@
 			padding-left: 1rem;
 			padding-right: 1rem;
 			margin: 5.75rem auto 2.75rem auto;
-			max-width: 45rem;
+			max-width: 40rem;
 		}
 
 		@media screen and (min-width: 1024px) {
@@ -66,13 +66,15 @@
 				padding-left: 1rem;
 				padding-right: 1rem;
 				margin: 5.75rem auto 2.75rem auto;
-				max-width: 60rem;
+				max-width: 70rem;
 			}
 		}		
 
 		@media screen and (min-width: 1680px) {
 			.bio {
 				font-size: var(--font-size-giant-lg);
+				width: 100%;
+				max-width: 85rem;
 			}
 		}
 	</style>

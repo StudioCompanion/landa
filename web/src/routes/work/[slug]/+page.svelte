@@ -74,9 +74,6 @@
 	<Media media={data.project.hero} />
 </section>
 <section class="description">
-	{#if data.project.title}
-		<h1 class="project-title">{data.project.title}</h1>
-	{/if}
 	{#if data.project.description}
 		<div class="project-description">
 			<Content value={data.project.description} />
