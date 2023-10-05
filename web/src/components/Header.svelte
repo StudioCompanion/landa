@@ -84,7 +84,7 @@
 		</svg>
 	</a>
 
-	<a class="text-link" class:active={isInfoPage} href="/info">Info</a>
+	<a class="text-link" class:infoActive={isInfoPage} href="/info">Info</a>
 </header>
 
 <style>
@@ -159,14 +159,14 @@
 		transition: color 0.4s ease-out;
 	}
 
-	    /* Adjust the Info link when active */
-	a.active {
-		color: white;  /* Black when active */
+	/* Adjust the Info link when active */
+	a.infoActive {
+		color: white;  /* White when active */
 		transition: color 0.4s ease-out;
 	}
 
     /* Adjust the Info link on hover when active */
-	a.active:hover {
+	a.infoActive:hover {
 		color: black;  /* White on rollover */
 		transition: color 0.4s ease-out;
 	}
