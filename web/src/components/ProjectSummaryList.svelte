@@ -25,6 +25,7 @@
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
 		padding: 0rem 3rem 7rem 3rem;
+		/* background: orange; */
 	}
 
 	.work-route {
@@ -55,9 +56,8 @@
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
-	
 
-	@media screen and (min-width: 1500px) {
+	@media screen and (min-width: 1920px) {
 		.project-summary-list {
 			padding: 0 6rem 7rem 6rem;
 			grid-template-columns: repeat(2, 1fr);

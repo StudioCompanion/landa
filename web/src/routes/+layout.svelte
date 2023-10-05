@@ -26,8 +26,22 @@
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
+		background: rgb(255,255,255);
 	}
 	main {
 		flex: 1;
 	}
+
+	@media screen and (min-width: 1024px) {
+	div {
+		background: rgb(235,235,235);
+	}
+	}
+
+	@media screen and (min-width: 1920px) {
+		div {
+			background: rgb(215,215,215);
+		}
+	}
+
 </style>

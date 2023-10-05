@@ -31,7 +31,7 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 			class:work-route-class={$page.route.id === '/work'}
 			class="project-image" 
 				alt="REPLACE"
-				{...getImageProps({ image: project.featured_image, maxWidth: 500 })}
+				{...getImageProps({ image: project.featured_image, maxWidth: 2000 })}
 			/>
 		</div>
 
@@ -45,14 +45,23 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 <style>
 	.project-summary {
 		color: var(--black);
-		text-align: center;
-		font-family: var(--font-serif);
-	}
+    text-align: center;
+    font-family: var(--font-serif);
+    aspect-ratio: 1 / 1;
+    /* background: yellow; */
+    overflow: hidden;
+	display: flex;                       /* Change to flex */
+    flex-direction: column;              /* Stack children vertically */
+    justify-content: center;             /* Center children vertically */
+    align-items: center;                 /* Center children horizontally */
+}
 
 	.project-boxlink {
 		opacity: 0;
 		text-decoration: none;
 		transition: opacity 1s ease-in-out;
+		/* background: pink; */
+		aspect-ratio: 1 / 1;
 	}
 
 	.project-boxlink.visible {
@@ -107,19 +116,25 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	}
 
 	.project-image-container {
-		align-items: center;
 		display: flex;
-		height: auto;
-		justify-content: center;
-		overflow: hidden;
-		width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    /* border: 1px solid black; */
+	/* background: green; */
 	}
 
 	.project-image {
-		height: auto;
-		object-fit: contain;
-		width: 100%;
-	}
+    max-width: 100%;       /* Landscape images will be constrained by width */
+    max-height: 100%;      /* Portrait images will be constrained by height */
+    object-fit: contain;   /* Maintain aspect ratio of the image */
+    /* border: 1px solid red; */
+    display: block;
+    width: auto;           /* Remove any explicit width for the image */
+    height: auto;          /* Remove any explicit height for the image */
+}
+
 
 	.work-route-class {
 		max-height: 325px;
