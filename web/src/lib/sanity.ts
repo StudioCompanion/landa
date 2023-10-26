@@ -13,22 +13,35 @@ export const imageBuilder = imageUrlBuilder(sanity);
 export default sanity;
 
 function getImageDimensions(image: any) {
-	if (!image?.asset?._ref) {
-		return;
+    if (!image?.asset?._ref) {
+        return;
+    }
+
+    const dimensions = image.asset._ref.split('-')[2];
+    const [width, height] = dimensions.split('x').map(Number);
+
+    if (!width || !height || Number.isNaN(width) || Number.isNaN(height)) {
+        return;
+    }
+
+	const ASPECT_RATIO_TOLERANCE = 0.02;  // You can adjust this value as needed
+    const aspectRatio = width / height;
+
+    let imageType;
+	if (Math.abs(aspectRatio - 1) < ASPECT_RATIO_TOLERANCE) {
+		imageType = 'square';
+	} else if (aspectRatio > 1) {
+		imageType = 'landscape';
+	} else {
+		imageType = 'portrait';
 	}
 
-	const dimensions = image.asset._ref.split('-')[2];
-	const [width, height] = dimensions.split('x').map(Number);
-
-	if (!width || !height || Number.isNaN(width) || Number.isNaN(height)) {
-		return;
-	}
-
-	return {
-		width,
-		height,
-		aspectRatio: width / height
-	};
+    return {
+        width,
+        height,
+        aspectRatio,
+        imageType
+    };
 }
 
 const LARGEST_VIEWPORT = 1920; // Retina sizes will take care of 4k (2560px) and other huge screens
@@ -123,6 +136,7 @@ export const getImageProps = ({
 
 		// Let's also tell the browser what's the size of the image so it can calculate aspect ratios
 		width: medianSize,
-    height: medianSize / imageDimensions.aspectRatio
+    height: medianSize / imageDimensions.aspectRatio,
+	imageType: imageDimensions.imageType
 	};
 };

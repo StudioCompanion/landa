@@ -19,21 +19,26 @@
 				clearTimeout(timeout);
 			};
 	});
+
+	let { src, srcset, sizes, width, height, imageType } = getImageProps({ image: project.featured_image, maxWidth: 2000 });
 </script>
 
 <a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
 	<div class="project-summary" id="square">
 		<div class="project-image-container" id="image-container">
 			<img
-			class:work-route-class={$page.route.id === '/work'}
-			class="project-image" 
+				class:work-route-class={$page.route.id === '/work'}
+				class={`project-image ${imageType}`}
 				alt="REPLACE"
-				{...getImageProps({ image: project.featured_image, maxWidth: 2000 })}
+				src={src}
+				srcset={srcset}
+				sizes={sizes}
+				width={width}
+				height={height}
 			/>
-		</div>
-		<div class="project-description" id="caption">
-			<h2 class="project-title">{project.title}</h2>
-			{#if homepage}<span class="project-caption">{project.caption}</span>{/if}
+			<div class="project-description" id="caption">
+				<span class="project-title">{project.title} {#if homepage}<span class="project-caption">{project.caption}</span>{/if}</span>
+			</div>
 		</div>
 	</div>
 </a>
@@ -73,16 +78,13 @@
 	}
 
 	.project-description {
-		position: absolute;
-		bottom: 16px; /* Match padding of the .square */
-		left: 16px;
-		right: 16px;
-		text-align: center;
+		margin-top: 12px;
+		text-align: left;
 		color: black;
 	}
 
 	.project-description .content p {
-		text-align: center;
+		text-align: left;
 	}
 	
 	.project-title {
@@ -96,6 +98,7 @@
 	.project-caption {
 		font-size: var(--font-size-mob-sm);
 		font-family: var(--font-serif);
+		color: #919191;
 		/* padding: 0rem 1rem; */
 	}
 
@@ -115,24 +118,41 @@
 
 	.project-image-container {
 		position: absolute;
-		top: 16px; /* Offset by padding */
-		left: 16px;
-		right: 16px;
+		top: 32px; /* Offset by padding */
+		left: 32px;
+		right: 32px;
 		bottom: calc(16px + 40px); /* Adjust for padding and estimated caption height */
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-direction: column;
 	}
 
 	.project-image {
 		max-width: 100%;
-		max-height: 100%;
+		max-height: 95%;
 		display: block;
 		object-fit: contain;
-		width: 100%;
-		height: 100%;
-		padding: 5%;
+		width: auto;
+		height: auto;
+		/* padding: 5%; */
 	}
+
+	.portrait {
+    padding: 5px;
+		background: lightgreen;
+	}
+
+	.landscape {
+	padding: 5px;
+		background: lightcoral;
+	}
+
+	.square {
+	padding: 5px;
+		background: lightblue;
+	}
+
 
 
 	.work-route-class {
@@ -142,7 +162,7 @@
 	/* One square per row: No right border on any square */
 	@media (min-width: 320px) {
 		.project-boxlink .project-summary {
-			border-right: none;
+			border-right: 1px solid transparent;
 			/* background: pink; */
 		}
 	}
@@ -154,7 +174,7 @@
 			/* background: yellow; */
 		}
 		.project-boxlink:nth-of-type(2n) .project-summary {
-			border-right: none;
+			border-right: 1px solid transparent;
 			/* background: pink; */
 		}
 	}
@@ -170,7 +190,7 @@
 			/* background: pink; */
 		}
 		.project-boxlink:nth-of-type(3n) .project-summary {
-			border-right: none;
+			border-right: 1px solid transparent;
 			/* background: lightblue; */
 		}
 	}
