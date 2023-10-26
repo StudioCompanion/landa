@@ -19,7 +19,7 @@
 
 <style>
 	footer {
-		background-color: var(--light-grey);
+		background-color: var(--lightest-grey);
 		color: var(--dark-grey);
 		display: flex;
 		flex-direction: column;
@@ -27,8 +27,9 @@
 		align-items: flex-start;
 		padding: 2rem 1rem;
 		font-family: var(--font-serif);
-		 
 		font-size: var(--font-size-mob-sm);
+		border-top: 1px solid var(--light-grey);
+		margin: -1px 0px 0px 0px;
 	}
 
 	footer a {

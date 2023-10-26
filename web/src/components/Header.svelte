@@ -95,7 +95,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: 1rem;
+		padding: 12px 20px;
 		z-index: 50;
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
@@ -118,7 +118,7 @@
 		width: 200px;
 		height: 18px;
 		overflow: hidden;
-		transform: translateY(0.2rem);
+		/* transform: translateY(0.2rem); */
 		transition: transform 0.1s ease-in-out;
 	}
 
@@ -180,21 +180,21 @@
 
 	/* Dealing with the logo positioning on root animation */
 	.scrolled .text-link {
-		opacity: 0;
+		/* opacity: 0; */
 	}
 
 	.scrolled .logo {
-		transform: translateY(3rem);
+		/* transform: translateY(3rem); */
 	}
 
 	.scrolled {
 		background: none;
-		border-bottom: 1px solid transparent;
+		/* border-bottom: 1px solid transparent; */
 	}
 
 	.globalScrolled {
 		background: none;
-		border-bottom: 1px solid transparent;
+		/* border-bottom: 1px solid transparent; */
 	}
 
 	.infoScrolled {
@@ -205,7 +205,7 @@
 
 	@media screen and (min-width: 1024px) {
 		header {
-			padding: 2rem;
+			padding: 20px 32px;
 			font-size: var(--font-size-desk-sm);
 		}
 
@@ -216,7 +216,7 @@
 		}
 
 		.scrolled .logo {
-			transform: translateY(1.5rem);
+			/* transform: translateY(1.5rem); */
 		}
 
 		.text-link {
@@ -239,7 +239,7 @@
 		}
 
 		.scrolled .logo {
-			transform: translateY(1.2rem);
+			/* transform: translateY(1.2rem); */
 		}
 	}
 </style>

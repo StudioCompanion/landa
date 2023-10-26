@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import inView from '$lib/inView';
 
-
 	export let project;
 	export let index;
 	export let homepage = false;
@@ -23,11 +22,13 @@
 	let { src, srcset, sizes, width, height, imageType } = getImageProps({ image: project.featured_image, maxWidth: 2000 });
 </script>
 
-<a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
+<a class={$page.route.id === '/work' 
+	? `work-box${visible ? ' visible' : ''}` 
+	: `project-boxlink${visible ? ' visible' : ''}`
+	} href={`/work/${project.slug}`}>
 	<div class="project-summary" id="square">
 		<div class="project-image-container" id="image-container">
 			<img
-				class:work-route-class={$page.route.id === '/work'}
 				class={`project-image ${imageType}`}
 				alt="REPLACE"
 				src={src}
@@ -46,11 +47,11 @@
 <style>
 	.project-summary {
 		position: relative;
-		border-right: 1px solid #B0B0B0;
-		border-bottom: 1px solid #B0B0B0;
+		border-right: 1px solid var(--light-grey);
+		border-bottom: 1px solid var(--light-grey);
 		padding: 16px;
 		box-sizing: content-box; /* Padding is outside the box */
-		}
+	}
 
 	.project-summary::before {
 		content: "";
@@ -58,18 +59,18 @@
 		padding-top: 100%; /* This forces the container to maintain a square shape */
 	}
 
-	.project-boxlink {
+	.project-boxlink, .work-box {
 		opacity: 0;
 		text-decoration: none;
 		transition: opacity 1s ease-in-out;
 		/* background: pink; */
 	}
 
-	.project-boxlink.visible {
+	.project-boxlink.visible, .work-box.visible {
 		opacity: 1;
 	}
 
-	.project-boxlink:hover .project-title, .project-boxlink:hover .project-caption {
+	.project-boxlink:hover .project-title, .project-boxlink:hover .project-caption, .work-box:hover .project-title, .work-box:hover .project-caption {
 		color: var(--red);
 	}
 
@@ -118,9 +119,9 @@
 
 	.project-image-container {
 		position: absolute;
-		top: 32px; /* Offset by padding */
-		left: 32px;
-		right: 32px;
+		top: 20px; /* Offset by padding */
+		left: 20px;
+		right: 20px;
 		bottom: calc(16px + 40px); /* Adjust for padding and estimated caption height */
 		display: flex;
 		justify-content: flex-start;
@@ -139,79 +140,90 @@
 	}
 
 	.portrait {
-    padding: 5px;
 		background: lightgreen;
 	}
 
 	.landscape {
-	padding: 5px;
 		background: lightcoral;
 	}
 
 	.square {
-	padding: 5px;
 		background: lightblue;
 	}
 
-
-
-	.work-route-class {
-		max-height: 325px;
+	.work-box .project-summary {
+		border-right: 1px solid var(--light-grey);
 	}
 
-	/* One square per row: No right border on any square */
+	.work-box:nth-of-type(2n) .project-summary {
+		border-right: 0px solid transparent;
+		margin-top: -1px;
+	}
+
+	/* HOME */
 	@media (min-width: 320px) {
 		.project-boxlink .project-summary {
 			border-right: 1px solid transparent;
-			/* background: pink; */
+		}
+		.project-boxlink:nth-last-of-type(1) .project-summary, .work-box:nth-last-of-type(1) .project-summary {
+			border-bottom: 1px solid transparent;
 		}
 	}
 
-	/* Two squares per row: No right border on every 2nd square */
 	@media (min-width: 1024px) {
-		.project-boxlink .project-summary {
-			border-right: 1px solid #B0B0B0;
-			/* background: yellow; */
+		.project-boxlink .project-summary, .work-box .project-summary {
+			border-right: 1px solid var(--light-grey);
 		}
 		.project-boxlink:nth-of-type(2n) .project-summary {
 			border-right: 1px solid transparent;
-			/* background: pink; */
+		}
+
+		.work-box:nth-of-type(2n) .project-summary {
+			border-right: 1px solid var(--light-grey);
+			margin-top: 0px;
+		}
+
+		.work-box:nth-of-type(4n) .project-summary {
+			border-right: 0px solid transparent;
+			margin-top: -1px;
+		}
+
+		.project-image-container {
+			top: 32px;
+			left: 32px;
+			right: 32px;
+		}
+		.project-boxlink:nth-last-of-type(-n+2) .project-summary {
+			/* border-bottom: 1px solid transparent; */
 		}
 	}
 
-	/* Three squares per row: No right border on every 2nd square */
 	@media (min-width: 1680px) {
 		.project-boxlink .project-summary {
-			border-right: 1px solid #B0B0B0;
-			/* background: yellow; */
+			border-right: 1px solid var(--light-grey);
 		}
 		.project-boxlink:nth-of-type(2n) .project-summary {
-			border-right: 1px solid #B0B0B0;
-			/* background: pink; */
+			border-right: 1px solid var(--light-grey);
 		}
 		.project-boxlink:nth-of-type(3n) .project-summary {
 			border-right: 1px solid transparent;
-			/* background: lightblue; */
 		}
-	}
-
-	/* @media (min-width: 320px) {
-		.project-boxlink:nth-last-of-type(1) .project-summary {
-			background: pink;
+		.work-box:nth-of-type(4n) .project-summary {
+			border-right: 1px solid var(--light-grey);
+			margin-top: 0px;
 		}
-	}
-
-	@media (min-width: 1680px) {
-		.project-boxlink:nth-last-of-type(-n+2) .project-summary {
-			background: lightblue;
+		.work-box:nth-of-type(5n) .project-summary {
+			border-right: 0px solid transparent;
+			margin-top: -1px;
 		}
-	}
-
-	@media (min-width: 1920px) {
+		.project-image-container {
+			top: 32px;
+			left: 32px;
+			right: 32px;
+			bottom: calc(16px + 60px);
+		}
 		.project-boxlink:nth-last-of-type(-n+3) .project-summary {
-			background: orange;
+			/* border-bottom: 1px solid transparent; */
 		}
-	} */
-
-
+	}
 </style>
