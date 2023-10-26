@@ -34,13 +34,13 @@
 
 	@media screen and (min-width: 1024px) {
 	div {
-		background: rgb(235,235,235);
+		/* background: rgb(235,235,235); */
 	}
 	}
 
 	@media screen and (min-width: 1680px) {
 		div {
-			background: rgb(215,215,215);
+			/* background: rgb(215,215,215); */
 		}
 	}
 

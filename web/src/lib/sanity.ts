@@ -109,6 +109,8 @@ export const getImageProps = ({
 			return true;
 		});
 
+		const medianSize = retinaSizes[Math.floor(retinaSizes.length / 2)];
+
 	return {
 		// Use the original image as the `src` for the <img>
 		src: builder.width(maxWidth).url(),
@@ -120,7 +122,7 @@ export const getImageProps = ({
 			maxWidth === '100vw' ? '100vw' : sizes || `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`,
 
 		// Let's also tell the browser what's the size of the image so it can calculate aspect ratios
-		width: retinaSizes[0],
-		height: retinaSizes[0] / imageDimensions.aspectRatio
+		width: medianSize,
+    height: medianSize / imageDimensions.aspectRatio
 	};
 };

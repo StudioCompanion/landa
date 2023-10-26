@@ -4,19 +4,19 @@
 	--white: #ffffff;
 	--black: #000000;
 	--dark-grey: #919191;
-	--light-grey: #F2F2F2;
+	--light-grey: #B0B0B0;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	--font-serif-bold: 'JJannon Bold', serif;
 	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
-	--font-size-giant-lg: 3rem;  /* 48 Px */
-	--font-size-desk-lg: 2.375rem; /* 38 Px */
-	--font-size-mob-lg: 1.188rem; /* 16 Px */
-	--font-size-giant-sm: 1.5rem; /* 24 Px */
-	--font-size-desk-sm: 1.188rem; /* 19 Px */
-	--font-size-mob-sm: 1.188rem; /* 12 Px */
+	--font-size-giant-lg: 2.5rem;  /* 40 Px */
+	--font-size-desk-lg: 2rem; /* 32 Px */
+	--font-size-mob-lg: 1rem; /* 16 Px */
+	--font-size-giant-sm: 1.25rem; /* 20 Px */
+	--font-size-desk-sm: 1rem; /* 16 Px */
+	--font-size-mob-sm: 1rem; /* 16 Px */
 	--font-global-line-height: 115%;
 
 	--section-padding-g: 4rem;

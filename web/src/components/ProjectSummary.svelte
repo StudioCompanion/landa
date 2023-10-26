@@ -19,14 +19,11 @@
 				clearTimeout(timeout);
 			};
 	});
-	
 </script>
 
-<a 
-
-class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
-	<div class="project-summary">
-		<div class="project-image-container">
+<a class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slug}`}>
+	<div class="project-summary" id="square">
+		<div class="project-image-container" id="image-container">
 			<img
 			class:work-route-class={$page.route.id === '/work'}
 			class="project-image" 
@@ -34,8 +31,7 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 				{...getImageProps({ image: project.featured_image, maxWidth: 2000 })}
 			/>
 		</div>
-
-		<div class="project-description">
+		<div class="project-description" id="caption">
 			<h2 class="project-title">{project.title}</h2>
 			{#if homepage}<span class="project-caption">{project.caption}</span>{/if}
 		</div>
@@ -44,24 +40,24 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 
 <style>
 	.project-summary {
-		color: var(--black);
-    text-align: center;
-    font-family: var(--font-serif);
-    aspect-ratio: 1 / 1;
-    /* background: yellow; */
-    overflow: hidden;
-	display: flex;                       /* Change to flex */
-    flex-direction: column;              /* Stack children vertically */
-    justify-content: center;             /* Center children vertically */
-    align-items: center;                 /* Center children horizontally */
-}
+		position: relative;
+		border-right: 1px solid #B0B0B0;
+		border-bottom: 1px solid #B0B0B0;
+		padding: 16px;
+		box-sizing: content-box; /* Padding is outside the box */
+		}
+
+	.project-summary::before {
+		content: "";
+		display: block;
+		padding-top: 100%; /* This forces the container to maintain a square shape */
+	}
 
 	.project-boxlink {
 		opacity: 0;
 		text-decoration: none;
 		transition: opacity 1s ease-in-out;
 		/* background: pink; */
-		aspect-ratio: 1 / 1;
 	}
 
 	.project-boxlink.visible {
@@ -77,10 +73,12 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	}
 
 	.project-description {
+		position: absolute;
+		bottom: 16px; /* Match padding of the .square */
+		left: 16px;
+		right: 16px;
 		text-align: center;
-		align-items: center;
-		display: flex;
-		flex-direction: column;
+		color: black;
 	}
 
 	.project-description .content p {
@@ -90,15 +88,15 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	.project-title {
 		font-size: var(--font-size-mob-lg);
 		font-family: var(--font-serif);
-		 
-		margin-bottom: 0rem;
-		padding: 0rem 1rem;
+		margin: 0 auto;
+		/* margin-bottom: 0rem; */
+		/* padding: 0rem 1rem; */
 	}
 
 	.project-caption {
 		font-size: var(--font-size-mob-sm);
 		font-family: var(--font-serif);
-		padding: 0rem 1rem;
+		/* padding: 0rem 1rem; */
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -116,27 +114,84 @@ class={`project-boxlink${visible ? ' visible' : ''}`} href={`/work/${project.slu
 	}
 
 	.project-image-container {
+		position: absolute;
+		top: 16px; /* Offset by padding */
+		left: 16px;
+		right: 16px;
+		bottom: calc(16px + 40px); /* Adjust for padding and estimated caption height */
 		display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    /* border: 1px solid black; */
-	/* background: green; */
+		justify-content: center;
+		align-items: center;
 	}
 
 	.project-image {
-    max-width: 100%;       /* Landscape images will be constrained by width */
-    max-height: 100%;      /* Portrait images will be constrained by height */
-    object-fit: contain;   /* Maintain aspect ratio of the image */
-    /* border: 1px solid red; */
-    display: block;
-    width: auto;           /* Remove any explicit width for the image */
-    height: auto;          /* Remove any explicit height for the image */
-}
+		max-width: 100%;
+		max-height: 100%;
+		display: block;
+		object-fit: contain;
+		width: 100%;
+		height: 100%;
+		padding: 5%;
+	}
 
 
 	.work-route-class {
 		max-height: 325px;
 	}
+
+	/* One square per row: No right border on any square */
+	@media (min-width: 320px) {
+		.project-boxlink .project-summary {
+			border-right: none;
+			/* background: pink; */
+		}
+	}
+
+	/* Two squares per row: No right border on every 2nd square */
+	@media (min-width: 1024px) {
+		.project-boxlink .project-summary {
+			border-right: 1px solid #B0B0B0;
+			/* background: yellow; */
+		}
+		.project-boxlink:nth-of-type(2n) .project-summary {
+			border-right: none;
+			/* background: pink; */
+		}
+	}
+
+	/* Three squares per row: No right border on every 2nd square */
+	@media (min-width: 1680px) {
+		.project-boxlink .project-summary {
+			border-right: 1px solid #B0B0B0;
+			/* background: yellow; */
+		}
+		.project-boxlink:nth-of-type(2n) .project-summary {
+			border-right: 1px solid #B0B0B0;
+			/* background: pink; */
+		}
+		.project-boxlink:nth-of-type(3n) .project-summary {
+			border-right: none;
+			/* background: lightblue; */
+		}
+	}
+
+	/* @media (min-width: 320px) {
+		.project-boxlink:nth-last-of-type(1) .project-summary {
+			background: pink;
+		}
+	}
+
+	@media (min-width: 1680px) {
+		.project-boxlink:nth-last-of-type(-n+2) .project-summary {
+			background: lightblue;
+		}
+	}
+
+	@media (min-width: 1920px) {
+		.project-boxlink:nth-last-of-type(-n+3) .project-summary {
+			background: orange;
+		}
+	} */
+
+
 </style>

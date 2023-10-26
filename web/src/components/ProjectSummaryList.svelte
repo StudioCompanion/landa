@@ -18,14 +18,35 @@
 <!-- Particularly as it also seems to cause an issue with the transition, as the CSS changes instantly so you see a flash of the old layout before it transitions out and back in.  -->
 
 <style>
+
 	.project-summary-list {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr); /* Default to 1 column */
+		margin: -1px; /* Negative margin to pull squares together */
+		padding: 1px; /* Padding to correct outer borders */
+	}	
+
+	/* 2 squares per row */
+	@media (min-width: 1024px) {
+	.project-summary-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	}
+
+	/* 3 squares per row */
+	@media (min-width: 1680px) {
+	.project-summary-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	}
+
+	/* .project-summary-list {
 		align-items: center;
 		display: grid;
 		gap: 3rem;
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
 		padding: 0rem 3rem 7rem 3rem;
-		/* background: orange; */
 	}
 
 	.work-route {
@@ -66,5 +87,5 @@
 			padding: 7rem 4rem 7rem 4rem;
 			grid-template-columns: repeat(5, 1fr);
 		}
-	}
+	} */
 </style>

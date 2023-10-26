@@ -156,7 +156,7 @@
 
 	.credits {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
+		font-size: var(--font-size-mob-sm);
 		text-align: center;
 		max-width: 35rem;
 	}
@@ -164,7 +164,7 @@
 	@media screen and (min-width: 1024px) {
 		.credits {
 			font-family: var(--font-serif);
-			font-size: var(--font-size-desk-lg);
+			font-size: var(--font-size-desk-sm);
 			max-width: 60rem;
 		}
 	}
@@ -172,7 +172,7 @@
 	@media screen and (min-width: 1920px) {
 		.credits {
 			font-family: var(--font-serif);
-			font-size: var(--font-size-giant-lg);
+			font-size: var(--font-size-giant-sm);
 			max-width: 60rem;
 		}
 	}

@@ -46,12 +46,18 @@
 	{#if data.splashscreen && !show}
 		<Flicker images={data.splashscreen} />
 	{/if}
-	<div class="bio">
-		<Content value={data.homepage.bio} />
+	<div class="bioContainer">
+		<div class="bio">
+			<Content value={data.homepage.bio} />
+		</div>
 	</div>
 	<ProjectSummaryList projects={data.projects} homepage />
 
 	<style>
+		.bioContainer {
+			border-bottom: 1px solid #B0B0B0;
+		}
+
 		.bio {
 			font-size: var(--font-size-mob-lg);
 			padding-left: 1rem;
