@@ -44,13 +44,14 @@
 			on:enter={() => {
 				$visibilityStore.description = true;
 			}}
-		class="description" 
+		class="description section" 
 		id="description">
 			<Content value={about.description} />
 		</section>
 	{/if}
 
 	{#if about.services}
+	<h2 class="section-title" id="section_title">Services</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.services ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -59,8 +60,7 @@
 			on:enter={() => {
 				$visibilityStore.services = true;
 			}}
-		class="services">
-		<h2 class="section-title" id="section_title">Services</h2>
+		class="services section">
 		{#each about.services as service}
 			<div class="service">
 				<h3 class="service-title">{service.title}</h3>
@@ -70,6 +70,7 @@
 		</section>
 	{/if}
 	{#if about.logos}
+	<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 		<div 
 		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -78,9 +79,8 @@
 			on:enter={() => {
 				$visibilityStore.logos = true;
 			}}
-		class="logo-section" 
+		class="logo-section section" 
 		id="logo_grid">
-			<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 			<div class="grid-container">
 				{#each about.logos as logo}
 					<div class="logo-container">
@@ -90,6 +90,7 @@
 			</div>
 		</div>
 	{/if}
+	<h2 class="section-title" id="section_title">Contact</h2>
 	<section
 	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -98,10 +99,9 @@
 			on:enter={() => {
 				$visibilityStore.contact = true;
 			}}
-	class="contact-section">
+	class="contact-section section">
 		{#if about.contact}
 			<section class="email-section" id="description">
-				<h2 class="section-title" id="section_title">Contact</h2>
 				{#each about.contact as contact}
 					<div class="email-container">
 						<h3 class="email-label">{contact.label}</h3>
@@ -126,6 +126,7 @@
 		{/if}
 	</section>
 	{#if about.biography}
+	<h2 class="section-title" id="section_title">Biography</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -134,13 +135,13 @@
 			on:enter={() => {
 				$visibilityStore.biography = true;
 			}}
-		class="bio-section" 
+		class="bio-section section" 
 		id="description">
-			<h2 class="section-title" id="section_title">Biography</h2>
 			<Content value={about.biography} />
 		</section>
 	{/if}
 	{#if about.collaborators}
+	<h2 class="section-title" id="section_title">Collaborators</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -149,15 +150,18 @@
 			on:enter={() => {
 				$visibilityStore.collaborators = true;
 			}}
-		class="collaborators-section" 
+		class="collaborators-section section" 
 		id="description">
-			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<Content value={about.collaborators} />
 		</section>
 	{/if}
 </div>
 
 <style>
+
+:root {
+	--paragraph-alignment: left;
+}
 
 	.page-container {
 		background-color: var(--red);
@@ -166,47 +170,43 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 5rem 0rem 5rem 0rem;
+		/* padding: 5rem 0rem 5rem 0rem; */
+	}
+
+	.section {
+		background: pink;
+		width: 100%;
+		border-top: 1px solid white;
 	}
 
 	/* Reused Items */
 	.section-title {
 		font-family: var(--font-serif);
-		 
 		font-size: var(--font-size-mob-lg);
-		margin: 0 auto 1rem auto;
-		text-align: center;
-		width: auto;
-	}
-
-	.dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 999px;
-		background-color: var(--white);
-		margin: 2rem 0;
+		margin: 0 auto 0 auto;
+		text-align: left;
+		width: 100%;
+		background: orange;
+		border-top: 1px solid white;
 	}
 
 	/* Intro Block */
 	.description {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
 	}
 
 	/* Services Block */
 	.services {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		align-items: center;
-		padding: 0 var(--section-padding-m);
 		font-size: var(--font-size-mob-lg);
 	}
 
-
 	.service {
-		margin: 0rem 0 1.5rem 0;
+		/* margin: 0rem 0 1.5rem 0; */
+		border: 1px solid white;
 	}
 
 	/* Style the last .service element to have no margin */
@@ -218,20 +218,18 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 		margin: 0;
-		text-align: center;
+		text-align: left;
 	}
 
 	.service-description {
 		font-family: var(--font-serif-italic);
 		font-size: var(--font-size-mob-lg);
-		text-align: center;
-		max-width: 30rem;
+		text-align: left;
 	}
 
 	/* Logo Block */
 	.logo-section {
 		max-width: var(--max-width);
-		padding: 0 var(--section-padding-m);
 	}
 
 	.grid-container {
@@ -261,10 +259,8 @@
 	.contact-section {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
-		text-align: center;
+		text-align: left;
 		width: 100%;
-		max-width: var(--max-width);
-		padding: 0 var(--section-padding-m);
 	}
 
 	.email-section {
@@ -317,16 +313,12 @@
 	.bio-section {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
 	}
 	
 	/* Collaborators */
 	.collaborators-section {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
 	}
 
 	@media screen and (min-width: 768px){
@@ -341,7 +333,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.page-container {
-			padding: 7rem 0rem 7rem 0rem;
+			/* padding: 7rem 0rem 7rem 0rem; */
 		}
 
 		.dot {
@@ -349,13 +341,10 @@
 		}
 
 		.description, .bio-section, .collaborators-section {
-			max-width: 70rem;
 			font-size: var(--font-size-desk-lg);
-			padding: 0 var(--section-padding-d);
 		}
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
 			font-size: var(--font-size-desk-lg);
-			max-width: 70rem;
 		}
 		.grid-container {
 			display: grid;
