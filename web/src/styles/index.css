@@ -125,6 +125,10 @@ a {
 	text-align: var(--paragraph-alignment);
 }
 
+.content p:first-of-type {
+	margin: var(--paragraph-alignment);
+}
+
 strong {
 	 
 	font-family: var(--font-serif-bold);

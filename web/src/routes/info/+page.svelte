@@ -51,7 +51,13 @@
 	{/if}
 
 	{#if about.services}
-	<h2 class="section-title" id="section_title">Services</h2>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Services</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.services ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -70,7 +76,13 @@
 		</section>
 	{/if}
 	{#if about.logos}
-	<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 		<div 
 		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -90,7 +102,13 @@
 			</div>
 		</div>
 	{/if}
-	<h2 class="section-title" id="section_title">Contact</h2>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Contact</h2>
 	<section
 	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -126,7 +144,13 @@
 		{/if}
 	</section>
 	{#if about.biography}
-	<h2 class="section-title" id="section_title">Biography</h2>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Biography</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -141,7 +165,13 @@
 		</section>
 	{/if}
 	{#if about.collaborators}
-	<h2 class="section-title" id="section_title">Collaborators</h2>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Collaborators</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -161,7 +191,9 @@
 
 :root {
 	--paragraph-alignment: left;
+	--paragraph-margin: 1rem 0 0 0;
 }
+
 
 	.page-container {
 		background-color: var(--red);
@@ -174,9 +206,13 @@
 	}
 
 	.section {
-		background: darkblue;
 		width: 100%;
 		border-top: 1px solid white;
+	}
+
+	.description {
+		margin-top: 4rem;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 	}
 
 	/* Reused Items */
@@ -186,7 +222,6 @@
 		margin: 0 auto 0 auto;
 		text-align: left;
 		width: 100%;
-		background: darkmagenta;
 		border-top: 1px solid white;
 		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-sm) var(--pad-desk-lg);
 	}
@@ -201,11 +236,12 @@
 	.services {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		align-items: center;
+		align-items: stretch;
 		font-size: var(--font-size-mob-lg);
 	}
 
 	.service {
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 		/* margin: 0rem 0 1.5rem 0; */
 		border: 1px solid white;
 	}
@@ -269,6 +305,11 @@
 		flex-direction: column;
 		align-items: flex-start;
 		border: 1px solid white;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+	}
+
+	.email-section .email-container:last-of-type {
+		margin: 0;
 	}
 
 	.email-container {
@@ -276,18 +317,20 @@
 		flex-direction: row;
 		align-items: baseline;
 		justify-content: center;
+		margin: 0 0 0.25rem 0;
 	}
 
 	.email-label {
-		margin: 0 0rem;
 		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
+		margin: 0;
 	}
 
 	.email-link {
 		font-family: var(--font-serif-italic);
 		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
+		margin-left: 0.5rem;
 	}
 
 	.email-link:hover {
@@ -302,6 +345,7 @@
 
 	.address-container {
 		border: 1px solid white;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 	}
 
 	.location-title {
@@ -318,12 +362,14 @@
 
 	/* Biography */
 	.bio-section {
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 	}
 	
 	/* Collaborators */
 	.collaborators-section {
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 	}
