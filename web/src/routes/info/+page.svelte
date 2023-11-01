@@ -174,7 +174,7 @@
 	}
 
 	.section {
-		background: pink;
+		background: darkblue;
 		width: 100%;
 		border-top: 1px solid white;
 	}
@@ -186,8 +186,9 @@
 		margin: 0 auto 0 auto;
 		text-align: left;
 		width: 100%;
-		background: orange;
+		background: darkmagenta;
 		border-top: 1px solid white;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-sm) var(--pad-desk-lg);
 	}
 
 	/* Intro Block */
@@ -229,23 +230,23 @@
 
 	/* Logo Block */
 	.logo-section {
-		max-width: var(--max-width);
+		/* max-width: var(--max-width); */
 	}
 
 	.grid-container {
 		display: grid;
 		width: 100%;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
+		/* gap: 1rem; */
 		align-items: center;
 		justify-content: center;
-		margin: 1rem 0 0 0;
 	}
 
 	.logo-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		border: 1px solid white;
 	}
 
 	.logo {
@@ -264,7 +265,10 @@
 	}
 
 	.email-section {
-		margin: 0rem 0rem 2rem 0rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		border: 1px solid white;
 	}
 
 	.email-container {
@@ -275,7 +279,7 @@
 	}
 
 	.email-label {
-		margin: 0 0.5rem;
+		margin: 0 0rem;
 		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
 	}
@@ -293,8 +297,11 @@
 	.address-section {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: 1rem;
 		width: 100%;
+	}
+
+	.address-container {
+		border: 1px solid white;
 	}
 
 	.location-title {
@@ -327,7 +334,6 @@
 		}
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
-			gap: 1rem;
 		}
 	}
 
@@ -350,13 +356,11 @@
 			display: grid;
 			width: 100%;
 			grid-template-columns: repeat(4, 1fr);
-			gap: 1rem;
 			align-items: center;
 			justify-content: center;
 		}
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
-			gap: 1rem;
 		}
 	}
 
