@@ -136,7 +136,6 @@
 		object-fit: contain;
 		width: auto;
 		height: auto;
-		/* padding: 5%; */
 	}
 
 	.portrait {

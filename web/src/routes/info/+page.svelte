@@ -49,21 +49,6 @@
 			<Content value={about.description} />
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="1"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 0; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[0] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[0] ? '0px' : '55px'});`}
-	/>
 
 	{#if about.services}
 		<section 
@@ -84,21 +69,6 @@
 		{/each}
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="2"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 1; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[1] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[1] ? '0px' : '55px'});`}
-	/>
 	{#if about.logos}
 		<div 
 		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
@@ -120,21 +90,6 @@
 			</div>
 		</div>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="3"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 2; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[2] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[2] ? '0px' : '55px'});`}
-	/>
 	<section
 	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -170,21 +125,6 @@
 			</section>
 		{/if}
 	</section>
-	<div 
-		class="dot" 
-		data-dot-index="4"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 3; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[3] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[3] ? '0px' : '55px'});`}
-	/>
 	{#if about.biography}
 		<section 
 		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
@@ -200,21 +140,6 @@
 			<Content value={about.biography} />
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="5"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 4; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[4] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[4] ? '0px' : '55px'});`}
-	/>
 	{#if about.collaborators}
 		<section 
 		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
