@@ -330,7 +330,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		border: 1px solid white;
 		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 	}
 
@@ -370,8 +369,13 @@
 	}
 
 	.address-container {
-		border: 1px solid white;
+		border-top: 1px solid white;
 		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+	}
+
+	.address-container:nth-child(2) {
+		border-left: 1px solid white;
+		border-right: 1px solid white;
 	}
 
 	.location-title {
