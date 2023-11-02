@@ -291,9 +291,24 @@
 		align-items: center;
 	}
 
-	.logo-container:nth-child(2n) {
-		background-color: orange;
+	.logo-container:nth-child(odd) {
 		border-left: 1px solid white;
+	}
+
+	.logo-container:nth-child(even) {
+		border-left: 1px solid white;
+	}
+
+	.logo-container:nth-child(1), .logo-container:nth-child(5) {
+		border-left: 0px;
+	}
+
+	.logo-container:nth-child(4), .logo-container:nth-child(8) {
+		border-right: 0px;
+	}
+
+	.logo-container:nth-child(1), .logo-container:nth-child(2), .logo-container:nth-child(3), .logo-container:nth-child(4) {
+		border-bottom: 1px solid white;
 	}
 
 	.logo {
