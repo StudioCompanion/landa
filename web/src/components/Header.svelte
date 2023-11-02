@@ -118,7 +118,7 @@
 		width: 200px;
 		height: 18px;
 		overflow: hidden;
-		/* transform: translateY(0.2rem); */
+		transform: translateY(0.1rem);
 		transition: transform 0.1s ease-in-out;
 	}
 
