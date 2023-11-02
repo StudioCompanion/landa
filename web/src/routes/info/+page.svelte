@@ -243,12 +243,19 @@
 	.service {
 		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 		/* margin: 0rem 0 1.5rem 0; */
-		border: 1px solid white;
+		/* border: 1px solid white; */
 	}
 
-	/* Style the last .service element to have no margin */
-	.services .service:last-child {
-		margin: 0rem;
+	.services .service:nth-child(2n) {
+		border-left: 1px solid white;
+	}
+
+	.services .service:nth-child(1) {
+		border-bottom: 1px solid white;
+	}
+
+	.services .service:nth-child(2) {
+		border-bottom: 1px solid white;
 	}
 
 	.service-title {
@@ -282,7 +289,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border: 1px solid white;
+	}
+
+	.logo-container:nth-child(2n) {
+		background-color: orange;
+		border-left: 1px solid white;
 	}
 
 	.logo {
@@ -386,10 +397,6 @@
 	@media screen and (min-width: 1024px) {
 		.page-container {
 			/* padding: 7rem 0rem 7rem 0rem; */
-		}
-
-		.dot {
-			margin: 4rem 0;
 		}
 
 		.description, .bio-section, .collaborators-section {
