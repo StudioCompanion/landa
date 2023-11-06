@@ -133,7 +133,7 @@
 				{#each about.addresses as address}
 					<div class="address-container">
 						<div class="location-title">
-							<strong>{address.location}</strong>
+							{address.location}
 						</div>
 						<div class="location-details">
 							{address.address}
@@ -190,7 +190,7 @@
 <style>
 
 :root {
-	--paragraph-alignment: left;
+	--paragraph-alignment: center;
 	--paragraph-margin: 1rem 0 0 0;
 }
 
@@ -220,7 +220,7 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 		margin: 0 auto 0 auto;
-		text-align: left;
+		text-align: center;
 		width: 100%;
 		border-top: 1px solid var(--white);
 		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-sm) var(--pad-mob-lg);
@@ -260,13 +260,13 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 		margin: 0;
-		text-align: left;
+		text-align: center;
 	}
 
 	.service-description {
 		font-family: var(--font-serif-italic);
 		font-size: var(--font-size-mob-lg);
-		text-align: left;
+		text-align: center;
 	}
 
 	/* Logo Block */
@@ -290,21 +290,21 @@
 	}
 
 	.logo-container:nth-child(odd) {
-		border-bottom: 1px solid var(--white);
-		border-right: 1px solid var(--white);
+		/* border-bottom: 1px solid var(--white);
+		border-right: 1px solid var(--white); */
 	}
 
 	.logo-container:nth-child(even) {
 		margin: -1px 0 0 0;
-		border-bottom: 1px solid var(--white);
+		/* border-bottom: 1px solid var(--white); */
 	}
 
 	.logo-container:nth-child(7), .logo-container:nth-child(8) {
-		border-bottom: 0px;
+		/* border-bottom: 0px; */
 	}
 
 	.logo-container:nth-child(1), .logo-container:nth-child(2), .logo-container:nth-child(3), .logo-container:nth-child(4) {
-		border-bottom: 1px solid var(--white);
+		/* border-bottom: 1px solid var(--white); */
 	}
 
 	.logo {
@@ -318,14 +318,14 @@
 	.contact-section {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
-		text-align: left;
+		text-align: center;
 		width: 100%;
 	}
 
 	.email-section {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
+		align-items: center;
 		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
 	}
 
@@ -352,10 +352,11 @@
 		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
 		margin-left: 0.5rem;
+		text-decoration: none;
 	}
 
 	.email-link:hover {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	.address-section {
@@ -375,7 +376,7 @@
 	}
 
 	.location-title {
-		font-family: var(--font-serif-bold);
+		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
 	}
 
@@ -425,18 +426,18 @@
 		.email-section {
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+			align-items: center;
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
 		}
 
 		.address-container {
 			border-top: 1px solid var(--white);
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
 		}
 
 		.description {
 			margin-top: 4rem;
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
 		}
 
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
@@ -444,7 +445,11 @@
 		}
 
 		.service {
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
 		}
 
 		.grid-container {
@@ -453,14 +458,10 @@
 			grid-template-columns: repeat(4, 1fr);
 			align-items: center;
 			justify-content: center;
+			padding: 6rem 6rem;
 		}
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
-		}
-
-		.address-container {
-			border-top: 1px solid var(--white);
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 		}
 
 		.address-container:nth-child(2) {
@@ -469,15 +470,15 @@
 		}
 
 		.logo-container:nth-child(odd) {
-			border-left: 1px solid var(--white);
+			/* border-left: 1px solid var(--white); */
 		}
 
 		.logo-container:nth-child(1), .logo-container:nth-child(5) {
-			border-left: 1px solid transparent;
+			/* border-left: 1px solid transparent; */
 		}
 
 		.logo-container:nth-child(6), .logo-container:nth-child(5) {
-			border-bottom: none;
+			/* border-bottom: none; */
 		}
 
 		.bio-section {
