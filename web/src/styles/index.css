@@ -28,6 +28,12 @@
 	--pad-mob-sm: 0.75rem;
 	--pad-mob-lg: 1rem;
 
+	--max-width-giant: 100rem;
+	--max-width-desk: 60rem;
+	--max-width-mob: 24rem;
+
+	--content-p-max-width: 50rem;
+
 	--section-padding-g: 4rem;
 	--section-padding-d: 3rem;
 	--section-padding-m: 1rem;
@@ -124,6 +130,7 @@ a {
 	font-family: var(--font-serif);
 	font-weight: 400;
 	text-align: var(--paragraph-alignment);
+	max-width: var(--content-p-max-width);
 }
 
 .content p:first-of-type {
