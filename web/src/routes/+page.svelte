@@ -7,6 +7,7 @@
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
+	import { redirect } from '@sveltejs/kit';
 
 	let loading = true;
 	let show = false;
@@ -46,28 +47,54 @@
 	{#if data.splashscreen && !show}
 		<Flicker images={data.splashscreen} />
 	{/if}
-	<div class="bio">
-		<Content value={data.homepage.bio} />
+	<div class="bioContainer">
+		<div class="bio">
+			<Content value={data.homepage.bio} />
+		</div>
 	</div>
 	<ProjectSummaryList projects={data.projects} homepage />
 
 	<style>
+
+		:root {
+			--content-p-max-width: 40rem;
+		}
+
+		.bioContainer {
+			border-bottom: 1px solid #B0B0B0;
+		}
+
 		.bio {
-			font-size: var(--font-size-l-m);
-			padding-left: 1rem;
-			padding-right: 1rem;
-			margin: 5.75rem auto 2.75rem auto;
-			max-width: 45rem;
+			font-size: var(--font-size-mob-lg);
+			margin: 4.75rem auto 1.75rem auto;
+			padding: 0px 16px;
+		}
+
+		.bio .content {
+			margin: 0 auto;
+			text-align: center;
 		}
 
 		@media screen and (min-width: 1024px) {
 			.bio {
-				font-size: var(--font-size-l-d);
-				padding-left: 1rem;
-				padding-right: 1rem;
-				margin: 5.75rem auto 2.75rem auto;
-				max-width: 60rem;
+				font-size: var(--font-size-desk-lg);
+				margin: 6.75rem auto 2.75rem auto;
+				padding: 0px 32px;
+			}
+			:root {
+				--content-p-max-width: 60rem;
 			}
 		}		
+
+		@media screen and (min-width: 1680px) {
+			.bio {
+				font-size: var(--font-size-giant-lg);
+				width: 100%;
+				margin: 7.75rem auto 3.5rem auto;
+			}
+			:root {
+				--content-p-max-width: 80rem;
+			}
+		}
 	</style>
 {/if}

@@ -21,12 +21,16 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
+
+	let isInfoPage = false;
+	$: isInfoPage = $page.route.id === '/info';
 </script>
 
-<header class:scrolled={$page.route.id === '/' && scrolled}>
-	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">All work</a>
+<header class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
+	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a class="logo" href="/">
 		<svg
+			class={isInfoPage ? 'no-hover-color' : ''}
 			width="173"
 			height="24"
 			viewBox="0 0 173 24"
@@ -80,7 +84,7 @@
 		</svg>
 	</a>
 
-	<a class="text-link" href="/info">Info</a>
+	<a class="text-link" class:infoActive={isInfoPage} href="/info">Info</a>
 </header>
 
 <style>
@@ -91,10 +95,13 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: 1rem;
+		padding: 12px 20px;
 		z-index: 50;
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-sm);
+		background: white;
+		border-bottom: 1px solid var(--light-grey);
+		transition: all 0.1s ease-out;
 	}
 
 	/* Logo Colour */
@@ -108,10 +115,30 @@
 		left: 0;
 		right: 0;
 		margin: 0 auto;
-		width: 144px;
+		width: 200px;
+		height: 18px;
 		overflow: hidden;
-		transform: translateY(0rem);
+		transform: translateY(0.13rem);
 		transition: transform 0.1s ease-in-out;
+	}
+
+	.logo svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.logo:hover svg {
+		color: var(--black);
+		transition: color 0.2s ease-in-out;
+	}
+
+	.logo svg {
+		transition: color 0.2s ease-in-out;
+	}
+
+	.logo:hover svg:not(.no-hover-color) {
+		color: var(--red);
+		transition: color 0.2s ease-in-out;
 	}
 
 	/* Default Link Styles */
@@ -132,39 +159,87 @@
 		transition: color 0.4s ease-out;
 	}
 
+	/* Adjust the Info link when active */
+	a.infoActive {
+		color: white;  /* White when active */
+		transition: color 0.4s ease-out;
+	}
+
+    /* Adjust the Info link on hover when active */
+	a.infoActive:hover {
+		color: black;  /* White on rollover */
+		transition: color 0.4s ease-out;
+	}
+
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
-		line-height: 200%;
+		line-height: 160%;
 		transition: all 0.4s ease-out;
 	}
 
 	/* Dealing with the logo positioning on root animation */
 	.scrolled .text-link {
-		opacity: 0;
+		/* opacity: 0; */
 	}
 
 	.scrolled .logo {
-		transform: translateY(2.5rem);
+		/* transform: translateY(3rem); */
+	}
+
+	.scrolled {
+		background: none;
+		/* border-bottom: 1px solid transparent; */
+	}
+
+	.globalScrolled {
+		background: none;
+		/* border-bottom: 1px solid transparent; */
+	}
+
+	.infoScrolled {
+		background: red;
+		border-bottom: 1px solid var(--light-grey);
 	}
 
 
 	@media screen and (min-width: 1024px) {
 		header {
-			padding: 2rem;
-			font-size: var(--font-size-s-d);
+			padding: 20px 32px;
+			font-size: var(--font-size-desk-sm);
 		}
 
 		.logo {
-			width: 173px;
+			width: 200px;
+			height: 28px;
+			transform: translateY(-0.12rem);
 		}
 
 		.scrolled .logo {
-			transform: translateY(1.5rem);
+			/* transform: translateY(1.5rem); */
 		}
 
 		.text-link {
-			line-height: 190%;
+			line-height: 155%;
+		}
+	}
+
+	@media screen and (min-width: 1680px) {
+		header {
+			font-size: var(--font-size-giant-sm);
+		}
+		.text-link {
+			line-height: 120%;
+		}
+
+		.logo {
+			width: 280px;
+			height: 32px;
+			transform: translateY(-0.3rem);
+		}
+
+		.scrolled .logo {
+			/* transform: translateY(1.2rem); */
 		}
 	}
 </style>

@@ -44,28 +44,20 @@
 			on:enter={() => {
 				$visibilityStore.description = true;
 			}}
-		class="description" 
+		class="description section" 
 		id="description">
 			<Content value={about.description} />
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="1"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 0; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[0] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[0] ? '0px' : '55px'});`}
-	/>
 
 	{#if about.services}
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Services</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.services ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -74,8 +66,7 @@
 			on:enter={() => {
 				$visibilityStore.services = true;
 			}}
-		class="services">
-		<h2 class="section-title" id="section_title">Services</h2>
+		class="services section">
 		{#each about.services as service}
 			<div class="service">
 				<h3 class="service-title">{service.title}</h3>
@@ -84,22 +75,14 @@
 		{/each}
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="2"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 1; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[1] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[1] ? '0px' : '55px'});`}
-	/>
 	{#if about.logos}
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 		<div 
 		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -108,9 +91,8 @@
 			on:enter={() => {
 				$visibilityStore.logos = true;
 			}}
-		class="logo-section" 
+		class="logo-section section" 
 		id="logo_grid">
-			<h2 class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
 			<div class="grid-container">
 				{#each about.logos as logo}
 					<div class="logo-container">
@@ -120,21 +102,13 @@
 			</div>
 		</div>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="3"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 2; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[2] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[2] ? '0px' : '55px'});`}
-	/>
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Contact</h2>
 	<section
 	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -143,10 +117,9 @@
 			on:enter={() => {
 				$visibilityStore.contact = true;
 			}}
-	class="contact-section">
+	class="contact-section section">
 		{#if about.contact}
 			<section class="email-section" id="description">
-				<h2 class="section-title" id="section_title">Contact</h2>
 				{#each about.contact as contact}
 					<div class="email-container">
 						<h3 class="email-label">{contact.label}</h3>
@@ -160,7 +133,7 @@
 				{#each about.addresses as address}
 					<div class="address-container">
 						<div class="location-title">
-							<strong>{address.location}</strong>
+							{address.location}
 						</div>
 						<div class="location-details">
 							{address.address}
@@ -170,22 +143,14 @@
 			</section>
 		{/if}
 	</section>
-	<div 
-		class="dot" 
-		data-dot-index="4"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 3; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[3] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[3] ? '0px' : '55px'});`}
-	/>
 	{#if about.biography}
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Biography</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -194,28 +159,19 @@
 			on:enter={() => {
 				$visibilityStore.biography = true;
 			}}
-		class="bio-section" 
+		class="bio-section section" 
 		id="description">
-			<h2 class="section-title" id="section_title">Biography</h2>
 			<Content value={about.biography} />
 		</section>
 	{/if}
-	<div 
-		class="dot" 
-		data-dot-index="5"
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			const index = 4; 
-			visibilityStore.update(store => {
-				store.dots[index] = true;
-				return store;
-			});
-		}}
-		style={`opacity: ${$visibilityStore.dots[4] ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.dots[4] ? '0px' : '55px'});`}
-	/>
 	{#if about.collaborators}
+	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
+	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
+	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.5 }}
+	on:enter={() => {
+		$visibilityStore.description = true;
+	}} class="section-title" id="section_title">Collaborators</h2>
 		<section 
 		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
 			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
@@ -224,15 +180,28 @@
 			on:enter={() => {
 				$visibilityStore.collaborators = true;
 			}}
-		class="collaborators-section" 
+		class="collaborators-section section" 
 		id="description">
-			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<Content value={about.collaborators} />
 		</section>
 	{/if}
 </div>
 
 <style>
+
+	:root {
+		--paragraph-alignment: center;
+		--paragraph-margin: 1rem 0 0 0;
+		--content-p-max-width: 40rem;
+	}
+
+	@media screen and (min-width: 1024px) {
+		:root {
+			--paragraph-alignment: center;
+			--paragraph-margin: 1rem 0 0 0;
+			--content-p-max-width: 70rem;
+		}
+	}
 
 	.page-container {
 		background-color: var(--red);
@@ -241,87 +210,116 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 5rem 0rem 5rem 0rem;
+		/* padding: 5rem 0rem 5rem 0rem; */
+	}
+
+	.section {
+		width: 100%;
+		border-top: 1px solid var(--white);
+	}
+
+	.description {
+		margin-top: 3rem;
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
+		display: flex;
+		justify-content: center;
 	}
 
 	/* Reused Items */
 	.section-title {
-		font-family: var(--font-serif-bold);
-		font-size: var(--font-size-m-m);
-		margin: 0 auto 1rem auto;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-lg);
+		margin: 0 auto 0 auto;
 		text-align: center;
-		width: auto;
-	}
-
-	.dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 999px;
-		background-color: var(--white);
-		margin: 2rem 0;
+		width: 100%;
+		border-top: 1px solid var(--white);
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-sm) var(--pad-mob-lg);
 	}
 
 	/* Intro Block */
 	.description {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	/* Services Block */
 	.services {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 0 var(--section-padding-m);
-		font-size: var(--font-size-m-m);
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		align-items: stretch;
+		font-size: var(--font-size-mob-lg);
 	}
-
 
 	.service {
-		margin: 0rem 0 1.5rem 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 	}
 
-	/* Style the last .service element to have no margin */
-	.services .service:last-child {
-		margin: 0rem;
+	.services .service:nth-child(2n) {
+		border-left: 1px solid var(--white);
+	}
+
+	.services .service:nth-child(1) {
+		border-bottom: 1px solid var(--white);
+	}
+
+	.services .service:nth-child(2) {
+		border-bottom: 1px solid var(--white);
 	}
 
 	.service-title {
-		font-family: var(--font-serif-bold-italic);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-lg);
 		margin: 0;
 		text-align: center;
 	}
 
 	.service-description {
 		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
-		max-width: 30rem;
 	}
 
 	/* Logo Block */
 	.logo-section {
-		max-width: var(--max-width);
-		padding: 0 var(--section-padding-m);
+		/* max-width: var(--max-width); */
 	}
 
 	.grid-container {
 		display: grid;
 		width: 100%;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
+		/* gap: 1rem; */
 		align-items: center;
 		justify-content: center;
-		margin: 1rem 0 0 0;
+		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
 	}
 
 	.logo-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.logo-container:nth-child(odd) {
+		/* border-bottom: 1px solid var(--white);
+		border-right: 1px solid var(--white); */
+	}
+
+	.logo-container:nth-child(even) {
+		margin: -1px 0 0 0;
+		/* border-bottom: 1px solid var(--white); */
+	}
+
+	.logo-container:nth-child(7), .logo-container:nth-child(8) {
+		/* border-bottom: 0px; */
+	}
+
+	.logo-container:nth-child(1), .logo-container:nth-child(2), .logo-container:nth-child(3), .logo-container:nth-child(4) {
+		/* border-bottom: 1px solid var(--white); */
 	}
 
 	.logo {
@@ -334,15 +332,20 @@
 
 	.contact-section {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		text-align: center;
 		width: 100%;
-		max-width: var(--max-width);
-		padding: 0 var(--section-padding-m);
 	}
 
 	.email-section {
-		margin: 0rem 0rem 2rem 0rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
+	}
+
+	.email-section .email-container:last-of-type {
+		margin: 0;
 	}
 
 	.email-container {
@@ -350,98 +353,169 @@
 		flex-direction: row;
 		align-items: baseline;
 		justify-content: center;
+		margin: 0 0 0.25rem 0;
 	}
 
 	.email-label {
-		margin: 0 0.5rem;
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
+		margin: 0;
 	}
 
 	.email-link {
 		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 		line-height: 100%;
+		margin-left: 0.5rem;
+		text-decoration: none;
 	}
 
 	.email-link:hover {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	.address-section {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: 1rem;
 		width: 100%;
 	}
 
+	.address-container {
+		border-top: 1px solid var(--white);
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
+	}
+
+	.address-container:nth-child(2) {
+		border-left: 0px solid var(--white);
+		border-right: 0px solid var(--white);
+	}
+
 	.location-title {
-		font-family: var(--font-serif-bold);
-		font-size: var(--font-size-m-m);
+		font-family: var(--font-serif);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	.location-details {
 		font-family: var(--font-serif-italic);
 		word-break: break-all;
 		white-space: pre-line;
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-lg);
 	}
 
 	/* Biography */
 	.bio-section {
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
+		font-size: var(--font-size-mob-lg);
+		display: flex;
+		justify-content: center;
 	}
 	
 	/* Collaborators */
 	.collaborators-section {
+		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
-		max-width: 35rem;
-		padding: 0 var(--section-padding-m);
+		font-size: var(--font-size-mob-lg);
+		display: flex;
+		justify-content: center;
 	}
 
-	@media screen and (min-width: 768px){
+	@media screen and (min-width: 600px){
 		.grid-container {
 			grid-template-columns: repeat(4, 1fr);
 		}
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
-			gap: 1rem;
 		}
-	}
+	} 
 
 	@media screen and (min-width: 1024px) {
 		.page-container {
-			padding: 7rem 0rem 7rem 0rem;
+			/* padding: 7rem 0rem 7rem 0rem; */
 		}
 
-		.dot {
-			margin: 4rem 0;
+		.section-title {
+			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-sm) var(--pad-desk-lg);
 		}
 
 		.description, .bio-section, .collaborators-section {
-			max-width: 70rem;
-			font-size: var(--font-size-l-d);
-			padding: 0 var(--section-padding-d);
+			font-size: var(--font-size-desk-lg);
 		}
+
+		.email-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
+		}
+
+		.address-container {
+			border-top: 1px solid var(--white);
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
+		}
+
+		.description {
+			margin-top: 4rem;
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
+		}
+
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size-l-d);
-			max-width: 70rem;
+			font-size: var(--font-size-desk-lg);
 		}
+
+		.service {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
+		}
+
 		.grid-container {
 			display: grid;
 			width: 100%;
 			grid-template-columns: repeat(4, 1fr);
-			gap: 1rem;
 			align-items: center;
 			justify-content: center;
+			padding: 6rem 6rem;
 		}
 		.address-section {
 			grid-template-columns: repeat(3, 1fr);
-			gap: 1rem;
+		}
+
+		.address-container:nth-child(2) {
+			border-left: 1px solid var(--white);
+			border-right: 1px solid var(--white);
+		}
+
+		.logo-container:nth-child(odd) {
+			/* border-left: 1px solid var(--white); */
+		}
+
+		.logo-container:nth-child(1), .logo-container:nth-child(5) {
+			/* border-left: 1px solid transparent; */
+		}
+
+		.logo-container:nth-child(6), .logo-container:nth-child(5) {
+			/* border-bottom: none; */
+		}
+
+		.bio-section {
+			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+		}
+	
+		/* Collaborators */
+		.collaborators-section {
+			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
+		}
+	}
+
+	@media screen and (min-width: 1680px) {
+		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
+			font-size: var(--font-size-giant-lg);
+		}
+		.description, .bio-section, .collaborators-section {
+			font-size: var(--font-size-giant-lg);
 		}
 	}
 </style>

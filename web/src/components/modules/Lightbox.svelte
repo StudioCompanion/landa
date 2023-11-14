@@ -109,7 +109,8 @@
 		background-color: transparent;
 		right: 1rem;
 		font-family: var(--font-serif);
-		font-size: var(--font-size-m-m);
+		 
+		font-size: var(--font-size-mob-sm);
 		transition: color 0.25s ease-in-out;
 	}
 
@@ -121,6 +122,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.close {
+			font-size: var(--font-size-desk-sm);
 			top: 2rem;
 			right: 2rem;
 		}
@@ -151,15 +153,30 @@
 		bottom: 1rem;
 		left: 50%;
 		transform: translateX(-50%);
-		font-size: var(--font-size-m-m);
+		font-size: var(--font-size-mob-sm);
 		font-family: var(--font-serif);
+		 
 		text-align: center;
 	}
 	
 	@media screen and (min-width: 1024px) {
 		.caption {
 			bottom: 2rem;
-			font-size: var(--font-size-m-d);
+			font-size: var(--font-size-desk-sm);
+		}
+
+		.close {
+			font-size: var(--font-size-desk-sm);
+		}
+	}
+
+	@media screen and (min-width: 1680px) {
+		.caption {
+			font-size: var(--font-size-giant-sm);
+		}
+
+		.close {
+			font-size: var(--font-size-giant-sm);
 		}
 	}
 

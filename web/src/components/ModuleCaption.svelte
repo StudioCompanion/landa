@@ -9,7 +9,7 @@
 <style>
 	.caption {
 		font-family: var(--font-serif);
-		font-size: var(--font-size-s-m);
+		font-size: var(--font-size-mob-sm);
 		text-align: center;
 		padding: 1rem 0 0 0;
 	}
@@ -17,8 +17,14 @@
 	@media screen and (min-width: 1024px) {
 		.caption {
 			font-family: var(--font-serif);
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 			padding: 1.5rem 0 0 0;
+		}
+	}
+
+	@media screen and (min-width: 1680px) {
+		.caption {
+			font-size: var(--font-size-giant-sm);		
 		}
 	}
 </style>

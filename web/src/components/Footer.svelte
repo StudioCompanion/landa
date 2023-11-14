@@ -19,7 +19,7 @@
 
 <style>
 	footer {
-		background-color: var(--light-grey);
+		background-color: var(--lightest-grey);
 		color: var(--dark-grey);
 		display: flex;
 		flex-direction: column;
@@ -27,7 +27,9 @@
 		align-items: flex-start;
 		padding: 2rem 1rem;
 		font-family: var(--font-serif);
-		font-size: var(--font-size-s-m);
+		font-size: var(--font-size-mob-sm);
+		border-top: 1px solid var(--light-grey);
+		margin: -1px 0px 0px 0px;
 	}
 
 	footer a {
@@ -59,9 +61,14 @@
 			flex-direction: row;
 			align-items: center;
 			padding: 1.5rem 2rem;
-			font-size: var(--font-size-s-d);
+			font-size: var(--font-size-desk-sm);
 		}
 	}
 
+	@media screen and (min-width: 1680px) {
+		footer {
+			font-size: var(--font-size-giant-sm);
+		}
+	}
 	
 </style>
