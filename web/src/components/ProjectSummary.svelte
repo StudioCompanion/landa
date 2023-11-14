@@ -197,7 +197,7 @@
 		}
 	}
 
-	@media (min-width: 1680px) {
+	@media (min-width: 1500px) {
 		.project-boxlink .project-summary {
 			border-right: 1px solid var(--light-grey);
 		}

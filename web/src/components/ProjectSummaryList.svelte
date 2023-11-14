@@ -42,7 +42,7 @@
 		}
 	}
 
-	@media (min-width: 1680px) {
+	@media (min-width: 1500px) {
 		.work-route {
 			grid-template-columns: repeat(5, 1fr);
 		}
