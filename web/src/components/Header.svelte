@@ -118,7 +118,7 @@
 		width: 200px;
 		height: 18px;
 		overflow: hidden;
-		transform: translateY(0.1rem);
+		transform: translateY(0.13rem);
 		transition: transform 0.1s ease-in-out;
 	}
 
@@ -233,9 +233,9 @@
 		}
 
 		.logo {
-			width: 300px;
-			height: 38px;
-			transform: translateY(-0.48rem);
+			width: 280px;
+			height: 32px;
+			transform: translateY(-0.3rem);
 		}
 
 		.scrolled .logo {
