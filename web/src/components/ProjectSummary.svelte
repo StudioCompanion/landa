@@ -56,7 +56,7 @@
 	.project-summary::before {
 		content: "";
 		display: block;
-		padding-top: 100%; /* This forces the container to maintain a square shape */
+		padding-top: 0; /* This forces the container to maintain a square shape */
 	}
 
 	.project-boxlink, .work-box {
@@ -82,6 +82,7 @@
 		margin-top: 12px;
 		text-align: left;
 		color: black;
+		max-width: 40rem;
 	}
 
 	.project-description .content p {
@@ -106,6 +107,9 @@
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-caption {
 			font-size: var(--font-size-desk-sm);
+		}
+
+		.project-description {
 			max-width: 30rem;
 		}
 	}
@@ -113,16 +117,18 @@
 	@media screen and (min-width: 1680px) {
 		.project-title, .project-caption {
 			font-size: var(--font-size-giant-sm);
+		}
+		.project-description {
 			max-width: 40rem;
 		}
 	}
 
 	.project-image-container {
-		position: absolute;
-		top: 20px; /* Offset by padding */
-		left: 20px;
-		right: 20px;
-		bottom: calc(16px + 40px); /* Adjust for padding and estimated caption height */
+		position: relative;
+		top: 0px; /* Offset by padding */
+		left: 0px;
+		right: 0px;
+		bottom: 0px; /* Adjust for padding and estimated caption height */
 		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
@@ -164,12 +170,39 @@
 		.project-boxlink .project-summary {
 			border-right: 1px solid transparent;
 		}
-		.project-boxlink:nth-last-of-type(1) .project-summary, .work-box:nth-last-of-type(1) .project-summary {
+		.project-boxlink:nth-last-of-type(1) .project-summary {
 			border-bottom: 1px solid transparent;
 		}
 	}
 
 	@media (min-width: 1024px) {
+		.project-image-container {
+			position: absolute;
+			top: 20px; /* Offset by padding */
+			left: 20px;
+			right: 20px;
+			bottom: calc(16px + 40px); /* Adjust for padding and estimated caption height */
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.project-image {
+			max-width: 100%;
+			max-height: 95%;
+			display: block;
+			object-fit: contain;
+			width: auto;
+			height: auto;
+		}
+
+		.project-summary::before {
+			content: "";
+			display: block;
+			padding-top: 100%; /* This forces the container to maintain a square shape */
+		}
+
 		.project-boxlink .project-summary, .work-box .project-summary {
 			border-right: 1px solid var(--light-grey);
 		}
