@@ -7,6 +7,7 @@
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
+	import { redirect } from '@sveltejs/kit';
 
 	let loading = true;
 	let show = false;
@@ -54,25 +55,34 @@
 	<ProjectSummaryList projects={data.projects} homepage />
 
 	<style>
+
+		:root {
+			--content-p-max-width: 40rem;
+		}
+
 		.bioContainer {
 			border-bottom: 1px solid #B0B0B0;
 		}
 
 		.bio {
 			font-size: var(--font-size-mob-lg);
-			margin: 3.75rem 20px 1.75rem 20px;
-			max-width: 40rem;
+			margin: 4.75rem auto 1.75rem auto;
+			padding: 0px 16px;
 		}
 
 		.bio .content {
-			text-align: left;
+			margin: 0 auto;
+			text-align: center;
 		}
 
 		@media screen and (min-width: 1024px) {
 			.bio {
 				font-size: var(--font-size-desk-lg);
-				margin: 5.75rem 32px 3.75rem 32px;
-				max-width: 70rem;
+				margin: 6.75rem auto 2.75rem auto;
+				padding: 0px 32px;
+			}
+			:root {
+				--content-p-max-width: 60rem;
 			}
 		}		
 
@@ -80,8 +90,10 @@
 			.bio {
 				font-size: var(--font-size-giant-lg);
 				width: 100%;
-				max-width: 85rem;
-				margin: 5.75rem 32px 4.5rem 32px;
+				margin: 7.75rem auto 3.5rem auto;
+			}
+			:root {
+				--content-p-max-width: 80rem;
 			}
 		}
 	</style>
