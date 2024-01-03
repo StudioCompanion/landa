@@ -228,6 +228,7 @@
 	.project-description {
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-lg);
+		margin: 0 auto;
 	}
 
 	@media screen and (min-width: 1024px) {
