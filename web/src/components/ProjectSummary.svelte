@@ -37,9 +37,9 @@
 				width={width}
 				height={height}
 			/>
-			<div class="project-description" id="caption">
-				<span class="project-title">{project.title} {#if homepage}<span class="project-caption">{project.caption}</span>{/if}</span>
-			</div>
+		</div>
+		<div class="project-description" id="caption">
+			<span class="project-title">{project.title} {#if homepage}<span class="project-caption">{project.caption}</span>{/if}</span>
 		</div>
 	</div>
 </a>
@@ -110,7 +110,7 @@
 		}
 
 		.project-description {
-			max-width: 30rem;
+			max-width: 50rem;
 		}
 	}
 
@@ -119,7 +119,7 @@
 			font-size: var(--font-size-giant-sm);
 		}
 		.project-description {
-			max-width: 40rem;
+			max-width: 60rem;
 		}
 	}
 
@@ -197,6 +197,13 @@
 			height: auto;
 		}
 
+		.project-description {
+			position: absolute;
+			bottom: 32px;
+			left: 32px;
+			right: 32px;
+		}
+
 		.project-summary::before {
 			content: "";
 			display: block;
@@ -252,7 +259,7 @@
 			top: 32px;
 			left: 32px;
 			right: 32px;
-			bottom: calc(16px + 60px);
+			bottom: calc(16px + 45px);
 		}
 		.project-boxlink:nth-last-of-type(-n+3) .project-summary {
 			/* border-bottom: 1px solid transparent; */
