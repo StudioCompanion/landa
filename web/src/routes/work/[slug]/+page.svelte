@@ -61,18 +61,6 @@
 			.url()}
 	/>
 </svelte:head>
-<section
-	id="hero"
-	use:inView={{ threshold: 0.85 }}
-	on:enter={() => {
-		root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
-	}}
-	on:exit={() => {
-		root?.style.setProperty('--logo-color', 'black');
-	}}
->
-	<Media media={data.project.hero} />
-</section>
 <section class="description">
 	{#if data.project.description}
 		<div class="project-description">
@@ -90,6 +78,18 @@
 			{/each}
 		</div>
 	{/if} -->
+</section>
+<section
+	id="hero"
+	use:inView={{ threshold: 0.85 }}
+	on:enter={() => {
+		root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
+	}}
+	on:exit={() => {
+		root?.style.setProperty('--logo-color', 'black');
+	}}
+>
+	<Media media={data.project.hero} />
 </section>
 {#if data.project.modules}
 	{#each data?.project.modules as module}
