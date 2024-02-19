@@ -49,7 +49,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: var(--half-space);
+		padding: 2.4rem var(--half-space) var(--half-space) var(--half-space);
 		z-index: 50;
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
@@ -62,13 +62,19 @@
 		column-gap: 1rem;
 		display: flex;
 		flex-direction: row;
+		height: 20px;
+		line-height: 100%;
+	}
+
+	.left-wrap {
+		height: 20px;
+		line-height: 100%;
 	}
 
 	/* Default Link Styles */
 	header a {
 		text-decoration: none;
 		color: var(--logo-color);
-		height: 24px;
 		transition: color 0.4s ease-out;
 	}
 
@@ -99,7 +105,7 @@
 	}
 
 	.globalScrolled {
-		background: none;
+		/* background: none; */
 		/* border-bottom: 1px solid transparent; */
 	}
 </style>

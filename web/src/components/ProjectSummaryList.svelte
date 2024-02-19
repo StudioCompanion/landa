@@ -22,28 +22,28 @@
 	.work-route {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr); /* Default to 1 column */
-		margin-top: 78px;
+		margin-top: 70px;
 		overflow-x: hidden;
 		margin-bottom: -1px;
 	}
 
 	@media (min-width: 800px) {
 		.work-route {
-			margin-top: 78px;
+			margin-top: 70px;
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
 	@media (min-width: 1280px) {
 		.work-route {
-			margin-top: 78px;
+			margin-top: 70px;
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
 	@media (min-width: 1700px) {
 		.work-route {
-			margin-top: 78px;
+			margin-top: 70px;
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
