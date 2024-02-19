@@ -3,7 +3,7 @@
 	import Flicker from '../components/Flicker.svelte';
 	export let data;
 	import Cookies from 'js-cookie';
-	import ProjectSummaryList from '../components/ProjectSummaryList.svelte';
+	import HomepageProject from '../components/HomepageProject.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
@@ -52,7 +52,8 @@
 			<Content value={data.homepage.bio} />
 		</div>
 	</div>
-	<ProjectSummaryList projects={data.projects} homepage />
+	Sum list
+	<HomepageProject projects={data.projects} homepage />
 
 	<style>
 

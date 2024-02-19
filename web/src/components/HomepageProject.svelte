@@ -1,5 +1,5 @@
 <script>
-	import ProjectSummary from './ProjectSummary.svelte';
+	import ProjectFull from './ProjectFull.svelte';
 
 	export let projects;
 	export let homepage = false;
@@ -10,7 +10,7 @@
 
 <div class:work-route={$page.route.id === '/work'} class:project-summary-list={$page.route.id === '/'}>
 	{#each projects as project, index}
-		<ProjectSummary {project} {index} {homepage} />
+		<ProjectFull {project} {index} {homepage} />
 	{/each}
 </div>
 
@@ -22,35 +22,34 @@
 	.work-route {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr); /* Default to 1 column */
-		margin-top: 78px;
+		margin-top: 48px;
 		overflow-x: hidden;
-		margin-bottom: -1px;
+		background-color: red;
 	}
 
-	@media (min-width: 800px) {
+	.project-summary-list {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr); /* Default to 1 column */
+	}	
+
+	@media (min-width: 1024px) {
 		.work-route {
-			margin-top: 78px;
+			margin-top: 64px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.project-summary-list {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
-	@media (min-width: 1280px) {
-		.work-route {
-			margin-top: 78px;
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-
-	@media (min-width: 1700px) {
-		.work-route {
-			margin-top: 78px;
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-	@media (min-width: 2500px) {
+	@media (min-width: 1500px) {
 		.work-route {
 			grid-template-columns: repeat(5, 1fr);
+		}
+
+		.project-summary-list {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 </style>

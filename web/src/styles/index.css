@@ -13,6 +13,12 @@
 	--half-space: 2.6rem;         /* Equivalent to 26px */
 	--quarter-space: 1.3rem;      /* Equivalent to 13px */
 
+	--breakpoint-giant-desktop: 2500px;
+	--breakpoint-large-desktop: 1700px;
+	--breakpoint-desktop: 1280px;
+	--breakpoint-tablet: 800px;
+
+
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
 	--font-size-giant-lg: 2.25rem;  /* 36 Px */
 	--font-size-mob-lg: 0.875; /* 14 Px */
