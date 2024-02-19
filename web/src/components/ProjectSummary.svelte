@@ -47,8 +47,8 @@
 <style>
 	.project-summary {
 		position: relative;
-		border-right: 1px solid var(--light-grey);
-		border-bottom: 1px solid var(--light-grey);
+		border-right: 1px solid var(--black);
+		border-bottom: 1px solid var(--black);
 		padding: 16px;
 		box-sizing: content-box; /* Padding is outside the box */
 	}
@@ -106,7 +106,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-caption {
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size-desktop);
 		}
 
 		.project-description {
@@ -157,7 +157,7 @@
 	}
 
 	.work-box .project-summary {
-		border-right: 1px solid var(--light-grey);
+		border-right: 1px solid var(--black);
 	}
 
 	.work-box:nth-of-type(2n) .project-summary {
@@ -211,14 +211,14 @@
 		}
 
 		.project-boxlink .project-summary, .work-box .project-summary {
-			border-right: 1px solid var(--light-grey);
+			border-right: 1px solid var(--black);
 		}
 		.project-boxlink:nth-of-type(2n) .project-summary {
 			border-right: 1px solid transparent;
 		}
 
 		.work-box:nth-of-type(2n) .project-summary {
-			border-right: 1px solid var(--light-grey);
+			border-right: 1px solid var(--black);
 			margin-top: 0px;
 		}
 
@@ -239,16 +239,16 @@
 
 	@media (min-width: 1500px) {
 		.project-boxlink .project-summary {
-			border-right: 1px solid var(--light-grey);
+			border-right: 1px solid var(--black);
 		}
 		.project-boxlink:nth-of-type(2n) .project-summary {
-			border-right: 1px solid var(--light-grey);
+			border-right: 1px solid var(--black);
 		}
 		.project-boxlink:nth-of-type(3n) .project-summary {
 			border-right: 1px solid transparent;
 		}
 		.work-box:nth-of-type(4n) .project-summary {
-			border-right: 1px solid var(--light-grey);
+			border-right: 1px solid var(--black);
 			margin-top: 0px;
 		}
 		.work-box:nth-of-type(5n) .project-summary {

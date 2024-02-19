@@ -105,7 +105,7 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
 		background: white;
-		border-bottom: 1px solid var(--light-grey);
+		border-bottom: 1px solid var(--black);
 		transition: all 0.1s ease-out;
 	}
 
@@ -204,14 +204,14 @@
 
 	.infoScrolled {
 		background: red;
-		border-bottom: 1px solid var(--light-grey);
+		border-bottom: 1px solid var(--black);
 	}
 
 
 	@media screen and (min-width: 1024px) {
 		header {
 			padding: 20px 32px;
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size-desktop);
 		}
 
 		.logo {
