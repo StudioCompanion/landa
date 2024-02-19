@@ -77,7 +77,7 @@
 
 		@media screen and (min-width: 1024px) {
 			.bio {
-				font-size: var(--font-size-desk-lg);
+				font-size: var(--font-size-desktop);
 				margin: 6.75rem auto 2.75rem auto;
 				padding: 0px 32px;
 			}

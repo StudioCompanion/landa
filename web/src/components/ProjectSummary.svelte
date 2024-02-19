@@ -106,7 +106,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.project-title, .project-caption {
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size-desktop);
 		}
 
 		.project-description {

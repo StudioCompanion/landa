@@ -439,7 +439,7 @@
 		}
 
 		.description, .bio-section, .collaborators-section {
-			font-size: var(--font-size-desk-lg);
+			font-size: var(--font-size-desktop);
 		}
 
 		.email-section {
@@ -460,7 +460,7 @@
 		}
 
 		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size-desk-lg);
+			font-size: var(--font-size-desktop);
 		}
 
 		.service {
