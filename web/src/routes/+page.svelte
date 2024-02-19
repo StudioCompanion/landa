@@ -12,7 +12,7 @@
 	let loading = true;
 	let show = false;
 	onMount(() => {
-		show = Cookies.get('splashscreen');
+		// show = Cookies.get('splashscreen');
 		loading = false;
 	});
 </script>
