@@ -28,7 +28,7 @@
 
 <style>
 	footer {
-		background-color: var(--lightest-grey);
+		background-color: var(--black);
 		color: var(--dark-grey);
 		display: flex;
 		flex-direction: column;
@@ -37,7 +37,7 @@
 		padding: 2rem 1rem;
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
-		border-top: 1px solid var(--light-grey);
+		border-top: 1px solid var(--black);
 		margin: -1px 0px 0px 0px;
 	}
 

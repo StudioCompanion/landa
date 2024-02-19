@@ -3,14 +3,16 @@
 	--red: #ff0000;
 	--white: #ffffff;
 	--black: #000000;
-	--dark-grey: #919191;
-	--light-grey: #B0B0B0;
-	--lightest-grey: #F2F2F2;
+	--grey: #999999;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
-	--font-serif-bold: 'JJannon Bold', serif;
-	--font-serif-bold-italic: 'JJannon Bold Italic', serif;
 	
+	--font-size-desktop: 1.6rem;  /* Equivalent to 16px */
+	--font-size-mobile: 1.3rem;   /* Equivalent to 13px */
+	--full-space: 5.2rem;         /* Equivalent to 52px */
+	--half-space: 2.6rem;         /* Equivalent to 26px */
+	--quarter-space: 1.3rem;      /* Equivalent to 13px */
+
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
 	--font-size-giant-lg: 2.25rem;  /* 36 Px */
 	--font-size-desk-lg: 2rem; /* 32 Px */
@@ -42,8 +44,8 @@
 	--section-margin-m: 2.5rem;
 	--rounded: 3rem;
 	--logo-color: black;
-  --paragraph-margin: 0;
-  --paragraph-alignment: center;
+	--paragraph-margin: 0;
+	--paragraph-alignment: center;
 }
 
 @font-face {
@@ -105,10 +107,11 @@ html,
 body, {
 	font-family: var(--font-serif);
 	font-weight: 400;
+	font-size: 10px;
 }
 
 p {
-	margin: var(--paragraph-margin);
+	margin: var(--half-space);
 }
 
 h1,
@@ -139,7 +142,7 @@ a {
 
 strong {
 	 
-	font-family: var(--font-serif-bold);
+	font-family: var(--font-serif);
 }
 
 em {
@@ -147,5 +150,5 @@ em {
 }
 
 strong em {
-	font-family: var(--font-serif-bold-italic);
+	font-family: var(--font-serif-italic);
 }

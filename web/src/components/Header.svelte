@@ -105,7 +105,7 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
 		background: white;
-		border-bottom: 1px solid var(--light-grey);
+		border-bottom: 1px solid var(--black);
 		transition: all 0.1s ease-out;
 	}
 
@@ -204,7 +204,7 @@
 
 	.infoScrolled {
 		background: red;
-		border-bottom: 1px solid var(--light-grey);
+		border-bottom: 1px solid var(--black);
 	}
 
 
