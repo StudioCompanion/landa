@@ -127,7 +127,7 @@
         height: auto;
         bottom: 2rem;
 		left: 2rem;
-        fill: black;
+        fill: white;
         stroke-width: 0;
         animation: pulse 3s infinite ease-in-out;
     }

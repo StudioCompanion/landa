@@ -1,8 +1,17 @@
 <script>
+	import { onMount } from 'svelte';
 	let date = new Date().getFullYear();
+
+	let footerOpacity = 0; // Initial opacity
+
+	onMount(() => {
+		setTimeout(() => {
+		footerOpacity = 1; // Transition to full opacity
+	}, 0); // Adjust timing as needed
+	});
 </script>
 
-<footer>
+<footer style="opacity: {footerOpacity}; transition: opacity 400ms;">
 	<nav>
 		<a href="/work">Work</a>
 		<a href="/info">Info</a>
