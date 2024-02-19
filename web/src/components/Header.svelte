@@ -2,9 +2,14 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 
+	let headerOpacity = 0;
 	let scrolled = false;
 
 	onMount(() => {
+		setTimeout(() => {
+			headerOpacity = 1; // Transition to full opacity
+		}, 0); // Adjust timing as needed
+
 		const handleScroll = () => {
 			// Checks if the page has been scrolled slightly
 			scrolled = window.scrollY < 25;
@@ -26,7 +31,7 @@
 	$: isInfoPage = $page.route.id === '/info';
 </script>
 
-<header class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
+<header style="opacity: {headerOpacity}; transition: opacity 400ms;" class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
 	<a class="text-link" class:active={$page.route.id === '/work'} href="/work">Work</a>
 	<a class="logo" href="/">
 		<svg
