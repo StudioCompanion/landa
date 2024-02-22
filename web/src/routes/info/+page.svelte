@@ -190,6 +190,13 @@ section h3 {
 	flex-direction: column;
 }
 
+@media (min-width: 800px) {
+	.address-section {
+		flex-direction: row;
+		gap: var(--full-space);
+	}
+}
+
 .address-container {
 	display: flex;
 	flex-direction: column;
