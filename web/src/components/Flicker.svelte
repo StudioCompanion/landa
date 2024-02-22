@@ -107,7 +107,7 @@
 	}
 
 	.splashscreen-inner {
-		padding: 2rem;
+		padding: var(--half-space);
 		position: relative;
 		width: 100%;
 		height: 100%;
@@ -123,10 +123,10 @@
 
 	.loading-circle {
         position: absolute;
-        width: 1rem;
+        width: var(--quarter-space);
         height: auto;
-        bottom: 2rem;
-		left: 2rem;
+        bottom: var(--half-space);
+		left: var(--half-space);
         fill: white;
         stroke-width: 0;
         animation: pulse 3s infinite ease-in-out;
