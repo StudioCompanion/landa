@@ -52,7 +52,6 @@
 			<Content value={data.homepage.bio} />
 		</div>
 	</div>
-	Sum list
 	<HomepageProject projects={data.projects} homepage />
 
 	<style>
