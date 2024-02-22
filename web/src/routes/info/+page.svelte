@@ -21,501 +21,181 @@
 		},
 		dots: Array(5).fill(false) 
 	});
-
-	onMount(() => {
-		if (document) {
-			root = document.querySelector(':root');
-			root?.style.setProperty('--logo-color', 'white');
-		}
-	});
-
-	onDestroy(() => {
-		root?.style.setProperty('--logo-color', 'black');
-	});
 </script>
 
 <div class="page-container" id="main">
-	{#if about.description}
-		<section 
-		style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.description = true;
-			}}
-		class="description section" 
-		id="description">
-			<Content value={about.description} />
-		</section>
-	{/if}
-
-	{#if about.services}
-	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		$visibilityStore.description = true;
-	}} class="section-title" id="section_title">Services</h2>
-		<section 
-		style={`opacity: ${$visibilityStore.services ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.services ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.services = true;
-			}}
-		class="services section">
-		{#each about.services as service}
-			<div class="service">
-				<h3 class="service-title">{service.title}</h3>
-				<div class="service-description">{service.content}</div>
+	<section>
+		{#if about.description}
+			<div class="description intro">
+				<Content value={about.description} />
 			</div>
-		{/each}
-		</section>
-	{/if}
-	{#if about.logos}
-	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		$visibilityStore.description = true;
-	}} class="section-title" id="section_title">{about.clients_title ?? 'Our internation roster'}</h2>
-		<div 
-		style={`opacity: ${$visibilityStore.logos ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.logos ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.logos = true;
-			}}
-		class="logo-section section" 
-		id="logo_grid">
-			<div class="grid-container">
-				{#each about.logos as logo}
-					<div class="logo-container">
-						<img class="logo" src={imageBuilder.image(logo).url()} alt="logo" />
-					</div>
-				{/each}
-			</div>
-		</div>
-	{/if}
-	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		$visibilityStore.description = true;
-	}} class="section-title" id="section_title">Contact</h2>
-	<section
-	style={`opacity: ${$visibilityStore.contact ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.contact ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.contact = true;
-			}}
-	class="contact-section section">
-		{#if about.contact}
-			<section class="email-section" id="description">
-				{#each about.contact as contact}
-					<div class="email-container">
-						<h3 class="email-label">{contact.label}</h3>
-						<a class="email-link" href={contact.url} target="_blank" rel="noreferrer">{contact.link_label}</a>
-					</div>
-				{/each}
-			</section>
-		{/if}
-		{#if about.addresses}
-			<section class="address-section" id="addresses">
-				{#each about.addresses as address}
-					<div class="address-container">
-						<div class="location-title">
-							{address.location}
-						</div>
-						<div class="location-details">
-							{address.address}
-						</div>
-					</div>
-				{/each}
-			</section>
 		{/if}
 	</section>
+
+	<section>
+		{#if about.services}
+		<h2 class="section-title" id="section_title">Services</h2>
+			<div class="services-section">
+			{#each about.services as service}
+				<div class="service">
+					<h3 class="service-title">{service.title}:</h3>
+					<div class="service-description">{service.content}</div>
+				</div>
+			{/each}
+			</div>
+		{/if}
+	</section>
+
+	<section>
+		<h2 class="section-title" id="section_title">Contact</h2>
+		<div class="contact-section">
+			{#if about.contact}
+				<div class="email-section">
+					{#each about.contact as contact}
+						<div class="email-container">
+							<h3 class="email-label">{contact.label}:</h3>
+							<a class="email-link" href={contact.url} target="_blank" rel="noreferrer">{contact.link_label}</a>
+						</div>
+					{/each}
+				</div>
+			{/if}
+			{#if about.addresses}
+				<div class="address-section" id="addresses">
+					{#each about.addresses as address}
+						<div class="address-container">
+							<div class="location-title">
+								{address.location}
+							</div>
+							<div class="location-details">
+								{address.address}
+							</div>
+						</div>
+					{/each}
+					</div>
+			{/if}
+		</div>
+	</section>
+
 	{#if about.biography}
-	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		$visibilityStore.description = true;
-	}} class="section-title" id="section_title">Biography</h2>
-		<section 
-		style={`opacity: ${$visibilityStore.biography ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.biography ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.biography = true;
-			}}
-		class="bio-section section" 
-		id="description">
-			<Content value={about.biography} />
+		<section>
+			<h2 class="section-title" id="section_title">Biography</h2>
+			<div class="bio-section">
+				<Content value={about.biography} />
+			</div>
 		</section>
 	{/if}
+	
 	{#if about.collaborators}
-	<h2 style={`opacity: ${$visibilityStore.description ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${$visibilityStore.description ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		$visibilityStore.description = true;
-	}} class="section-title" id="section_title">Collaborators</h2>
-		<section 
-		style={`opacity: ${$visibilityStore.collaborators ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${$visibilityStore.collaborators ? '0px' : '55px'});`}
-			use:inView={{ threshold: 0.5 }}
-			on:enter={() => {
-				$visibilityStore.collaborators = true;
-			}}
-		class="collaborators-section section" 
-		id="description">
-			<Content value={about.collaborators} />
+		<section>
+			<h2 class="section-title" id="section_title">Collaborators</h2>
+			<div class="collaborators-section">
+				<Content value={about.collaborators} />
+			</div>
 		</section>
 	{/if}
 </div>
 
 <style>
+:root {
+	--paragraph-alignment: left;
+	--paragraph-margin: var(--quarter-space) 0 var(--quarter-space) 0;
+	--content-p-max-width: 40rem;
+	--first-paragraph-margin: 0;
+}
 
+@media screen and (min-width: 1024px) {
 	:root {
-		--paragraph-alignment: center;
-		--paragraph-margin: 1rem 0 0 0;
-		--content-p-max-width: 40rem;
+		--paragraph-alignment: left;
+		--paragraph-margin: var(--quarter-space) 0 var(--quarter-space) 0;
+		--content-p-max-width: 70.5rem;
+		--first-paragraph-margin: 0;
 	}
+}
 
-	@media screen and (min-width: 1024px) {
-		:root {
-			--paragraph-alignment: center;
-			--paragraph-margin: 1rem 0 0 0;
-			--content-p-max-width: 70rem;
-		}
+#main {
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+}
+
+section {
+	border-top: 1px solid var(--grey);
+}
+
+#main > section:first-of-type {
+        border-top: none;
+    }
+
+section h2 {
+	/* background: red; */
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+section h3 {
+	/* background: red; */
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.section-title, .description{
+	padding: var(--half-space);
+}
+
+.description {
+	/* background: yellow; */
+}
+
+.intro {
+	width: 90%;
+	text-indent: 105px;
+	line-height: var(--line-height);
+	font-size: var(--font-size);
+}
+
+@media (min-width: 800px) {
+	.intro {
+		width: 80%;
+		text-indent: 130px;
 	}
+}
 
-	.page-container {
-		background-color: var(--red);
-		color: var(--white);
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		/* padding: 5rem 0rem 5rem 0rem; */
-	}
+.bio-section, .collaborators-section, .email-section, .address-section, .services-section {
+	padding: 0 var(--half-space) var(--half-space) var(--half-space);
+	/* background :yellow; */
+}
 
-	.section {
-		width: 100%;
-		border-top: 1px solid var(--white);
-	}
+.services-section	{
+	display: flex;
+	flex-direction: column;
+	gap: var(--half-space);
+}
 
-	.description {
-		margin-top: 3rem;
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
-		display: flex;
-		justify-content: center;
-	}
+.email-container {
+	display: flex;
+	flex-direction: row;
+	gap: 2px;
+}
 
-	/* Reused Items */
-	.section-title {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		margin: 0 auto 0 auto;
-		text-align: center;
-		width: 100%;
-		border-top: 1px solid var(--white);
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-sm) var(--pad-mob-lg);
-	}
+.email-container a {
+	text-decoration: none;
+}
 
-	/* Intro Block */
-	.description {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-	}
+.email-container a:hover {
+	color: var(--grey);
+}
 
-	/* Services Block */
-	.services {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		align-items: stretch;
-		font-size: var(--font-size-mob-lg);
-	}
+.address-section {
+	display: flex;
+	gap: var(--half-space);
+	flex-direction: column;
+}
 
-	.service {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
-	}
+.address-container {
+	display: flex;
+	flex-direction: column;
+}
 
-	.services .service:nth-child(2n) {
-		border-left: 1px solid var(--white);
-	}
-
-	.services .service:nth-child(1) {
-		border-bottom: 1px solid var(--white);
-	}
-
-	.services .service:nth-child(2) {
-		border-bottom: 1px solid var(--white);
-	}
-
-	.service-title {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		margin: 0;
-		text-align: center;
-	}
-
-	.service-description {
-		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-mob-lg);
-		text-align: center;
-	}
-
-	/* Logo Block */
-	.logo-section {
-		/* max-width: var(--max-width); */
-	}
-
-	.grid-container {
-		display: grid;
-		width: 100%;
-		grid-template-columns: repeat(2, 1fr);
-		/* gap: 1rem; */
-		align-items: center;
-		justify-content: center;
-		padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
-	}
-
-	.logo-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.logo-container:nth-child(odd) {
-		/* border-bottom: 1px solid var(--white);
-		border-right: 1px solid var(--white); */
-	}
-
-	.logo-container:nth-child(even) {
-		margin: -1px 0 0 0;
-		/* border-bottom: 1px solid var(--white); */
-	}
-
-	.logo-container:nth-child(7), .logo-container:nth-child(8) {
-		/* border-bottom: 0px; */
-	}
-
-	.logo-container:nth-child(1), .logo-container:nth-child(2), .logo-container:nth-child(3), .logo-container:nth-child(4) {
-		/* border-bottom: 1px solid var(--white); */
-	}
-
-	.logo {
-		width: 100%;
-		height: auto;
-		padding: 5px;
-	}
-
-	/* Contact Block */
-
-	.contact-section {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		text-align: center;
-		width: 100%;
-	}
-
-	.email-section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
-	}
-
-	.email-section .email-container:last-of-type {
-		margin: 0;
-	}
-
-	.email-container {
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-		justify-content: center;
-		margin: 0 0 0.25rem 0;
-	}
-
-	.email-label {
-		font-size: var(--font-size-mob-lg);
-		line-height: 100%;
-		margin: 0;
-	}
-
-	.email-link {
-		font-family: var(--font-serif-italic);
-		font-size: var(--font-size-mob-lg);
-		line-height: 100%;
-		margin-left: 0.5rem;
-		text-decoration: none;
-	}
-
-	.email-link:hover {
-		text-decoration: underline;
-	}
-
-	.address-section {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		width: 100%;
-	}
-
-	.address-container {
-		border-top: 1px solid var(--white);
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
-	}
-
-	.address-container:nth-child(2) {
-		border-left: 0px solid var(--white);
-		border-right: 0px solid var(--white);
-	}
-
-	.location-title {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-	}
-
-	.location-details {
-		font-family: var(--font-serif-italic);
-		word-break: break-all;
-		white-space: pre-line;
-		font-size: var(--font-size-mob-lg);
-	}
-
-	/* Biography */
-	.bio-section {
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		display: flex;
-		justify-content: center;
-	}
-	
-	/* Collaborators */
-	.collaborators-section {
-		padding: var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg) var(--pad-mob-lg);
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		display: flex;
-		justify-content: center;
-	}
-
-	@media screen and (min-width: 600px){
-		.grid-container {
-			grid-template-columns: repeat(4, 1fr);
-		}
-		.address-section {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	} 
-
-	@media screen and (min-width: 1024px) {
-		.page-container {
-			/* padding: 7rem 0rem 7rem 0rem; */
-		}
-
-		.section-title {
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-sm) var(--pad-desk-lg);
-		}
-
-		.description, .bio-section, .collaborators-section {
-			font-size: var(--font-size);
-		}
-
-		.email-section {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
-		}
-
-		.address-container {
-			border-top: 1px solid var(--white);
-			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
-		}
-
-		.description {
-			margin-top: 4rem;
-			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
-		}
-
-		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size);
-		}
-
-		.service {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 4rem var(--pad-desk-lg) 4rem var(--pad-desk-lg);
-		}
-
-		.grid-container {
-			display: grid;
-			width: 100%;
-			grid-template-columns: repeat(4, 1fr);
-			align-items: center;
-			justify-content: center;
-			padding: 6rem 6rem;
-		}
-		.address-section {
-			grid-template-columns: repeat(3, 1fr);
-		}
-
-		.address-container:nth-child(2) {
-			border-left: 1px solid var(--white);
-			border-right: 1px solid var(--white);
-		}
-
-		.logo-container:nth-child(odd) {
-			/* border-left: 1px solid var(--white); */
-		}
-
-		.logo-container:nth-child(1), .logo-container:nth-child(5) {
-			/* border-left: 1px solid transparent; */
-		}
-
-		.logo-container:nth-child(6), .logo-container:nth-child(5) {
-			/* border-bottom: none; */
-		}
-
-		.bio-section {
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
-		}
-	
-		/* Collaborators */
-		.collaborators-section {
-			padding: var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg) var(--pad-desk-lg);
-		}
-	}
-
-	@media screen and (min-width: 1680px) {
-		.service-title, .service-description, .section-title, .email-link, .email-label, .location-title, .location-details {
-			font-size: var(--font-size-giant-lg);
-		}
-		.description, .bio-section, .collaborators-section {
-			font-size: var(--font-size-giant-lg);
-		}
-	}
+.location-details {
+	white-space: pre-line;
+}
 </style>

@@ -49,7 +49,8 @@
 	--rounded: 3rem;
 	--logo-color: black;
 	--paragraph-margin: 0;
-	--paragraph-alignment: center;
+	--first-paragraph-margin: 0;
+	--paragraph-alignment: left;
 }
 
 @media (min-width: 800px) {
@@ -162,8 +163,13 @@ span {
 	max-width: var(--content-p-max-width);
 }
 
-.content p:first-of-type {
-	margin: var(--paragraph-alignment);
+.content p:first-of-type, .content p:last-of-type {
+	margin: var(--first-paragraph-margin);
+}
+
+.content p {
+	margin: var(--paragraph-margin);
+	text-align: var(--paragraph-alignment);
 }
 
 p, li, a, ul {
