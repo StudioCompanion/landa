@@ -83,7 +83,7 @@
 	id="hero"
 	use:inView={{ threshold: 0.85 }}
 	on:enter={() => {
-		root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
+		// root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
 	}}
 	on:exit={() => {
 		root?.style.setProperty('--logo-color', 'black');

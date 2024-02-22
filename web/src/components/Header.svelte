@@ -28,7 +28,7 @@
 	});
 </script>
 
-<header style="opacity: {headerOpacity}; transition: opacity 400ms;" class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
+<header style="opacity: {headerOpacity}; transition: opacity 400ms;">
 	<div class="left-wrap">
 		<a class="text-link" href="/">Lane & Associates</a>
 	</div>
