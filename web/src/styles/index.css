@@ -7,11 +7,11 @@
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	
-	--font-size-desktop: 1.6rem;  /* Equivalent to 16px */
-	--font-size-mobile: 1.3rem;   /* Equivalent to 13px */
-	--full-space: 5.2rem;         /* Equivalent to 52px */
-	--half-space: 2.6rem;         /* Equivalent to 26px */
-	--quarter-space: 1.3rem;      /* Equivalent to 13px */
+	--font-size: 1.3rem;   /* Equivalent to 13px */
+	--full-space: 3.2rem;         /* Equivalent to 52px */
+	--half-space: 1.6rem;         /* Equivalent to 26px */
+	--quarter-space: 0.8rem;      /* Equivalent to 13px */
+	--line-height: 121%;
 
 	--breakpoint-giant-desktop: 2500px;
 	--breakpoint-large-desktop: 1700px;
@@ -50,6 +50,16 @@
 	--logo-color: black;
 	--paragraph-margin: 0;
 	--paragraph-alignment: center;
+}
+
+@media (min-width: 800px) {
+	:root {
+		--font-size: 1.6rem;  /* Equivalent to 16px */
+		--line-height: 116%;
+		--full-space: 5.2rem;         /* Equivalent to 52px */
+		--half-space: 2.6rem;         /* Equivalent to 26px */
+		--quarter-space: 1.3rem;
+	}
 }
 
 @font-face {
@@ -121,18 +131,27 @@ h3,
 h4,
 h5,
 h6 {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
 	font-family: var(--font-serif);
 	font-weight: 400;
 }
 
 a {
   color: inherit;
-  font-size: var(--font-size-desktop);
+  font-size: var(--font-size);
+  line-height: var(--line-height-mobile);
 }
 
 span {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
+	line-height: var(--line-height-mobile);
+}
+
+@media (min-width: 800px) {
+	span, a {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+	}	
 }
 
 /* The below font size declarations were being used  and meaning any component level wasn't applying, so commented out whilst I move to the component level definitions and then I'll remove.*/
@@ -148,20 +167,20 @@ span {
 }
 
 p, li, a, ul {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
 }
 
 strong {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
 	font-family: var(--font-serif);
 }
 
 em {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
 	font-family: var(--font-serif-italic);
 }
 
 strong em {
-	font-size: var(--font-size-desktop);
+	font-size: var(--font-size);
 	font-family: var(--font-serif-italic);
 }

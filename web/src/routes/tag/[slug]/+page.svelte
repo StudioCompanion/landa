@@ -86,7 +86,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.tag-details, .tag-name, .tag-description {
-			font-size: var(--font-size-desktop);
+			font-size: var(--font-size);
 		}
 	}
 

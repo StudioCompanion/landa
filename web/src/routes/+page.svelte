@@ -3,7 +3,7 @@
 	import Flicker from '../components/Flicker.svelte';
 	export let data;
 	import Cookies from 'js-cookie';
-	import HomepageProject from '../components/HomepageProject.svelte';
+	import HomeProjectList from '../components/HomeProjectList.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
@@ -52,7 +52,7 @@
 			<Content value={data.homepage.bio} />
 		</div>
 	</div>
-	<HomepageProject projects={data.projects} homepage />
+	<HomeProjectList projects={data.projects} homepage />
 
 	<style>
 
@@ -77,7 +77,7 @@
 
 		@media screen and (min-width: 1024px) {
 			.bio {
-				font-size: var(--font-size-desktop);
+				font-size: var(--font-size);
 				margin: 6.75rem auto 2.75rem auto;
 				padding: 0px 32px;
 			}

@@ -17,5 +17,5 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 #Temporary TO DO Storage
 
-- [] Bug: remove the border on the right hand side in /work
+- [ ] Bug: remove the border on the right hand side in /work
 

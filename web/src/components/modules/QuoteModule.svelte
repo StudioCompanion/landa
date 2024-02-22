@@ -61,12 +61,12 @@
 
 	@media (min-width: 1024px) {
 		blockquote {
-			font-size: var(--font-size-desktop);
+			font-size: var(--font-size);
 			max-width: 60rem;
 			padding: 0 var(--section-padding-d);
 		}
 		.quote-author {
-			font-size: var(--font-size-desktop);
+			font-size: var(--font-size);
 		}
 	}
 
