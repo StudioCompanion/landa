@@ -3,7 +3,7 @@
 	import Flicker from '../components/Flicker.svelte';
 	export let data;
 	import Cookies from 'js-cookie';
-	import ProjectSummaryList from '../components/ProjectSummaryList.svelte';
+	import HomeProjectList from '../components/HomeProjectList.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import Content from '../components/Content.svelte';
 	import { ClientError } from '@sanity/client';
@@ -47,54 +47,42 @@
 	{#if data.splashscreen && !show}
 		<Flicker images={data.splashscreen} />
 	{/if}
+
+
 	<div class="bioContainer">
 		<div class="bio">
 			<Content value={data.homepage.bio} />
 		</div>
 	</div>
-	<ProjectSummaryList projects={data.projects} homepage />
+
+	<HomeProjectList projects={data.projects} homepage />
 
 	<style>
 
 		:root {
-			--content-p-max-width: 40rem;
+			--content-p-max-width: 82.8rem;
 		}
 
 		.bioContainer {
-			border-bottom: 1px solid #B0B0B0;
+			margin: var(--half-space);
 		}
 
 		.bio {
-			font-size: var(--font-size-mob-lg);
-			margin: 4.75rem auto 1.75rem auto;
-			padding: 0px 16px;
+			width: 65%;
+			text-indent: 105px;
+			line-height: var(--line-height);
+			font-size: var(--font-size);
+		}
+
+		@media (min-width: 800px) {
+			.bio {
+				width: 80%;
+				text-indent: 130px;
+			}
 		}
 
 		.bio .content {
-			margin: 0 auto;
-			text-align: center;
-		}
-
-		@media screen and (min-width: 1024px) {
-			.bio {
-				font-size: var(--font-size-desk-lg);
-				margin: 6.75rem auto 2.75rem auto;
-				padding: 0px 32px;
-			}
-			:root {
-				--content-p-max-width: 60rem;
-			}
-		}		
-
-		@media screen and (min-width: 1680px) {
-			.bio {
-				font-size: var(--font-size-giant-lg);
-				width: 100%;
-				margin: 7.75rem auto 3.5rem auto;
-			}
-			:root {
-				--content-p-max-width: 80rem;
-			}
+			text-align: left;
 		}
 	</style>
 {/if}

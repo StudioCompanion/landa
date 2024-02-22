@@ -22,33 +22,37 @@
 	.work-route {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr); /* Default to 1 column */
-		margin-top: 48px;
+		margin-top: 70px;
 		overflow-x: hidden;
+		margin-bottom: -1px;
+		margin-right: -1px;
+		border-top: 1px solid var(--grey);
 	}
 
-	.project-summary-list {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr); /* Default to 1 column */
-	}	
-
-	@media (min-width: 1024px) {
+	@media (min-width: 800px) {
 		.work-route {
-			margin-top: 64px;
-			grid-template-columns: repeat(4, 1fr);
-		}
-
-		.project-summary-list {
+			margin-top: 70px;
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
-	@media (min-width: 1500px) {
+	@media (min-width: 1280px) {
+		.work-route {
+			margin-top: 70px;
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (min-width: 1700px) {
+		.work-route {
+			margin-top: 70px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	@media (min-width: 2500px) {
 		.work-route {
 			grid-template-columns: repeat(5, 1fr);
-		}
-
-		.project-summary-list {
-			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 </style>

@@ -75,7 +75,7 @@
 
 	.tag-name {
 		font-size: var(--font-size-mob-lg);
-		font-family: var(--font-serif-bold);
+		font-family: var(--font-serif);
 		margin: 0 auto 0.25rem auto;
 	}
 
@@ -86,7 +86,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.tag-details, .tag-name, .tag-description {
-			font-size: var(--font-size-desk-lg);
+			font-size: var(--font-size);
 		}
 	}
 

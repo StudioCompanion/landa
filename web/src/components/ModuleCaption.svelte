@@ -17,7 +17,7 @@
 	@media screen and (min-width: 1024px) {
 		.caption {
 			font-family: var(--font-serif);
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size);
 			padding: 1.5rem 0 0 0;
 		}
 	}
