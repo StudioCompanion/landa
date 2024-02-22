@@ -68,7 +68,7 @@
 		}
 
 		.bio {
-			width: 65%;
+			width: 90%;
 			text-indent: 105px;
 			line-height: var(--line-height);
 			font-size: var(--font-size);
