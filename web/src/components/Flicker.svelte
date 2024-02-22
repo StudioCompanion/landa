@@ -24,6 +24,8 @@
 					hide = true;
 					Cookies.set('splashscreen', false);
 				}, 50);
+				// Re-enable scrolling once the animation is complete
+				document.body.style.overflow = 'auto'; 
 			},
 			onUpdate: (v) => {
 				visible = Math.floor(v);
@@ -58,6 +60,9 @@
 	});
 
 	onMount(() => {
+		// Disable scrolling
+		document.body.style.overflow = 'hidden';
+
 		loaderVisible = true;
 		// Wait for the timeout and the preload to finish, whichever takes longer
 		Promise.all([timeout, preload()]).then(() => {
@@ -107,11 +112,18 @@
 	}
 
 	.splashscreen-inner {
-		padding: var(--half-space);
+		padding: 143px var(--half-space);
 		position: relative;
 		width: 100%;
 		height: 100%;
 	}
+
+	/* Tablet */
+	@media (min-width: 800px) {
+		.splashscreen-inner {
+			padding: 134px var(--half-space);
+		}
+	} 
 
 	.splash-image {
 		position: absolute;
