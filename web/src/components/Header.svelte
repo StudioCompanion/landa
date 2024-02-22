@@ -55,7 +55,6 @@
 		font-size: var(--font-size-mob-sm);
 		background: white;
 		border-bottom: 1px solid var(--grey);
-		transition: all 0.1s ease-out;
 	}
 
 	.right-wrap {
@@ -87,7 +86,6 @@
 	.text-link {
 		opacity: 1;
 		line-height: 160%;
-		transition: all 0.4s ease-out;
 	}
 
 	/* Dealing with the logo positioning on root animation */
