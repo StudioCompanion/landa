@@ -25,6 +25,8 @@
 		margin-top: 70px;
 		overflow-x: hidden;
 		margin-bottom: -1px;
+		margin-right: -1px;
+		border-top: 1px solid var(--grey);
 	}
 
 	@media (min-width: 800px) {

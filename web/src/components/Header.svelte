@@ -26,9 +26,6 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
-
-	let isInfoPage = false;
-	$: isInfoPage = $page.route.id === '/info';
 </script>
 
 <header style="opacity: {headerOpacity}; transition: opacity 400ms;" class:globalScrolled={$page.route.id !== '/' && scrolled} class:scrolled={$page.route.id === '/' && scrolled} class:infoScrolled={$page.route.id === '/info'}>
@@ -49,25 +46,21 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: 2.4rem var(--half-space) var(--half-space) var(--half-space);
+		padding: var(--half-space) var(--half-space) var(--half-space) var(--half-space);
 		z-index: 50;
 		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-sm);
-		background: white;
-		border-bottom: 1px solid var(--grey);
+		font-size: var(--font-size);
+		line-height: var(--line-height);
 	}
 
 	.right-wrap {
 		column-gap: 1rem;
 		display: flex;
 		flex-direction: row;
-		height: 20px;
-		line-height: 100%;
 	}
 
 	.left-wrap {
-		height: 20px;
-		line-height: 100%;
+		display: flex;
 	}
 
 	/* Default Link Styles */
@@ -85,7 +78,6 @@
 	/* Specific A Type Styles */
 	.text-link {
 		opacity: 1;
-		line-height: 160%;
 	}
 
 	/* Dealing with the logo positioning on root animation */
@@ -103,7 +95,7 @@
 	}
 
 	.globalScrolled {
-		/* background: none; */
+		background: none;
 		/* border-bottom: 1px solid transparent; */
 	}
 </style>
