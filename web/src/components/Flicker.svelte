@@ -112,7 +112,7 @@
 	}
 
 	.splashscreen-inner {
-		padding: 143px var(--half-space);
+		padding: 127px var(--half-space);
 		position: relative;
 		width: 100%;
 		height: 100%;
