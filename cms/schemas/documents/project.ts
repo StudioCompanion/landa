@@ -84,9 +84,8 @@ const project: SchemaTypeDefinition = {
     {
       title: 'Credits',
       name: 'credits',
-      type: 'array',
-      of: [{ type: 'block' }],
-      group: 'modules'
+      type: 'content',
+      group: 'modules',
     },
     {
       title: 'SEO Title',

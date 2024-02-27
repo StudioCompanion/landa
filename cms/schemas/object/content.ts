@@ -7,10 +7,7 @@ const content: SchemaTypeDefinition = {
   of: [
     {
       type: 'block',
-      styles: [
-        {title: 'Quote', value: 'blockquote'},
-        {title: 'Caption', value: 'caption'},
-      ],
+      styles: [],
     },
   ],
 }
