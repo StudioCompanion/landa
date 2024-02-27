@@ -87,7 +87,6 @@
 		visible = true;
 	}}
 	>
-		<p>Project credits:</p>
 		<PortableText value={data.project.credits} />
 	</section>
 {/if}
