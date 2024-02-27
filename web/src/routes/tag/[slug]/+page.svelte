@@ -1,18 +1,27 @@
-<script lang="ts">
+<script>
+	import { onMount } from 'svelte';
+	
+	onMount(() => {
+	  // Redirect to home page or another page
+	  window.location.href = '/';
+	});
+  </script>
+
+<!-- <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import ProjectSummaryList from '../../../components/ProjectSummaryList.svelte';
 	export let data;
 	let root;
-</script>
+</script> -->
 
-<svelte:head>
+<!-- <svelte:head> -->
 	<!-- HTML Meta Tags -->
-	<title>{data.tag.name} | Lane & Associates</title>
-	<meta name="description" content={data.settings.seo_description} />
+	<!-- <title>{data.tag.name} | Lane & Associates</title>
+	<meta name="description" content={data.settings.seo_description} /> -->
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content={data.settings.canonical_url + '/work/' + data.slug} />
+	<!-- <meta property="og:url" content={data.settings.canonical_url + '/work/' + data.slug} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`${data.tag.name} | Lane & Associates`} />
 	<meta property="og:description" content={data.tag.description} />
@@ -26,10 +35,10 @@
 					.fit('fill')
 					.url()
 			: ''}
-	/>
+	/> -->
 
 	<!-- Twitter Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image" />
+	<!-- <meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:domain" content={data.settings.canonical_url} />
 	<meta property="twitter:url" content={data.settings.canonical_url + '/work/' + data.slug} />
 	<meta name="twitter:title" content={`${data.tag.name} | Lane & Associates`} />
@@ -44,10 +53,10 @@
 					.fit('fill')
 					.url()
 			: ''}
-	/>
-</svelte:head>
+	/> -->
+<!-- </svelte:head> -->
 
-<section class="tag-details">
+<!-- <section class="tag-details">
 	{#if data.tag.name}
 		<h2 class="tag-name">{data.tag.name}</h2>
 	{/if}
@@ -55,9 +64,9 @@
 		<p class="tag-description">{data.tag.description}</p>
 	{/if}
 </section>
-<ProjectSummaryList projects={data.tag.projects} />
+<ProjectSummaryList projects={data.tag.projects} /> -->
 
-<style>
+<!-- <style>
 	.tag-details {
 		margin: 5.75rem auto 2.75rem auto;
 		max-width: 45rem;
@@ -87,4 +96,4 @@
 			font-size: var(--font-size-giant-lg);
 		}
 	}
-</style>
+</style> -->
