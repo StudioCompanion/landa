@@ -17,5 +17,9 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 #Temporary TO DO Storage
 
-- [ ] Bug: remove the border on the right hand side in /work
-
+- [x] Bug: remove the border on the right hand side in /work
+- [ ] CMS Remove: Hero Theme
+- [ ] CMS Remove: Hero Image/Video
+- [ ] FE Hide: Tags
+- [ ] CMS Remove: Quote Module
+- [ ] CMS Remove: Background Color from Content Module, Carousel Module, Grid Module

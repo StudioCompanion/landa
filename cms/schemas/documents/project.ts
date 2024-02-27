@@ -100,7 +100,6 @@ const project: SchemaTypeDefinition = {
         {type: 'content_module'},
         {type: 'grid_module'},
         {type: 'media_module'},
-        {type: 'quote_module'},
       ],
     },
     {

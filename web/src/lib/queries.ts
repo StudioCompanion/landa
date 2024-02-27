@@ -92,11 +92,6 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
         (_type == 'content_module') => {
             content
         },
-        (_type == 'quote_module') => {
-            quote,
-            full_name,
-            job_title
-        }
     }
 }`;
 

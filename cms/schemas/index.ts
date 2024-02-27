@@ -7,7 +7,6 @@ import carouselModule from './modules/carouselModule'
 import contentModule from './modules/contentModule'
 import gridModule from './modules/gridModule'
 import mediaModule from './modules/mediaModule'
-import quoteModule from './modules/quoteModule'
 import content from './object/content'
 import media from './object/media'
 import about from './documents/about'
@@ -19,7 +18,6 @@ export const schemaTypes = [
   contentModule,
   gridModule,
   mediaModule,
-  quoteModule,
   homepage,
   project,
   tag,
