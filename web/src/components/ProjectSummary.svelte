@@ -27,7 +27,7 @@
 		<div class="project-image-container" id="image-container">
 			<img
 				class={`project-image ${imageType}`}
-				alt="REPLACE"
+				alt="ALT NAME REPLACE"
 				src={src}
 				srcset={srcset}
 				sizes={sizes}

@@ -4,14 +4,6 @@
 	import ProjectSummaryList from '../../../components/ProjectSummaryList.svelte';
 	export let data;
 	let root;
-
-	onMount(() => {
-		root = document.querySelector(':root');
-	});
-
-	onDestroy(() => {
-		root?.style.setProperty('--logo-color', 'black');
-	});
 </script>
 
 <svelte:head>

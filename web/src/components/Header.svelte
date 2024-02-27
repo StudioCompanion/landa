@@ -89,7 +89,7 @@
 	/* Default Link Styles */
 	header a {
 		text-decoration: none;
-		color: var(--logo-color);
+		color: var(--black);
 		transition: color 0.4s ease-out;
 	}
 

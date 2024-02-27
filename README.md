@@ -23,3 +23,4 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] FE Hide: Tags
 - [ ] CMS Remove: Quote Module
 - [ ] CMS Remove: Background Color from Content Module, Carousel Module, Grid Module
+- [ ] Replace Alt Name for Images

@@ -14,14 +14,6 @@
 	let root;
 
 	let visible = false;
-
-	onMount(() => {
-		root = document.querySelector(':root');
-	});
-
-	onDestroy(() => {
-		root?.style.setProperty('--logo-color', 'black');
-	});
 </script>
 
 <svelte:head>
@@ -66,29 +58,6 @@
 			<Content value={data.project.description} />
 		</div>
 	{/if}
-	<!-- {#if data.project.tags}
-		<div class="tags">
-			{#each data.project.tags as tag, index}
-				{#if tag.name}
-					<a href={`/tag/${tag.slug}`}>
-						{`${tag.name}${index < data.project.tags.length - 1 ? ', ' : ''}`}
-					</a>
-				{/if}
-			{/each}
-		</div>
-	{/if} -->
-</section>
-<section
-	id="hero"
-	use:inView={{ threshold: 0.85 }}
-	on:enter={() => {
-		// root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
-	}}
-	on:exit={() => {
-		root?.style.setProperty('--logo-color', 'black');
-	}}
->
-	<Media media={data.project.hero} />
 </section>
 {#if data.project.modules}
 	{#each data?.project.modules as module}
