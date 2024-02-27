@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import { onDestroy, onMount } from 'svelte';
 	import { PortableText } from '@portabletext/svelte';
 	import Content from '../../../components/Content.svelte';
@@ -91,6 +90,12 @@
 	.project-description {
 		margin-left: var(--half-space);
 		padding: 0 var(--half-space) var(--full-space) 0;
+		max-width: var(--max-text-width);
+	}
+
+	.credits {
+		margin-left: var(--half-space);
+		padding: 0 var(--half-space) var(--half-space) 0;
 		max-width: var(--max-text-width);
 	}
 	
