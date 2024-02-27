@@ -6,7 +6,6 @@
 	import ModuleCaption from '../ModuleCaption.svelte';
 	import inView from '$lib/inView';
 	import { imageBuilder } from '$lib/sanity';
-	import Lightbox from './Lightbox.svelte';
 
 	export let module: CarouselModule;
 	let show = false;
@@ -215,14 +214,6 @@
 		</div>
 	</div>
 </section>
-<Lightbox
-	{show}
-	onClose={() => {
-		show = false;
-	}}
-	{imageShowingIndex}
-	{images}
-/>
 
 <style>
 	.grid {

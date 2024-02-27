@@ -10,13 +10,11 @@
 
 	export let media: Media | undefined;
 	export let carousel: boolean = false;
-	export let onClick: () => void | undefined = undefined;
 </script>
 
 {#if media}
 	<div
 		class:carousel
-		class:rounded={media.rounded}
 		style={media.media_type === 'video'
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
 			: ''}
@@ -36,7 +34,6 @@
 			/>
 		{:else if media.media_type === 'image' && media.image}
 			<img
-				on:mouseup={onClick}
 				alt={media.alt}
 				{...getImageProps({ image: media.image, maxWidth: 2000 })}
 			/>
@@ -47,17 +44,6 @@
 <style>
 	div {
 		width: 100%;
-	}
-
-	.rounded {
-		border-radius: 1rem;
-		overflow: hidden;
-	}
-
-	@media screen and (min-width: 768px) {
-		.rounded {
-			border-radius: 2rem;
-		}
 	}
 
 	img {

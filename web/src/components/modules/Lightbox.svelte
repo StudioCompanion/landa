@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	export let show: boolean = false;
@@ -213,4 +213,4 @@
 	.previous:hover, .next:hover {
 		cursor: pointer;
 	}
-</style>
+</style> -->
