@@ -83,6 +83,7 @@
 	.description {
 		width: 100%;
 		margin-top: calc(var(--full-space) + 1.3rem);
+		padding-top: var(--half-space);
 		text-align: left;
 		border-top: 1px solid var(--grey);
 	}

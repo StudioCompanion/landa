@@ -74,7 +74,6 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
-		background: pink;
 		align-items: center;
 	}
 
