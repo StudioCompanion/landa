@@ -129,11 +129,8 @@
 		position: absolute;
 		width: auto;
 		display: none;
-		object-fit: contain; /* This will make sure the image is scaled to fit within the container without distorting its aspect ratio */
-		width: 70%; /* or height: 70%; depending on the desired scaling direction */
-		height: auto;
-		max-width: 100%; /* Ensures the image does not overflow its container */
-		max-height: 100%;
+		max-width: 70%;
+		max-height: 70%;
 	}
 
 	.loading-circle {
