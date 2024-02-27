@@ -120,25 +120,6 @@
 		transition: opacity 0.4s ease-out;
 	}
 
-	/* Dealing with the logo positioning on root animation */
-	.scrolled .text-link {
-		/* opacity: 0; */
-	}
-
-	.scrolled .logo {
-		/* transform: translateY(3rem); */
-	}
-
-	.scrolled {
-		background: none;
-		/* border-bottom: 1px solid transparent; */
-	}
-
-	.globalScrolled {
-		background: none;
-		/* border-bottom: 1px solid transparent; */
-	}
-
 	/* Mobile */
 	.menu-icon {
 		display: none; /* Hidden by default, shown in mobile view */

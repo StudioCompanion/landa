@@ -6,7 +6,6 @@ const contentModule: SchemaTypeDefinition = {
   type: 'object',
   fields: [
     {title: 'Content', name: 'content', type: 'content'},
-    {title: 'Background Color', name: 'background_color', type: 'color'},
   ],
   preview: {
     select: {

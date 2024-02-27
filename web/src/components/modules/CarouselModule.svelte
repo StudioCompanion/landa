@@ -24,7 +24,6 @@
 		autoplay: boolean;
 		caption?: string;
 		slides: ((MediaType & { _type: 'media' }) | { _type: 'block_slide'; items: MediaType[] })[];
-		background_color?: { hex: string };
 	};
 
 	let images;
@@ -136,9 +135,7 @@
 	class="carousel-section"
 	style={`opacity: ${visible ? 1 : 0};
 	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${visible ? '0px' : '55px'});${
-		module.background_color ? `background-color: ${module.background_color.hex}` : ''
-	}`}
+	transform: translateY(${visible ? '0px' : '55px'});`}
 	use:inView={{ threshold: 0.5 }}
 	on:enter={() => {
 		visible = true;

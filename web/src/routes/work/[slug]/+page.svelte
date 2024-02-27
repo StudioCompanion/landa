@@ -93,10 +93,7 @@
 {/if}
 
 <style>
-	h1 {
-		font-size: 3rem;
-		text-align: center;
-	}
+
 	section {
 		max-width: var(--max-width);
 		margin: var(--section-margin-m) auto;
@@ -107,17 +104,6 @@
 		section {
 			margin: var(--section-margin-d) auto;
 		}
-	}
-
-	section#hero {
-		margin-top: 0;
-		padding: 0;
-	}
-
-	section#hero {
-		max-width: 100vw;
-
-		overflow: hidden;
 	}
 
 	.credits {
@@ -147,48 +133,10 @@
 		margin: 0;
 	}
 
-	.tags {
-		text-align: center;
-		font-size: var(--font-size-mob-sm);
-		font-family: var(--font-serif);
-		 
-	}
-
-	@media screen and (min-width: 1024px) {
-		.tags {
-			font-size: var(--font-size);
-		}
-	}
-
-	@media screen and (min-width: 1920px) {
-		.tags {
-			font-size: var(--font-size-giant-sm);
-		}
-	}
-
-	.tags a {
-		color: var(--dark-grey);
-		text-decoration: none;
-		transition: color 0.25s ease-in-out;
-	}
-
-	.tags a:hover {
-		color: var(--red);
-	}
-
 	.description {
 		max-width: 40rem;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.project-title {
-		margin-block-start: 0px;
-		margin-block-end: 0px;
-		margin: 0px;
-		font-family: var(--font-serif);
-		 
-		font-size: var(--font-size-mob-lg);
 	}
 
 	.project-description {
@@ -198,10 +146,6 @@
 	}
 
 	@media screen and (min-width: 1024px) {
-		.project-title, .project-description {
-			font-size: var(--font-size);
-		}
-
 		.description {
 			max-width: 60rem;
 		}

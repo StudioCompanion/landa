@@ -89,40 +89,14 @@
 		}
 	}
 
-
-	/* footer {
-		background-color: var(--white);
-		color: var(--black);
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: flex-start;
-		padding: 2rem 1rem;
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-sm);
-		border-top: 1px solid var(--black);
-		margin: -1px 0px 0px 0px;
-	} */
-
-
-
-
-	/*  */
 	footer a {
-		color: var(--dark-grey);
+		color: var(--black);
 		text-decoration: none;
 		transition: color 0.4s ease-out;
 	}
 
-	footer nav {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 3rem;
-	}
-
 	footer a:hover {
-		color: var(--red);
+		color: var(--grey);
 		transition: color 0.4s ease-out;
 	}
 	

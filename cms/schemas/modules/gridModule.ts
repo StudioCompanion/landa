@@ -22,11 +22,6 @@ const gridModule: SchemaTypeDefinition = {
       name: 'caption',
       type: 'string',
     },
-    {
-      title: 'Background Color',
-      name: 'background_color',
-      type: 'color',
-    },
   ],
   preview: {
     select: {

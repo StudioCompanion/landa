@@ -47,12 +47,6 @@ const carouselModule: SchemaTypeDefinition = {
       type: 'boolean',
       initialValue: false,
     },
-    {
-      title: 'Background Color',
-      name: 'background_color',
-      description: 'Background color behind the carousel',
-      type: 'color',
-    },
   ],
 }
 
