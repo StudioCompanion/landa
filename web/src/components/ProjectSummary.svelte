@@ -72,7 +72,6 @@
 	.project-description {
 		text-align: left;
 		color: black;
-		max-width: 40rem;
 		padding: var(--half-space);
 		display: none;
 	}

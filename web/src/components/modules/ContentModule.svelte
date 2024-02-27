@@ -7,13 +7,6 @@
 </script>
 
 <section
-	style={`opacity: ${visible ? 1 : 0}; 
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${visible ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
 	id={module._type}
 	class={module._type}
 >
@@ -22,22 +15,20 @@
 
 <style>
 	.content_module {
-		max-width: 45rem;
-		font-size: 1.25rem;
-		text-align: center;
-		background-color: orange;
+		max-width: var(--max-text-width);
+		text-align: left;
+		background-color: pink;
 	}
 	
 	@media screen and (min-width: 1024px) {
 		.content_module {
-			max-width: 60rem;
+			max-width: var(--max-text-width);
 		}
 	}
 
 	section {
 		max-width: var(--max-width);
-		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
+		margin: var(--half-space);
 	}
 	
 </style>

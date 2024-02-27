@@ -18,6 +18,8 @@
 	--breakpoint-desktop: 1280px;
 	--breakpoint-tablet: 800px;
 
+	--max-text-width: 82.7rem;
+
 
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */
 	--font-size-giant-lg: 2.25rem;  /* 36 Px */
@@ -59,6 +61,7 @@
 		--full-space: 5.2rem;         /* Equivalent to 52px */
 		--half-space: 2.6rem;         /* Equivalent to 26px */
 		--quarter-space: 1.3rem;
+		--max-text-width: 82.7rem;
 	}
 }
 

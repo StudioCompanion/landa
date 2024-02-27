@@ -81,72 +81,17 @@
 
 <style>
 
-	section {
-		background: orange;
-		max-width: var(--max-width);
-		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
-	}
-
-	@media screen and (min-width: 1024px) {
-		section {
-			margin: var(--section-margin-d) auto;
-		}
-	}
-
-	.credits {
-		background: red;
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-sm);
-		text-align: left;
-		max-width: 35rem;
-	}
-
-	@media screen and (min-width: 1024px) {
-		.credits {
-			font-family: var(--font-serif);
-			font-size: var(--font-size);
-			max-width: 60rem;
-		}
-	}
-
-	@media screen and (min-width: 1920px) {
-		.credits {
-			font-family: var(--font-serif);
-			font-size: var(--font-size-giant-sm);
-			max-width: 60rem;
-		}
-	}
-
-	.credits > p {
-		margin: 0;
-	}
-
 	.description {
-		max-width: 40rem;
-		display: flex;
-		flex-direction: column;
+		width: 100%;
+		margin-top: calc(var(--full-space) + 1.3rem);
+		text-align: left;
+		border-top: 1px solid var(--grey);
 	}
 
 	.project-description {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		margin: 0 auto;
+		margin-left: var(--half-space);
+		padding: 0 var(--half-space) var(--full-space) 0;
+		max-width: var(--max-text-width);
 	}
-
-	@media screen and (min-width: 1024px) {
-		.description {
-			max-width: 60rem;
-		}
-	}
-
-	@media screen and (min-width: 1680px) {
-		.project-title, .project-description {
-			font-size: var(--font-size-giant-lg);
-		}
-
-		.description {
-			max-width: 80rem;
-		}
-	}
+	
 </style>

@@ -74,16 +74,26 @@
 		font-family: var(--font-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
+		background: pink;
+		align-items: center;
 	}
 
 	.right-wrap {
 		column-gap: 1rem;
 		display: flex;
 		flex-direction: row;
+		height: 11px;
 	}
 
 	.left-wrap {
 		display: flex;
+		height: 11px;
+	}
+
+	@media screen and (min-width: 800px) {
+		.left-wrap, .right-wrap {
+			height: 13px;
+		}
 	}
 
 	/* Default Link Styles */
@@ -124,6 +134,7 @@
 	.menu-icon {
 		display: none; /* Hidden by default, shown in mobile view */
 		cursor: pointer;
+		height: 13px;
 	}
 
 	.close-icon {
