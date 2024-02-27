@@ -74,19 +74,7 @@
 {/if}
 
 {#if data.project.credits}
-	<section class="credits"
-	style={`opacity: ${visible ? 1 : 0}; 
-		transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-		transform: translateY(${visible ? '0px' : '55px'});`}
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			visible = true;
-		}}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
-	>
+	<section class="credits">
 		<PortableText value={data.project.credits} />
 	</section>
 {/if}
@@ -94,6 +82,7 @@
 <style>
 
 	section {
+		background: orange;
 		max-width: var(--max-width);
 		margin: var(--section-margin-m) auto;
 		padding: 0 var(--section-padding-m);
@@ -106,9 +95,10 @@
 	}
 
 	.credits {
+		background: red;
 		font-family: var(--font-serif);
 		font-size: var(--font-size-mob-sm);
-		text-align: center;
+		text-align: left;
 		max-width: 35rem;
 	}
 

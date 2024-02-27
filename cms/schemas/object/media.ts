@@ -63,12 +63,6 @@ const media: SchemaTypeDefinition = {
       hidden: (r) => r.parent?.media_type !== 'video',
     },
     {
-      title: 'Rounded corners',
-      name: 'rounded',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
       title: 'Caption',
       name: 'caption',
       type: 'string',

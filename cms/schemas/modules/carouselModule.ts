@@ -40,13 +40,6 @@ const carouselModule: SchemaTypeDefinition = {
       type: 'boolean',
       initialValue: false,
     },
-    {
-      title: 'Full width',
-      name: 'full_width',
-      description: 'Should the carousel be full bleed',
-      type: 'boolean',
-      initialValue: false,
-    },
   ],
 }
 
