@@ -17,7 +17,6 @@
 	.content_module {
 		max-width: var(--max-text-width);
 		text-align: left;
-		background-color: pink;
 	}
 	
 	@media screen and (min-width: 1024px) {
