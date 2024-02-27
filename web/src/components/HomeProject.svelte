@@ -64,7 +64,7 @@
 	}
 
 	.project-image-container img {
-		max-height: 500px; /* Maximum height for the image */
+		max-height: var(--mobile-max); /* Maximum height for the image */
 		height: auto; /* Ensures height adjusts based on width while maintaining aspect ratio */
 		width: auto; /* Ensures width adjusts to maintain the image's aspect ratio */
 		max-width: 100%; /* Ensures image does not exceed the width of its container */
@@ -88,7 +88,7 @@
 	/* Tablet */
 	@media (min-width: 800px) {
 		.project-image-container img {
-			max-height: 506px;
+			max-height: var(--tablet-max);
 		}
 		.project-description {
 			font-size: var(--font-size);
@@ -99,21 +99,21 @@
 	/* Small Desktop */
 	@media (min-width: 1280px) {
 		.project-image-container img {
-			max-height: 504px;
+			max-height: var(--desktop-max);
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
 		.project-image-container img {
-			max-height: 664px;
+			max-height: var(--large-desktop-max);
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.project-image-container img {
-			max-height: 756px;
+			max-height: var(--giant-max);
 		}
 	}
 	

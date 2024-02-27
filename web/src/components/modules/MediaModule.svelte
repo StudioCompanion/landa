@@ -13,19 +13,8 @@
 	let visible = false;
 </script>
 
-<section
-<section
-	style={`opacity: ${visible ? 1 : 0}; transition: all .5s ease-out;
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${visible ? '0px' : '55px'});
-	`}	
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
-	id={module._type}
->
-	<div>
+<section class={module._type} id={module._type}>
+	<div class="parentContainer">
 		<Media media={module.media} />
 	</div>
 	{#if module.caption}
@@ -35,14 +24,15 @@
 
 <style>
 	section {
-		max-width: var(--max-width);
-		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
+		margin: 0 var(--half-space);
+		padding: 0 0 var(--full-space) 0;
+		/* max-width: var(--max-text-width); */
 	}
-	@media screen and (min-width: 1024px) {
-		section {
-			margin: var(--section-margin-d) auto;
-			padding: 0 var(--section-padding-d);
-		}
-	}
+
+	.parentContainer {
+        display: flex; /* or 'block', depending on your layout needs */
+        flex-direction: column; /* Adjusts the direction of the flex items if using flex */
+        align-items: center; /* Centers the child elements horizontally */
+        justify-content: center; /* Centers the child elements vertically */
+    }
 </style>
