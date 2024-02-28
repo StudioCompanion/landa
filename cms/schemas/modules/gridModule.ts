@@ -1,10 +1,13 @@
 // gridModules.ts
 import {SchemaTypeDefinition} from 'sanity'
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+
 
 const gridModule: SchemaTypeDefinition = {
   title: 'Grid Module',
   name: 'grid_module',
   type: 'object',
+  icon: BsFillGrid3X3GapFill,
   fields: [
     {
       title: 'Number of Columns',

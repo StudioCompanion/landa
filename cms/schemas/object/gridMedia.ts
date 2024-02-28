@@ -1,13 +1,10 @@
 // gridMedia.ts
 import {SchemaTypeDefinition} from 'sanity'
-import { PlayIcon } from '@sanity/icons'
-
 
 const gridMedia: SchemaTypeDefinition = {
   title: 'Grid Media',
   name: 'grid_media',
   type: 'object',
-  icon: PlayIcon,
   fields: [
     {
       title: 'Media Type',
@@ -15,8 +12,8 @@ const gridMedia: SchemaTypeDefinition = {
       type: 'string',
       options: {
         list: [
-          {title: 'Image', value: 'Image'},
-          {title: 'Video', value: 'Video'},
+          {title: 'Image', value: 'image'},
+          {title: 'Video', value: 'video'},
         ],
       },
       initialValue: 'image',
@@ -60,7 +57,6 @@ const gridMedia: SchemaTypeDefinition = {
       initialValue: false,
       hidden: ({parent}) => parent?.media_type !== 'video',
     },
-    // Omit the 'caption' field entirely for GridMedia
   ],
 }
 
