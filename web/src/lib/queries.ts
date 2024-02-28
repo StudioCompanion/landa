@@ -20,9 +20,6 @@ export const media = groq`{
         "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
         asset
       },
-      autoplay,
-      muted,
-      video_controls
     }
   }`;  
 
@@ -68,8 +65,6 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
         _type,
 
         (_type == "carousel_module") => {
-            full_width,
-            autoplay,
             caption,
             slides[] {
                 _type,

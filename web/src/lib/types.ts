@@ -9,8 +9,6 @@ export type BaseMedia = {
 	image: SanityImageSource & {
 	  aspect_ratio: number;
 	};
-	autoplay: boolean;
-	rounded: boolean;
 	caption: string | null;
 	alt: string | null;
   };
@@ -23,10 +21,6 @@ export type BaseMedia = {
 	  upload_id: string;
 	  asset_id: string;
 	};
-	autoplay: boolean;
-	muted: boolean;
-	rounded: boolean;
-	video_controls: boolean;
 	video_thumbnail: SanityImageSource & {
 	  aspect_ratio: number;
 	};

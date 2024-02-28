@@ -36,13 +36,6 @@ const carouselModule: SchemaTypeDefinition = {
         },
       ],
     },
-    {
-      title: 'Autoplay',
-      name: 'autoplay',
-      description: 'Should the carousel automatically play',
-      type: 'boolean',
-      initialValue: false,
-    },
   ],
 }
 
