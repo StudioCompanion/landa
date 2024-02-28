@@ -19,11 +19,17 @@
 	--breakpoint-tablet: 800px;
 
 	--max-text-width: 82.7rem;
-	--mobile-max: 252px;
-	--tablet-max: 506px;
-	--desktop-max: 504px;
-	--large-desktop-max: 664px;
-	--giant-desktop-max: 756px;
+	--mobile-height-max: 252px;
+	--tablet-height-max: 506px;
+	--desktop-height-max: 504px;
+	--large-desktop-height-max: 664px;
+	--giant-desktop-height-max: 756px;
+
+	--mobile-width-max: 100px;
+	--tablet-width-max: 100px;
+	--desktop-width-max: 1197px;
+	--large-desktop-width-max: 1476px;
+	--giant-desktop-width-max: 1791px;
 
 
 	/* Giant = 1600, Desk = 1024, Mob = Under 1024 */

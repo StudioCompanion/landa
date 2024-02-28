@@ -8,6 +8,7 @@
 
 <style>
 	.caption {
+		max-width: var(--max-text-width);
 		font-size: var(--font-size);
 		text-align: left;
 		padding: var(--half-space) 0 0 0;

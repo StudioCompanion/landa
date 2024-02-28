@@ -132,13 +132,6 @@
 <section
 	id={module._type}
 	class="carousel-section"
-	style={`opacity: ${visible ? 1 : 0};
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${visible ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
 >
 	<div class="carousel_container">
 		<button on:click={prev} class="carousel_previous"

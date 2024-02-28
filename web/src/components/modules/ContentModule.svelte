@@ -27,7 +27,7 @@
 
 	section {
 		max-width: var(--max-width);
-		margin: var(--half-space);
+		margin: 0 var(--half-space) var(--full-space) var(--half-space);
 	}
 	
 </style>

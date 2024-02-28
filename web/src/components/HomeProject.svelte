@@ -64,7 +64,7 @@
 	}
 
 	.project-image-container img {
-		max-height: var(--mobile-max); /* Maximum height for the image */
+		max-height: var(--mobile-height-max); /* Maximum height for the image */
 		height: auto; /* Ensures height adjusts based on width while maintaining aspect ratio */
 		width: auto; /* Ensures width adjusts to maintain the image's aspect ratio */
 		max-width: 100%; /* Ensures image does not exceed the width of its container */
@@ -88,7 +88,7 @@
 	/* Tablet */
 	@media (min-width: 800px) {
 		.project-image-container img {
-			max-height: var(--tablet-max);
+			max-height: var(--tablet-height-max);
 		}
 		.project-description {
 			font-size: var(--font-size);
@@ -99,14 +99,14 @@
 	/* Small Desktop */
 	@media (min-width: 1280px) {
 		.project-image-container img {
-			max-height: var(--desktop-max);
+			max-height: var(--desktop-height-max);
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
 		.project-image-container img {
-			max-height: var(--large-desktop-max);
+			max-height: var(--large-desktop-height-max);
 		}
 	}
 
