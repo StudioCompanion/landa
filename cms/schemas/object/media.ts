@@ -44,7 +44,7 @@ const media: SchemaTypeDefinition = {
       hidden: ({ parent }) => parent?.media_type !== 'video',
     },
     {
-      title: 'Image Caption',
+      title: 'Asset Caption',
       name: 'caption',
       type: 'string',
     },
