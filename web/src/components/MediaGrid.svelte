@@ -19,25 +19,36 @@
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
 			: ''}
 	>
-		{#if media.media_type === 'video'}
-			<mux-player
-				class={`mux-player${media.autoplay || !media.video_controls ? ' no-controls' : ''}`}
-				muted={media.muted}
-				autoplay={media.muted && media.autoplay ? 'muted' : false}
-				loop={media.muted && media.autoplay}
-				playsinline={media.muted && media.autoplay}
-				stream-type="on-demand"
-				playback-id={media.video.playback_id}
-				poster={media.video_thumbnail
-					? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src
-					: undefined}
-			/>
-		{:else if media.media_type === 'image' && media.image}
-			<img
-				alt={media.alt}
-				{...getImageProps({ image: media.image, maxWidth: 2000 })}
-			/>
+	{#if media.media_type === 'video'}
+		{#if media.isInline}
+		<!-- Inline Video Player -->
+		<mux-player
+			class="mux-player inline-video no-controls"
+			muted
+			autoplay="muted"
+			loop
+			playsinline
+			stream-type="on-demand"
+			playback-id={media.video.playback_id}
+			poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+		/>
+		{:else}
+		<!-- Full Video Player -->
+		<mux-player
+			class="mux-player full-video"
+			controls
+			stream-type="on-demand"
+			playback-id={media.video.playback_id}
+			poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+		/>
 		{/if}
+	{:else if media.media_type === 'image' && media.image}
+		<!-- Image Rendering -->
+		<img
+		alt={media.alt}
+		{...getImageProps({ image: media.image, maxWidth: 2000 })}
+		/>
+	{/if}
 	</div>
 {/if}
 

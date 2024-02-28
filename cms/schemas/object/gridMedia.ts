@@ -37,25 +37,12 @@ const gridMedia: SchemaTypeDefinition = {
       hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
-      title: 'Autoplay',
-      name: 'autoplay',
+      title: 'Inline Video',
+      name: 'isInline',
       type: 'boolean',
-      initialValue: false,
-      hidden: ({parent}) => parent?.media_type !== 'video',
-    },
-    {
-      title: 'Muted',
-      name: 'muted',
-      type: 'boolean',
-      initialValue: true,
-      hidden: ({parent}) => parent?.media_type !== 'video',
-    },
-    {
-      title: 'Video controls',
-      name: 'video_controls',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({parent}) => parent?.media_type !== 'video',
+      description: 'Toggle on for an inline video (autoplaying, muted, no controls). Toggle off for a full video (with controls, sound, and no autoplay).',
+      initialValue: false, // Default to 'full' video type
+      hidden: ({ parent }) => parent?.media_type !== 'video', // Only show this for videos
     },
   ],
 }

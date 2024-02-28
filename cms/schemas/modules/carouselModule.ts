@@ -1,9 +1,12 @@
 import {SchemaTypeDefinition} from 'sanity'
+import { PiSlideshowFill } from "react-icons/pi";
+
 
 const carouselModule: SchemaTypeDefinition = {
   title: 'Carousel Module',
   name: 'carousel_module',
   type: 'object',
+  icon: PiSlideshowFill,
   fields: [
     {
       title: 'Caption',

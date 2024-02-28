@@ -1,31 +1,36 @@
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-export type Image = {
+export type BaseMedia = {
+	isInline?: boolean; 
+  };
+  
+  export type Image = BaseMedia & {
 	media_type: 'image';
 	image: SanityImageSource & {
-		aspect_ratio: number;
+	  aspect_ratio: number;
 	};
 	autoplay: boolean;
 	rounded: boolean;
-  caption: string | null;
-  alt: string | null;
-};
-
-export type Video = {
+	caption: string | null;
+	alt: string | null;
+  };
+  
+  export type Video = BaseMedia & {
 	media_type: 'video';
 	video: {
-		aspect_ratio: string;
-		playback_id: string;
-		upload_id: string;
-		asset_id: string;
+	  aspect_ratio: string;
+	  playback_id: string;
+	  upload_id: string;
+	  asset_id: string;
 	};
 	autoplay: boolean;
-  muted: boolean;
+	muted: boolean;
 	rounded: boolean;
-  video_controls: boolean;
-  video_thumbnail: SanityImageSource & {
-    aspect_ratio: number;
+	video_controls: boolean;
+	video_thumbnail: SanityImageSource & {
+	  aspect_ratio: number;
+	};
   };
-};
-
-export type Media = Video | Image;
+  
+  export type Media = Video | Image;
+  

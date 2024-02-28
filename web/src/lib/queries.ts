@@ -1,30 +1,30 @@
 import groq from 'groq';
 export const media = groq`{
-  media_type,
-  caption,
-  rounded,
-  (media_type == "image") => {
-    image {
-      "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-      asset
+    media_type,
+    caption,
+    "isInline": isInline,
+    (media_type == "image") => {
+      image {
+        "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
+        asset
+      },
     },
-  },
-  (media_type == "video") => {
-    video {
-      "aspect_ratio": asset->data.aspect_ratio,
-      "playback_id": asset->playbackId,
-      "upload_id": asset->uploadId,
-      "asset_id": asset->assetId,
-    },
-    video_thumbnail {
-      "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-      asset
-    },
-    autoplay,
-    muted,
-    video_controls
-  }
-}`;
+    (media_type == "video") => {
+      video {
+        "aspect_ratio": asset->data.aspect_ratio,
+        "playback_id": asset->playbackId,
+        "upload_id": asset->uploadId,
+        "asset_id": asset->assetId,
+      },
+      video_thumbnail {
+        "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
+        asset
+      },
+      autoplay,
+      muted,
+      video_controls
+    }
+  }`;  
 
 export const homepageQuery = groq`*[_type == "homepage"][0] {
     bio
