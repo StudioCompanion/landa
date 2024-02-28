@@ -1,9 +1,13 @@
+// gridMedia.ts
 import {SchemaTypeDefinition} from 'sanity'
+import { PlayIcon } from '@sanity/icons'
 
-const media: SchemaTypeDefinition = {
-  title: 'Media',
-  name: 'media',
+
+const gridMedia: SchemaTypeDefinition = {
+  title: 'Grid Media',
+  name: 'grid_media',
   type: 'object',
+  icon: PlayIcon,
   fields: [
     {
       title: 'Media Type',
@@ -11,8 +15,8 @@ const media: SchemaTypeDefinition = {
       type: 'string',
       options: {
         list: [
-          {title: 'Image', value: 'image'},
-          {title: 'Video', value: 'video'},
+          {title: 'Image', value: 'Image'},
+          {title: 'Video', value: 'Video'},
         ],
       },
       initialValue: 'image',
@@ -21,47 +25,43 @@ const media: SchemaTypeDefinition = {
       title: 'Image',
       name: 'image',
       type: 'image',
-      hidden: (r) => r.parent?.media_type !== 'image',
+      hidden: ({parent}) => parent?.media_type !== 'image',
     },
     {
       title: 'Video',
       name: 'video',
       type: 'mux.video',
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Video thumbnail',
       name: 'video_thumbnail',
       type: 'image',
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Autoplay',
       name: 'autoplay',
       type: 'boolean',
       initialValue: false,
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Muted',
       name: 'muted',
       type: 'boolean',
       initialValue: true,
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Video controls',
       name: 'video_controls',
       type: 'boolean',
       initialValue: false,
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
-    {
-      title: 'Image Caption',
-      name: 'caption',
-      type: 'string',
-    },
+    // Omit the 'caption' field entirely for GridMedia
   ],
 }
 
-export default media
+export default gridMedia

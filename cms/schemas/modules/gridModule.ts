@@ -1,3 +1,4 @@
+// gridModules.ts
 import {SchemaTypeDefinition} from 'sanity'
 
 const gridModule: SchemaTypeDefinition = {
@@ -15,7 +16,7 @@ const gridModule: SchemaTypeDefinition = {
       title: 'Items',
       name: 'items',
       type: 'array',
-      of: [{type: 'media'}],
+      of: [{type: 'grid_media'}], // Use GridMedia here
     },
     {
       title: 'Caption',
