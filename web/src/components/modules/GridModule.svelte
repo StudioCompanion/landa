@@ -11,10 +11,10 @@
 		items: MediaType[];
 	};
 	export let module: GridModule;
-	let visible = false;
+	export let isInCarousel: boolean = false;
 </script>
 
-<section class="gridModule" id={module._type}>
+<section class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} id={module._type}>
 	<div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr)`}>
 		{#each module.items as item}
 			<div class="grid-item">
@@ -40,5 +40,10 @@
 		gap: var(--quarter-space);
 		align-items: center;
 	}
+
+	.inCarousel {
+        background-color: blue; /* Sets the background color to blue */
+		margin: 0;
+    }
 
 </style>

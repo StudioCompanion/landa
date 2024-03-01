@@ -53,6 +53,11 @@
 {/if}
 
 <style>
+
+	.carousel {
+		background: red;
+	}
+	
 	img {
 		width: 100%;
 		height: auto;
@@ -66,12 +71,5 @@
 
 	.mux-player.no-controls {
 		--controls: none;
-	}
-
-	.carousel {
-		width: auto;
-		height: 100%;
-		display: flex;
-		align-items: center;
 	}
 </style>

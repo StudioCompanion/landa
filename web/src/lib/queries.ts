@@ -68,12 +68,15 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
             caption,
             slides[] {
                 _type,
+                // Handle 'media' type slides
                 (_type == "media") => ${media},
-                (_type == "block_slide") => {
+                // Handle 'grid_module' type slides
+                _type == "grid_module" => {
+                    columns,
+                    caption,
                     items[] ${media}
                 }
             },
-            background_color
         },
         (_type == "media_module") => {
             "caption": media.caption,

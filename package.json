@@ -12,9 +12,15 @@
     "dev": "turbo dev"
   },
   "devDependencies": {
-    "turbo": "^1.12.4"
+    "turbo": "^1.9.9"
   },
   "dependencies": {
+    "@mux/mux-video": "^0.17.3",
+    "@mux/mux-video-react": "^0.8.3",
+    "embla-carousel-svelte": "^8.0.0",
+    "flickity": "^3.0.0",
+    "flickity-fade": "^2.0.0",
+    "phosphor-icons": "^1.4.2",
     "react-icons": "^5.0.1"
   }
 }

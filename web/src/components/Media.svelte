@@ -51,6 +51,10 @@
   {/if}
 
 <style>
+	.carousel {
+		background: yellow;
+	}
+
 	div {
 		width: 100%;
 	}
@@ -110,12 +114,5 @@
 
 	.mux-player.no-controls {
 		--controls: none;
-	}
-
-	.carousel {
-		width: auto;
-		height: 100%;
-		display: flex;
-		align-items: center;
 	}
 </style>
