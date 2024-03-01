@@ -6,7 +6,6 @@
 	import ModuleCaption from '../ModuleCaption.svelte';
 	import inView from '$lib/inView';
 	import { imageBuilder } from '$lib/sanity';
-	import Lightbox from './Lightbox.svelte';
 
 	export let module: CarouselModule;
 	let show = false;
@@ -24,7 +23,6 @@
 		autoplay: boolean;
 		caption?: string;
 		slides: ((MediaType & { _type: 'media' }) | { _type: 'block_slide'; items: MediaType[] })[];
-		background_color?: { hex: string };
 	};
 
 	let images;
@@ -134,15 +132,6 @@
 <section
 	id={module._type}
 	class="carousel-section"
-	style={`opacity: ${visible ? 1 : 0};
-	transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-	transform: translateY(${visible ? '0px' : '55px'});${
-		module.background_color ? `background-color: ${module.background_color.hex}` : ''
-	}`}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
 >
 	<div class="carousel_container">
 		<button on:click={prev} class="carousel_previous"
@@ -218,14 +207,6 @@
 		</div>
 	</div>
 </section>
-<Lightbox
-	{show}
-	onClose={() => {
-		show = false;
-	}}
-	{imageShowingIndex}
-	{images}
-/>
 
 <style>
 	.grid {

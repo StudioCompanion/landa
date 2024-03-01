@@ -55,33 +55,12 @@ const project: SchemaTypeDefinition = {
       group: 'general',
     },
     {
-      title: 'Hero Theme',
-      name: 'theme',
-      description: 'Should logo/navigation be light or dark on hero image',
-      type: 'string',
-      initialValue: 'dark',
-      options: {
-        list: [
-          {title: 'Light', value: 'light'},
-          {title: 'Dark', value: 'dark'},
-        ],
-      },
-      group: 'general',
-    },
-    {
       title: 'Show on homepage',
       name: 'show_homepage',
       description: 'Should this project feature on the homepage?',
       type: 'boolean',
       initialValue: false,
       group: 'general',
-    },
-    {
-      title: 'Hero Image/Video',
-      description: 'Used at the top of a project page',
-      name: 'hero',
-      type: 'media',
-      group: 'modules',
     },
     {
       title: 'Description',
@@ -100,15 +79,13 @@ const project: SchemaTypeDefinition = {
         {type: 'content_module'},
         {type: 'grid_module'},
         {type: 'media_module'},
-        {type: 'quote_module'},
       ],
     },
     {
       title: 'Credits',
       name: 'credits',
-      type: 'array',
-      of: [{ type: 'block' }],
-      group: 'modules'
+      type: 'content',
+      group: 'modules',
     },
     {
       title: 'SEO Title',

@@ -1,9 +1,12 @@
+// gridModules.ts
 import {SchemaTypeDefinition} from 'sanity'
+import { PiGridFourFill } from "react-icons/pi";
 
 const gridModule: SchemaTypeDefinition = {
   title: 'Grid Module',
   name: 'grid_module',
   type: 'object',
+  icon: PiGridFourFill,
   fields: [
     {
       title: 'Number of Columns',
@@ -15,17 +18,12 @@ const gridModule: SchemaTypeDefinition = {
       title: 'Items',
       name: 'items',
       type: 'array',
-      of: [{type: 'media'}],
+      of: [{type: 'grid_media'}], // Use GridMedia here
     },
     {
       title: 'Caption',
       name: 'caption',
       type: 'string',
-    },
-    {
-      title: 'Background Color',
-      name: 'background_color',
-      type: 'color',
     },
   ],
   preview: {

@@ -1,8 +1,9 @@
+// gridMedia.ts
 import {SchemaTypeDefinition} from 'sanity'
 
-const media: SchemaTypeDefinition = {
-  title: 'Media',
-  name: 'media',
+const gridMedia: SchemaTypeDefinition = {
+  title: 'Grid Media',
+  name: 'grid_media',
   type: 'object',
   fields: [
     {
@@ -21,34 +22,29 @@ const media: SchemaTypeDefinition = {
       title: 'Image',
       name: 'image',
       type: 'image',
-      hidden: (r) => r.parent?.media_type !== 'image',
+      hidden: ({parent}) => parent?.media_type !== 'image',
     },
     {
       title: 'Video',
       name: 'video',
       type: 'mux.video',
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Video thumbnail',
       name: 'video_thumbnail',
       type: 'image',
-      hidden: (r) => r.parent?.media_type !== 'video',
+      hidden: ({parent}) => parent?.media_type !== 'video',
     },
     {
       title: 'Inline Video',
       name: 'isInline',
       type: 'boolean',
       description: 'Toggle on for an inline video (autoplaying, muted, no controls). Toggle off for a full video (with controls, sound, and no autoplay).',
-      initialValue: false,
-      hidden: ({ parent }) => parent?.media_type !== 'video',
-    },
-    {
-      title: 'Asset Caption',
-      name: 'caption',
-      type: 'string',
+      initialValue: false, // Default to 'full' video type
+      hidden: ({ parent }) => parent?.media_type !== 'video', // Only show this for videos
     },
   ],
 }
 
-export default media
+export default gridMedia

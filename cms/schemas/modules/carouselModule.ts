@@ -1,9 +1,12 @@
 import {SchemaTypeDefinition} from 'sanity'
+import { PiSlideshowFill } from "react-icons/pi";
+
 
 const carouselModule: SchemaTypeDefinition = {
   title: 'Carousel Module',
   name: 'carousel_module',
   type: 'object',
+  icon: PiSlideshowFill,
   fields: [
     {
       title: 'Caption',
@@ -32,26 +35,6 @@ const carouselModule: SchemaTypeDefinition = {
           ],
         },
       ],
-    },
-    {
-      title: 'Autoplay',
-      name: 'autoplay',
-      description: 'Should the carousel automatically play',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
-      title: 'Full width',
-      name: 'full_width',
-      description: 'Should the carousel be full bleed',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
-      title: 'Background Color',
-      name: 'background_color',
-      description: 'Background color behind the carousel',
-      type: 'color',
     },
   ],
 }

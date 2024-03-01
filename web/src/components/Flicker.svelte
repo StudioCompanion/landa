@@ -24,6 +24,8 @@
 					hide = true;
 					Cookies.set('splashscreen', false);
 				}, 50);
+				// Re-enable scrolling once the animation is complete
+				document.body.style.overflow = 'auto'; 
 			},
 			onUpdate: (v) => {
 				visible = Math.floor(v);
@@ -58,6 +60,9 @@
 	});
 
 	onMount(() => {
+		// Disable scrolling
+		document.body.style.overflow = 'hidden';
+
 		loaderVisible = true;
 		// Wait for the timeout and the preload to finish, whichever takes longer
 		Promise.all([timeout, preload()]).then(() => {
@@ -107,11 +112,18 @@
 	}
 
 	.splashscreen-inner {
-		padding: 2rem;
+		padding: 127px var(--half-space);
 		position: relative;
 		width: 100%;
 		height: 100%;
 	}
+
+	/* Tablet */
+	@media (min-width: 800px) {
+		.splashscreen-inner {
+			padding: 134px var(--half-space);
+		}
+	} 
 
 	.splash-image {
 		position: absolute;
@@ -123,10 +135,10 @@
 
 	.loading-circle {
         position: absolute;
-        width: 1rem;
+        width: var(--quarter-space);
         height: auto;
-        bottom: 2rem;
-		left: 2rem;
+        bottom: var(--half-space);
+		left: var(--half-space);
         fill: white;
         stroke-width: 0;
         animation: pulse 3s infinite ease-in-out;

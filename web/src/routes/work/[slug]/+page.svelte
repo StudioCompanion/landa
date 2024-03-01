@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import { onDestroy, onMount } from 'svelte';
 	import { PortableText } from '@portabletext/svelte';
 	import Content from '../../../components/Content.svelte';
@@ -7,7 +6,6 @@
 	import CarouselModule from '../../../components/modules/CarouselModule.svelte';
 	import ContentModule from '../../../components/modules/ContentModule.svelte';
 	import GridModule from '../../../components/modules/GridModule.svelte';
-	import QuoteModule from '../../../components/modules/QuoteModule.svelte';
 	import MediaModule from '../../../components/modules/MediaModule.svelte';
 	import { imageBuilder } from '$lib/sanity';
 	import { page } from '$app/stores';
@@ -15,14 +13,6 @@
 	let root;
 
 	let visible = false;
-
-	onMount(() => {
-		root = document.querySelector(':root');
-	});
-
-	onDestroy(() => {
-		root?.style.setProperty('--logo-color', 'black');
-	});
 </script>
 
 <svelte:head>
@@ -67,29 +57,6 @@
 			<Content value={data.project.description} />
 		</div>
 	{/if}
-	<!-- {#if data.project.tags}
-		<div class="tags">
-			{#each data.project.tags as tag, index}
-				{#if tag.name}
-					<a href={`/tag/${tag.slug}`}>
-						{`${tag.name}${index < data.project.tags.length - 1 ? ', ' : ''}`}
-					</a>
-				{/if}
-			{/each}
-		</div>
-	{/if} -->
-</section>
-<section
-	id="hero"
-	use:inView={{ threshold: 0.85 }}
-	on:enter={() => {
-		root?.style.setProperty('--logo-color', data.project.theme === 'light' ? 'white' : 'black');
-	}}
-	on:exit={() => {
-		root?.style.setProperty('--logo-color', 'black');
-	}}
->
-	<Media media={data.project.hero} />
 </section>
 {#if data.project.modules}
 	{#each data?.project.modules as module}
@@ -99,8 +66,6 @@
 			<ContentModule {module} />
 		{:else if module._type === 'carousel_module'}
 			<CarouselModule {module} />
-		{:else if module._type === 'quote_module'}
-			<QuoteModule {module} />
 		{:else if module._type === 'media_module'}
 			<MediaModule {module} />
 		{/if}
@@ -108,146 +73,31 @@
 {/if}
 
 {#if data.project.credits}
-	<section class="credits"
-	style={`opacity: ${visible ? 1 : 0}; 
-		transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-		transform: translateY(${visible ? '0px' : '55px'});`}
-		use:inView={{ threshold: 0.5 }}
-		on:enter={() => {
-			visible = true;
-		}}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
-	>
-		<p>Project credits:</p>
+	<section class="credits">
 		<PortableText value={data.project.credits} />
 	</section>
 {/if}
 
 <style>
-	h1 {
-		font-size: 3rem;
-		text-align: center;
-	}
-	section {
-		max-width: var(--max-width);
-		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
-	}
-
-	@media screen and (min-width: 1024px) {
-		section {
-			margin: var(--section-margin-d) auto;
-		}
-	}
-
-	section#hero {
-		margin-top: 0;
-		padding: 0;
-	}
-
-	section#hero {
-		max-width: 100vw;
-
-		overflow: hidden;
-	}
-
-	.credits {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-sm);
-		text-align: center;
-		max-width: 35rem;
-	}
-
-	@media screen and (min-width: 1024px) {
-		.credits {
-			font-family: var(--font-serif);
-			font-size: var(--font-size-desk-sm);
-			max-width: 60rem;
-		}
-	}
-
-	@media screen and (min-width: 1920px) {
-		.credits {
-			font-family: var(--font-serif);
-			font-size: var(--font-size-giant-sm);
-			max-width: 60rem;
-		}
-	}
-
-	.credits > p {
-		margin: 0;
-	}
-
-	.tags {
-		text-align: center;
-		font-size: var(--font-size-mob-sm);
-		font-family: var(--font-serif);
-		 
-	}
-
-	@media screen and (min-width: 1024px) {
-		.tags {
-			font-size: var(--font-size-desk-sm);
-		}
-	}
-
-	@media screen and (min-width: 1920px) {
-		.tags {
-			font-size: var(--font-size-giant-sm);
-		}
-	}
-
-	.tags a {
-		color: var(--dark-grey);
-		text-decoration: none;
-		transition: color 0.25s ease-in-out;
-	}
-
-	.tags a:hover {
-		color: var(--red);
-	}
 
 	.description {
-		max-width: 40rem;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.project-title {
-		margin-block-start: 0px;
-		margin-block-end: 0px;
-		margin: 0px;
-		font-family: var(--font-serif);
-		 
-		font-size: var(--font-size-mob-lg);
+		width: 100%;
+		margin-top: calc(var(--full-space) + 1.3rem);
+		padding-top: var(--half-space);
+		text-align: left;
+		border-top: 1px solid var(--grey);
 	}
 
 	.project-description {
-		font-family: var(--font-serif);
-		font-size: var(--font-size-mob-lg);
-		margin: 0 auto;
+		margin-left: var(--half-space);
+		padding: 0 var(--half-space) var(--full-space) 0;
+		max-width: var(--max-text-width);
 	}
 
-	@media screen and (min-width: 1024px) {
-		.project-title, .project-description {
-			font-size: var(--font-size-desk-lg);
-		}
-
-		.description {
-			max-width: 60rem;
-		}
+	.credits {
+		margin-left: var(--half-space);
+		padding: 0 var(--half-space) var(--half-space) 0;
+		max-width: var(--max-text-width);
 	}
-
-	@media screen and (min-width: 1680px) {
-		.project-title, .project-description {
-			font-size: var(--font-size-giant-lg);
-		}
-
-		.description {
-			max-width: 80rem;
-		}
-	}
+	
 </style>

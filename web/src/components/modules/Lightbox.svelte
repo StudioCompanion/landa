@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	export let show: boolean = false;
@@ -122,7 +122,7 @@
 
 	@media screen and (min-width: 1024px) {
 		.close {
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size);
 			top: 2rem;
 			right: 2rem;
 		}
@@ -162,11 +162,11 @@
 	@media screen and (min-width: 1024px) {
 		.caption {
 			bottom: 2rem;
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size);
 		}
 
 		.close {
-			font-size: var(--font-size-desk-sm);
+			font-size: var(--font-size);
 		}
 	}
 
@@ -213,4 +213,4 @@
 	.previous:hover, .next:hover {
 		cursor: pointer;
 	}
-</style>
+</style> -->

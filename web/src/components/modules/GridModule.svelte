@@ -1,7 +1,7 @@
 <script lang="ts">
 	import inView from '$lib/inView';
 	import type { Media as MediaType } from '$lib/types';
-	import Media from '../Media.svelte';
+	import MediaGrid from '../MediaGrid.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';
 
 	type GridModule = {
@@ -14,21 +14,11 @@
 	let visible = false;
 </script>
 
-<section
-	style={`opacity: ${visible ? 1 : 0}; 
-			transition: opacity .6s ease-in-out, transform .4s ease-in-out;
-			transform: translateY(${visible ? '0px' : '55px'});`
-			}
-	use:inView={{ threshold: 0.5 }}
-	on:enter={() => {
-		visible = true;
-	}}
-	id={module._type}
->
+<section class="gridModule" id={module._type}>
 	<div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr)`}>
 		{#each module.items as item}
-			<div>
-				<Media media={item} />
+			<div class="grid-item">
+				<MediaGrid media={item} />
 			</div>
 		{/each}
 	</div>
@@ -38,22 +28,17 @@
 </section>
 
 <style>
+
+	.gridModule {
+		max-width: var(--desktop-width-max);
+		margin: 0 var(--half-space) var(--full-space) var(--half-space);
+	}
+
 	#grid {
 		width: 100%;
 		display: grid;
-		gap: 2rem;
+		gap: var(--quarter-space);
 		align-items: center;
 	}
-	section {
-		max-width: var(--max-width);
-		margin: var(--section-margin-m) auto;
-		padding: 0 var(--section-padding-m);
-	}
 
-	@media (min-width: 1024px) {
-		section {
-			margin: var(--section-margin-d) auto;
-			padding: 0 var(--section-padding-d);
-		}
-	}
 </style>
