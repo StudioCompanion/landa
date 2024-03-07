@@ -51,6 +51,10 @@
   {/if}
 
 <style>
+	.carousel {
+		background: yellow;
+	}
+
 	div {
 		width: 100%;
 	}
@@ -99,7 +103,7 @@
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.video, .image, .image img, .video .mux-player {
-			max-height: var(--giant-max);
+			max-height: var(--giant-desktop-height-max);
 		}
 	}
 
@@ -110,12 +114,5 @@
 
 	.mux-player.no-controls {
 		--controls: none;
-	}
-
-	.carousel {
-		width: auto;
-		height: 100%;
-		display: flex;
-		align-items: center;
 	}
 </style>

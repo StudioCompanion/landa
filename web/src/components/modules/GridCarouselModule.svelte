@@ -1,7 +1,7 @@
 <script lang="ts">
 	import inView from '$lib/inView';
 	import type { Media as MediaType } from '$lib/types';
-	import MediaGrid from '../MediaGrid.svelte';
+	import SlideGrid from '../SlideGrid.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';
 
 	type GridModule = {
@@ -14,24 +14,18 @@
 	export let isInCarousel: boolean = false;
 </script>
 
-<section class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} id={module._type}>
+<section class="gridModule" id={module._type}>
 	<div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr)`}>
 		{#each module.items as item}
-			<div class="grid-item">
-				<MediaGrid media={item} />
-			</div>
+				<SlideGrid media={item} />
 		{/each}
 	</div>
-	{#if module.caption}
-		<ModuleCaption caption={module.caption} />
-	{/if}
 </section>
 
 <style>
 
-	.gridModule {
-		max-width: var(--desktop-width-max);
-		margin: 0 var(--half-space) var(--full-space) var(--half-space);
+.gridModule {
+		max-width: var(--mobile-height-max);
 	}
 
 	#grid {
@@ -45,5 +39,4 @@
         background-color: blue; /* Sets the background color to blue */
 		margin: 0;
     }
-
 </style>

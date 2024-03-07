@@ -113,7 +113,7 @@
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.project-image-container img {
-			max-height: var(--giant-max);
+			max-height: var(--giant-desktop-height-max);
 		}
 	}
 	

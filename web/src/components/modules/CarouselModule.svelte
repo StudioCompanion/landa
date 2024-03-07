@@ -1,320 +1,250 @@
 <script lang="ts">
-	import type { Media as MediaType } from '$lib/types';
-	import Siema from 'siema';
-	import { onMount } from 'svelte';
-	import Media from '../Media.svelte';
-	import ModuleCaption from '../ModuleCaption.svelte';
-	import inView from '$lib/inView';
-	import { imageBuilder } from '$lib/sanity';
+  import { onMount } from 'svelte';
+  import type { Media as MediaType } from '$lib/types';
+  import MediaSlide from '../MediaSlide.svelte';
+  import ModuleCaption from '../ModuleCaption.svelte';
+  import GridCarouselModule from './GridCarouselModule.svelte';
+  import { imageBuilder } from '$lib/sanity';
+  import { browser } from '$app/environment';
 
-	export let module: CarouselModule;
-	let show = false;
-	let imageShowingIndex = 0;
-	let siema: any, slider: any, prev, next;
-	let select = 0;
-	let currentSlide = 0;
+  export let module: CarouselModule;
+  let CarouselComponent;
+  let carousel; // Reference to the carousel instance
+  let currentSlideIndex = 0; // Index of the current slide
+  let slidesData = []; // Data for all slides
 
-	const SLIDE_AUTOPLAY_DURATION = 3500;
+  type CarouselModule = {
+    _type: 'carousel_module';
+    caption?: string;
+    slides: (MediaType | GridCarouselModule)[];
+  };
 
-	let drag = false;
-	type CarouselModule = {
-		_type: 'carousel_module';
-		full_width: boolean;
-		autoplay: boolean;
-		caption?: string;
-		slides: ((MediaType & { _type: 'media' }) | { _type: 'block_slide'; items: MediaType[] })[];
-	};
+  console.log('Initial module.slides data:', module.slides); // Log 1: Initial data
 
-	let images;
-	onMount(() => {
-		let timeout = null;
+const processSlides = () => {
+  console.log('processSlides function is called');
+  module.slides.forEach((slide, index) => {
+    console.log(`Processing slide ${index}:`, slide); // Log each slide being processed
 
-		const handleTimer = () => {
-			clearTimeout(timeout);
-			if (module.autoplay) {
-				timeout = setTimeout(() => {
-					next();
-				}, SLIDE_AUTOPLAY_DURATION);
-			}
-		};
-		slider = new Siema({
-			selector: siema,
-			duration: 200,
-			easing: 'ease-in-out',
-			perPage: 1,
-			startIndex: 0,
-			draggable: true,
-			multipleDrag: true,
-			threshold: 20,
-			loop: true,
-			onChange: () => {
-				currentSlide = slider.currentSlide;
-			}
-		});
-		prev = () => {
-			slider.prev();
-			handleTimer();
-			if (select > 0) {
-				select--;
-			}
-		};
+    if ('media_type' in slide && slide.media_type === 'image') {
+      const url = imageBuilder.image(slide.image).url();
+      slidesData.push({
+        id: slide.image.asset._ref,
+        href: url,
+        type: 'image',
+        caption: slide.caption,
+        image: slide.image,
+      });
+    } else if ('media_type' in slide && slide.media_type === 'video') {
+      slidesData.push({
+          id: slide.video.asset_id, // Assuming this should be asset_id based on your data
+          playbackId: slide.video.playback_id,
+          video_thumbnail: slide.video_thumbnail, // Pass the video_thumbnail object as is
+          type: 'video',
+          caption: slide.caption,
+          aspectRatio: slide.video.aspect_ratio,
+          isInline: slide.isInline,
+          // Include other properties like aspectRatio, isInline if needed
+      });
+    }     else if (slide._type === 'grid_module') { // Changed condition here
+      slidesData.push({
+        _type: 'grid_module',
+        caption: slide.caption,
+        columns: slide.columns, // Include column count if necessary
+        items: slide.items // This should be an array of media items
+      });
+    }
+    // You can extend this logic to handle other media types as well
+  });
 
-		next = () => {
-			slider.next();
-			handleTimer();
-			if (select >= 0) {
-				select++;
-			}
-		};
+  slidesData = [...slidesData];
+  console.log('Processed slidesData:', slidesData); // Log the final slidesData array
+};
 
-		slider.onComplete = (e) => {
-			console.log(e, slider);
-		};
+  const onSlideChange = (event) => {
+    currentSlideIndex = event.detail; // Use event.detail to get the current page index
+    // console.log(`Current slide index changed to: ${currentSlideIndex}`); // Log the current slide index for debugging
+  };
 
-		let slideModules = [];
-		module.slides.map((slide) => {
-			if (slide._type === 'media' && slide.media_type === 'image') {
-				const url = imageBuilder.image(slide.image).url();
-
-				slideModules.push({
-					// @ts-ignore
-					id: slide.image.asset._ref,
-					href: url,
-					type: 'image',
-					caption: slide.caption,
-					mainCaption: module.caption
-				});
-			}
-
-			if (slide._type === 'block_slide') {
-				slide.items.map((i) => {
-					if (i.media_type === 'image') {
-						const url = imageBuilder.image(i.image).url();
-						slideModules.push({
-							// @ts-ignore
-							id: i.image.asset._ref,
-							href: url,
-							type: 'image',
-							caption: i.caption,
-							mainCaption: module.caption
-						});
-					}
-				});
-			}
-		});
-
-		images = slideModules;
-
-		siema.addEventListener('mousedown', () => (drag = false));
-
-		siema.addEventListener('mousemove', () => (drag = true));
-
-		handleTimer();
-
-		return () => {
-			siema.removeEventListener('mousedown', () => (drag = false));
-			siema.removeEventListener('mousemove', () => (drag = true));
-			clearTimeout(timeout);
-		};
-	});
-
-	let caption = module.caption;
-	let visible = false;
-
-	let onClick = (ref) => {
-		if (!drag) {
-			imageShowingIndex = images.findIndex((i) => i.id === ref);
-			show = true;
-		}
-	};
+  if (browser) {
+    onMount(async () => {
+      const module = await import('svelte-carousel');
+      CarouselComponent = module.default;
+      processSlides();
+      console.log('slidesData after processing:', slidesData); // Check the content of slidesData
+    });
+  }
 </script>
 
-<section
-	id={module._type}
-	class="carousel-section"
->
-	<div class="carousel_container">
-		<button on:click={prev} class="carousel_previous"
-			><svg
-				width="27"
-				height="23"
-				viewBox="0 0 27 23"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path d="M1 11.5L11.5 22M1 11.5L11.5 0.999999M1 11.5L27 11.5" stroke="#919191" />
-			</svg>
-		</button>
-		<button on:click={next} class="carousel_next">
-			<svg
-				width="27"
-				height="23"
-				viewBox="0 0 27 23"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path d="M26 11.5L15.5 1M26 11.5L15.5 22M26 11.5L0 11.5" stroke="#919191" />
-			</svg>
-		</button>
-		<div class="carousel" bind:this={siema}>
-			{#if module.slides}
-				{#each module.slides as slide, index}
-					<div class="slide">
-						<div class="inner">
-							{#if slide._type === 'media'}
-								<Media
-									carousel
-									media={slide}
-									onClick={() => {
-										// @ts-ignore
-										onClick(slide.image.asset._ref);
-									}}
-								/>
-							{:else if slide._type === 'block_slide'}
-								<div class="block">
-									{#each slide.items as item}
-										<Media
-											media={item}
-											onClick={() => {
-												// @ts-ignore
-												onClick(item.image.asset._ref);
-											}}
-										/>
-									{/each}
-								</div>
-							{/if}
-						</div>
-					</div>
-				{/each}
-			{/if}
-		</div>
-		{#if caption}
-			<ModuleCaption {caption} />
-		{/if}
-		<div class="carousel-mobile-navigation">
-			{#if module.slides}
-				{#each module.slides as slide, index}
-					<button
-						class={`carousel-mobile-navigation-button${
-							currentSlide === index ? ' carousel-mobile-navigation-button-selected' : ''
-						}`}
-						on:click={() => {
-							slider.goTo(index);
-						}}>{index + 1}</button
-					>
-				{/each}
-			{/if}
-		</div>
-	</div>
-</section>
+{#if CarouselComponent}
+  <section id={module._type} class="carousel-section">
+    <svelte:component 
+      this={CarouselComponent} 
+      bind:this={carousel} 
+      autoplay={false}
+      swiping={false}
+      duration={0}
+      dots={false}
+      arrows={true}
+      on:pageChange={onSlideChange}
+      let:showPrevPage
+      let:showNextPage
+    >
+    <div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev">
+      
+    </div>
+    {#each slidesData as slide, index}
+      <div class="slide">
+          {#if slide._type === 'grid_module'}
+              <div class="grid-slide">
+                <GridCarouselModule module={slide} isInCarousel={true} />
+              </div>
+          {:else}
+              <div class={slide.type + '-slide'}>
+                <MediaSlide media={slide} />
+              </div>
+          {/if}
+      </div>
+    {/each}
+    <div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
+      
+    </div>
+    </svelte:component>
+    <div class="caption">
+      <div class="slide-count">
+        <div class="current-slide">{currentSlideIndex + 1}</div>
+        <div class="slide-separator">of</div>
+        <div class="total-slides">{slidesData.length}</div>
+      </div>
+      <div class="global-caption">{module.caption}</div>
+      <div class="slide-caption">{slidesData[currentSlideIndex]?.caption}</div>
+    </div>
+  </section>
+{/if}
+
 
 <style>
-	.grid {
-		width: 100%;
-		display: grid;
-		gap: 2rem;
-		align-items: center;
-	}
+  .carousel-section {
+    position: relative;
+    margin: 0 var(--half-space);
+    padding: 0 0 var(--full-space) 0;
+  }
 
-	.carousel-section {
-		margin: var(--section-margin-m) auto;
-	}
+  .slide {
+    overflow: hidden;
+    position: relative;
+		max-height: var(--mobile-height-max); /* Caps the maximum height */
+  }
 
-	.slide {
-		margin: 0 auto;
-		max-width: var(--max-width);
-		width: 100%;
-		padding: 0 var(--section-padding-m);
-	}
+  .custom-arrow {
+    border: 1px solid var(--grey);
+    height: 100%;
+    position: absolute;
+  }
 
-	.inner {
-		height: 100%;
-		width: 100%;
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.block {
-		display: flex;
-		gap: 2rem;
-		align-items: center;
-	}
+  .custom-arrow-next {
+    right: 0;
+    z-index: 99;
+    cursor: e-resize;
+    width: calc(75% + 1px);
+  }
 
-	.carousel_container {
-		position: relative;
-	}
+  .custom-arrow-prev {
+    left: 0;
+    z-index: 99;
+    cursor: w-resize;
+    width: 25%;
+  }
 
-	.carousel_previous {
-		z-index: 10;
-		border: none;
-		background-color: transparent;
-		position: absolute;
-		top: 50%;
-		left: 1rem;
-		transform: translateY(-50%);
-		display: none;
-	}
-	.carousel_next {
-		z-index: 10;
-		border: none;
-		background-color: transparent;
-		position: absolute;
-		top: 50%;
-		right: 1rem;
-		transform: translateY(-50%);
-		display: none;
-	}
+  .image-slide, .video-slide {
+    height: 100%;
+    width: 100%;
+  }
 
-	.carousel_previous svg path,
-	.carousel_next svg path {
-		transition: stroke 0.25s ease-in-out;
-	}
+  .image-slide {
+    position: relative;
+  }
 
-	.carousel_previous:hover svg path,
-	.carousel_next:hover svg path {
-		stroke: var(--red);
-		transition: stroke 0.25s ease-in-out;
-		cursor: pointer;
-	}
+  :global(.image-slide img) {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+  }
 
-	.carousel_previous:hover,
-	.carousel_next:hover {
-		cursor: pointer;
-	}
+  .grid-slide {
+    background: green;
+  }
 
-	.carousel-mobile-navigation {
-		display: flex;
-		gap: 0.4rem;
-		justify-content: center;
-		margin-top: 1rem;
-	}
+  .video-slide {
+  }
 
-	@media (min-width: 768px) {
-		.carousel_previous,
-		.carousel_next {
-			display: initial;
+  .caption {
+    max-width: var(--max-text-width);
+		font-size: var(--font-size);
+		text-align: left;
+		padding: var(--half-space) 0 0 0;
+    display: flex;
+    flex-direction: row;
+    gap: var(--half-space);
+  }
+
+  .slide-count {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .current-slide, .total-slides {
+    width: 8px;
+  }
+
+  .slide-separator {
+    width: 13px;
+  }
+
+  @media (min-width: 768px) {
+    .slide-separator {
+      width: 16px;
+    }
+
+    .current-slide, .total-slides {
+      width: 10px;
+    }
+  }
+
+  /* Tablet */
+	@media (min-width: 800px) {
+		.slide {
+			max-height: var(--tablet-height-max);
 		}
+	}
 
-		.carousel-mobile-navigation {
-			display: none;
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.slide {
+			max-height: var(--desktop-height-max);
 		}
 	}
 
-	.carousel-mobile-navigation-button {
-		overflow: hidden;
-		text-indent: -100px;
-		font-size: 6px;
-		padding: 0;
-		width: 1em;
-		height: 1em;
-		border-radius: 50%;
-		border: none;
-		background-color: var(--dark-grey);
-		transition: background-color 0.25s ease-in-out;
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.slide {
+			max-height: var(--large-desktop-height-max);
+		}
 	}
 
-	.carousel-mobile-navigation-button-selected {
-		background-color: var(--black);
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.slide {
+			max-height: var(--giant-desktop-height-max);
+		}
+    .custom-arrow-next {
+      width: 85%;
+    }
+
+    .custom-arrow-prev {
+      width: 15%;
+    }
 	}
 </style>

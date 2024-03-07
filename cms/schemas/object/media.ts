@@ -1,9 +1,11 @@
 import {SchemaTypeDefinition} from 'sanity'
+import { PiImagesFill } from "react-icons/pi";
 
 const media: SchemaTypeDefinition = {
   title: 'Media',
   name: 'media',
   type: 'object',
+  icon: PiImagesFill,
   fields: [
     {
       title: 'Media Type',

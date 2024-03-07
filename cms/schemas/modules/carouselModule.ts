@@ -20,20 +20,7 @@ const carouselModule: SchemaTypeDefinition = {
       type: 'array',
       of: [
         {type: 'media'},
-        {
-          title: 'Block Slide',
-          description: 'A slide with multiple images/videos',
-          name: 'block_slide',
-          type: 'object',
-          fields: [
-            {
-              title: 'Items',
-              name: 'items',
-              type: 'array',
-              of: [{type: 'media'}],
-            },
-          ],
-        },
+        {type: 'grid_module'},
       ],
     },
   ],
