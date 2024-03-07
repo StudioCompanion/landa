@@ -14,12 +14,13 @@
 {#if media}
 	<div
 
-style={media.media_type === 'video'
+style={media.type === 'video'
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
 			: ''}
 	>
-	{#if media.media_type === 'video'}
+	{#if media.type === 'video'}
 		{#if media.isInline}
+		Inline
 		<!-- Inline Video Player -->
 		<mux-player
 			class="mux-player inline-video no-controls"
@@ -41,7 +42,7 @@ style={media.media_type === 'video'
 			poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
 		/>
 		{/if}
-	{:else if media.media_type === 'image' && media.image}
+	{:else if media.type === 'image' && media.image}
 		<!-- Image Rendering -->
 		<img
 		alt={media.alt}

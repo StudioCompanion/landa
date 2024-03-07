@@ -103,7 +103,7 @@
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.video, .image, .image img, .video .mux-player {
-			max-height: var(--giant-max);
+			max-height: var(--giant-desktop-height-max);
 		}
 	}
 
