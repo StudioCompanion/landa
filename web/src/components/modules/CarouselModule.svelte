@@ -147,6 +147,7 @@ const processSlides = () => {
     z-index: 99;
     cursor: e-resize;
     width: calc(75% + 1px);
+    height: 93%;
   }
 
   .custom-arrow-prev {
@@ -154,6 +155,7 @@ const processSlides = () => {
     z-index: 99;
     cursor: w-resize;
     width: 25%;
+    height: 93%;
   }
 
   .image-slide, .video-slide {
