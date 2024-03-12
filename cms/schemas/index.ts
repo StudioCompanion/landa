@@ -6,6 +6,7 @@ import splashscreen from './documents/splashscreen'
 import carouselModule from './modules/carouselModule'
 import contentModule from './modules/contentModule'
 import gridModule from './modules/gridModule'
+import gridCarouselModule from './modules/gridCarouselModule'
 import mediaModule from './modules/mediaModule'
 import content from './object/content'
 import media from './object/media'
@@ -16,6 +17,7 @@ export const schemaTypes = [
   content,
   media,
   gridMedia,
+  gridCarouselModule,
   carouselModule,
   contentModule,
   gridModule,

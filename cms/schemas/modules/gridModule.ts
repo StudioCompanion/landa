@@ -25,6 +25,12 @@ const gridModule: SchemaTypeDefinition = {
       name: 'caption',
       type: 'string',
     },
+    {
+      title: 'Maximum Height',
+      name: 'maxHeight',
+      type: 'number',
+      description: 'Set the maximum height for the grid container (in pixels)',
+    },
   ],
   preview: {
     select: {

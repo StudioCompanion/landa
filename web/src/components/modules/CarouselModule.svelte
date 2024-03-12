@@ -46,12 +46,14 @@ const processSlides = () => {
           isInline: slide.isInline,
           // Include other properties like aspectRatio, isInline if needed
       });
-    }     else if (slide._type === 'grid_module') { // Changed condition here
+    }     else if (slide._type === 'grid_carousel_module') { // Changed condition here
       slidesData.push({
-        _type: 'grid_module',
+        _type: 'grid_carousel_module',
         caption: slide.caption,
         columns: slide.columns, // Include column count if necessary
-        items: slide.items // This should be an array of media items
+        items: slide.items, // This should be an array of media items
+        maxHeight: slide.maxHeight, // Ensure maxHeight is included here
+        sizePreset: slide.sizePreset
       });
     }
     // You can extend this logic to handle other media types as well
@@ -95,7 +97,7 @@ const processSlides = () => {
     </div>
     {#each slidesData as slide, index}
       <div class="slide">
-          {#if slide._type === 'grid_module'}
+          {#if slide._type === 'grid_carousel_module'}
               <div class="grid-slide">
                 <GridCarouselModule module={slide} isInCarousel={true} />
               </div>
@@ -175,7 +177,7 @@ const processSlides = () => {
   }
 
   .grid-slide {
-    background: green;
+    /* background: green; */
   }
 
   .video-slide {
