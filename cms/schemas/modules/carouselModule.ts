@@ -20,7 +20,7 @@ const carouselModule: SchemaTypeDefinition = {
       type: 'array',
       of: [
         {type: 'media'},
-        {type: 'grid_module'},
+        {type: 'grid_carousel_module'},
       ],
     },
   ],

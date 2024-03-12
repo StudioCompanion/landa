@@ -9,13 +9,20 @@
 		columns: number;
 		caption?: string;
 		items: MediaType[];
+		maxHeight?: number;
 	};
 	export let module: GridModule;
 	export let isInCarousel: boolean = false;
+
+	console.log('Module maxHeight:', module.maxHeight);
+
 </script>
 
-<section class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} id={module._type}>
-	<div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr)`}>
+<section 
+class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} 
+id={module._type} 
+style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
+<div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr);`}>
 		{#each module.items as item}
 			<div class="grid-item">
 				<MediaGrid media={item} />
@@ -30,7 +37,7 @@
 <style>
 
 	.gridModule {
-		max-width: var(--desktop-width-max);
+		max-width: var(--mobile-width-max);
 		margin: 0 var(--half-space) var(--full-space) var(--half-space);
 	}
 
@@ -42,8 +49,35 @@
 	}
 
 	.inCarousel {
-        background-color: blue; /* Sets the background color to blue */
 		margin: 0;
     }
+
+  /* Tablet */
+	@media (min-width: 800px) {
+		.gridModule {
+			max-width: var(--tablet-width-max);
+		}
+	}
+
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.gridModule {
+			max-width: var(--desktop-width-max);
+		}
+	}
+
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.gridModule {
+			max-width: var(--large-desktop-width-max);
+		}
+	}
+
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.gridModule {
+			max-width: var(--giant-desktop-width-max);
+		}
+	}
 
 </style>

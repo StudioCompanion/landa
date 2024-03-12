@@ -46,12 +46,14 @@ const processSlides = () => {
           isInline: slide.isInline,
           // Include other properties like aspectRatio, isInline if needed
       });
-    }     else if (slide._type === 'grid_module') { // Changed condition here
+    }     else if (slide._type === 'grid_carousel_module') { // Changed condition here
       slidesData.push({
-        _type: 'grid_module',
+        _type: 'grid_carousel_module',
         caption: slide.caption,
         columns: slide.columns, // Include column count if necessary
-        items: slide.items // This should be an array of media items
+        items: slide.items, // This should be an array of media items
+        maxHeight: slide.maxHeight, // Ensure maxHeight is included here
+        sizePreset: slide.sizePreset
       });
     }
     // You can extend this logic to handle other media types as well
@@ -95,7 +97,7 @@ const processSlides = () => {
     </div>
     {#each slidesData as slide, index}
       <div class="slide">
-          {#if slide._type === 'grid_module'}
+          {#if slide._type === 'grid_carousel_module'}
               <div class="grid-slide">
                 <GridCarouselModule module={slide} isInCarousel={true} />
               </div>
@@ -128,6 +130,7 @@ const processSlides = () => {
     position: relative;
     margin: 0 var(--half-space);
     padding: 0 0 var(--full-space) 0;
+    max-width: var(--mobile-width-max);
   }
 
   .slide {
@@ -137,7 +140,6 @@ const processSlides = () => {
   }
 
   .custom-arrow {
-    border: 1px solid var(--grey);
     height: 100%;
     position: absolute;
   }
@@ -147,6 +149,7 @@ const processSlides = () => {
     z-index: 99;
     cursor: e-resize;
     width: calc(75% + 1px);
+    height: 93%;
   }
 
   .custom-arrow-prev {
@@ -154,6 +157,7 @@ const processSlides = () => {
     z-index: 99;
     cursor: w-resize;
     width: 25%;
+    height: 93%;
   }
 
   .image-slide, .video-slide {
@@ -173,7 +177,7 @@ const processSlides = () => {
   }
 
   .grid-slide {
-    background: green;
+    /* background: green; */
   }
 
   .video-slide {
@@ -218,6 +222,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--tablet-height-max);
 		}
+    .carousel-section {
+      max-width: var(--tablet-width-max);
+    }
 	}
 
 	/* Small Desktop */
@@ -225,6 +232,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--desktop-height-max);
 		}
+    .carousel-section {
+      max-width: var(--desktop-width-max);
+    }
 	}
 
 	/* Desktop */
@@ -232,6 +242,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--large-desktop-height-max);
 		}
+    .carousel-section {
+      max-width: var(--large-desktop-width-max);
+    }
 	}
 
 	/* Monsters */
@@ -239,6 +252,11 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--giant-desktop-height-max);
 		}
+
+    .carousel-section {
+      max-width: var(--giant-desktop-width-max);
+    }
+
     .custom-arrow-next {
       width: 85%;
     }

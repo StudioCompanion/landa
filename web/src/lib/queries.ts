@@ -71,9 +71,11 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
                 // Handle 'media' type slides
                 (_type == "media") => ${media},
                 // Handle 'grid_module' type slides
-                _type == "grid_module" => {
+                _type == "grid_module" || _type == "grid_carousel_module" => {
                     columns,
                     caption,
+                    maxHeight,
+                    sizePreset,
                     items[] ${media}
                 }
             },
@@ -85,6 +87,8 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
         (_type == "grid_module") => {
             columns,
             caption,
+            maxHeight,
+            sizePreset,
             items[] ${media}
         },
         (_type == 'content_module') => {
