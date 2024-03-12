@@ -37,9 +37,8 @@ style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
 <style>
 
 	.gridModule {
-		max-width: var(--desktop-width-max);
+		max-width: var(--mobile-width-max);
 		margin: 0 var(--half-space) var(--full-space) var(--half-space);
-		/* background: red; */
 	}
 
 	#grid {
@@ -52,5 +51,33 @@ style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
 	.inCarousel {
 		margin: 0;
     }
+
+  /* Tablet */
+	@media (min-width: 800px) {
+		.gridModule {
+			max-width: var(--tablet-width-max);
+		}
+	}
+
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.gridModule {
+			max-width: var(--desktop-width-max);
+		}
+	}
+
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.gridModule {
+			max-width: var(--large-desktop-width-max);
+		}
+	}
+
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.gridModule {
+			max-width: var(--giant-desktop-width-max);
+		}
+	}
 
 </style>

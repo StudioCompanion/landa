@@ -130,6 +130,7 @@ const processSlides = () => {
     position: relative;
     margin: 0 var(--half-space);
     padding: 0 0 var(--full-space) 0;
+    max-width: var(--mobile-width-max);
   }
 
   .slide {
@@ -139,7 +140,6 @@ const processSlides = () => {
   }
 
   .custom-arrow {
-    border: 1px solid var(--grey);
     height: 100%;
     position: absolute;
   }
@@ -222,6 +222,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--tablet-height-max);
 		}
+    .carousel-section {
+      max-width: var(--tablet-width-max);
+    }
 	}
 
 	/* Small Desktop */
@@ -229,6 +232,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--desktop-height-max);
 		}
+    .carousel-section {
+      max-width: var(--desktop-width-max);
+    }
 	}
 
 	/* Desktop */
@@ -236,6 +242,9 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--large-desktop-height-max);
 		}
+    .carousel-section {
+      max-width: var(--large-desktop-width-max);
+    }
 	}
 
 	/* Monsters */
@@ -243,6 +252,11 @@ const processSlides = () => {
 		.slide {
 			max-height: var(--giant-desktop-height-max);
 		}
+
+    .carousel-section {
+      max-width: var(--giant-desktop-width-max);
+    }
+
     .custom-arrow-next {
       width: 85%;
     }
