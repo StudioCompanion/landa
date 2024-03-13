@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import {media, mediaAssetSource} from 'sanity-plugin-media'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 import { muxInput } from 'sanity-plugin-mux-input'
@@ -21,7 +22,6 @@ export default defineConfig({
           .items([
             orderableDocumentListDeskItem({
               type: 'client',
-
               title: 'Clients',
               icon: UserIcon,
               S,
@@ -70,7 +70,14 @@ export default defineConfig({
     visionTool(),
     muxInput(),
     colorInput(),
+    media(),
   ],
+
+  form: {
+    image: {
+       assetSources: () => [mediaAssetSource]
+    }
+  },
 
   schema: {
     types: schemaTypes,
