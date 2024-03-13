@@ -71,7 +71,7 @@
 	}
 
 	.project-description {
-		max-width: 822px;
+		max-width: var(--content-p-max-width);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 	}
