@@ -170,7 +170,7 @@ section h3 {
 	}
 }
 
-.bio-section, .collaborators-section, .email-section, .address-section, .services-section {
+.bio-section, .client-section, .collaborators-section, .email-section, .address-section, .services-section {
 	padding: 0 var(--half-space) var(--half-space) var(--half-space);
 	/* background :yellow; */
 }

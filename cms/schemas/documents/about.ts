@@ -11,22 +11,6 @@ const about: SchemaTypeDefinition = {
       type: 'content',
     },
     {
-      title: "Services",
-      name: 'services',
-      type: 'array',
-      of: [{ type: 'object', name: 'service', title: "Service", fields: [{ title: "Title", name: 'title', type: 'string' }, { title: "Content", type: 'text', name: 'content' }] }]
-    },
-    {
-      title: "Clients Title",
-      name: 'clients_title',
-      type: 'string',
-    },
-    {
-      title: 'Clients',
-      name: 'clients',
-      type: 'content',
-    },
-    {
       title: 'Contact',
       name: 'contact',
       type: 'array',
@@ -90,15 +74,25 @@ const about: SchemaTypeDefinition = {
       ],
     },
     {
-      title: 'Biography',
-      name: 'biography',
+      title: "Services",
+      name: 'services',
+      type: 'array',
+      of: [{ type: 'object', name: 'service', title: "Service", fields: [{ title: "Title", name: 'title', type: 'string' }, { title: "Content", type: 'text', name: 'content' }] }]
+    },
+    {
+      title: 'Clients',
+      name: 'clients',
       type: 'content',
     },
     {
       title: 'Collaborators',
       name: 'collaborators',
       type: 'content',
-
+    },
+    {
+      title: 'Biography',
+      name: 'biography',
+      type: 'content',
     },
   ],
   preview: {
