@@ -137,6 +137,7 @@ const processSlides = () => {
     overflow: hidden;
     position: relative;
 		max-height: var(--mobile-height-max); /* Caps the maximum height */
+    background: red;
   }
 
   .custom-arrow {
