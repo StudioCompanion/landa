@@ -14,7 +14,7 @@
 		sections: {
 			description: false,
 			services: false,
-			logos: false,
+			clients: false,
 			contact: false,
 			biography: false,
 			collaborators: false
@@ -28,20 +28,6 @@
 		{#if about.description}
 			<div class="description intro">
 				<Content value={about.description} />
-			</div>
-		{/if}
-	</section>
-
-	<section>
-		{#if about.services}
-		<h2 class="section-title" id="section_title">Services</h2>
-			<div class="services-section">
-			{#each about.services as service}
-				<div class="service">
-					<h3 class="service-title">{service.title}:</h3>
-					<div class="service-description">{service.content}</div>
-				</div>
-			{/each}
 			</div>
 		{/if}
 	</section>
@@ -76,11 +62,27 @@
 		</div>
 	</section>
 
-	{#if about.biography}
+	<section>
+		{#if about.services}
+		<h2 class="section-title" id="section_title">Services</h2>
+			<div class="services-section">
+			{#each about.services as service}
+				<div class="service">
+					<h3 class="service-title">{service.title}:</h3>
+					<div class="service-description">{service.content}</div>
+				</div>
+			{/each}
+			</div>
+		{/if}
+	</section>
+
+	
+
+	{#if about.clients}
 		<section>
-			<h2 class="section-title" id="section_title">Biography</h2>
-			<div class="bio-section">
-				<Content value={about.biography} />
+			<h2 class="section-title" id="section_title">Clients</h2>
+			<div class="client-section">
+				<Content value={about.clients} />
 			</div>
 		</section>
 	{/if}
@@ -90,6 +92,15 @@
 			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<div class="collaborators-section">
 				<Content value={about.collaborators} />
+			</div>
+		</section>
+	{/if}
+
+	{#if about.biography}
+		<section>
+			<h2 class="section-title" id="section_title">Biography</h2>
+			<div class="bio-section">
+				<Content value={about.biography} />
 			</div>
 		</section>
 	{/if}

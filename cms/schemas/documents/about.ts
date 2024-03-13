@@ -22,12 +22,9 @@ const about: SchemaTypeDefinition = {
       type: 'string',
     },
     {
-      title: "Logos",
-      name: 'logos',
-      type: 'array',
-      of: [{
-        name: 'image', title: "image", type: "image"
-      }]
+      title: 'Clients',
+      name: 'clients',
+      type: 'content',
     },
     {
       title: 'Contact',

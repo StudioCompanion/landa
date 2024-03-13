@@ -121,10 +121,9 @@ export const settingsQuery = groq`*[_type == "settings"][0] {
 export const aboutQuery = groq`*[_type == "about"][0] {
     description,
     services[],
-    logos[],
     addresses[],
     contact[],
-    clients_title,
+    clients,
     biography,
     collaborators
 
