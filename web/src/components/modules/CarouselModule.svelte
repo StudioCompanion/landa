@@ -119,11 +119,12 @@ const processSlides = () => {
         <div class="total-slides">{slidesData.length}</div>
       </div>
       <div class="global-caption">{module.caption}</div>
-      <div class="slide-caption">{slidesData[currentSlideIndex]?.caption}</div>
-    </div>
+      {#if slidesData[currentSlideIndex]?.caption}
+      <div class="slide-caption">{slidesData[currentSlideIndex].caption}</div>
+      {/if}
+        </div>
   </section>
 {/if}
-
 
 <style>
   .carousel-section {
