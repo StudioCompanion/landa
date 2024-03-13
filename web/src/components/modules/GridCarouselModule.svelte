@@ -1,17 +1,16 @@
 <script>
 	import { onMount } from 'svelte';
 	import MediaGrid from '../MediaGrid.svelte';
-	import ModuleCaption from '../ModuleCaption.svelte';
   
 	export let module;
 	export let isInCarousel = false;
   
 	const sizePresets = {
-	  'twoup': { mobile: 292, tablet: 642, desktop: 640, lgDesktop: 842, giantDesktop: 959 },
+	  'twoup': { mobile: 400, tablet: 800, desktop: 795, lgDesktop: 842, giantDesktop: 959 },
 	  'threebythree': { mobile: 411, tablet: 796, desktop: 796, lgDesktop: 800, giantDesktop: 954 },
-	  'threeup': { mobile: 485, tablet: 974, desktop: 970, lgDesktop: 1278, giantDesktop: 1456 },
-	  'twolandscape': { mobile: 485, tablet: 974, desktop: 970, lgDesktop: 1278, giantDesktop: 1456 },
-	  '4col2row': { mobile: 485, tablet: 974, desktop: 970, lgDesktop: 1278, giantDesktop: 1456 },
+	  'threeup': { mobile: 600, tablet: 1200, desktop: 1195, lgDesktop: 1278, giantDesktop: 1456 },
+	  'twolandscape': { mobile: 775, tablet: 1200, desktop: 1200, lgDesktop: 1500, giantDesktop: 1800 },
+	  '4col2row': { mobile: 375, tablet: 750, desktop: 745, lgDesktop: 973, giantDesktop: 100 },
 	  'default': { mobile: 100, tablet: 120, desktop: 150 },
 	};
   

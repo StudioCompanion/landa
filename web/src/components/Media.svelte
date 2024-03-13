@@ -86,10 +86,6 @@
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			>
 			<mux-video
-				muted
-				autoplay="muted"
-				loop
-				playsinline
 				slot="media"
 				stream-type="on-demand"
 				playback-id={media.video.playback_id}
