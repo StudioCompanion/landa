@@ -147,7 +147,7 @@ style={media.media_type === 'video'
 	{:else if media.media_type === 'image' && media.image}
 		<!-- Image Rendering -->
 		<img
-		alt={media.alt}
+        alt={media.image.altText || ''}
 		{...getImageProps({ image: media.image, maxWidth: 2000 })}
 		/>
 	{/if}

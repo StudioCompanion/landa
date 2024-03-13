@@ -6,7 +6,13 @@ export const media = groq`{
     (media_type == "image") => {
       image {
         "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-        asset
+        asset,
+        _ref,
+        _type,
+        "altText": asset->altText,
+        "description": asset->description,
+        "tags": opt.media.tags[]->name.current,
+        "title": asset->title,
       },
     },
     (media_type == "video") => {
