@@ -30,7 +30,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Carousels with a mixture of single images and grids have varying image heights (e.g. Hermès Shanghai event design gallery: https://landa-web.vercel.app/work/hermes-shanghai)
 - [ ] Can we have the option to have 3 hero images for the homepage, then just 1 for the 'Work' page? (e.g. currently I've comped 3 frieze covers for the project image, but ideally on the 'Work' page it would just show the first cover)
 - [ ] Can we add toggles so we have the option for autoplay and looping on full videos?
-- [ ] Videos in carousels keep playing when you click through to the next image. They should stop and start from the beginning when you click back to it if possible.
+- [x] Videos in carousels keep playing when you click through to the next image. They should stop and start from the beginning when you click back to it if possible.
 - [x] Image count is currently formatted as ‘1 of 10’, could we have it as ‘1/10’.
 - [x] Video controls are different for videos in carousels, is this WIP?
 - [ ] Should we be able to move modules around once content is uploaded? It doesn’t currently work when I try to drag them.

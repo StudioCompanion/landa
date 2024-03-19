@@ -19,12 +19,21 @@
     slides: (MediaType | GridCarouselModule)[];
   };
 
-  console.log('Initial module.slides data:', module.slides); // Log 1: Initial data
+  // console.log('Initial module.slides data:', module.slides); // Log 1: Initial data
+
+
+  let videoElements = new Map(); // To store video elements by index
+
+  const registerVideoElement = (index, videoEl) => {
+        videoElements.set(index, videoEl);
+    };
+
+
 
 const processSlides = () => {
-  console.log('processSlides function is called');
+  // console.log('processSlides function is called');
   module.slides.forEach((slide, index) => {
-    console.log(`Processing slide ${index}:`, slide); // Log each slide being processed
+    // console.log(`Processing slide ${index}:`, slide); // Log each slide being processed
 
     if ('media_type' in slide && slide.media_type === 'image') {
       const url = imageBuilder.image(slide.image).url();
@@ -60,20 +69,25 @@ const processSlides = () => {
   });
 
   slidesData = [...slidesData];
-  console.log('Processed slidesData:', slidesData); // Log the final slidesData array
 };
 
-  const onSlideChange = (event) => {
-    currentSlideIndex = event.detail; // Use event.detail to get the current page index
-    // console.log(`Current slide index changed to: ${currentSlideIndex}`); // Log the current slide index for debugging
-  };
+const onSlideChange = (event) => {
+    const previousIndex = currentSlideIndex;
+    currentSlideIndex = event.detail;
+
+    const previousVideoElement = videoElements.get(previousIndex);
+    if (previousVideoElement) {
+        previousVideoElement.pause();
+    }
+};
+
 
   if (browser) {
     onMount(async () => {
       const module = await import('svelte-carousel');
       CarouselComponent = module.default;
       processSlides();
-      console.log('slidesData after processing:', slidesData); // Check the content of slidesData
+      // console.log('slidesData after processing:', slidesData); // Check the content of slidesData
     });
   }
 </script>
@@ -102,9 +116,9 @@ const processSlides = () => {
                 <GridCarouselModule module={slide} isInCarousel={true} />
               </div>
           {:else}
-              <div class={slide.type + '-slide'}>
-                <MediaSlide media={slide} />
-              </div>
+          <div class={slide.type + '-slide'}>
+            <MediaSlide media={slide} on:videoElement={e => registerVideoElement(index, e.detail.videoElement)} />
+            </div>
           {/if}
       </div>
     {/each}
