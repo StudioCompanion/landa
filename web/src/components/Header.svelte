@@ -69,8 +69,8 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
-		padding: var(--half-space) var(--half-space) var(--half-space) var(--half-space);
-		z-index: 50;
+		padding: var(--half-space) var(--half-space) 0 var(--half-space);
+		z-index: 999;
 		font-family: var(--font-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
