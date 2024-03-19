@@ -114,13 +114,12 @@ const project: SchemaTypeDefinition = {
     select: {
       show_homepage: 'show_homepage',
       title: 'title',
-      caption: 'caption',
       featured_image: 'featured_image',
       client: 'client.title',
     },
     prepare: (v) => {
       return {
-        title: `${v.title} ${v.show_homepage ? '★' : ''}`,
+        title: `${v.title} ${v.show_homepage ? '☗' : ''}`,
         subtitle: `${v.caption ? `${v.caption}${v.client ? ', ' : ''}` : ''}${
           v.client ? v.client : ''
         }`,
