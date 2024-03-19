@@ -5,7 +5,7 @@ const project: SchemaTypeDefinition = {
   name: 'project',
   type: 'document',
   groups: [
-    {name: 'general', title: 'General', default: true},
+    {name: 'general', title: 'General'},
     {name: 'modules', title: 'Modules'},
     {name: 'seo', title: 'SEO'},
   ],
