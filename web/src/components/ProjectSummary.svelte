@@ -58,7 +58,6 @@
 	.work-box {
 		opacity: 0;
 		text-decoration: none;
-		transition: opacity 1s ease-in-out;
 	}
 
 	.work-box.visible {
@@ -84,7 +83,6 @@
 		font-size: var(--font-size-mob-lg);
 		font-family: var(--font-serif);
 		margin: 0 auto;
-		transition: color 0.35s ease-in-out;
 	}
 
 	.project-image-container {

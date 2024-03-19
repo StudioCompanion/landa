@@ -78,7 +78,7 @@
 	}
 
 	.right-wrap {
-		column-gap: 1rem;
+		column-gap: var(--half-space);
 		display: flex;
 		flex-direction: row;
 		height: 11px;
@@ -99,12 +99,10 @@
 	header a {
 		text-decoration: none;
 		color: var(--black);
-		transition: color 0.4s ease-out;
 	}
 
 	a:hover {
 		color: var(--grey);
-		transition: color 0.4s ease-out;
 	}
 
 	/* Specific A Type Styles */
@@ -112,21 +110,17 @@
 		opacity: 1;
 		text-decoration: none;
 		display: inline-block;
-		transition: color 0.4s ease-out;
 	}
 
 	.mobile-link:hover {
 		color: var(--grey);
-		transition: color 0.4s ease-out;
 	}
 
 	.menu-icon, .close-icon {
-		transition: opacity 0.4s ease-out;
 	}
 
 	.menu-icon:hover, .close-icon:hover {
 		opacity: 0.5;
-		transition: opacity 0.4s ease-out;
 	}
 
 	/* Mobile */

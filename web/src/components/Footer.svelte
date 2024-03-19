@@ -92,12 +92,10 @@
 	footer a {
 		color: var(--black);
 		text-decoration: none;
-		transition: color 0.4s ease-out;
 	}
 
 	footer a:hover {
 		color: var(--grey);
-		transition: color 0.4s ease-out;
 	}
 	
 </style>

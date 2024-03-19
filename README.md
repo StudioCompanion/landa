@@ -24,7 +24,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] CMS Remove: Quote Module
 - [x] CMS Remove: Background Color from Content Module, Carousel Module, Grid Module
 - [x] Replace Alt Name for Images
-- [ ] Can we have the ability to use italics on the homepage captions and project titles?
+- [o] Can we have the ability to use italics on the homepage captions and project titles?
 - [ ] Can we make the space between ‘Work’ and ‘Info’ equal to the margin width?
 - [ ] Could we add colons after the project titles on the homepage?
 - [ ] Carousels with a mixture of single images and grids have varying image heights (e.g. Hermès Shanghai event design gallery: https://landa-web.vercel.app/work/hermes-shanghai)
