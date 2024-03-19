@@ -34,3 +34,4 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Image count is currently formatted as ‘1 of 10’, could we have it as ‘1/10’.
 - [ ] Video controls are different for videos in carousels, is this WIP?
 - [ ] Should we be able to move modules around once content is uploaded? It doesn’t currently work when I try to drag them.
+- [ ] Nav 999 z-index
