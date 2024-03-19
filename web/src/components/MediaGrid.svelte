@@ -115,7 +115,7 @@ style={media.media_type === 'video'
 						</svg>
 						
 				</media-play-button>
-				<media-time-display notoggle remaining></media-time-display>
+				<media-time-display notoggle></media-time-display>
 				<media-time-range>
 					<span slot="preview"></span>
 				</media-time-range>

@@ -32,6 +32,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Can we add toggles so we have the option for autoplay and looping on full videos?
 - [ ] Videos in carousels keep playing when you click through to the next image. They should stop and start from the beginning when you click back to it if possible.
 - [x] Image count is currently formatted as ‘1 of 10’, could we have it as ‘1/10’.
-- [ ] Video controls are different for videos in carousels, is this WIP?
+- [x] Video controls are different for videos in carousels, is this WIP?
 - [ ] Should we be able to move modules around once content is uploaded? It doesn’t currently work when I try to drag them.
 - [x] Nav 999 z-index
