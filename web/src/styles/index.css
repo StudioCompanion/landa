@@ -101,7 +101,6 @@
 	font-family: 'JJannon Bold';
 	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
-	 
 	font-display: swap;
 }
 
@@ -198,7 +197,7 @@ p, li, a, ul {
 
 strong {
 	font-size: var(--font-size);
-	font-family: var(--font-serif);
+	font-family: 'JJannon Bold';
 }
 
 em {
@@ -208,5 +207,5 @@ em {
 
 strong em {
 	font-size: var(--font-size);
-	font-family: var(--font-serif-italic);
+	font-family: 'JJannon Bold Italic';
 }
