@@ -115,7 +115,7 @@ const processSlides = () => {
     <div class="caption">
       <div class="slide-count">
         <div class="current-slide">{currentSlideIndex + 1}</div>
-        <div class="slide-separator">of</div>
+        <div class="slide-separator">/</div>
         <div class="total-slides">{slidesData.length}</div>
       </div>
       <div class="global-caption">{module.caption}</div>
@@ -197,24 +197,24 @@ const processSlides = () => {
   .slide-count {
     display: flex;
     flex-direction: row;
-    gap: 0.25rem;
+    gap: calc(var(--quarter-space) / 2);
   }
 
   .current-slide, .total-slides {
-    width: 8px;
+    width: auto;
   }
 
   .slide-separator {
-    width: 13px;
+    width: auto;
   }
 
   @media (min-width: 768px) {
     .slide-separator {
-      width: 16px;
+      width: 5px;
     }
 
     .current-slide, .total-slides {
-      width: 10px;
+      width: auto;
     }
   }
 
