@@ -20,7 +20,7 @@ const project: SchemaTypeDefinition = {
       title: 'Caption',
       name: 'caption',
       description: 'This is displayed on the homepage',
-      type: 'string',
+      type: 'content',
       group: 'general',
     },
     {

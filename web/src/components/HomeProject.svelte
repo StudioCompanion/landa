@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import inView from '$lib/inView';
+	import InlineContent from './InlineContent.svelte';
 
 	export let project;
 	export let index;
@@ -37,7 +38,8 @@
 			/>
 		</div>
 		<div class="project-description" id="caption">
-			<span class="project-title">{project.title}</span> <span class="project-caption">{project.caption}</span>
+			<span class="project-title">{project.title}</span>:
+			<InlineContent value={project.caption} />
 		</div>
 	</a>
 </div>
@@ -47,7 +49,7 @@
 		padding: var(--half-space);
 		border-top: 1px solid var(--grey);
 	}
-	
+
 	.project-summary {
 		position: relative;
 		display: inline-flex; /* Changed from 'block' to 'inline-flex' */

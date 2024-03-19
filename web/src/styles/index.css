@@ -188,6 +188,10 @@ span {
 	text-align: var(--paragraph-alignment);
 }
 
+.inline-content p {
+	display: inline;
+}
+
 p, li, a, ul {
 	font-size: var(--font-size);
 }
