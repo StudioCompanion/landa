@@ -42,7 +42,9 @@ export const projectsQuery = groq`*[_type == 'project']|order(orderRank) {
     title,
     "slug": slug.current,
     caption,
-    featured_image
+    featured_image,
+    "image_stack": image_stack[]{..., asset->},
+    "image_flicker": image_flicker[]{..., asset->},
 }`;
 
 export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage == true]|order(orderRank) {
@@ -50,7 +52,9 @@ export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage 
     title,
     "slug": slug.current,
     caption,
-    featured_image
+    featured_image,
+    "image_stack": image_stack[]{..., asset->},
+    "image_flicker": image_flicker[]{..., asset->},
 }`;
 
 export const projectQuery = groq`*[_type == "project" && slug.current == $slug][0] {
@@ -59,9 +63,10 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     theme,
     "slug": slug.current,
     featured_image,
+    "image_stack": image_stack[]{..., asset->},
+    "image_flicker": image_flicker[]{..., asset->},
     description,
     credits,
-    hero ${media},
     tags[]-> {
         _id,
         name,

@@ -26,6 +26,7 @@
 <!-- svelte-ignore a11y-missing-attribute -->
 <div class="project-container">
 	<a class="project-summary" href={`/work/${project.slug}`}>
+		<!-- {#if project.featured_image}
 		<div class="project-image-container" id="image-container">
 			<img
 				class={`project-image ${imageType}`}
@@ -37,6 +38,21 @@
 				height={height}
 			/>
 		</div>
+		{/if} -->
+		{#if project.image_stack}
+			<div class="image-stack">
+			{#each project.image_stack as image}
+				<img src={image.asset.url} alt="ALT REPLACE" class="stack-image" />
+			{/each}
+			</div>
+		{/if}
+		{#if project.image_flicker}
+			<div class="project-image-container" id="image-container">
+			{#each project.image_flicker as image}
+				<img src={image.asset.url} alt="ALT REPLACE" class="flicker-image" />
+			{/each}
+			</div>
+		{/if}
 		<div class="project-description" id="caption">
 			<span class="project-title">{project.title}</span>:
 			<InlineContent value={project.caption} />
@@ -86,10 +102,22 @@
 		color: var(--grey);
 	}
 
+	.image-stack {
+		width: 100%;
+		display: grid;
+		align-items: center;		
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--quarter-space);
+	}
+	
+	.image-stack img {
+		max-width: 100%;
+		max-height: var(--desktop-height-max);
+	}
 
 	/* Tablet */
 	@media (min-width: 800px) {
-		.project-image-container img {
+		.project-image-container img, .image-stack img {
 			max-height: var(--tablet-height-max);
 		}
 		.project-description {
@@ -100,21 +128,21 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.project-image-container img {
+		.project-image-container img, .image-stack img {
 			max-height: var(--desktop-height-max);
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.project-image-container img {
+		.project-image-container img, .image-stack img {
 			max-height: var(--large-desktop-height-max);
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.project-image-container img {
+		.project-image-container img, .image-stack img {
 			max-height: var(--giant-desktop-height-max);
 		}
 	}

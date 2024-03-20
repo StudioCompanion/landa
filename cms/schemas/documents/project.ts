@@ -26,7 +26,7 @@ const project: SchemaTypeDefinition = {
     {
       title: 'Slug',
       name: 'slug',
-      description: 'This is displayed on the homepage',
+      description: 'This is how you access it in the url under /work/slug',
       type: 'slug',
       options: {
         source: 'title',
@@ -48,11 +48,35 @@ const project: SchemaTypeDefinition = {
       group: 'general',
     },
     {
-      title: 'Featured Image',
+      title: 'Overview Image',
       name: 'featured_image',
-      description: 'This is used in the project gallery',
+      description: 'This is used in the /work page',
       type: 'image',
       group: 'general',
+    },
+    {
+      name: "image_stack",
+      title: "Image Stack",
+      type: 'array',
+      of: [{type: 'image'}],
+      validation: (Rule) =>
+        Rule.custom((field, context) =>
+          context.document.image_flicker === undefined && field === undefined
+            ? "Either Image Stack or Image Flicker must have a value"
+            : true
+        ),
+    },
+    {
+      name: "image_flicker",
+      title: "Image Flicker",
+      type: 'array',
+      of: [{type: 'image'}],
+      validation: (Rule) =>
+        Rule.custom((field, context) =>
+          context.document.image_stack === undefined && field === undefined
+            ? "Either Image Stack or Image Flicker must have a value"
+            : true
+        ),
     },
     {
       title: 'Show on homepage',
