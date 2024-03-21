@@ -4,53 +4,57 @@
 	import { page } from '$app/stores';
 	import inView from '$lib/inView';
 	import InlineContent from './InlineContent.svelte';
+	import { Image } from "@unpic/svelte";
 
+	let imageLoaded = false;
+
+	function handleImageLoad() {
+		imageLoaded = true;
+	}
+	
 	export let project;
 	export let index;
 	export let homepage = false;
-
-	let visible = false;
-	onMount(() => {
-			const timeout = setTimeout(() => {
-				visible = true;
-			}, Math.min(index * 100, 2500));
-
-			return () => {
-				clearTimeout(timeout);
-			};
-	});
-
-	let { src, srcset, sizes, width, height, imageType } = getImageProps({ image: project.featured_image, maxWidth: 2000 });
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <div class="project-container">
 	<a class="project-summary" href={`/work/${project.slug}`}>
-		<!-- {#if project.featured_image}
-		<div class="project-image-container" id="image-container">
-			<img
-				class={`project-image ${imageType}`}
-				alt="ALT NAME REPLACE"
-				src={src}
-				srcset={srcset}
-				sizes={sizes}
-				width={width}
-				height={height}
-			/>
-		</div>
-		{/if} -->
 		{#if project.image_stack}
 			<div class="image-stack">
 			{#each project.image_stack as image}
-				<img src={image.asset.url} alt="ALT REPLACE" class="stack-image" />
+			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant.background};">
+				<Image
+					class="stack-image"
+					src={image.asset.url}  
+					layout="constrained"
+					width={image.asset.metadata.dimensions.width}
+					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
+					background={image.asset.metadata.palette.dominant.background}
+					on:load={handleImageLoad}
+					alt="ALT NAME REPLACE"
+				/>	
+			</div>
+
 			{/each}
 			</div>
 		{/if}
 		{#if project.image_flicker}
 			<div class="project-image-container" id="image-container">
 			{#each project.image_flicker as image}
-				<img src={image.asset.url} alt="ALT REPLACE" class="flicker-image" />
-			{/each}
+			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant.background};">
+				<Image
+					class="flicker-image"
+					src={image.asset.url}  
+					layout="constrained"
+					width={image.asset.metadata.dimensions.width}
+					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
+					background={image.asset.metadata.palette.dominant.background}
+					on:load={handleImageLoad}
+					alt="ALT NAME REPLACE"
+				/>	
+			</div>
+		{/each}
 			</div>
 		{/if}
 		<div class="project-description" id="caption">
@@ -81,8 +85,8 @@
 		align-items: flex-start; /* Aligns the image to the top */
 	}
 
-	.project-image-container img {
-		max-height: var(--mobile-height-max); /* Maximum height for the image */
+	.project-image-container img, :global(.flicker-image) {
+		max-height: var(--mobile-height-max) !important; /* Maximum height for the image */
 		height: auto; /* Ensures height adjusts based on width while maintaining aspect ratio */
 		width: auto; /* Ensures width adjusts to maintain the image's aspect ratio */
 		max-width: 100%; /* Ensures image does not exceed the width of its container */
@@ -110,15 +114,29 @@
 		gap: var(--quarter-space);
 	}
 	
-	.image-stack img {
+	.image-stack .stack-image {
 		max-width: 100%;
 		max-height: var(--desktop-height-max);
 	}
 
+	.image-loaded {
+		display: flex;
+	}
+
+	:global(.flicker-image), :global(.stack-image) {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.image-loaded :global(.flicker-image), .image-loaded :global(.stack-image){
+		opacity: 1;
+		transition: opacity 1s;
+	}
+
 	/* Tablet */
 	@media (min-width: 800px) {
-		.project-image-container img, .image-stack img {
-			max-height: var(--tablet-height-max);
+		.project-image-container img, :global(.flicker-image), .image-stack img {
+			max-height: var(--tablet-height-max) !important;
 		}
 		.project-description {
 			font-size: var(--font-size);
@@ -128,22 +146,22 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.project-image-container img, .image-stack img {
-			max-height: var(--desktop-height-max);
+		.project-image-container img, :global(.flicker-image), .image-stack img {
+			max-height: var(--desktop-height-max) !important;
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.project-image-container img, .image-stack img {
-			max-height: var(--large-desktop-height-max);
+		.project-image-container img, :global(.flicker-image), .image-stack img {
+			max-height: var(--large-desktop-height-max) !important;
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.project-image-container img, .image-stack img {
-			max-height: var(--giant-desktop-height-max);
+		.project-image-container img, :global(.flicker-image), .image-stack img {
+			max-height: var(--giant-desktop-height-max) !important;
 		}
 	}
 	

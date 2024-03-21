@@ -4,16 +4,7 @@ export const media = groq`{
     caption,
     "isInline": isInline,
     (media_type == "image") => {
-      image {
-        "aspect_ratio": asset->.metadata.dimensions.aspectRatio,
-        asset,
-        _ref,
-        _type,
-        "altText": asset->altText,
-        "description": asset->description,
-        "tags": opt.media.tags[]->name.current,
-        "title": asset->title,
-      },
+      image {..., asset->},
     },
     (media_type == "video") => {
       video {
@@ -42,7 +33,7 @@ export const projectsQuery = groq`*[_type == 'project']|order(orderRank) {
     title,
     "slug": slug.current,
     caption,
-    featured_image,
+    featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
     "image_flicker": image_flicker[]{..., asset->},
 }`;
@@ -52,7 +43,7 @@ export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage 
     title,
     "slug": slug.current,
     caption,
-    featured_image,
+    featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
     "image_flicker": image_flicker[]{..., asset->},
 }`;
@@ -62,7 +53,7 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     title,
     theme,
     "slug": slug.current,
-    featured_image,
+    featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
     "image_flicker": image_flicker[]{..., asset->},
     description,
@@ -116,7 +107,7 @@ export const tagQuery = groq`*[_type == "tag" && slug.current == $slug][0] {
     "projects": *[_type == "project" && references(^._id)] {
       title,
       _id,
-      featured_image,
+      featured_image{..., asset->},
       "slug": slug.current,
     }
 }`;

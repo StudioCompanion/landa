@@ -182,13 +182,14 @@ const onSlideChange = (event) => {
 
   .image-slide {
     position: relative;
+    display: inline-flex;
   }
 
   :global(.image-slide img) {
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
+    max-height: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto !important;
   }
 
   .grid-slide {

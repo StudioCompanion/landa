@@ -7,6 +7,14 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
+	import { Image } from "@unpic/svelte";
+
+let imageLoaded = false;
+
+function handleImageLoad() {
+	imageLoaded = true;
+}
+
 	let videoElement;
 
 
@@ -210,16 +218,40 @@
         {/if}
     </div>
     {:else if media.type === 'image'}
-        <img
-        alt="Default"
-        {...getImageProps({ image: media.image, maxWidth: 2000 })}
-        />
+	<div class:image-loaded={imageLoaded} style="background: {media.image.asset.metadata.palette.dominant.background};">
+
+		<Image
+			class="media-slide-image"
+			alt={media.image.alt}
+			src={media.image.asset.url}  
+			layout="constrained"
+			width={media.image.asset.metadata.dimensions.width}
+			aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
+			background={media.image.asset.metadata.palette.dominant.background}
+			on:load={handleImageLoad}
+		/>	
+	</div>
     {/if}
 {/if}
 
 <style>
+	
+	.image-loaded {
+		display: inline;
+		height: auto;
+	}
 
-media-controller {
+	:global(.media-slide-image) {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.image-loaded :global(.media-slide-image){
+		opacity: 1;
+		transition: opacity 1s;
+	}
+
+	media-controller {
 		--media-control-background: rgba(255, 255, 255, 0);
 		--media-control-hover-background: rgba(255, 255, 255, 0);
 		--media-font-family: var(--font-serif);

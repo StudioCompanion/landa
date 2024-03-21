@@ -4,6 +4,14 @@
   
 	import { onMount } from 'svelte/internal';
 	
+	import { Image } from "@unpic/svelte";
+
+let imageLoaded = false;
+
+function handleImageLoad() {
+	imageLoaded = true;
+}
+
   
 	onMount(async () => {
 	  await import('@mux/mux-video');
@@ -148,15 +156,41 @@
 			{/if}
 		{:else if media.media_type === 'image' && media.image}
 			<!-- Image Rendering -->
-			<img
+			<div class:image-loaded={imageLoaded} style="background: {media.image.asset.metadata.palette.dominant.background};">
+				<Image
+					class="media-image"
+					alt={media.image.alt}
+					src={media.image.asset.url}  
+					layout="constrained"
+					width={media.image.asset.metadata.dimensions.width}
+					aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
+					background={media.image.asset.metadata.palette.dominant.background}
+					on:load={handleImageLoad}
+				/>	
+			</div>
+			<!-- <img
 			alt={media.alt}
 			{...getImageProps({ image: media.image, maxWidth: 2000 })}
-			/>
+			/> -->
 		{/if}
 	</div>
   {/if}
 
 <style>
+
+.image-loaded {
+		display: flex;
+	}
+
+	:global(.media-image) {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.image-loaded :global(.media-image){
+		opacity: 1;
+		transition: opacity 1s;
+	}
 
 	media-controller {
 		--media-control-background: rgba(255, 255, 255, 0);

@@ -14,7 +14,7 @@
 	export let module: GridModule;
 	export let isInCarousel: boolean = false;
 
-	console.log('Module maxHeight:', module.maxHeight);
+	// console.log('Module maxHeight:', module.maxHeight);
 
 </script>
 

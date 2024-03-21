@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { getImageProps } from '$lib/sanity';
 	import type { Media } from '$lib/types';
-
 	import { onMount } from 'svelte/internal';
+	import { Image } from "@unpic/svelte";
+
+	let imageLoaded = false;
+
+	function handleImageLoad() {
+		imageLoaded = true;
+	}
 
 	onMount(async () => {
 		await import('@mux/mux-player');
@@ -146,10 +152,18 @@ style={media.media_type === 'video'
 		{/if}
 	{:else if media.media_type === 'image' && media.image}
 		<!-- Image Rendering -->
-		<img
-        alt={media.image.altText || ''}
-		{...getImageProps({ image: media.image, maxWidth: 2000 })}
-		/>
+		<div class:image-loaded={imageLoaded} style="background: {media.image.asset.metadata.palette.dominant.background};">
+			<Image
+				class="media-grid-image"
+				alt={media.image.alt}
+				src={media.image.asset.url}  
+				layout="constrained"
+				width={media.image.asset.metadata.dimensions.width}
+				aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
+				background={media.image.asset.metadata.palette.dominant.background}
+				on:load={handleImageLoad}
+			/>	
+		</div>
 	{/if}
 	</div>
 {/if}
@@ -160,6 +174,21 @@ style={media.media_type === 'video'
 		height: auto;
 		display: block;
 	}
+
+	.image-loaded {
+		display: flex;
+	}
+
+	:global(.media-grid-image) {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.image-loaded :global(.media-grid-image){
+		opacity: 1;
+		transition: opacity 1s;
+	}
+
 
 	.mux-player {
 		height: 100%;
