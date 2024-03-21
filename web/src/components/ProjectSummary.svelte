@@ -49,7 +49,7 @@
 					layout="constrained"
 					width={project.featured_image.asset.metadata.dimensions.width}
 					aspectRatio={project.featured_image.asset.metadata.dimensions.aspectRatio}
-					background={project.featured_image.asset.metadata.palette.dominant?.background || '#000000'}
+					background={project.featured_image.asset.metadata.lqip}
 					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
