@@ -21,9 +21,9 @@
 	--max-text-width: 82.7rem;
 	--mobile-height-max: 252px;
 	--tablet-height-max: 506px;
-	--desktop-height-max: 504px;
-	--large-desktop-height-max: 664px;
-	--giant-desktop-height-max: 756px;
+	--desktop-height-max: 664px;
+	--large-desktop-height-max: 756px;
+	--giant-desktop-height-max: 850px;
 
 	--mobile-width-max: 799px;
 	--tablet-width-max: 1196px;

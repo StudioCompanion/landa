@@ -35,3 +35,15 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Video controls are different for videos in carousels, is this WIP?
 - [x] Should we be able to move modules around once content is uploaded? It doesn’t currently work when I try to drag them.
 - [x] Nav 999 z-index
+
+
+- [ ] full videos within carousels so play when coming into active slide, and puase on going out
+- [ ] L&A to do aspect ratios and grids
+hermes fit bottom carousel
+video gradient background in controls
+black lines oon social cut downs in grid view [16:9, 3 portait]
+gelato image grid 2 col not in carousel is too tall, should hit max height
+4 col 2 row look at height capping, del core lookbooks as example
+separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container
+yellow highlight in sanity
+Sanity alt text AI plugin generator
