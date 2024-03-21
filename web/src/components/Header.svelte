@@ -6,7 +6,7 @@
 
 	let isMenuOpen = false;
 
-	let headerOpacity = 0;
+	let headerOpacity = 1;
 	let scrolled = false;
 
 	onMount(() => {
@@ -32,12 +32,16 @@
 	});
 </script>
 
-<header style="opacity: {headerOpacity}; transition: opacity 400ms;">
+<header>
 	<div class="left-wrap">
 		<a class="text-link" href="/">Lane & Associates</a>
 	</div>
 	<div class="menu-icon" on:click={() => isMenuOpen = !isMenuOpen}>
-	    <img src={open} alt="Menu" />
+		{#if isMenuOpen}
+			<img src={close} alt="Close" />
+		{:else}
+			<img src={open} alt="Menu" />
+		{/if}
 	</div>
 	<div class="right-wrap">
 		<a class="text-link" href="/work">Work</a>
@@ -52,7 +56,7 @@
         <img src={close} alt="Close" />
     </div>
 	<div class="menu-group special">
-        <a class="mobile-link" href="/special">Lane & Associates</a>
+        <a class="mobile-link">Lane & Associates</a>
     </div>
     <div class="menu-group">
         <a class="mobile-link" href="/work">Work</a>
@@ -157,6 +161,11 @@
         flex-direction: column;
         margin-bottom: var(--half-space); /* Space between groups */
     }
+
+	.special {
+		margin-top: 1px;
+		visibility: hidden;
+	}
 
 	/* Adjust visibility based on screen size */
 	@media (max-width: 800px) {

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	let date = new Date().getFullYear();
 
-	let footerOpacity = 0; // Initial opacity
+	let footerOpacity = 1; // Initial opacity
 
 	onMount(() => {
 		setTimeout(() => {
@@ -11,7 +11,7 @@
 	});
 </script>
 
-<footer style="opacity: {footerOpacity}; transition: opacity 400ms;">
+<footer>
 	<div class="column-one">
 		<div><p>&copy; Lane & Associates {date}</p></div>
 		<div>

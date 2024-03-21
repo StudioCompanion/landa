@@ -5,12 +5,17 @@
 	import inView from '$lib/inView';
 	import InlineContent from './InlineContent.svelte';
 	import { Image } from "@unpic/svelte";
+	import { blurhashToCssGradientString } from "@unpic/placeholder";
 
 	let imageLoaded = false;
 
 	function handleImageLoad() {
 		imageLoaded = true;
 	}
+
+	function generateBackgroundStyle(blurHash) {
+        return blurhashToCssGradientString(blurHash);
+    }
 	
 	export let project;
 	export let index;
@@ -23,15 +28,15 @@
 		{#if project.image_stack}
 			<div class="image-stack">
 			{#each project.image_stack as image}
-			<div class:image-loaded={imageLoaded}>
+			<div class:image-loaded={imageLoaded} style="background: {generateBackgroundStyle(image.asset.metadata.blurHash)};">
 				<Image
 					class="stack-image"
 					src={image.asset.url}  
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={image.asset.metadata.lqip}
-										on:load={handleImageLoad}
+                    background={generateBackgroundStyle(image.asset.metadata.blurHash)}
+					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
 			</div>
@@ -39,17 +44,19 @@
 			{/each}
 			</div>
 		{/if}
+		
 		{#if project.image_flicker}
 			<div class="project-image-container" id="image-container">
 			{#each project.image_flicker as image}
-			<div class:image-loaded={imageLoaded}>
+			<div class:image-loaded={imageLoaded} style="background: {generateBackgroundStyle(image.asset.metadata.blurHash)};">
 				<Image
 					class="flicker-image"
 					src={image.asset.url}  
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={image.asset.metadata.lqip}	on:load={handleImageLoad}
+                    background={generateBackgroundStyle(image.asset.metadata.blurHash)}
+					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
 			</div>

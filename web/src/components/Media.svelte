@@ -5,6 +5,8 @@
 	import { onMount } from 'svelte/internal';
 	
 	import { Image } from "@unpic/svelte";
+	import { blurhashToCssGradientString } from "@unpic/placeholder";
+
 
 let imageLoaded = false;
 
@@ -12,6 +14,10 @@ function handleImageLoad() {
 	imageLoaded = true;
 }
 
+
+function generateBackgroundStyle(blurHash) {
+        return blurhashToCssGradientString(blurHash);
+    }
   
 	onMount(async () => {
 	  await import('@mux/mux-video');
@@ -156,7 +162,7 @@ function handleImageLoad() {
 			{/if}
 		{:else if media.media_type === 'image' && media.image}
 			<!-- Image Rendering -->
-			<div class:image-loaded={imageLoaded}>
+			<div class:image-loaded={imageLoaded} style="background: {generateBackgroundStyle(media.image.asset.metadata.blurHash)};">
 				<Image
 					class="media-image"
 					alt={media.image.alt}
@@ -164,7 +170,7 @@ function handleImageLoad() {
 					layout="constrained"
 					width={media.image.asset.metadata.dimensions.width}
 					aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
-					background={media.image.asset.metadata.lqip}
+					background={generateBackgroundStyle(media.image.asset.metadata.blurHash)}
 					on:load={handleImageLoad}
 				/>	
 			</div>

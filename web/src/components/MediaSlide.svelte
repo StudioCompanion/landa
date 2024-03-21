@@ -9,6 +9,12 @@
 
 	import { Image } from "@unpic/svelte";
 
+	import { blurhashToCssGradientString } from "@unpic/placeholder";
+	function generateBackgroundStyle(blurHash) {
+        return blurhashToCssGradientString(blurHash);
+    }
+
+
 let imageLoaded = false;
 
 function handleImageLoad() {
@@ -218,7 +224,7 @@ function handleImageLoad() {
         {/if}
     </div>
     {:else if media.type === 'image'}
-	<div class:image-loaded={imageLoaded}>
+	<div class:image-loaded={imageLoaded} style="background: {generateBackgroundStyle(media.image.asset.metadata.blurHash)};">
 
 		<Image
 			class="media-slide-image"
@@ -227,7 +233,7 @@ function handleImageLoad() {
 			layout="constrained"
 			width={media.image.asset.metadata.dimensions.width}
 			aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
-			background={media.image.asset.metadata.lqip}
+			background={generateBackgroundStyle(media.image.asset.metadata.blurHash)}
 						on:load={handleImageLoad}
 		/>	
 	</div>

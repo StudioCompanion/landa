@@ -5,6 +5,11 @@
 	import inView from '$lib/inView';
 	import { Image } from "@unpic/svelte";
 
+	import { blurhashToCssGradientString } from "@unpic/placeholder";
+	function generateBackgroundStyle(blurHash) {
+        return blurhashToCssGradientString(blurHash);
+    }
+
 	let imageLoaded = false;
 
 	function handleImageLoad() {
@@ -32,17 +37,8 @@
 
 <a class="work-box{visible ? ' visible' : ''}" href={`/work/${project.slug}`}>
 	<div class="project-summary" id="square">
-		<!-- <div class="project-image-container" id="image-container"> -->
-			<!-- <img
-				class={`project-image ${imageType}`}
-				alt="ALT NAME REPLACE"
-				src={project.featured_image.asset.url} 
-				srcset={srcset}
-				sizes={sizes}
-				width={width}
-				height={height}
-			/> -->
-			<div class="project-image-container" class:image-loaded={imageLoaded}>
+
+		<div class="project-image-container" class:image-loaded={imageLoaded} >
 				<Image
 					class="project-image"
 					src={project.featured_image.asset.url}  
@@ -54,7 +50,6 @@
 					alt="ALT NAME REPLACE"
 				/>	
 			</div>
-		<!-- </div> -->
 		<div class="project-description" id="caption">
 			<span class="project-title">{project.title}</span>
 		</div>
