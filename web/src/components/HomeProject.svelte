@@ -30,7 +30,7 @@
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={media.image.asset.metadata.lqip}
+					background={image.asset.metadata.lqip}
 										on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
@@ -49,7 +49,7 @@
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={media.image.asset.metadata.lqip}					on:load={handleImageLoad}
+					background={image.asset.metadata.lqip}	on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
 			</div>

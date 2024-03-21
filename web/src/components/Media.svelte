@@ -168,10 +168,6 @@ function handleImageLoad() {
 					on:load={handleImageLoad}
 				/>	
 			</div>
-			<!-- <img
-			alt={media.alt}
-			{...getImageProps({ image: media.image, maxWidth: 2000 })}
-			/> -->
 		{/if}
 	</div>
   {/if}
@@ -185,6 +181,7 @@ function handleImageLoad() {
 	:global(.media-image) {
 		opacity: 0;
 		transition: opacity 1s;
+		display: block;
 	}
 
 	.image-loaded :global(.media-image){
@@ -220,7 +217,7 @@ function handleImageLoad() {
 	
 
 	.carousel {
-		background: yellow;
+		/* background: yellow; */
 	}
 
 	div {
@@ -231,21 +228,31 @@ function handleImageLoad() {
 		width: 100%;
 	}
 
+	
 	.image, .video {
 		display: inline-block;
 		max-width: 100%; /* Ensures the container does not exceed the width of its parent */
+	}
+
+	.image {
+		display: grid !important;
+		/* background: yellow; */
 	}
 
     .video, .image {
         max-width: 100%; /* Ensures the container does not exceed the width of its parent */
         display: flex; /* Makes the video/image container a flex container */
         justify-content: flex-start; /* Centers the video/image horizontally */
-		max-height: var(--mobile-height-max); /* Caps the maximum height */
+		max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
 	}
 
-    .video .mux-player, .image img {
-        max-width: 100%; /* Ensures the content does not exceed the width of its container */
-        max-height: var(--mobile-height-max); /* Caps the maximum height */
+	:global(.media-image){
+		width: auto !important;
+	}
+
+    .video .mux-player, .image img, :global(.media-image) {
+        max-width: 100% !important; /* Ensures the content does not exceed the width of its container */
+        max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
         object-fit: contain; /* Ensures the content fits within the container without losing its aspect ratio */
         width: auto; /* Allows the content to scale its width in proportion to its height */
         height: auto; /* Allows the content to scale its height in proportion to its width */
@@ -253,29 +260,29 @@ function handleImageLoad() {
 
 	/* Tablet */
 	@media (min-width: 800px) {
-		.video, .image, .image img, .video .mux-player {
-			max-height: var(--tablet-height-max);
+		.video, .image, .image img, :global(.media-image), .video .mux-player {
+			max-height: var(--tablet-height-max) !important;
 		}
 	}
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.video, .image, .image img, .video .mux-player {
-			max-height: var(--desktop-height-max);
+		.video, .image, .image img, :global(.media-image), .video .mux-player {
+			max-height: var(--desktop-height-max) !important;
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.video, .image, .image img, .video .mux-player {
-			max-height: var(--large-desktop-height-max);
+		.video, .image, .image img, :global(.media-image), .video .mux-player {
+			max-height: var(--large-desktop-height-max) !important;
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.video, .image, .image img, .video .mux-player {
-			max-height: var(--giant-desktop-height-max);
+		.video, .image, .image img, :global(.media-image), .video .mux-player {
+			max-height: var(--giant-desktop-height-max) !important;
 		}
 	}
 
