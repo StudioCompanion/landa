@@ -23,14 +23,14 @@
 		{#if project.image_stack}
 			<div class="image-stack">
 			{#each project.image_stack as image}
-			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant.background};">
+			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant?.background || '#000000'};">
 				<Image
 					class="stack-image"
 					src={image.asset.url}  
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={image.asset.metadata.palette.dominant.background}
+					background={image.asset.metadata.palette.dominant?.background || '#000000'}
 					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
@@ -42,14 +42,14 @@
 		{#if project.image_flicker}
 			<div class="project-image-container" id="image-container">
 			{#each project.image_flicker as image}
-			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant.background};">
+			<div class:image-loaded={imageLoaded} style="background: {image.asset.metadata.palette.dominant?.background || '#000000'};">
 				<Image
 					class="flicker-image"
 					src={image.asset.url}  
 					layout="constrained"
 					width={image.asset.metadata.dimensions.width}
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-					background={image.asset.metadata.palette.dominant.background}
+					background={image.asset.metadata.palette.dominant?.background || '#000000'}
 					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	

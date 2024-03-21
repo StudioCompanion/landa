@@ -156,7 +156,7 @@ function handleImageLoad() {
 			{/if}
 		{:else if media.media_type === 'image' && media.image}
 			<!-- Image Rendering -->
-			<div class:image-loaded={imageLoaded} style="background: {media.image.asset.metadata.palette.dominant.background};">
+			<div class:image-loaded={imageLoaded} style="background: {media.image.asset.metadata.palette.dominant?.background || '#000000'};">
 				<Image
 					class="media-image"
 					alt={media.image.alt}
@@ -164,7 +164,7 @@ function handleImageLoad() {
 					layout="constrained"
 					width={media.image.asset.metadata.dimensions.width}
 					aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
-					background={media.image.asset.metadata.palette.dominant.background}
+					background={media.image.asset.metadata.palette.dominant?.background || '#000000'}
 					on:load={handleImageLoad}
 				/>	
 			</div>
