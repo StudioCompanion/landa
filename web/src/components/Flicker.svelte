@@ -10,6 +10,7 @@
 	let hideImages = false;
 	let hide = false;
 	let loaderVisible = false;
+	let animationCompleted = false;
 
 	const altRun = () => {
 		hideImages = false;
@@ -19,6 +20,7 @@
 			duration: 10,
 			ease: [0.25, 0.03, 0.84, 0],
 			onComplete: () => {
+				console.log('done');
 				hideImages = true;
 				setTimeout(() => {
 					hide = true;
@@ -26,6 +28,7 @@
 				}, 50);
 				// Re-enable scrolling once the animation is complete
 				document.body.style.overflow = 'auto'; 
+				animationCompleted = true; // Here you mark the animation as completed
 			},
 			onUpdate: (v) => {
 				visible = Math.floor(v);
@@ -73,7 +76,7 @@
 </script>
 
 {#if !hide}
-	<div out:fade class="splashscreen">
+	<div out:fade class="splashscreen" class:fade-out={animationCompleted}>
 		<div class="splashscreen-inner">
 			{#if !hideImages}
 				<div in:fade>
@@ -105,10 +108,17 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 50;
+		z-index: 999;
 		width: 100vw;
 		height: 100vh;
 		background-color: var(--white);
+		transition: opacity 1s ease-in-out;
+
+	}
+
+	.fade-out {
+		opacity: 0;
+		transition: opacity 1s ease-in-out;
 	}
 
 	.splashscreen-inner {

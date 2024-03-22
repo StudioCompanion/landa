@@ -47,9 +47,11 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
 - [ ] What's the yellow highlight in sanity
 - [ ] Sanity alt text AI plugin generator, is there one?
-- [ ] Remove nav from splashscreen bug
+- [x] Remove nav from splashscreen bug
 - [ ] Image cropping and not containing on Chrome + Safari iOS
-- [ ] Image to come from white when loading
+- [x] Image to come from white when loading
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
-- [ ]enable swiping on mobile carousels
+- [ ] enable swiping on mobile carousels
 - [ ] for portrait stacks on homepage feed just show first grid item
+- [ ] fix FOUC on first visit
+- [ ] fix layout shift when gallery lookup height
