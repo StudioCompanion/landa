@@ -52,6 +52,7 @@ const processSlides = () => {
           caption: slide.caption,
           aspectRatio: slide.video.aspect_ratio,
           isInline: slide.isInline,
+          isBlackControls: slide.isBlackControls,
           // Include other properties like aspectRatio, isInline if needed
       });
     }     else if (slide._type === 'grid_carousel_module') { // Changed condition here

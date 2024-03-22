@@ -2,6 +2,7 @@ import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export type BaseMedia = {
 	isInline?: boolean; 
+	isBlackControls?: boolean;
   };
   
   export type Image = BaseMedia & {

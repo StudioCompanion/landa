@@ -46,6 +46,14 @@ const media: SchemaTypeDefinition = {
       hidden: ({ parent }) => parent?.media_type !== 'video',
     },
     {
+      title: 'Black Controls',
+      name: 'isBlackControls',
+      type: 'boolean',
+      description: 'Toggle on for black video controls',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.media_type !== 'video',
+    },
+    {
       title: 'Asset Caption',
       name: 'caption',
       type: 'string',

@@ -3,6 +3,7 @@ export const media = groq`{
     media_type,
     caption,
     "isInline": isInline,
+    "isBlackControls": isBlackControls,
     (media_type == "image") => {
       image {..., asset->},
     },

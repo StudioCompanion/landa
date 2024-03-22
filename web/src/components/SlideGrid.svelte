@@ -9,6 +9,8 @@
 	});
 
 	export let media: Media | undefined;
+	export let isBlackControls: boolean = false; // Default to false if not provided
+
 </script>
 
 {#if media}
@@ -17,10 +19,11 @@
 style={media.type === 'video'
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
 			: ''}
+				class:is-black={media.isBlackControls}
+
 	>
 	{#if media.type === 'video'}
 		{#if media.isInline}
-		Inline
 		<!-- Inline Video Player -->
 		<mux-player
 			class="mux-player inline-video no-controls"
@@ -66,5 +69,9 @@ style={media.type === 'video'
 
 	.mux-player.no-controls {
 		--controls: none;
+	}
+
+	.is-black media-controller {
+		--media-primary-color: var(--black);
 	}
 </style>

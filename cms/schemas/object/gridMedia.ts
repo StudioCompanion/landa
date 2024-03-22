@@ -44,6 +44,14 @@ const gridMedia: SchemaTypeDefinition = {
       initialValue: false, // Default to 'full' video type
       hidden: ({ parent }) => parent?.media_type !== 'video', // Only show this for videos
     },
+    {
+      title: 'Black Controls',
+      name: 'isBlackControls',
+      type: 'boolean',
+      description: 'Toggle on for black video controls',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.media_type !== 'video',
+    },
   ],
 }
 

@@ -39,8 +39,8 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 - [ ] full videos within carousels so play when coming into active slide, and puase on going out
 - [ ] L&A to do aspect ratios and grids
-- [ ] Hermes Fit bottom carousel is bugged
-- [ ] Vvideo gradient background in controls
+- [x] Hermes Fit bottom carousel is bugged
+- [x] Video gradient background in controls
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] gelato image grid 2 col not in carousel is too tall, should hit max height
 - [x] 4 col 2 row look at height capping, del core lookbooks as example
