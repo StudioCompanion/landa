@@ -132,10 +132,12 @@ const onSlideChange = (event) => {
         <div class="slide-separator">/</div>
         <div class="total-slides">{slidesData.length}</div>
       </div>
-      <div class="global-caption">{module.caption}</div>
-      {#if slidesData[currentSlideIndex]?.caption}
-      <div class="slide-caption">{slidesData[currentSlideIndex].caption}</div>
-      {/if}
+      <div class="text-captions">
+        <div class="global-caption">{module.caption}</div>
+        {#if slidesData[currentSlideIndex]?.caption}
+        <div class="slide-caption">{slidesData[currentSlideIndex].caption}</div>
+        {/if}
+      </div>
         </div>
   </section>
 {/if}
@@ -221,6 +223,14 @@ const onSlideChange = (event) => {
 
   .slide-separator {
     width: auto;
+  }
+
+  .text-captions {
+    margin-left: calc(var(--full-space) + var(--half-space));
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: var(--half-space);
   }
 
   @media (min-width: 768px) {
