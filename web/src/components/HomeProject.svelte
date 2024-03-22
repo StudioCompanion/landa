@@ -23,7 +23,7 @@
 		{#if project.image_stack}
 			<div class="image-stack">
 			{#each project.image_stack as image}
-			<div class:image-loaded={imageLoaded}>
+			<div class="stack-container" class:image-loaded={imageLoaded}>
 				<Image
 					class="stack-image"
 					src={image.asset.url}  
@@ -114,7 +114,13 @@
 		grid-template-columns: repeat(3, 1fr);
 		gap: var(--quarter-space);
 	}
-	
+
+	@media (max-width: 800px) {
+		.image-stack .stack-container:nth-of-type(n+2) {
+			display: none;
+		}
+	}
+
 	.image-stack .stack-image {
 		max-width: 100%;
 		max-height: var(--desktop-height-max);

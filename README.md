@@ -44,7 +44,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] gelato image grid 2 col not in carousel is too tall, should hit max height
 - [ ] 4 col 2 row look at height capping, del core lookbooks as example
-- [ ] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
+- [x] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
 - [x] ~What's the yellow highlight in sanity~ — it's what happens when the document is 'syncing', and in that view specifically it's if the 'ordering' hasn't properly updated (can happen sometimes)
 - [ ] Sanity alt text AI plugin generator, is there one?
 - [x] Remove nav from splashscreen bug
@@ -52,6 +52,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Image to come from white when loading
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [ ] enable swiping on mobile carousels
-- [ ] for portrait stacks on homepage feed just show first grid item
+- [x] for portrait stacks on homepage feed just show first grid item
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height
