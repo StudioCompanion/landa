@@ -51,7 +51,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Image cropping and not containing on Chrome + Safari iOS
 - [x] Image to come from white when loading
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
-- [ ] enable swiping on mobile carousels
+- [x] enable swiping on mobile carousels
 - [x] for portrait stacks on homepage feed just show first grid item
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height

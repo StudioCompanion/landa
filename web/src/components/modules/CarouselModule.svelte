@@ -19,9 +19,8 @@
     slides: (MediaType | GridCarouselModule)[];
   };
 
-  // console.log('Initial module.slides data:', module.slides); // Log 1: Initial data
-
-
+  let isMobileDevice = false; // Default to false
+  $: customArrowStyle = isMobileDevice ? 'display: none;' : '';
   let videoElements = new Map(); // To store video elements by index
 
   const registerVideoElement = (index, videoEl) => {
@@ -87,6 +86,7 @@ const onSlideChange = (event) => {
       const module = await import('svelte-carousel');
       CarouselComponent = module.default;
       processSlides();
+      isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       // console.log('slidesData after processing:', slidesData); // Check the content of slidesData
     });
   }
@@ -98,15 +98,15 @@ const onSlideChange = (event) => {
       this={CarouselComponent} 
       bind:this={carousel} 
       autoplay={false}
-      swiping={false}
-      duration={0}
+      swiping={isMobileDevice ? true : false} 
+      duration={isMobileDevice ? 100 : 0} 
       dots={false}
       arrows={true}
       on:pageChange={onSlideChange}
       let:showPrevPage
       let:showNextPage
     >
-    <div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev">
+    <div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev" style={customArrowStyle}>
       
     </div>
     {#each slidesData as slide, index}
@@ -122,7 +122,7 @@ const onSlideChange = (event) => {
           {/if}
       </div>
     {/each}
-    <div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
+    <div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next" style={customArrowStyle}>
       
     </div>
     </svelte:component>
@@ -159,6 +159,7 @@ const onSlideChange = (event) => {
   .custom-arrow {
     height: 100%;
     position: absolute;
+    display: block;
   }
 
   .custom-arrow-next {
@@ -185,6 +186,7 @@ const onSlideChange = (event) => {
   .image-slide {
     position: relative;
     display: inline-flex;
+    pointer-events: none;
   }
 
   :global(.image-slide img) {
@@ -234,6 +236,9 @@ const onSlideChange = (event) => {
   }
 
   @media (min-width: 768px) {
+    .customArrow {
+      display: block;
+    }
     .slide-separator {
       width: 5px;
     }
