@@ -43,7 +43,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Vvideo gradient background in controls
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] gelato image grid 2 col not in carousel is too tall, should hit max height
-- [ ] 4 col 2 row look at height capping, del core lookbooks as example
+- [x] 4 col 2 row look at height capping, del core lookbooks as example
 - [x] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
 - [x] ~What's the yellow highlight in sanity~ — it's what happens when the document is 'syncing', and in that view specifically it's if the 'ordering' hasn't properly updated (can happen sometimes)
 - [ ] Sanity alt text AI plugin generator, is there one?

@@ -10,7 +10,7 @@
 	  'threebythree': { mobile: 411, tablet: 796, desktop: 796, lgDesktop: 800, giantDesktop: 954 },
 	  'threeup': { mobile: 600, tablet: 1200, desktop: 1195, lgDesktop: 1278, giantDesktop: 1456 },
 	  'twolandscape': { mobile: 775, tablet: 1200, desktop: 1200, lgDesktop: 1500, giantDesktop: 1800 },
-	  '4col2row': { mobile: 375, tablet: 750, desktop: 745, lgDesktop: 973, giantDesktop: 100 },
+	  '4col2row': { mobile: 375, tablet: 750, desktop: 745, lgDesktop: 973, giantDesktop: 1300 },
 	  'default': { mobile: 100, tablet: 120, desktop: 150 },
 	};
   
