@@ -39,11 +39,17 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 - [ ] full videos within carousels so play when coming into active slide, and puase on going out
 - [ ] L&A to do aspect ratios and grids
-hermes fit bottom carousel
-video gradient background in controls
-black lines oon social cut downs in grid view [16:9, 3 portait]
-gelato image grid 2 col not in carousel is too tall, should hit max height
-4 col 2 row look at height capping, del core lookbooks as example
-separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container
-yellow highlight in sanity
-Sanity alt text AI plugin generator
+- [ ] Hermes Fit bottom carousel is bugged
+- [ ] Vvideo gradient background in controls
+- [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
+- [ ] gelato image grid 2 col not in carousel is too tall, should hit max height
+- [ ] 4 col 2 row look at height capping, del core lookbooks as example
+- [ ] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
+- [ ] What's the yellow highlight in sanity
+- [ ] Sanity alt text AI plugin generator, is there one?
+- [ ] Remove nav from splashscreen bug
+- [ ] Image cropping and not containing on Chrome + Safari iOS
+- [ ] Image to come from white when loading
+- [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
+- [ ]enable swiping on mobile carousels
+- [ ] for portrait stacks on homepage feed just show first grid item
