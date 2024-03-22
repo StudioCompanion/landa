@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import Content from '../Content.svelte';
 
 	export let module: { content: any; _type: 'content_module' };

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import Content from '../../components/Content.svelte';

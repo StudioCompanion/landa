@@ -2,7 +2,6 @@
 	import { getImageProps } from '$lib/sanity';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import inView from '$lib/inView';
 	import { Image } from "@unpic/svelte";
 
 	let imageLoaded = false;

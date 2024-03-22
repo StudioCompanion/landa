@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import type { Media as MediaType } from '$lib/types';
 	import Media from '../Media.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';

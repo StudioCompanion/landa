@@ -1,5 +1,4 @@
 <script lang="ts">
-	import inView from '$lib/inView';
 	import type { Media as MediaType } from '$lib/types';
 	import MediaGrid from '../MediaGrid.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';
@@ -69,7 +68,7 @@ style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
 	/* Desktop */
 	@media (min-width: 1700px) {
 		.gridModule {
-			max-width: var(--large-desktop-width-max);
+			max-width: var(--desktop-width-max);
 		}
 	}
 
