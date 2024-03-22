@@ -3,7 +3,6 @@
 	import type { Media } from '$lib/types';
 	import { onMount } from 'svelte/internal';
 	import { Image } from "@unpic/svelte";
-	import { blurhashToCssGradientString } from "@unpic/placeholder";
 
 	let imageLoaded = false;
 
@@ -11,9 +10,6 @@
 		imageLoaded = true;
 	}
 
-	function generateBackgroundStyle(blurHash) {
-        return blurhashToCssGradientString(blurHash);
-    }
 
 	onMount(async () => {
 		await import('@mux/mux-player');
@@ -157,7 +153,7 @@ style={media.media_type === 'video'
 		{/if}
 	{:else if media.media_type === 'image' && media.image}
 		<!-- Image Rendering -->
-		<div class:image-loaded={imageLoaded} style="background: {generateBackgroundStyle(media.image.asset.metadata.blurHash)};">
+		<div class:image-loaded={imageLoaded}>
 			<Image
 				class="media-grid-image"
 				alt={media.image.alt}
@@ -165,7 +161,7 @@ style={media.media_type === 'video'
 				layout="constrained"
 				width={media.image.asset.metadata.dimensions.width}
 				aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
-				background={generateBackgroundStyle(media.image.asset.metadata.blurHash)}
+				background="#FFFFFF"
 				on:load={handleImageLoad}
 			/>	
 		</div>

@@ -5,11 +5,6 @@
 	import inView from '$lib/inView';
 	import { Image } from "@unpic/svelte";
 
-	import { blurhashToCssGradientString } from "@unpic/placeholder";
-	function generateBackgroundStyle(blurHash) {
-        return blurhashToCssGradientString(blurHash);
-    }
-
 	let imageLoaded = false;
 
 	function handleImageLoad() {
@@ -45,7 +40,7 @@
 					layout="constrained"
 					width={project.featured_image.asset.metadata.dimensions.width}
 					aspectRatio={project.featured_image.asset.metadata.dimensions.aspectRatio}
-					background={project.featured_image.asset.metadata.lqip}
+					background="#FFFFFF"
 					on:load={handleImageLoad}
 					alt="ALT NAME REPLACE"
 				/>	
