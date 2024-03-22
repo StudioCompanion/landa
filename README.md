@@ -37,7 +37,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Nav 999 z-index
 
 
-- [ ] full videos within carousels so play when coming into active slide, and puase on going out
+- [x] full videos within carousels so play when coming into active slide, and puase on going out
 - [ ] L&A to do aspect ratios and grids
 - [x] Hermes Fit bottom carousel is bugged
 - [x] Video gradient background in controls
@@ -53,5 +53,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [x] enable swiping on mobile carousels
 - [x] for portrait stacks on homepage feed just show first grid item
+- [ ] inline vids in carousel check 
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height

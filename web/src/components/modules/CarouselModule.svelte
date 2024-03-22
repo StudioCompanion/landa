@@ -73,11 +73,20 @@ const processSlides = () => {
 
 const onSlideChange = (event) => {
     const previousIndex = currentSlideIndex;
-    currentSlideIndex = event.detail;
+    const newIndex = event.detail; // Get the new slide index
 
+    currentSlideIndex = newIndex;
+
+    // Pause the previous video if it exists
     const previousVideoElement = videoElements.get(previousIndex);
-    if (previousVideoElement) {
+    if (previousVideoElement && typeof previousVideoElement.pause === 'function') {
         previousVideoElement.pause();
+    }
+
+    // Play the new video if the new slide has a video
+    const newVideoElement = videoElements.get(newIndex);
+    if (newVideoElement && typeof newVideoElement.play === 'function') {
+        newVideoElement.play();
     }
 };
 
