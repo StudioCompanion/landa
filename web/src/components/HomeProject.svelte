@@ -14,12 +14,33 @@
 	export let project;
 	export let index;
 	export let homepage = false;
+
+	let currentImageIndex = 0;
+    let intervalId;
+
+    function startImageFlicker() {
+		console.log('startImageFlicker');
+        intervalId = setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % project.image_flicker.length;
+			console.log(currentImageIndex)
+		}, 250); // Adjust time as needed
+    }
+
+    function stopImageFlicker() {
+		console.log('stopImageFlicker');
+        clearInterval(intervalId);
+		currentImageIndex = 0;
+    }
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <div class="project-container">
-	<a class="project-summary" href={`/work/${project.slug}`}>
-		{#if project.image_stack}
+
+
+	{#if project.image_stack}
+	<a class="project-summary" 
+	href={`/work/${project.slug}`}
+	>
 			<div class="image-stack">
 			{#each project.image_stack as image}
 			<div class="stack-container" class:image-loaded={imageLoaded}>
@@ -31,18 +52,30 @@
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
 					background="#FFFFFF"
 					on:load={handleImageLoad}
-					alt="ALT NAME REPLACE"
+					alt={image.asset.altText}
 				/>	
 			</div>
 
 			{/each}
 			</div>
-		{/if}
+	
+		<div class="project-description" id="caption">
+			<span class="project-title">{project.title}</span>:
+			<InlineContent value={project.caption} />
+		</div>
+	</a>
+	{/if}
+	
+	{#if project.image_flicker}
+	<a class="project-summary sumdaddy" 
+	href={`/work/${project.slug}`}
+	on:mouseenter={startImageFlicker}
+	on:mouseleave={stopImageFlicker}
+	>
 		
-		{#if project.image_flicker}
-			<div class="project-image-container" id="image-container">
+			<!-- <div class="project-image-container"  id="image-container">
 			{#each project.image_flicker as image}
-			<div class:image-loaded={imageLoaded}>
+			<div class={`flicker-image-container ${index === currentImageIndex ? 'flicker-visible' : ''}`} class:image-loaded={imageLoaded}>
 				<Image
 					class="flicker-image"
 					src={image.asset.url}  
@@ -51,17 +84,42 @@
 					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
 					background="#FFFFFF"
 					on:load={handleImageLoad}
-					alt="ALT NAME REPLACE"
+					alt={image.asset.altText}
 				/>	
 			</div>
-		{/each}
-			</div>
-		{/if}
+			{/each}
+			</div> -->
+
+			<div class="project-image-container">
+        {#each project.image_flicker as image, index}
+            <div class={`flicker-image-container ${index === currentImageIndex ? 'flicker-visible' : ''}`} class:image-loaded={imageLoaded}>
+                <Image
+				class="flicker-image"
+
+				src={image.asset.url}  
+				layout="constrained"
+				width={image.asset.metadata.dimensions.width}
+				aspectRatio={image.asset.metadata.dimensions.aspectRatio}
+				background="#FFFFFF"
+				on:load={handleImageLoad}
+				alt={image.asset.altText}
+				priority
+                />
+            </div>
+        {/each}
+    </div>
+
 		<div class="project-description" id="caption">
 			<span class="project-title">{project.title}</span>:
 			<InlineContent value={project.caption} />
 		</div>
 	</a>
+	{/if}
+
+
+
+
+
 </div>
 
 <style>
@@ -76,6 +134,8 @@
 		flex-direction: column; /* Ensures child elements (image and description) are stacked vertically */
 		align-items: flex-start; /* Aligns child elements to the start, preventing unnecessary stretching */
 		gap: var(--half-space);
+		width: 100%;
+
 	}
 
 	.project-image-container {
@@ -83,14 +143,69 @@
 		display: flex; /* Keeps the flex display */
 		justify-content: left; /* Aligns the image to the left, can be 'flex-start' for consistency */
 		align-items: flex-start; /* Aligns the image to the top */
+		width: 100%;
+
 	}
 
 	.project-image-container img, :global(.flicker-image) {
 		max-height: var(--mobile-height-max) !important; /* Maximum height for the image */
 		height: auto; /* Ensures height adjusts based on width while maintaining aspect ratio */
-		width: auto !important; /* Ensures width adjusts to maintain the image's aspect ratio */
+		width: auto; /* Ensures width adjusts to maintain the image's aspect ratio */
 		max-width: 100%; /* Ensures image does not exceed the width of its container */
+		object-position: left;
+		object-fit: contain !important;
 	}
+
+
+
+	.image-stack .stack-image {
+		max-width: 100%;
+		max-height: var(--desktop-height-max);
+	}
+
+	.image-loaded {
+		display: flex;
+	}
+
+	:global(.flicker-image), :global(.stack-image) {
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.image-loaded :global(.flicker-image), .image-loaded :global(.stack-image){
+		opacity: 1;
+		transition: opacity 1s;
+	}
+
+	.flicker-image-container {
+		display: none;
+	}
+
+	.flicker-image-container :global(.flicker-image) {
+		background: red !important;
+	}
+
+	.flicker-visible {
+		display: flex;
+	}
+
+	/* .project-image-container {
+    position: relative;
+    height: var(--image-height);
+}
+
+.project-image-container > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none; 
+}
+
+.image-loaded > .flicker-image, .image-loaded > .stack-image {
+    display: block; 
+} */
 
 	.project-description {
 		max-width: var(--content-p-max-width);
@@ -120,24 +235,6 @@
 		}
 	}
 
-	.image-stack .stack-image {
-		max-width: 100%;
-		max-height: var(--desktop-height-max);
-	}
-
-	.image-loaded {
-		display: flex;
-	}
-
-	:global(.flicker-image), :global(.stack-image) {
-		opacity: 0;
-		transition: opacity 1s;
-	}
-
-	.image-loaded :global(.flicker-image), .image-loaded :global(.stack-image){
-		opacity: 1;
-		transition: opacity 1s;
-	}
 
 	/* Tablet */
 	@media (min-width: 800px) {
