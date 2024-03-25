@@ -226,7 +226,7 @@ function handleImageLoad() {
 
 		<Image
 			class="media-slide-image"
-			alt={media.image.alt}
+			alt={media.image.asset.altText}
 			src={media.image.asset.url}  
 			layout="constrained"
 			width={media.image.asset.metadata.dimensions.width}

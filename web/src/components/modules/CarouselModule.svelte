@@ -143,7 +143,9 @@ const onSlideChange = (event) => {
         <div class="total-slides">{slidesData.length}</div>
       </div>
       <div class="text-captions">
+        {#if module.caption}
         <div class="global-caption">{module.caption}</div>
+        {/if}
         {#if slidesData[currentSlideIndex]?.caption}
         <div class="slide-caption">{slidesData[currentSlideIndex].caption}</div>
         {/if}

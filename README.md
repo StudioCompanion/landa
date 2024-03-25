@@ -50,7 +50,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] L&A to do aspect ratios and grids
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] black bars on videos and aspect ratio in safari/firefox
-- [ ] Sanity alt text AI plugin generator, is there one?
+- [x] Sanity alt text AI plugin generator, is there one?
 - [x] Image cropping and not containing on Chrome + Safari iOS
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [ ] inline vids in carousel check 

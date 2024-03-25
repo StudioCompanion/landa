@@ -158,7 +158,7 @@ style={media.media_type === 'video'
 		<div class:image-loaded={imageLoaded}>
 			<Image
 				class="media-grid-image"
-				alt={media.image.alt}
+				alt={media.image.asset.altText}
 				src={media.image.asset.url}  
 				layout="constrained"
 				width={media.image.asset.metadata.dimensions.width}
