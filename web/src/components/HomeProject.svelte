@@ -88,7 +88,7 @@
 	.project-image-container img, :global(.flicker-image) {
 		max-height: var(--mobile-height-max) !important; /* Maximum height for the image */
 		height: auto; /* Ensures height adjusts based on width while maintaining aspect ratio */
-		width: auto; /* Ensures width adjusts to maintain the image's aspect ratio */
+		width: auto !important; /* Ensures width adjusts to maintain the image's aspect ratio */
 		max-width: 100%; /* Ensures image does not exceed the width of its container */
 	}
 
