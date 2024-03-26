@@ -1,6 +1,6 @@
 <script>
 	import { getImageProps } from '$lib/sanity';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import InlineContent from './InlineContent.svelte';
 	import { Image } from "@unpic/svelte";
@@ -31,6 +31,10 @@
         clearInterval(intervalId);
 		currentImageIndex = 0;
     }
+
+	onDestroy(() => {
+        stopImageFlicker(); // Clear the interval when the component is destroyed
+    });
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->

@@ -47,13 +47,14 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] enable swiping on mobile carousels
 - [x] for portrait stacks on homepage feed just show first grid item
 - [x] gelato image grid 2 col not in carousel is too tall, should hit max height
-- [ ] L&A to do aspect ratios and grids
+- [x] Image cropping and not containing on Chrome + Safari iOS
+- [x] Sanity alt text AI plugin generator, is there one?
+- [x] L&A to do aspect ratios and grids
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] black bars on videos and aspect ratio in safari/firefox
-- [x] Sanity alt text AI plugin generator, is there one?
-- [x] Image cropping and not containing on Chrome + Safari iOS
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [ ] inline vids in carousel check 
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height
 - [ ] homepage flicker on hover
+- [ ] make all grid layouts

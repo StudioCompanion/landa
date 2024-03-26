@@ -69,7 +69,7 @@
 
 		.bio {
 			width: 90%;
-			text-indent: 105px;
+			text-indent: 131px;
 			line-height: var(--line-height);
 			font-size: var(--font-size);
 		}
@@ -77,7 +77,7 @@
 		@media (min-width: 800px) {
 			.bio {
 				width: 80%;
-				text-indent: 130px;
+				text-indent: 163px;
 			}
 		}
 

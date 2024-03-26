@@ -22,7 +22,7 @@
 	.work-route {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr); /* Default to 1 column */
-		margin-top: 70px;
+		margin-top: 48px;
 		overflow-x: hidden;
 		margin-bottom: -1px;
 		margin-right: -1px;
@@ -31,21 +31,21 @@
 
 	@media (min-width: 800px) {
 		.work-route {
-			margin-top: 70px;
+			margin-top: calc(var(--full-space) + 2rem);
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
 	@media (min-width: 1280px) {
 		.work-route {
-			margin-top: 70px;
+			margin-top: calc(var(--full-space) + 2rem);
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
 	@media (min-width: 1700px) {
 		.work-route {
-			margin-top: 70px;
+			margin-top: calc(var(--full-space) + 2rem);
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}

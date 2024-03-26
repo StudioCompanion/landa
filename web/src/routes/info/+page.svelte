@@ -109,15 +109,14 @@
 :root {
 	--paragraph-alignment: left;
 	--paragraph-margin: var(--quarter-space) 0 var(--quarter-space) 0;
-	--content-p-max-width: 40rem;
 	--first-paragraph-margin: 0;
+	--content-p-max-width: 82.8rem;
 }
 
 @media screen and (min-width: 1024px) {
 	:root {
 		--paragraph-alignment: left;
 		--paragraph-margin: var(--quarter-space) 0 var(--quarter-space) 0;
-		--content-p-max-width: 70.5rem;
 		--first-paragraph-margin: 0;
 	}
 }
@@ -157,7 +156,7 @@ section h3 {
 
 .intro {
 	width: 90%;
-	text-indent: 105px;
+	text-indent: 131px;
 	line-height: var(--line-height);
 	font-size: var(--font-size);
 }
@@ -165,7 +164,7 @@ section h3 {
 @media (min-width: 800px) {
 	.intro {
 		width: 80%;
-		text-indent: 130px;
+		text-indent: 163px;
 	}
 }
 

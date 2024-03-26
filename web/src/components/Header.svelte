@@ -85,17 +85,17 @@
 		column-gap: var(--half-space);
 		display: flex;
 		flex-direction: row;
-		height: 11px;
+		height: 14px;
 	}
 
 	.left-wrap {
 		display: flex;
-		height: 11px;
+		height: 14px;
 	}
 
 	@media screen and (min-width: 800px) {
 		.left-wrap, .right-wrap {
-			height: 13px;
+			height: 20px;
 		}
 	}
 
