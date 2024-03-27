@@ -73,34 +73,34 @@
   <style>
 	.carousel-container {
 	  max-width: var(--carousel-size, 100%);
-	  background: red;
+	  /* background: red; */
 	}
 
 	/* Tablet */
 	@media (min-width: 800px) {
 		.carousel-container {
-			background: blue;
+			/* background: blue; */
 		}
 	}
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
 		.carousel-container {
-			background: green;
+			/* background: green; */
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
 		.carousel-container {
-			background: yellow;
+			/* background: yellow; */
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.carousel-container	{
-			background: purple;
+			/* background: purple; */
 		}		
 	}
   

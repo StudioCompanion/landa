@@ -160,11 +160,9 @@ const onSlideChange = (event) => {
     margin: 0 var(--half-space);
     padding: 0 0 var(--full-space) 0;
     max-width: var(--mobile-width-max);
-    background: pink;
   }
 
   .slide {
-    border: 1px solid black;
     overflow: hidden;
     position: relative;
 		max-height: var(--mobile-height-max); /* Caps the maximum height */
