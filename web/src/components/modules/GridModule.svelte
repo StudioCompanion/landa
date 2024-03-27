@@ -54,28 +54,28 @@ style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
   /* Tablet */
 	@media (min-width: 800px) {
 		.gridModule {
-			max-width: var(--tablet-width-max);
+			max-width: calc(var(--tablet-width-max) - var(--half-space));
 		}
 	}
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
 		.gridModule {
-			max-width: var(--desktop-width-max);
+			max-width: calc(var(--desktop-width-max) - var(--half-space));
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
 		.gridModule {
-			max-width: var(--desktop-width-max);
+			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.gridModule {
-			max-width: var(--giant-desktop-width-max);
+			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
 		}
 	}
 

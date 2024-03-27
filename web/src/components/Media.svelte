@@ -249,6 +249,8 @@
         display: flex; /* Makes the video/image container a flex container */
         justify-content: flex-start; /* Centers the video/image horizontally */
 		max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
+		border: 1px red solid;
+		max-width: var(--mobile-width-max);
 	}
 
 	:global(.media-image){
@@ -267,6 +269,7 @@
 	@media (min-width: 800px) {
 		.video, .image, .image img, :global(.media-image), .video .mux-player {
 			max-height: var(--tablet-height-max) !important;
+			max-width: calc(var(--tablet-width-max) - var(--half-space));
 		}
 	}
 
@@ -274,6 +277,7 @@
 	@media (min-width: 1280px) {
 		.video, .image, .image img, :global(.media-image), .video .mux-player {
 			max-height: var(--desktop-height-max) !important;
+			max-width: calc(var(--desktop-width-max) - var(--half-space));
 		}
 	}
 
@@ -281,6 +285,8 @@
 	@media (min-width: 1700px) {
 		.video, .image, .image img, :global(.media-image), .video .mux-player {
 			max-height: var(--large-desktop-height-max) !important;
+			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
+
 		}
 	}
 
@@ -288,6 +294,7 @@
 	@media (min-width: 2500px) {
 		.video, .image, .image img, :global(.media-image), .video .mux-player {
 			max-height: var(--giant-desktop-height-max) !important;
+			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
 		}
 	}
 

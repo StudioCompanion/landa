@@ -51,6 +51,13 @@
 			.url()}
 	/>
 </svelte:head>
+
+
+
+<div class="line">
+	
+</div>
+
 <section class="description">
 	{#if data.project.description}
 		<div class="project-description">
@@ -79,6 +86,58 @@
 {/if}
 
 <style>
+
+	.line {
+		width: 1px; 
+		height: 100%;
+		position: fixed;
+		margin-left: calc(100% - var(--half-space));
+		border-left: 1px dashed blue;
+	}
+
+	/* Tablet */
+	@media (min-width: 800px) {
+		.line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: calc(100% - var(--half-space));
+			border-left: 1px dashed blue;
+		}
+	}
+
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1197px;
+			border-left: 1px dashed blue;
+		}
+	}
+
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1476px;
+			border-left: 1px dashed blue;
+		}
+	}
+
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1791px;
+			border-left: 1px dashed blue;
+		}
+	}
 
 	.description {
 		width: 100%;

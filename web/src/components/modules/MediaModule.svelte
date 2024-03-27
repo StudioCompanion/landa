@@ -31,7 +31,7 @@
 	.parentContainer {
         display: flex; /* or 'block', depending on your layout needs */
         flex-direction: column; /* Adjusts the direction of the flex items if using flex */
-        align-items: center; /* Centers the child elements horizontally */
-        justify-content: center; /* Centers the child elements vertically */
+        align-items: start; /* Centers the child elements horizontally */
+        justify-content: start; /* Centers the child elements vertically */
     }
 </style>

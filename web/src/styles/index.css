@@ -19,14 +19,14 @@
 	--breakpoint-tablet: 800px;
 
 	--max-text-width: 82.7rem;
-	--mobile-height-max: 252px;
+	--mobile-height-max: 248px;
 	--tablet-height-max: 556px;
 	--desktop-height-max: 664px;
 	--large-desktop-height-max: 756px;
 	--giant-desktop-height-max: 850px;
 
 	--mobile-width-max: 799px;
-	--tablet-width-max: 1196px;
+	--tablet-width-max: 1240px;
 	--desktop-width-max: 1197px;
 	--large-desktop-width-max: 1476px;
 	--giant-desktop-width-max: 1791px;
