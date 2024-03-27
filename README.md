@@ -50,11 +50,13 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Image cropping and not containing on Chrome + Safari iOS
 - [x] Sanity alt text AI plugin generator, is there one?
 - [x] L&A to do aspect ratios and grids
+- [x] Update global type sizes
 - [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
 - [ ] black bars on videos and aspect ratio in safari/firefox
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [ ] inline vids in carousel check 
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height
-- [ ] homepage flicker on hover
+- [x] homepage flicker on hover pass 1
+- [ ] final homepage flicker speed and loading logic
 - [ ] make all grid layouts
