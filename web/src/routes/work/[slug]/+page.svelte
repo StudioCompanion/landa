@@ -53,11 +53,6 @@
 </svelte:head>
 
 
-
-<div class="line">
-	
-</div>
-
 <section class="description">
 	{#if data.project.description}
 		<div class="project-description">
@@ -87,7 +82,7 @@
 
 <style>
 
-	.line {
+	.vertical-line {
 		width: 1px; 
 		height: 100%;
 		position: fixed;
@@ -95,9 +90,16 @@
 		border-left: 1px dashed blue;
 	}
 
+	.horizontal-line {
+		width: 100%; 
+		height: 1px;
+		position: fixed;
+		border-top: 1px dashed red;
+	}
+
 	/* Tablet */
 	@media (min-width: 800px) {
-		.line {
+		.vertical-line {
 			width: 1px; 
 			height: 100%;
 			position: fixed;
@@ -108,7 +110,7 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.line {
+		.vertical-line {
 			width: 1px; 
 			height: 100%;
 			position: fixed;
@@ -119,7 +121,7 @@
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.line {
+		.vertical-line {
 			width: 1px; 
 			height: 100%;
 			position: fixed;
@@ -130,7 +132,7 @@
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.line {
+		.vertical-line {
 			width: 1px; 
 			height: 100%;
 			position: fixed;

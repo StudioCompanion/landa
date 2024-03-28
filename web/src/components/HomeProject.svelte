@@ -231,6 +231,7 @@
 		align-items: center;		
 		grid-template-columns: repeat(3, 1fr);
 		gap: var(--quarter-space);
+		max-width: var(--mobile-width-max);
 	}
 
 	@media (max-width: 800px) {
@@ -249,12 +250,19 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 		}
+
+		.image-stack {
+			max-width: calc(var(--tablet-width-max) - var(--half-space));
+		}
 	}
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
 		.project-image-container img, :global(.flicker-image), .image-stack img {
 			max-height: var(--desktop-height-max) !important;
+		}
+		.image-stack {
+			max-width: calc(var(--desktop-width-max) - var(--half-space));
 		}
 	}
 
@@ -263,12 +271,18 @@
 		.project-image-container img, :global(.flicker-image), .image-stack img {
 			max-height: var(--large-desktop-height-max) !important;
 		}
+		.image-stack {
+			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
+		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
 		.project-image-container img, :global(.flicker-image), .image-stack img {
 			max-height: var(--giant-desktop-height-max) !important;
+		}
+		.image-stack {
+			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
 		}
 	}
 	

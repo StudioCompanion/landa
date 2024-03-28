@@ -11,7 +11,16 @@
 </script>
 
 {#key pathname}
-	<div in:fade={{ duration: 200, delay: 0 }}>
+
+<div class="horizontal-line">
+	
+</div>
+
+<div class="vertical-line">
+	
+</div>
+
+<div in:fade={{ duration: 200, delay: 0 }}>
 		<Header />
 		<main>
 			<slot />
@@ -21,6 +30,91 @@
 {/key}
 
 <style>
+
+
+	.vertical-line {
+		width: 1px; 
+		height: 100%;
+		position: fixed;
+		margin-left: calc(100% - var(--half-space));
+		border-left: 1px dashed blue;
+		z-index: 999;
+		background-color: transparent;
+		overflow: hidden;
+		pointer-events: none;
+		display: none;
+	}
+
+	.horizontal-line {
+		width: 100%; 
+		height: 1px;
+		position: fixed;
+		margin-top: var(--mobile-height-max);
+		z-index: 999;
+		background-color: transparent;
+		pointer-events: none;
+		border-top: 1px dashed blue;
+		display: none;
+	}
+
+	/* Tablet */
+	@media (min-width: 800px) {
+		.vertical-line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: calc(100% - var(--half-space));
+			border-left: 1px dashed blue;
+		}
+
+		.horizontal-line {
+			margin-top: var(--tablet-height-max);
+		}
+	}
+
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.vertical-line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1197px;
+			border-left: 1px dashed blue;
+		}
+		.horizontal-line {
+			margin-top: var(--desktop-height-max);
+		}
+	}
+
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.vertical-line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1476px;
+			border-left: 1px dashed blue;
+		}
+
+		.horizontal-line {
+			margin-top: var(--large-desktop-height-max);
+		}
+	}
+
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.vertical-line {
+			width: 1px; 
+			height: 100%;
+			position: fixed;
+			margin-left: 1791px;
+			border-left: 1px dashed blue;
+		}
+		.horizontal-line {
+			margin-top: var(--giant-desktop-height-max);
+		}
+	}
+
 	div {
 		background-color: white;
 		min-height: 100vh;
