@@ -59,4 +59,4 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] fix layout shift when gallery lookup height
 - [x] homepage flicker on hover pass 1
 - [ ] final homepage flicker speed and loading logic
-- [ ] make all grid layouts
+- [x] make all grid layouts

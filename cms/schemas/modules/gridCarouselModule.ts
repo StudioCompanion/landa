@@ -32,12 +32,6 @@ const gridCarouselModule: SchemaTypeDefinition = {
       description: 'Select a preset size for the grid module. Each preset corresponds to specific max-width values at different breakpoints.',
       options: {
         list: [
-          {title: '2 Portrait', value: 'twoup'},
-          {title: '3 Portrait', value: 'threeup'},
-          {title: '3 by 3 Landscape', value: 'threebythree'},
-          {title: '2 Landscape', value: 'twolandscape'},
-          {title: '4 Portrait 2 Rows', value: '4col2row'},
-          {title: 'Default', value: 'default'},
           {title: '1:1 (2 Col ✕ 1 Row)', value: 'oneone2c1r'},
           {title: '4:5 (2 Col ✕ 1 Row)', value: 'fourfive2c1r'},
           {title: '4:5 (3 Col ✕ 1 Row)', value: 'fourfive3c1r'},
@@ -46,6 +40,7 @@ const gridCarouselModule: SchemaTypeDefinition = {
           {title: '9:16 (2 Col ✕ 1 Row)', value: 'ninesixteen2c1r'},
           {title: '9:16 (3 Col ✕ 1 Row)', value: 'ninesixteen3c1r'},
           {title: '16:9 (2 Col ✕ 1 Row)', value: 'sixteennine2c1r'},
+          {title: '16:9 (3 Col ✕ 3 Row)', value: 'threebythree'},
           {title: 'FrCov (2 Col ✕ 1 Row)', value: 'friezecovers2c1r'},
           {title: 'FrCov (3 Col ✕ 1 Row)', value: 'friezecovers3c1r'},
           {title: 'FrCam (3 Col ✕ 1 Row)', value: 'friezecampaigns3c1r'},
