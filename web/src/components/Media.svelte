@@ -249,7 +249,7 @@
         display: flex; /* Makes the video/image container a flex container */
         justify-content: flex-start; /* Centers the video/image horizontally */
 		max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
-		border: 1px red solid;
+		/* border: 1px red solid; */
 		max-width: var(--mobile-width-max);
 	}
 

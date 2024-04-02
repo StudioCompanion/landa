@@ -38,7 +38,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] full videos within carousels so play when coming into active slide, and puase on going out
 - [x] Hermes Fit bottom carousel is bugged
 - [x] Video gradient background in controls
-
 - [x] 4 col 2 row look at height capping, del core lookbooks as example
 - [x] separate the div container of the global + asset caption into one, flex the two together, then absolute the overall container to prevent caption hopping
 - [x] ~What's the yellow highlight in sanity~ — it's what happens when the document is 'syncing', and in that view specifically it's if the 'ordering' hasn't properly updated (can happen sometimes)
@@ -51,12 +50,12 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Sanity alt text AI plugin generator, is there one?
 - [x] L&A to do aspect ratios and grids
 - [x] Update global type sizes
-- [ ] black lines oon social cut downs in grid view [16:9, 3 portait]
+- [x] homepage flicker on hover pass 1
+- [x] make all grid layouts
+- [ ] black lines on social cut downs in grid view [16:9, 3 portait]
 - [ ] black bars on videos and aspect ratio in safari/firefox
 - [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
 - [ ] inline vids in carousel check 
 - [ ] fix FOUC on first visit
 - [ ] fix layout shift when gallery lookup height
-- [x] homepage flicker on hover pass 1
 - [ ] final homepage flicker speed and loading logic
-- [x] make all grid layouts

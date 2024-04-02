@@ -18,7 +18,7 @@ const gridCarouselModule: SchemaTypeDefinition = {
       title: 'Items',
       name: 'items',
       type: 'array',
-      of: [{type: 'grid_media'}], // Use GridMedia here
+      of: [{type: 'grid_media'}],
     },
     {
       title: 'Caption',
@@ -50,7 +50,7 @@ const gridCarouselModule: SchemaTypeDefinition = {
           {title: 'PorCam (2 Col ✕ 1 Row)', value: 'portraitcampaigns2c1r'},
           {title: 'Sherman (2 Col ✕ 1 Row)', value: 'sherman2c2r'},
         ],
-        layout: 'radio' // This displays the options as radio buttons
+        layout: 'radio',
       }
     },
   ],
