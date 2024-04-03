@@ -71,7 +71,7 @@
 	{/if}
 	
 	{#if project.image_flicker}
-	<a class="project-summary sumdaddy" 
+	<a class="project-summary" 
 	href={`/work/${project.slug}`}
 	on:mouseenter={startImageFlicker}
 	on:mouseleave={stopImageFlicker}
