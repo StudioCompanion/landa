@@ -36,7 +36,7 @@ export const projectsQuery = groq`*[_type == 'project']|order(orderRank) {
     caption,
     featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
-    image_flicker{..., asset->},
+    homepage_image{..., asset->},
 }`;
 
 export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage == true]|order(orderRank) {
@@ -46,7 +46,7 @@ export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage 
     caption,
     featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
-    image_flicker{..., asset->},
+    homepage_image{..., asset->},
 }`;
 
 export const projectQuery = groq`*[_type == "project" && slug.current == $slug][0] {
@@ -56,7 +56,7 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     "slug": slug.current,
     featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
-    image_flicker{..., asset->},
+    homepage_image{..., asset->},
     description,
     credits,
     tags[]-> {

@@ -48,12 +48,9 @@
 		</div>
 	</a>
 	{/if}
-	
-	{console.log(project)}
 
-<!-- 
-	{#if project.image_flicker}
-	{console.log(project.image_flicker.asset.url)}
+
+	{#if project.homepage_image}
 	<a class="project-summary" 
 	href={`/work/${project.slug}`}
 	>
@@ -62,13 +59,13 @@
 				<div class:image-loaded={imageLoaded}>
 					<Image
 					class="flicker-image"
-					src={image.asset.url}  
+					src={project.homepage_image.asset.url}  
 					layout="constrained"
-					width={image.asset.metadata.dimensions.width}
-					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
+					width={project.homepage_image.asset.metadata.dimensions.width}
+					aspectRatio={project.homepage_image.asset.metadata.dimensions.aspectRatio}
 					background="#FFFFFF"
 					on:load={handleImageLoad}
-					alt={image.asset.altText}
+					alt={project.homepage_image.asset.altText}
 						/>	
 				</div>
 		</div>
@@ -78,7 +75,7 @@
 			<InlineContent value={project.caption} />
 		</div>
 	</a>
-	{/if} -->
+	{/if}
 
 
 
