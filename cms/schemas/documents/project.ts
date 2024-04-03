@@ -61,13 +61,13 @@ const project: SchemaTypeDefinition = {
       of: [{type: 'image'}],
       validation: (Rule) =>
         Rule.custom((field, context) =>
-          context.document.homepage_image === undefined && field === undefined
+          context.document.image_flicker === undefined && field === undefined
             ? "Either Image Stack or Homepage Image must have a value"
             : true
         ),
     },
     {
-      name: "homepage_image",
+      name: "image_flicker",
       title: "Homepage Image",
       type: 'image',
       group: 'general',
