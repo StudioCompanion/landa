@@ -55,6 +55,19 @@ const project: SchemaTypeDefinition = {
       group: 'general',
     },
     {
+      name: "homepage_image",
+      title: "Homepage Image",
+      type: 'image',
+      group: 'general',
+      description: 'This is used in the root (/) of the site',
+      validation: (Rule) =>
+        Rule.custom((field, context) =>
+          context.document.image_stack === undefined && field === undefined
+            ? "Either Image Stack or Homepage Image must have a value"
+            : true
+        ),
+    },
+    {
       name: "image_stack",
       title: "Image Stack",
       type: 'array',
@@ -62,18 +75,6 @@ const project: SchemaTypeDefinition = {
       validation: (Rule) =>
         Rule.custom((field, context) =>
           context.document.homepage_image === undefined && field === undefined
-            ? "Either Image Stack or Homepage Image must have a value"
-            : true
-        ),
-    },
-    {
-      name: "homepage_image",
-      title: "Homepage Image",
-      type: 'image',
-      group: 'general',
-      validation: (Rule) =>
-        Rule.custom((field, context) =>
-          context.document.image_stack === undefined && field === undefined
             ? "Either Image Stack or Homepage Image must have a value"
             : true
         ),
