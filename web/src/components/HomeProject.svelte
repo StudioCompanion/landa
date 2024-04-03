@@ -193,36 +193,22 @@
 		display: flex;
 	}
 
-	/* .project-image-container {
-    position: relative;
-    height: var(--image-height);
-}
-
-.project-image-container > div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none; 
-}
-
-.image-loaded > .flicker-image, .image-loaded > .stack-image {
-    display: block; 
-} */
-
 	.project-description {
 		max-width: var(--content-p-max-width);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 	}
 
+	.project-title {
+		color: var(--black);
+	}
+
 	a {
 		text-decoration: none;
 	}
 
-	a:hover {
-		color: var(--grey);
+	a:hover .project-title {
+		color: var(--red);
 	}
 
 	.image-stack {

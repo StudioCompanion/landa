@@ -150,6 +150,10 @@ section h3 {
 	padding: var(--half-space);
 }
 
+.section-title {
+	color: var(--black);
+}
+
 .description {
 	/* background: yellow; */
 }
@@ -190,7 +194,7 @@ section h3 {
 }
 
 .email-container a:hover {
-	color: var(--grey);
+	color: var(--red);
 }
 
 .address-section {

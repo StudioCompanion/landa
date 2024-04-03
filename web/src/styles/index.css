@@ -4,6 +4,7 @@
 	--white: #ffffff;
 	--black: #000000;
 	--grey: #999999;
+	--light-grey: #999999;
 	--font-serif: 'JJannon Book', serif;
 	--font-serif-italic: 'JJannon Book Italic', serif;
 	
@@ -136,6 +137,7 @@ html, body {
 	font-family: var(--font-serif);
 	font-size: 10px;
 	letter-spacing: 0.01em;
+	color: var(--light-grey);
 }
 
 p {
@@ -154,7 +156,7 @@ h6 {
 }
 
 a {
-  color: inherit;
+  color: var(--light-grey);
   font-size: var(--font-size);
   line-height: var(--line-height);
 }

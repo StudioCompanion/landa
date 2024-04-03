@@ -106,7 +106,7 @@
 	}
 
 	a:hover {
-		color: var(--grey);
+		color: var(--red);
 	}
 
 	/* Specific A Type Styles */
@@ -117,7 +117,7 @@
 	}
 
 	.mobile-link:hover {
-		color: var(--grey);
+		color: var(--red);
 	}
 
 	.menu-icon, .close-icon {

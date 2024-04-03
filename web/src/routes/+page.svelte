@@ -72,6 +72,7 @@
 			text-indent: 131px;
 			line-height: var(--line-height);
 			font-size: var(--font-size);
+			color: var(--light-grey);
 		}
 
 		@media (min-width: 800px) {

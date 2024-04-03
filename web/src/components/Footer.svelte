@@ -90,12 +90,12 @@
 	}
 
 	footer a {
-		color: var(--black);
+		color: var(--light-grey);
 		text-decoration: none;
 	}
 
 	footer a:hover {
-		color: var(--grey);
+		color: var(--red);
 	}
 	
 </style>

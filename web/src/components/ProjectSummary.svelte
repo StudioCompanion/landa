@@ -84,12 +84,12 @@
 	}
 
 	.work-box:hover .project-title {
-		color: var(--grey);
+		color: var(--red);
 	}
 
 	.project-description {
 		text-align: left;
-		color: black;
+		color: var(--black);
 		padding: var(--half-space);
 		display: none;
 	}
@@ -102,6 +102,7 @@
 		font-size: var(--font-size-mob-lg);
 		font-family: var(--font-serif);
 		margin: 0 auto;
+		color: var(--black);
 	}
 
 	.project-summary::before {
