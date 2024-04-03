@@ -61,20 +61,20 @@ const project: SchemaTypeDefinition = {
       of: [{type: 'image'}],
       validation: (Rule) =>
         Rule.custom((field, context) =>
-          context.document.image_flicker === undefined && field === undefined
-            ? "Either Image Stack or Image Flicker must have a value"
+          context.document.homepage_image === undefined && field === undefined
+            ? "Either Image Stack or Homepage Image must have a value"
             : true
         ),
     },
     {
-      name: "image_flicker",
-      title: "Image Flicker",
-      type: 'array',
-      of: [{type: 'image'}],
+      name: "homepage_image",
+      title: "Homepage Image",
+      type: 'image',
+      group: 'general',
       validation: (Rule) =>
         Rule.custom((field, context) =>
           context.document.image_stack === undefined && field === undefined
-            ? "Either Image Stack or Image Flicker must have a value"
+            ? "Either Image Stack or Homepage Image must have a value"
             : true
         ),
     },

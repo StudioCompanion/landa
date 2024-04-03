@@ -14,27 +14,6 @@
 	export let project;
 	export let index;
 	export let homepage = false;
-
-	let currentImageIndex = 0;
-    let intervalId;
-
-    function startImageFlicker() {
-		console.log('startImageFlicker');
-        intervalId = setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % project.image_flicker.length;
-			console.log(currentImageIndex)
-		}, 250); // Adjust time as needed
-    }
-
-    function stopImageFlicker() {
-		console.log('stopImageFlicker');
-        clearInterval(intervalId);
-		currentImageIndex = 0;
-    }
-
-	onDestroy(() => {
-        stopImageFlicker(); // Clear the interval when the component is destroyed
-    });
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
@@ -71,47 +50,25 @@
 	{/if}
 	
 	{#if project.image_flicker}
+	{console.log(project.image_flicker.asset.url)}
 	<a class="project-summary" 
 	href={`/work/${project.slug}`}
-	on:mouseenter={startImageFlicker}
-	on:mouseleave={stopImageFlicker}
 	>
-		
-			<!-- <div class="project-image-container"  id="image-container">
-			{#each project.image_flicker as image}
-			<div class={`flicker-image-container ${index === currentImageIndex ? 'flicker-visible' : ''}`} class:image-loaded={imageLoaded}>
-				<Image
+
+		<div class="project-image-container" id="image-container">
+				<div class:image-loaded={imageLoaded}>
+					<Image
 					class="flicker-image"
-					src={image.asset.url}  
+					src={project.image_flicker.asset.url}  
 					layout="constrained"
-					width={image.asset.metadata.dimensions.width}
-					aspectRatio={image.asset.metadata.dimensions.aspectRatio}
+					width={project.image_flicker.asset.metadata.dimensions.width}
+					aspectRatio={project.image_flicker.asset.metadata.dimensions.aspectRatio}
 					background="#FFFFFF"
 					on:load={handleImageLoad}
-					alt={image.asset.altText}
-				/>	
-			</div>
-			{/each}
-			</div> -->
-
-			<div class="project-image-container">
-        {#each project.image_flicker as image, index}
-            <div class={`flicker-image-container ${index === currentImageIndex ? 'flicker-visible' : ''}`} class:image-loaded={imageLoaded}>
-                <Image
-				class="flicker-image"
-
-				src={image.asset.url}  
-				layout="constrained"
-				width={image.asset.metadata.dimensions.width}
-				aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-				background="#FFFFFF"
-				on:load={handleImageLoad}
-				alt={image.asset.altText}
-				priority
-                />
-            </div>
-        {/each}
-    </div>
+					alt={project.image_flicker.asset.altText}
+						/>	
+				</div>
+		</div>
 
 		<div class="project-description" id="caption">
 			<span class="project-title">{project.title}</span>:
