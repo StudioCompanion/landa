@@ -37,9 +37,22 @@ export const projectsQuery = groq`*[_type == 'project']|order(orderRank) {
     featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
     homepage_image{..., asset->},
-}`;
-
-export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage == true]|order(orderRank) {
+    "homepage_video": homepage_video.asset->{
+        url,
+        "metadata": {
+          ...,
+          "playbackId": playbackId,
+          "aspectRatio": metadata.dimensions.aspectRatio,
+          "duration": metadata.duration
+        }
+      },
+      "video_thumbnail": video_thumbnail.asset->{
+        url,
+        "aspectRatio": metadata.dimensions.aspectRatio
+      }
+  }`;
+  
+  export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage == true]|order(orderRank) {
     _id,
     title,
     "slug": slug.current,
@@ -47,16 +60,25 @@ export const projectsHomepageQuery = groq`*[_type == 'project' && show_homepage 
     featured_image{..., asset->},
     "image_stack": image_stack[]{..., asset->},
     homepage_image{..., asset->},
-}`;
+    "homepage_video": homepage_video.asset->{
+      "metadata": {
+        ...,
+        "playbackId": playbackId,
+        "aspectRatio": metadata.dimensions.aspectRatio,
+        "duration": metadata.duration
+      }
+    },
+    "video_thumbnail": video_thumbnail.asset->{
+      url,
+      "aspectRatio": metadata.dimensions.aspectRatio
+    }
+  }`;
 
 export const projectQuery = groq`*[_type == "project" && slug.current == $slug][0] {
     _id,
     title,
-    theme,
     "slug": slug.current,
     featured_image{..., asset->},
-    "image_stack": image_stack[]{..., asset->},
-    homepage_image{..., asset->},
     description,
     credits,
     tags[]-> {

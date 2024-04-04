@@ -80,6 +80,27 @@ const project: SchemaTypeDefinition = {
         ),
     },
     {
+      title: 'Homepage Video',
+      name: 'homepage_video',
+      type: 'mux.video',
+      group: 'general',
+      description: 'This is optional. It will be a muted, autoplaying, looping video that has no controls or sound. Ideally, it is not mega in length, for performance.',
+    },
+    {
+      title: 'Video thumbnail',
+      name: 'video_thumbnail',
+      type: 'image',
+      description: 'For it to look seamless, use the first frame. But if that is not a good frame, feel free to set to whatever.',
+      hidden: ({ document }) => !document.homepage_video, // Hide if homepage_video is not set
+      validation: Rule => Rule.custom((thumbnail, { document }) => {
+        // Check if homepage_video is set but video_thumbnail is not
+        if (document.homepage_video && !thumbnail) {
+          return 'Video thumbnail is required when a homepage video is present';
+        }
+        return true; // Indicate no validation errors
+      }),
+    },
+    {
       title: 'Show on homepage',
       name: 'show_homepage',
       description: 'Should this project feature on the homepage?',

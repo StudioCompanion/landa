@@ -21,12 +21,12 @@ function handleImageLoad() {
 
 	onMount(async () => {
 		await import('@mux/mux-player');
-    await import('@mux/mux-video');
-    muxPlayerLoaded = true;
+		await import('@mux/mux-video');
+		muxPlayerLoaded = true;
 
-    if (videoElement) {
-        dispatch('videoElement', { videoElement });
-    }
+		if (videoElement) {
+			dispatch('videoElement', { videoElement });
+		}
 	});
 
     onMount(() => {
