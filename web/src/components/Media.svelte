@@ -175,7 +175,7 @@
 
 <style>
 
-.image-loaded {
+	.image-loaded {
 		display: flex;
 	}
 
