@@ -77,7 +77,9 @@
 <!-- svelte-ignore a11y-missing-attribute -->
 <div class="project-container">
 
-	{#if project.homepage_video && !project.homepage_image && !project.image_stack}
+
+	
+	{#if project.homepage_video}
 	<a class="project-summary" 
 	href={`/work/${project.slug}`}
 	>
