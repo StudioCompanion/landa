@@ -13,12 +13,11 @@
 	}
 
 	onMount(async () => {
+		await import('@mux/mux-player');
 	  await import('@mux/mux-video');
-	  await import('@mux/mux-player');
-
 	});
 
-	export let isBlackControls: boolean = false; // Default to false if not provided
+	export let isBlackControls: boolean = false;
 
 	export let media: Media | undefined;
 	export let carousel: boolean = false;
@@ -257,7 +256,7 @@
 		width: auto !important;
 	}
 
-    .video .mux-player, .image img, :global(.media-image) {
+    :global(.media-image) {
         max-width: 100% !important; /* Ensures the content does not exceed the width of its container */
         max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
         object-fit: contain; /* Ensures the content fits within the container without losing its aspect ratio */
@@ -267,7 +266,7 @@
 
 	/* Tablet */
 	@media (min-width: 800px) {
-		.video, .image, .image img, :global(.media-image), .video .mux-player {
+		.video, .image, :global(.media-image) {
 			max-height: var(--tablet-height-max) !important;
 			max-width: calc(var(--tablet-width-max) - var(--half-space));
 		}
@@ -275,7 +274,7 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.video, .image, .image img, :global(.media-image), .video .mux-player {
+		.video, .image, :global(.media-image) {
 			max-height: var(--desktop-height-max) !important;
 			max-width: calc(var(--desktop-width-max) - var(--half-space));
 		}
@@ -283,7 +282,7 @@
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.video, .image, .image img, :global(.media-image), .video .mux-player {
+		.video, .image, :global(.media-image) {
 			max-height: var(--large-desktop-height-max) !important;
 			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
 
@@ -292,7 +291,7 @@
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.video, .image, .image img, :global(.media-image), .video .mux-player {
+		.video, .image, :global(.media-image) {
 			max-height: var(--giant-desktop-height-max) !important;
 			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
 		}

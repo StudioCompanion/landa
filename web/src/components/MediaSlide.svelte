@@ -37,7 +37,6 @@ function handleImageLoad() {
     });
 
 	export let media: Media | undefined;
-	export let carousel: boolean = false;
 
     $: if (media) {
     // console.log('————Current media type————:', media.type);
@@ -296,39 +295,31 @@ function handleImageLoad() {
 		max-height: var(--mobile-height-max); /* Caps the maximum height */
 	}
 
-    .video .mux-player {
-        max-width: 100%; /* Ensures the content does not exceed the width of its container */
-        max-height: var(--mobile-height-max); /* Caps the maximum height */
-        object-fit: contain; /* Ensures the content fits within the container without losing its aspect ratio */
-        width: auto; /* Allows the content to scale its width in proportion to its height */
-        height: auto; /* Allows the content to scale its height in proportion to its width */
-    }
-
 
 	/* Tablet */
 	@media (min-width: 800px) {
-		.video, .video .mux-player {
+		.video {
 			max-height: var(--tablet-height-max);
 		}
 	}
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
-		.video, .video .mux-player {
+		.video {
 			max-height: var(--desktop-height-max);
 		}
 	}
 
 	/* Desktop */
 	@media (min-width: 1700px) {
-		.video, .video .mux-player {
+		.video {
 			max-height: var(--large-desktop-height-max);
 		}
 	}
 
 	/* Monsters */
 	@media (min-width: 2500px) {
-		.video, .video .mux-player {
+		.video {
 			max-height: var(--giant-desktop-height-max);
 		}
 	}

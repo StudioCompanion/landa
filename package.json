@@ -12,6 +12,8 @@
     "dev": "turbo dev"
   },
   "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.2",
     "turbo": "^1.9.9"
   },
   "dependencies": {

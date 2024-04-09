@@ -11,8 +11,6 @@
 	}
 
 	export let project;
-	export let index;
-	export let homepage = false;
 
 	let visible = false;
 	onMount(() => {
@@ -94,10 +92,6 @@
 		display: none;
 	}
 
-	.project-description .content p {
-		text-align: left;
-	}
-	
 	.project-title {
 		font-size: var(--font-size-mob-lg);
 		font-family: var(--font-serif);

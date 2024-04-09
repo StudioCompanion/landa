@@ -36,7 +36,7 @@
 	<div class="left-wrap">
 		<a class="text-link" href="/">Lane & Associates</a>
 	</div>
-	<div class="menu-icon" on:click={() => isMenuOpen = !isMenuOpen}>
+	<div class="menu-icon" on:click={() => isMenuOpen = !isMenuOpen} on:keydown={() => {}}>
 		{#if isMenuOpen}
 			<img src={close} alt="Close" />
 		{:else}
@@ -52,11 +52,11 @@
 <!-- Mobile Menu Modal -->
 {#if isMenuOpen}
   <div class="mobile-menu">
-    <div class="close-icon" on:click={() => isMenuOpen = false}>
-        <img src={close} alt="Close" />
-    </div>
-	<div class="menu-group special">
-        <a class="mobile-link">Lane & Associates</a>
+<div class="close-icon" on:click={() => isMenuOpen = false} on:keydown={() => {}}>
+	<img src={close} alt="Close" />
+</div>
+	<div class="menu-group special" on:keydown={() => {}}>
+        <a class="mobile-link" href="/">Lane & Associates</a>
     </div>
     <div class="menu-group">
         <a class="mobile-link" href="/work">Work</a>

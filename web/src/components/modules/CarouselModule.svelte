@@ -116,8 +116,8 @@ const onSlideChange = (event) => {
       let:showPrevPage
       let:showNextPage
     >
-    <div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev" style={customArrowStyle}>
-      
+    <div slot="prev" on:click={showPrevPage} on:keydown={showPrevPage} class="custom-arrow custom-arrow-prev" style={customArrowStyle}>
+          
     </div>
     {#each slidesData as slide, index}
       <div class="slide">
@@ -132,8 +132,8 @@ const onSlideChange = (event) => {
           {/if}
       </div>
     {/each}
-    <div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next" style={customArrowStyle}>
-      
+    <div slot="next" on:click={showNextPage} on:keydown={showNextPage} class="custom-arrow custom-arrow-next" style={customArrowStyle}>
+          
     </div>
     </svelte:component>
     <div class="caption">

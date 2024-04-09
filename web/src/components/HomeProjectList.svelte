@@ -2,7 +2,6 @@
 	import HomeProject from './HomeProject.svelte';
 
 	export let projects;
-	export let homepage = false;
 
 	import { page } from '$app/stores';
 
@@ -10,7 +9,7 @@
 
 <div class="home-index">
 	{#each projects as project, index}
-		<HomeProject {project} {index} {homepage} />
+		<HomeProject {project}/>
 	{/each}
 </div>
 
