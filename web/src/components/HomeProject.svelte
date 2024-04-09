@@ -1,4 +1,5 @@
 <script>
+	import inView from '$lib/inView';
 	import { getImageProps } from '$lib/sanity';
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
@@ -14,6 +15,7 @@
 	}
 
 	export let project;
+	let visible = false;
 
 	let videoElement;
     let muxPlayerLoaded = false;
@@ -46,7 +48,16 @@
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<div class="project-container">
+<div class="project-container"
+	style={`opacity: ${visible ? 1 : 0}; 
+	transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+	filter: blur(${visible ? '0px' : '2px'});
+	transform: translateY(${visible ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.4 }}
+	on:enter={() => {
+		visible = true;
+	}}
+>
 
 	{#if project.homepage_video}
 		<a class="project-summary" 

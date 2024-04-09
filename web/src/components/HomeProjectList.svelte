@@ -17,6 +17,6 @@
 	.home-index {
 		display: flex;
 		flex-direction: column;
-		overflow-x: hidden;
+		overflow: hidden;
 	}
 </style>
