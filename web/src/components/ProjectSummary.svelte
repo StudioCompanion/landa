@@ -11,17 +11,17 @@
 	}
 
 	export let project;
+	export let index;
 
 	let visible = false;
 	onMount(() => {
-		visible = true;
-			// const timeout = setTimeout(() => {
-			// 	visible = true;
-			// }, Math.min(index * 100, 2500));
+			const timeout = setTimeout(() => {
+				visible = true;
+			}, Math.min(index * 100, 2500));
 
-			// return () => {
-			// 	clearTimeout(timeout);
-			// };
+			return () => {
+				clearTimeout(timeout);
+			};
 	});
 
 	let { src, srcset, sizes, width, height, imageType } = getImageProps({ image: project.featured_image, maxWidth: 2000 });
@@ -75,10 +75,14 @@
 	.work-box {
 		opacity: 0;
 		text-decoration: none;
+		filter: blur(4px);
+		transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out;
 	}
 
 	.work-box.visible {
 		opacity: 1;
+		filter: blur(0px);
+		transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out;
 	}
 
 	.work-box:hover .project-title {

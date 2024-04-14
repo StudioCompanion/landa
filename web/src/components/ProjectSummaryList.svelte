@@ -10,12 +10,9 @@
 
 <div class:work-route={$page.route.id === '/work'} class:project-summary-list={$page.route.id === '/'}>
 	{#each projects as project, index}
-		<ProjectSummary {project} {index} {homepage} />
+		<ProjectSummary {project} {index} />
 	{/each}
 </div>
-
-<!-- Note for @Maciej, this might not be the best way of doing it, but I find that the /work route and the / (root) being the same a little bit tricky. -->
-<!-- Particularly as it also seems to cause an issue with the transition, as the CSS changes instantly so you see a flash of the old layout before it transitions out and back in.  -->
 
 <style>
 
