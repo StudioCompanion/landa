@@ -90,7 +90,7 @@
 	{#if about.biography}
 		<section>
 			<div class="bio-section">
-				<span class="inline-title" id="section_title">David Lane Bio</span>
+				<span class="inline-title" id="section_title">David Lane biography</span>
 				<Content value={about.biography} />
 			</div>
 		</section>
