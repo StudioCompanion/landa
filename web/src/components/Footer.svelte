@@ -72,6 +72,7 @@
 
 	.footer-link {
 		font-family: var(--font-serif-italic);
+		line-height: 101%;
 	}
 
 	/* Tablet layout: two columns with divs stacked vertically */
