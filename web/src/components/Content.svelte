@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte';
 	import Caption from './Caption.svelte';
-	export let value: any;
-</script>
+	import { page } from '$app/stores'; // Importing the $page store
 
-<div class="content">
+	export let value: any;
+
+	$: isInfoRoute = $page.url.pathname === '/info';</script>
+
+<div class={isInfoRoute ? 'content info-class' : 'content'}>
 	<PortableText
 		{value}
 		components={{

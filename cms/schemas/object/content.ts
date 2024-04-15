@@ -7,7 +7,10 @@ const content: SchemaTypeDefinition = {
   of: [
     {
       type: 'block',
-      styles: [],
+      styles: [
+        { title: 'Normal', value: 'normal' },
+        { title: 'Indented', value: 'blockquote' }
+      ],
     },
   ],
 }

@@ -16,10 +16,10 @@
 		<div><p>&copy; Lane & Associates {date}</p></div>
 		<div>
 			<ul>
-				<li><a href="mailto:studio@laneandassociates.co">General enquiries: studio@laneandassociates.co</a></li>
-				<li><a href="mailto:agent@minititle.com">Commercial agent: Minititle</a></li>
-				<li><a href="https://www.wylieagency.com/">Literary agent: The Wylie Agency</a></li>
-				<li><a href="https://www.instagram.com/laneandassociates/">Instagram: @laneandassociates</a></li>
+				<li>General enquiries: <a class="footer-link" href="mailto:studio@laneandassociates.co">studio@laneandassociates.co</a></li>
+				<li>Commercial agent: <a class="footer-link" href="mailto:agent@minititle.com">Minititle</a></li>
+				<li>Literary agent: <a class="footer-link" href="https://www.wylieagency.com/">The Wylie Agency</a></li>
+				<li>Instagram: <a class="footer-link" href="https://www.instagram.com/laneandassociates/">@laneandassociates</a></li>
 			</ul>
 		</div>
 	</div>
@@ -68,6 +68,10 @@
 		width: auto;
 		column-gap: var(--half-space);
 		row-gap: var(--half-space);
+	}
+
+	.footer-link {
+		font-family: var(--font-serif-italic);
 	}
 
 	/* Tablet layout: two columns with divs stacked vertically */

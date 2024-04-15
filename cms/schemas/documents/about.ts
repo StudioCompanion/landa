@@ -59,25 +59,14 @@ const about: SchemaTypeDefinition = {
               name: 'address',
               type: 'text',
             },
-
-            {
-              title: 'URL',
-              name: 'url',
-              type: 'url',
-              validation: (Rule) =>
-                Rule.uri({
-                  scheme: ['http', 'https', 'mailto', 'tel'],
-                }),
-            },
           ],
         },
       ],
     },
     {
-      title: "Services",
+      title: 'Services',
       name: 'services',
-      type: 'array',
-      of: [{ type: 'object', name: 'service', title: "Service", fields: [{ title: "Title", name: 'title', type: 'string' }, { title: "Content", type: 'text', name: 'content' }] }]
+      type: 'content',
     },
     {
       title: 'Clients',

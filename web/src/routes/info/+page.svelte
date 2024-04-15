@@ -48,11 +48,8 @@
 				<div class="address-section" id="addresses">
 					{#each about.addresses as address}
 						<div class="address-container">
-							<div class="location-title">
-								{address.location}
-							</div>
 							<div class="location-details">
-								{address.address}
+								{address.location}: {address.address}
 							</div>
 						</div>
 					{/each}
@@ -63,14 +60,9 @@
 
 	<section>
 		{#if about.services}
-		<h2 class="section-title" id="section_title">Services</h2>
 			<div class="services-section">
-			{#each about.services as service}
-				<div class="service">
-					<h3 class="service-title">{service.title}:</h3>
-					<div class="service-description">{service.content}</div>
-				</div>
-			{/each}
+				<span class="inline-title" id="section_title">Services</span>
+				<Content value={about.services} />
 			</div>
 		{/if}
 	</section>
@@ -79,8 +71,8 @@
 
 	{#if about.clients}
 		<section>
-			<h2 class="section-title" id="section_title">Clients</h2>
 			<div class="client-section">
+				<span class="inline-title" id="section_title">Clients</span>
 				<Content value={about.clients} />
 			</div>
 		</section>
@@ -88,8 +80,8 @@
 	
 	{#if about.collaborators}
 		<section>
-			<h2 class="section-title" id="section_title">Collaborators</h2>
 			<div class="collaborators-section">
+				<span class="inline-title" id="section_title">Collaborators</span>
 				<Content value={about.collaborators} />
 			</div>
 		</section>
@@ -97,8 +89,8 @@
 
 	{#if about.biography}
 		<section>
-			<h2 class="section-title" id="section_title">Biography</h2>
 			<div class="bio-section">
+				<span class="inline-title" id="section_title">David Lane Bio</span>
 				<Content value={about.biography} />
 			</div>
 		</section>
@@ -135,23 +127,28 @@ section {
     }
 
 section h2 {
-	/* background: red; */
 	margin-block-start: 0;
     margin-block-end: 0;
 }
 
 section h3 {
-	/* background: red; */
 	margin-block-start: 0;
     margin-block-end: 0;
 }
 
-.section-title, .description{
+.description{
 	padding: var(--half-space);
 }
 
+
 .section-title {
 	color: var(--black);
+	padding: var(--half-space) var(--half-space) 0 var(--half-space);
+}
+
+.inline-title {
+	color: var(--black);
+	display: inline;
 }
 
 .description {
@@ -172,15 +169,30 @@ section h3 {
 	}
 }
 
-.bio-section, .client-section, .collaborators-section, .email-section, .address-section, .services-section {
+.bio-section, .client-section, .collaborators-section, .services-section {
+	padding: var(--half-space) var(--half-space) var(--half-space) var(--half-space);
+	max-width: var(	--content-p-max-width);
+}
+
+.contact-section {
 	padding: 0 var(--half-space) var(--half-space) var(--half-space);
-	/* background :yellow; */
+	max-width: var(	--content-p-max-width);
+}
+
+.description {
+	max-width: var(	--content-p-max-width);
+}
+
+:global(.info-class) {
+	display: inline;
+}
+
+:global(.info-class p) {
+	display: inline;
 }
 
 .services-section	{
-	display: flex;
-	flex-direction: column;
-	gap: var(--half-space);
+	
 }
 
 .email-container {
@@ -197,25 +209,25 @@ section h3 {
 	color: var(--red);
 }
 
+.email-link {
+	font-family: var(--font-serif-italic);
+	line-height: 105%;
+}
+
 .address-section {
-	display: flex;
-	gap: var(--half-space);
-	flex-direction: column;
+	
 }
 
 @media (min-width: 800px) {
 	.address-section {
-		flex-direction: row;
-		gap: var(--full-space);
 	}
 }
 
 .address-container {
-	display: flex;
-	flex-direction: column;
+	/* display: flex; */
+	/* flex-direction: column; */
 }
 
 .location-details {
-	white-space: pre-line;
 }
 </style>
