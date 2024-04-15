@@ -1,83 +1,85 @@
 <script>
 	import { getImageProps } from '$lib/sanity';
-	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
-	import { animate } from 'framer-motion';
-	import Cookies from 'js-cookie';
-	export let images;
-	let visible = 1;
-	let countdown = 1000;
-	let hideImages = false;
-	let hide = false;
-	let loaderVisible = false;
-	let animationCompleted = false;
+    import { onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import { animate } from 'framer-motion';
+    import Cookies from 'js-cookie';
+    export let images;
+    let visible = 1;
+    let countdown = 1000;
+    let hideImages = false;
+    let hide = false;
+    let loaderVisible = false;
+    let animationCompleted = false;
 
-	const altRun = () => {
-		hideImages = false;
-		// The below was ported from the original animation
-		animate(0, 80, {
-			type: 'tween',
-			duration: 10,
-			ease: [0.25, 0.03, 0.84, 0],
-			onComplete: () => {
-				console.log('done');
-				hideImages = true;
-				setTimeout(() => {
-					hide = true;
-					Cookies.set('splashscreen', false);
-				}, 50);
-				// Re-enable scrolling once the animation is complete
-				document.body.style.overflow = 'auto'; 
-				animationCompleted = true; // Here you mark the animation as completed
-			},
-			onUpdate: (v) => {
-				visible = Math.floor(v);
-			}
-		});
-	};
+    const completeAnimation = () => {
+        hideImages = true;
+        setTimeout(() => {
+            hide = true;
+            Cookies.set('splashscreen', false);
+        }, 50);
+        // Re-enable scrolling once the animation is complete
+        document.body.style.overflow = 'auto'; 
+        animationCompleted = true; // Here you mark the animation as completed
+    };
 
-	const preload = async () => {
-		const processedImages = images.images.map((image) => getImageProps({ image, maxWidth: 2000 }));
-		const promises = [];
-		processedImages.forEach(({ src }) => {
-			promises.push(
-				new Promise((resolve, reject) => {
-					const img = new Image();
-					img.onload = () => {
-						resolve();
-					};
-					img.onerror = () => {
-						reject();
-					};
-					img.src = src;
-				})
-			);
-		});
-		await Promise.all(promises);
-	};
+    const altRun = () => {
+        hideImages = false;
+        animate(0, 80, {
+            type: 'tween',
+            duration: 10,
+            ease: [0.25, 0.03, 0.84, 0],
+            onComplete: completeAnimation,
+            onUpdate: (v) => {
+                visible = Math.floor(v);
+            }
+        });
+    };
 
-	let timeout = new Promise((resolve) => {
-		setTimeout(() => {
-			resolve();
-		}, 3000);
-	});
+    const preload = async () => {
+        const processedImages = images.images.map((image) => getImageProps({ image, maxWidth: 2000 }));
+        const promises = [];
+        processedImages.forEach(({ src }) => {
+            promises.push(
+                new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve();
+                    img.onerror = () => reject();
+                    img.src = src;
+                })
+            );
+        });
+        await Promise.all(promises);
+    };
 
-	onMount(() => {
-		// Disable scrolling
-		document.body.style.overflow = 'hidden';
+    let timeout = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 3000);
+    });
 
-		loaderVisible = true;
-		// Wait for the timeout and the preload to finish, whichever takes longer
-		Promise.all([timeout, preload()]).then(() => {
-			loaderVisible = false;
-			altRun();
-		});
-	});
+    onMount(() => {
+        document.body.style.overflow = 'hidden';
+        loaderVisible = true;
+        Promise.all([timeout, preload()]).then(() => {
+            loaderVisible = false;
+            altRun();
+        });
+
+        // Add click listener to end the animation early
+        const splashScreen = document.querySelector('.splashscreen');
+        splashScreen.addEventListener('click', completeAnimation);
+
+        // Cleanup function
+        return () => {
+            splashScreen.removeEventListener('click', completeAnimation);
+        };
+    });
 </script>
 
 {#if !hide}
-	<div out:fade class="splashscreen" class:fade-out={animationCompleted}>
-		<div class="splashscreen-inner">
+<div out:fade class="splashscreen" class:fade-out={animationCompleted}>
+	<div class="splashscreen-inner">
 			{#if !hideImages}
 				<div in:fade>
 					{#each images.images as image, index}
