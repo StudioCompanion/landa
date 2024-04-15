@@ -34,17 +34,23 @@
 
     // Function to play video on mouse over
     function handleVideoMouseOver(event) {
+		console.log("Mouse over")
         const projectSummary = event.currentTarget;
         const videoElement = projectSummary.querySelector('mux-video');
         videoElement.play();
     }
 
     // Function to pause video on mouse out
-    function handleVideoMouseOut(event) {
-        const projectSummary = event.currentTarget;
-        const videoElement = projectSummary.querySelector('mux-video');
+	function handleVideoMouseOut(event) {
+		console.log("Mouse out")
+		// Check if the new target is outside the project-summary
+		if (!event.currentTarget.contains(event.relatedTarget)) {
+        const videoElement = event.currentTarget.querySelector('mux-video');
         videoElement.pause();
-    }
+        videoElement.currentTime = 0; // Reset the video to the start
+        videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
+		}
+	}
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
@@ -53,7 +59,7 @@
 	transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
 	filter: blur(${visible ? '0px' : '2px'});
 	transform: translateY(${visible ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.4 }}
+	use:inView={{ threshold: 0.3 }}
 	on:enter={() => {
 		visible = true;
 	}}
