@@ -6,29 +6,10 @@
 
 	let isMenuOpen = false;
 
-	let headerOpacity = 1;
 	let scrolled = false;
 
 	onMount(() => {
-		setTimeout(() => {
-			headerOpacity = 1; // Transition to full opacity
-		}, 0); // Adjust timing as needed
-
-		const handleScroll = () => {
-			// Checks if the page has been scrolled slightly
-			scrolled = window.scrollY < 25;
-		};
-
-		// Adds event listener
-		window.addEventListener('scroll', handleScroll);
 		
-		// Fire to check initial value
-		handleScroll();
-
-		return () => {
-			// Cleanup component is destroyed
-			window.removeEventListener('scroll', handleScroll);
-		};
 	});
 </script>
 

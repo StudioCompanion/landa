@@ -1,7 +1,6 @@
 <script>
 	import 'modern-normalize/modern-normalize.css';
 	import '../styles/index.css';
-	import { fade } from 'svelte/transition';
 	import Header from '../components/Header.svelte';
 	import Footer from '../components/Footer.svelte';
 
@@ -20,7 +19,7 @@
 	
 </div>
 
-<div in:fade={{ duration: 200, delay: 0 }}>
+<div>
 		<Header />
 		<main>
 			<slot />
