@@ -21,7 +21,7 @@
 <section 
 class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} 
 id={module._type} 
-style={`${module.maxHeight ? `max-height: ${module.maxHeight}px;` : ''} opacity: ${visible ? 1 : 0}; transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out; filter: blur(${visible ? '0px' : '2px'}); transform: translateY(${visible ? '0px' : '55px'});`}
+style={`opacity: ${visible ? 1 : 0}; transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out; filter: blur(${visible ? '0px' : '2px'}); transform: translateY(${visible ? '0px' : '55px'});`}
 use:inView={{ threshold: 0.3 }}
 on:enter={() => {
 	visible = true;

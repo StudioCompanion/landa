@@ -52,10 +52,14 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Update global type sizes
 - [x] homepage flicker on hover pass 1
 - [x] make all grid layouts
-- [ ] black lines on social cut downs in grid view [16:9, 3 portait]
+- [x] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
+- [x] fix FOUC on first visit
+- [x] fix layout shift when gallery lookup height
+- [x] final homepage flicker speed and loading logic
+- [x] black lines on social cut downs in grid view [16:9, 3 portait]
 - [ ] black bars on videos and aspect ratio in safari/firefox
-- [ ] what viewport transitions could we do, such as fade in when coming into viewport and graceful fades back in on /work
-- [ ] inline vids in carousel check 
-- [ ] fix FOUC on first visit
-- [ ] fix layout shift when gallery lookup height
-- [ ] final homepage flicker speed and loading logic
+- [x] inline vids in carousel check 
+- [ ] Cross-browser test (Safari Desktop, Safari iOS, Chrome Desktop, Chrome iOS, Firefox)
+- [ ] Performance + SEO Check
+- [ ] Cleanup code (remove unused CSS, JS and comments)
+- [ ] Add README file so people know how to run it in the future
