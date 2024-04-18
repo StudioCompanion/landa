@@ -1,4 +1,5 @@
 <script lang="ts">
+	  	import inView from '$lib/inView';
 	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import Content from '../../components/Content.svelte';
@@ -20,6 +21,7 @@
 		},
 		dots: Array(5).fill(false) 
 	});
+	let visible = false;
 </script>
 
 <div class="page-container" id="main">
@@ -31,7 +33,14 @@
 		{/if}
 	</section>
 
-	<section>
+	<section
+	style={`opacity: ${visible ? 1 : 0}; 
+		  transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+		  filter: blur(${visible ? '0px' : '2px'});`}
+		  use:inView={{ threshold: 0.3 }}
+		  on:enter={() => {
+			  visible = true;
+		  }}>
 		<h2 class="section-title" id="section_title">Contact</h2>
 		<div class="contact-section">
 			{#if about.contact}
@@ -58,7 +67,14 @@
 		</div>
 	</section>
 
-	<section>
+	<section
+	style={`opacity: ${visible ? 1 : 0}; 
+		  transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+		  filter: blur(${visible ? '0px' : '2px'});`}
+		  use:inView={{ threshold: 0.3 }}
+		  on:enter={() => {
+			  visible = true;
+		  }}>
 		{#if about.services}
 			<div class="services-section">
 				<span class="inline-title" id="section_title">Services</span>
@@ -70,7 +86,14 @@
 	
 
 	{#if about.clients}
-		<section>
+		<section
+		style={`opacity: ${visible ? 1 : 0}; 
+		  transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+		  filter: blur(${visible ? '0px' : '2px'});`}
+		  use:inView={{ threshold: 0.3 }}
+		  on:enter={() => {
+			  visible = true;
+		  }}>
 			<div class="client-section">
 				<span class="inline-title" id="section_title">Clients</span>
 				<Content value={about.clients} />
@@ -79,7 +102,14 @@
 	{/if}
 	
 	{#if about.collaborators}
-		<section>
+		<section
+		style={`opacity: ${visible ? 1 : 0}; 
+		  transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+		  filter: blur(${visible ? '0px' : '2px'});`}
+		  use:inView={{ threshold: 0.3 }}
+		  on:enter={() => {
+			  visible = true;
+		  }}>
 			<div class="collaborators-section">
 				<span class="inline-title" id="section_title">Collaborators</span>
 				<Content value={about.collaborators} />
@@ -88,7 +118,15 @@
 	{/if}
 
 	{#if about.biography}
-		<section>
+		<section
+			style={`opacity: ${visible ? 1 : 0}; 
+		  transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+		  filter: blur(${visible ? '0px' : '2px'});`}
+		  use:inView={{ threshold: 0.3 }}
+		  on:enter={() => {
+			  visible = true;
+		  }}
+		  >
 			<div class="bio-section">
 				<span class="inline-title" id="section_title">David Lane biography</span>
 				<Content value={about.biography} />
