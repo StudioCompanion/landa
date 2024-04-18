@@ -64,7 +64,6 @@
 		visible = true;
 	}}
 >
-
 	{#if project.homepage_video}
 		<a class="project-summary" 
 		href={`/work/${project.slug}`}

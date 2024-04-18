@@ -1,4 +1,6 @@
 <script lang="ts">
+		import inView from '$lib/inView';
+
 	import { onDestroy, onMount } from 'svelte';
 	import { PortableText } from '@portabletext/svelte';
 	import Content from '../../../components/Content.svelte';
@@ -53,7 +55,15 @@
 </svelte:head>
 
 
-<section class="description">
+<section class="description"
+style={`opacity: ${visible ? 1 : 0}; 
+transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+filter: blur(${visible ? '0px' : '2px'});`}
+use:inView={{ threshold: 0.3 }}
+on:enter={() => {
+	visible = true;
+}}
+>
 	{#if data.project.description}
 		<div class="project-description">
 			<Content value={data.project.description} />
@@ -75,7 +85,15 @@
 {/if}
 
 {#if data.project.credits}
-	<section class="credits">
+	<section class="credits"
+	style={`opacity: ${visible ? 1 : 0}; 
+	transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+	filter: blur(${visible ? '0px' : '2px'});
+	transform: translateY(${visible ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.3 }}
+	on:enter={() => {
+		visible = true;
+	}}>
 		<PortableText value={data.project.credits} />
 	</section>
 {/if}

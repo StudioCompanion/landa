@@ -1,4 +1,6 @@
 <script lang="ts">
+  	import inView from '$lib/inView';
+
   import { onMount } from 'svelte';
   import type { Media as MediaType } from '$lib/types';
   import MediaSlide from '../MediaSlide.svelte';
@@ -27,7 +29,7 @@
         videoElements.set(index, videoEl);
     };
 
-
+  let visible = false;
 
 const processSlides = () => {
   // console.log('processSlides function is called');
@@ -103,7 +105,18 @@ const onSlideChange = (event) => {
 </script>
 
 {#if CarouselComponent}
-  <section id={module._type} class="carousel-section">
+  <section 
+  id={module._type} 
+  class="carousel-section"
+  style={`opacity: ${visible ? 1 : 0}; 
+	transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
+	filter: blur(${visible ? '0px' : '2px'});
+	transform: translateY(${visible ? '0px' : '55px'});`}
+	use:inView={{ threshold: 0.3 }}
+	on:enter={() => {
+		visible = true;
+	}}
+  >
     <svelte:component 
       this={CarouselComponent} 
       bind:this={carousel} 

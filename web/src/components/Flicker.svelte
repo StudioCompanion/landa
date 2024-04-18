@@ -18,9 +18,8 @@
             hide = true;
             Cookies.set('splashscreen', false);
         }, 50);
-        // Re-enable scrolling once the animation is complete
         document.body.style.overflow = 'auto'; 
-        animationCompleted = true; // Here you mark the animation as completed
+        animationCompleted = true;
     };
 
     const altRun = () => {
@@ -66,11 +65,9 @@
             altRun();
         });
 
-        // Add click listener to end the animation early
         const splashScreen = document.querySelector('.splashscreen');
         splashScreen.addEventListener('click', completeAnimation);
 
-        // Cleanup function
         return () => {
             splashScreen.removeEventListener('click', completeAnimation);
         };

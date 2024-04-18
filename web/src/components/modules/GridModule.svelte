@@ -1,4 +1,5 @@
 <script lang="ts">
+		import inView from '$lib/inView'; 
 	import type { Media as MediaType } from '$lib/types';
 	import MediaGrid from '../MediaGrid.svelte';
 	import ModuleCaption from '../ModuleCaption.svelte';
@@ -13,14 +14,18 @@
 	export let module: GridModule;
 	export let isInCarousel: boolean = false;
 
-	// console.log('Module maxHeight:', module.maxHeight);
+	let visible = false;
 
 </script>
 
 <section 
 class={isInCarousel ? 'gridModule inCarousel' : 'gridModule'} 
 id={module._type} 
-style={`${module.maxHeight ? `max-width: ${module.maxHeight}px;` : ''}`}>
+style={`${module.maxHeight ? `max-height: ${module.maxHeight}px;` : ''} opacity: ${visible ? 1 : 0}; transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out; filter: blur(${visible ? '0px' : '2px'}); transform: translateY(${visible ? '0px' : '55px'});`}
+use:inView={{ threshold: 0.3 }}
+on:enter={() => {
+	visible = true;
+}}>
 <div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr);`}>
 		{#each module.items as item}
 			<div class="grid-item">
