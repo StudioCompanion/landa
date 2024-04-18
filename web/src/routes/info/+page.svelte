@@ -175,7 +175,8 @@ section h3 {
 }
 
 .description{
-	padding: var(--half-space);
+	margin: var(--half-space);
+	max-width: var(	--content-p-max-width);
 }
 
 
@@ -187,10 +188,6 @@ section h3 {
 .inline-title {
 	color: var(--black);
 	display: inline;
-}
-
-.description {
-	/* background: yellow; */
 }
 
 .intro {
@@ -216,11 +213,6 @@ section h3 {
 	padding: 0 var(--half-space) var(--half-space) var(--half-space);
 	max-width: var(	--content-p-max-width);
 }
-
-.description {
-	max-width: var(	--content-p-max-width);
-}
-
 :global(.info-class) {
 	display: inline;
 }
