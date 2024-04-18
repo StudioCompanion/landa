@@ -81,6 +81,10 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     featured_image{..., asset->},
     description,
     credits,
+    seo_title,
+    seo_title,
+    seo_description,
+    seo_image,
     tags[]-> {
         _id,
         name,

@@ -19,18 +19,20 @@
 
 <svelte:head>
 	<!-- HTML Meta Tags -->
-	<title>{data.project.title} | Lane & Associates</title>
-	<meta name="description" content={data.settings.seo_description} />
+
+	<title>{data.project.seo_title} | Lane & Associates</title>
+	<meta name="description" content={data.project.seo_description} />
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content={data.settings.canonical_url + '/work/' + data.slug} />
+	<meta property="og:url" content={data.settings.canonical_url + 'work/' + data.slug} />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={`${data.project.title} | Lane & Associates`} />
-	<meta property="og:description" content={data.project.caption} />
+	<meta property="og:title" content={`${data.project.seo_title} | Lane & Associates`} />
+	<meta property="og:description" content={data.project.seo_description} />
+	
 	<meta
 		property="og:image"
 		content={imageBuilder
-			.image(data.project.featured_image)
+			.image(data.project.seo_image)
 			.width(1600)
 			.height(900)
 			.fit('fill')
@@ -40,13 +42,13 @@
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:domain" content={data.settings.canonical_url} />
-	<meta property="twitter:url" content={data.settings.canonical_url + '/work/' + data.slug} />
-	<meta name="twitter:title" content={`${data.project.title} | Lane & Associates`} />
-	<meta name="twitter:description" content={data.project.caption} />
+	<meta property="twitter:url" content={data.settings.canonical_url + 'work/' + data.slug} />
+	<meta name="twitter:title" content={`${data.project.seo_title} | Lane & Associates`} />
+	<meta name="twitter:description" content={data.project.seo_description} />
 	<meta
 		name="twitter:image"
 		content={imageBuilder
-			.image(data.project.featured_image)
+			.image(data.project.seo_image)
 			.width(1600)
 			.height(900)
 			.fit('fill')
