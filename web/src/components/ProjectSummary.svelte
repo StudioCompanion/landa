@@ -121,6 +121,8 @@
 	}
 
 	:global(.project-image) {
+		object-fit: contain !important;
+	object-position: left !important;
 		width: fit-content !important;
     max-width: 100% !important;
     max-height: calc(100% - var(--full-space)) !important;

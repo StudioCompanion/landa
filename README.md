@@ -64,8 +64,8 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
 - [x] When projects use image stacks for homepage, the image is appearing small on mobile. Ideally these would be the same size as regular homepage portrait images (Image 00)
 - [x] Some galleries are cropping (Image 01)
-- [ ] Some galleries aren’t showing at all (Image 02)
-- [ ] On the work page, portrait images are showing as cropped landscape (image 03)
+- [x] Some galleries aren’t showing at all (Image 02)
+- [x] On the work page, portrait images are showing as cropped landscape (image 03)
 - [ ] Some images within galleries aren’t aligned e.g. Shanghai Show gallery (image 04)
 - [ ] Some films aren’t showing on mobile
 - [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
