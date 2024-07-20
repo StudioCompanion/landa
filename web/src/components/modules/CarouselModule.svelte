@@ -22,7 +22,7 @@
   };
 
   let isMobileDevice = false; // Default to false
-  $: customArrowStyle = isMobileDevice ? 'display: none;' : '';
+  $: customArrowStyle = isMobileDevice ? 'display: block;' : '';
   let videoElements = new Map(); // To store video elements by index
 
   const registerVideoElement = (index, videoEl) => {

@@ -70,7 +70,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [ ] Some films aren’t showing on mobile
 - [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
 – [x] Email addresses/links in footer are appearing in a different font instead of Jjannon italic (image 06)
-– [ ] Can we use a tap instead of swipe to click through galleries?
+– [x] Can we use a tap instead of swipe to click through galleries?
 - [ ] black bars on videos and aspect ratio in safari/firefox
 - [ ] Cross-browser test (Safari Desktop, Safari iOS, Chrome Desktop, Chrome iOS, Firefox)
 - [ ] Performance + SEO Check
