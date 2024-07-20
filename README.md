@@ -60,7 +60,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] inline vids in carousel check 
 
 #New To Do Storage
-- [ ] Always show the second post on homepage so you know something is there (to scroll)
+- [x] Always show the second post on homepage so you know something is there (to scroll)
 - [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
 - [ ] When projects use image stacks for homepage, the image is appearing small on mobile. Ideally these would be the same size as regular homepage portrait images (Image 00)
 - [ ] Some galleries are cropping (Image 01)
