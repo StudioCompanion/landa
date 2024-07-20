@@ -15,7 +15,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 
 
-#Temporary TO DO Storage
+#TO DO History
 
 - [x] Bug: remove the border on the right hand side in /work
 - [x] CMS Remove: Hero Theme
@@ -57,8 +57,21 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] fix layout shift when gallery lookup height
 - [x] final homepage flicker speed and loading logic
 - [x] black lines on social cut downs in grid view [16:9, 3 portait]
-- [ ] black bars on videos and aspect ratio in safari/firefox
 - [x] inline vids in carousel check 
+
+#New To Do Storage
+- [ ] Always show the second post on homepage so you know something is there (to scroll)
+- [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
+- [ ] When projects use image stacks for homepage, the image is appearing small on mobile. Ideally these would be the same size as regular homepage portrait images (Image 00)
+- [ ] Some galleries are cropping (Image 01)
+- [ ] Some galleries aren’t showing at all (Image 02)
+- [ ] On the work page, portrait images are showing as cropped landscape (image 03)
+- [ ] Some images within galleries aren’t aligned e.g. Shanghai Show gallery (image 04)
+- [ ] Some films aren’t showing on mobile
+- [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
+– [ ] Email addresses/links in footer are appearing in a different font instead of Jjannon italic (image 06)
+– [ ] Can we use a tap instead of swipe to click through galleries?
+- [ ] black bars on videos and aspect ratio in safari/firefox
 - [ ] Cross-browser test (Safari Desktop, Safari iOS, Chrome Desktop, Chrome iOS, Firefox)
 - [ ] Performance + SEO Check
 - [ ] Cleanup code (remove unused CSS, JS and comments)
