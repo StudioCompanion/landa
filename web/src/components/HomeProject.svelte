@@ -7,7 +7,7 @@
 	import { Image } from "@unpic/svelte";
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-	
+
 	let imageLoaded = false;
 
 	function handleImageLoad() {
@@ -18,7 +18,7 @@
 	let visible = false;
 
 	let videoElement;
-    let muxPlayerLoaded = false;
+	let muxPlayerLoaded = false;
 
 	onMount(async () => {
 		await import('@mux/mux-player');
@@ -26,31 +26,39 @@
 		muxPlayerLoaded = true;
 
 		if (muxPlayerLoaded && videoElement) {
-            dispatch('videoElement', videoElement);
-        }
+			dispatch('videoElement', videoElement);
+		}
 	});
 
 	let videoElements = []; // Array to store video element references
 
-    // Function to play video on mouse over
-    function handleVideoMouseOver(event) {
+	// Function to play video on mouse over
+	function handleVideoMouseOver(event) {
 		console.log("Mouse over")
-        const projectSummary = event.currentTarget;
-        const videoElement = projectSummary.querySelector('mux-video');
-        videoElement.play();
-    }
+		const projectSummary = event.currentTarget;
+		const videoElement = projectSummary.querySelector('mux-video');
+		videoElement.play();
+	}
 
-    // Function to pause video on mouse out
+	// Function to pause video on mouse out
 	function handleVideoMouseOut(event) {
 		console.log("Mouse out")
 		// Check if the new target is outside the project-summary
 		if (!event.currentTarget.contains(event.relatedTarget)) {
-        const videoElement = event.currentTarget.querySelector('mux-video');
-        videoElement.pause();
-        videoElement.currentTime = 0; // Reset the video to the start
-        videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
+			const videoElement = event.currentTarget.querySelector('mux-video');
+			videoElement.pause();
+			videoElement.currentTime = 0; // Reset the video to the start
+			videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
 		}
 	}
+
+	let imageStackElement;
+	let numImages = 0;
+
+	$: numImages = imageStackElement ? imageStackElement.children.length : 0;
+
+	$: gridTemplateColumns = `repeat(${numImages}, 1fr)`;
+
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
@@ -99,7 +107,7 @@
 		<a class="project-summary" 
 			href={`/work/${project.slug}`}
 		>
-			<div class="image-stack">
+			<div class="image-stack" bind:this={imageStackElement} style={`grid-template-columns: ${gridTemplateColumns};`}>
 				{#each project.image_stack as image}
 				<div class="stack-container" class:image-loaded={imageLoaded}>
 					<Image
@@ -149,6 +157,7 @@
 		</a>
 	{/if}
 </div>
+
 
 <style>
 	.project-container {
