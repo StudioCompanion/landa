@@ -225,6 +225,16 @@
 	}
 
 	@media (max-width: 800px) {
+		.image-stack {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		
+		:global(.image-stack .stack-container img) {
+			max-height: var(--mobile-height-max) !important;
+			object-fit: contain !important;
+			object-position: left !important;
+		}
+
 		.image-stack .stack-container:nth-of-type(n+2) {
 			display: none;
 		}
