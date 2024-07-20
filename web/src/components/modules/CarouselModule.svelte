@@ -121,8 +121,8 @@ const onSlideChange = (event) => {
       this={CarouselComponent} 
       bind:this={carousel} 
       autoplay={false}
-      swiping={isMobileDevice ? true : false} 
-      duration={isMobileDevice ? 100 : 0} 
+      swiping={isMobileDevice ? false : false} 
+      duration={isMobileDevice ? 0 : 0} 
       dots={false}
       arrows={true}
       on:pageChange={onSlideChange}
