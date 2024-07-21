@@ -5,8 +5,8 @@
 	--black: #000000;
 	--grey: #999999;
 	--light-grey: #999999;
-	--font-serif: 'JJannon Book', courier;
-	--font-serif-italic: 'JJannon Italic', courier;
+	--font-serif: 'JJannon Book', serif;
+	--font-serif-italic: 'JJannon Italic', serif;
 	
 	--font-size: 1.6rem;   /* Equivalent to 16px */
 	--full-space: 3.2rem;         /* Equivalent to 52px */
