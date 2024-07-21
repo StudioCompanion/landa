@@ -27,7 +27,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] Can we have the ability to use italics on the homepage captions and project titles?
 - [x] Can we make the space between ‘Work’ and ‘Info’ equal to the margin width?
 - [x] Could we add colons after the project titles on the homepage?
-- [ ] Carousels with a mixture of single images and grids have varying image heights (e.g. Hermès Shanghai event design gallery: https://landa-web.vercel.app/work/hermes-shanghai)
 - [x] Can we have the option to have 3 hero images for the homepage, then just 1 for the 'Work' page? (e.g. currently I've comped 3 frieze covers for the project image, but ideally on the 'Work' page it would just show the first cover)
 - [x] Can we add toggles so we have the option for autoplay and looping on full videos?
 - [x] Videos in carousels keep playing when you click through to the next image. They should stop and start from the beginning when you click back to it if possible.
@@ -61,11 +60,12 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 #New To Do Storage
 - [x] Always show the second post on homepage so you know something is there (to scroll)
-- [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
+- [ ] Carousels with a mixture of single images and grids have varying image heights (e.g. Hermès Shanghai event design gallery: https://landa-web.vercel.app/work/hermes-shanghai)
 - [x] When projects use image stacks for homepage, the image is appearing small on mobile. Ideally these would be the same size as regular homepage portrait images (Image 00)
 - [x] Some galleries are cropping (Image 01)
 - [x] Some galleries aren’t showing at all (Image 02)
 - [x] On the work page, portrait images are showing as cropped landscape (image 03)
+- [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
 - [ ] Some images within galleries aren’t aligned e.g. Shanghai Show gallery (image 04)
 - [ ] Some films aren’t showing on mobile
 - [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
