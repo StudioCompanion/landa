@@ -43,46 +43,46 @@ function handleImageLoad() {
     }
 
     onMount(() => {
-        function adjustVideoSize() {
-            // console.log('Adjusting video size');
-            const videoContainers = document.querySelectorAll('.video-container');
+        // function adjustVideoSize() {
+        //     // console.log('Adjusting video size');
+        //     const videoContainers = document.querySelectorAll('.video-container');
 
-            videoContainers.forEach(container => {
-                const player = container.querySelector('.mux-slide-player');
-                if (!player) return;
+        //     videoContainers.forEach(container => {
+        //         const player = container.querySelector('.mux-slide-player');
+        //         if (!player) return;
 
-                // Dynamically determine or assume the aspect ratio
-                const aspectRatio = 16 / 9;
+        //         // Dynamically determine or assume the aspect ratio
+        //         const aspectRatio = 16 / 9;
 
-                const containerWidth = container.offsetWidth;
-                const containerHeight = container.offsetHeight;
-                const containerRatio = containerWidth / containerHeight;
+        //         const containerWidth = container.offsetWidth;
+        //         const containerHeight = container.offsetHeight;
+        //         const containerRatio = containerWidth / containerHeight;
 
-                let playerWidth, playerHeight;
+        //         let playerWidth, playerHeight;
 
-                if (containerRatio > aspectRatio) {
-                    playerWidth = containerWidth;
-                    playerHeight = containerWidth / aspectRatio;
-                } else {
-                    playerHeight = containerHeight;
-                    playerWidth = containerHeight * aspectRatio;
-                }
+        //         if (containerRatio > aspectRatio) {
+        //             playerWidth = containerWidth;
+        //             playerHeight = containerWidth / aspectRatio;
+        //         } else {
+        //             playerHeight = containerHeight;
+        //             playerWidth = containerHeight * aspectRatio;
+        //         }
 
-                player.style.width = `${playerWidth}px`;
-                player.style.height = `${playerHeight}px`;
-            });
-            // console.log(`Player dimensions set to width: ${playerWidth}px, height: ${playerHeight}px`);
-        }
+        //         player.style.width = `${playerWidth}px`;
+        //         player.style.height = `${playerHeight}px`;
+        //     });
+        //     // console.log(`Player dimensions set to width: ${playerWidth}px, height: ${playerHeight}px`);
+        // }
 
-        adjustVideoSize(); // Call initially in case the component is already the correct size
+        // adjustVideoSize(); // Call initially in case the component is already the correct size
 
-        // Add event listener for resize events
-        window.addEventListener('resize', adjustVideoSize);
+        // // Add event listener for resize events
+        // window.addEventListener('resize', adjustVideoSize);
 
-        // Cleanup function to remove the event listener
-        return () => {
-            window.removeEventListener('resize', adjustVideoSize);
-        };
+        // // Cleanup function to remove the event listener
+        // return () => {
+        //     window.removeEventListener('resize', adjustVideoSize);
+        // };
     });
 
 	export let isBlackControls: boolean = false; // Default to false if not provided
@@ -223,16 +223,20 @@ function handleImageLoad() {
     {:else if media.type === 'image'}
 	<div class:image-loaded={imageLoaded}>
 
+
+		<!-- <img 			src={media.image.asset.url}  > -->
+
 		<Image
-			class="media-slide-image"
+		class="media-slide-image"
 			alt={media.image.asset.altText}
-			src={media.image.asset.url}  
 			layout="constrained"
 			width={media.image.asset.metadata.dimensions.width}
 			aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}
 			background="#FFFFFF"
+			sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
 			on:load={handleImageLoad}
-		/>	
+			src={media.image.asset.url}
+			/>	
 	</div>
     {/if}
 {/if}

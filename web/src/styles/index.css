@@ -5,8 +5,8 @@
 	--black: #000000;
 	--grey: #999999;
 	--light-grey: #999999;
-	--font-serif: 'JJannon Book', serif;
-	--font-serif-italic: 'JJannon Book Italic', serif;
+	--font-serif: 'JJannon Book', courier;
+	--font-serif-italic: 'JJannon Italic', courier;
 	
 	--font-size: 1.6rem;   /* Equivalent to 16px */
 	--full-space: 3.2rem;         /* Equivalent to 52px */
@@ -90,42 +90,11 @@
 }
 
 @font-face {
-	font-family: 'JJannon Book Italic';
+	font-family: 'JJannon Italic';
 	src: url('/fonts/JJannon-Italic.woff2') format('woff2'),
 		url('/fonts/JJannon-Italic.woff') format('woff');
 	font-weight: 400;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Bold';
-	src: url('/fonts/JJannon-Bold.woff') format('woff');
 	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Bold Italic';
-	src: url('/fonts/JJannon-BoldItalic.woff') format('woff');
-	font-style: italic;
-	 
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Display Regular';
-	src: url('/fonts/JJannonDisplay-Regular.woff2') format('woff2'),
-		url('/fonts/JJannonDisplay-Regular.woff2') format('woff');
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'JJannon Display Italic';
-	src: url('/fonts/JJannonDisplay-Italic.woff2') format('woff2'),
-		url('/fonts/JJannonDisplay-Italic.woff2') format('woff');
-	font-style: italic;
 	font-display: swap;
 }
 

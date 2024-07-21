@@ -102,7 +102,7 @@
 	.GridCarouselModule #grid {
 	  display: grid;
 	  gap: var(--quarter-space);
-	  align-items: baseline;
+	  /* align-items: baseline; */
 	  /* background: red; */
 	}
   

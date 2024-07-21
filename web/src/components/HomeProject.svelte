@@ -7,7 +7,7 @@
 	import { Image } from "@unpic/svelte";
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-	
+
 	let imageLoaded = false;
 
 	function handleImageLoad() {
@@ -18,7 +18,7 @@
 	let visible = false;
 
 	let videoElement;
-    let muxPlayerLoaded = false;
+	let muxPlayerLoaded = false;
 
 	onMount(async () => {
 		await import('@mux/mux-player');
@@ -26,31 +26,39 @@
 		muxPlayerLoaded = true;
 
 		if (muxPlayerLoaded && videoElement) {
-            dispatch('videoElement', videoElement);
-        }
+			dispatch('videoElement', videoElement);
+		}
 	});
 
 	let videoElements = []; // Array to store video element references
 
-    // Function to play video on mouse over
-    function handleVideoMouseOver(event) {
+	// Function to play video on mouse over
+	function handleVideoMouseOver(event) {
 		console.log("Mouse over")
-        const projectSummary = event.currentTarget;
-        const videoElement = projectSummary.querySelector('mux-video');
-        videoElement.play();
-    }
+		const projectSummary = event.currentTarget;
+		const videoElement = projectSummary.querySelector('mux-video');
+		videoElement.play();
+	}
 
-    // Function to pause video on mouse out
+	// Function to pause video on mouse out
 	function handleVideoMouseOut(event) {
 		console.log("Mouse out")
 		// Check if the new target is outside the project-summary
 		if (!event.currentTarget.contains(event.relatedTarget)) {
-        const videoElement = event.currentTarget.querySelector('mux-video');
-        videoElement.pause();
-        videoElement.currentTime = 0; // Reset the video to the start
-        videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
+			const videoElement = event.currentTarget.querySelector('mux-video');
+			videoElement.pause();
+			videoElement.currentTime = 0; // Reset the video to the start
+			videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
 		}
 	}
+
+	let imageStackElement;
+	let numImages = 0;
+
+	$: numImages = imageStackElement ? imageStackElement.children.length : 0;
+
+	$: gridTemplateColumns = `repeat(${numImages}, 1fr)`;
+
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
@@ -59,7 +67,7 @@
 	transition: opacity 0.65s ease-in-out, filter 0.25s ease-in-out, transform 0.5s ease-in-out;
 	filter: blur(${visible ? '0px' : '2px'});
 	transform: translateY(${visible ? '0px' : '55px'});`}
-	use:inView={{ threshold: 0.3 }}
+	use:inView={{ threshold: 0.0 }}
 	on:enter={() => {
 		visible = true;
 	}}
@@ -99,7 +107,7 @@
 		<a class="project-summary" 
 			href={`/work/${project.slug}`}
 		>
-			<div class="image-stack">
+			<div class="image-stack" bind:this={imageStackElement} >
 				{#each project.image_stack as image}
 				<div class="stack-container" class:image-loaded={imageLoaded}>
 					<Image
@@ -111,6 +119,7 @@
 						background="#FFFFFF"
 						on:load={handleImageLoad}
 						alt={image.asset.altText}
+									sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
 					/>	
 				</div>
 				{/each}
@@ -150,6 +159,7 @@
 	{/if}
 </div>
 
+
 <style>
 	.project-container {
 		padding: var(--half-space);
@@ -165,13 +175,13 @@
 		width: 100%;
 	}
 
-	.project-image-container {
+	.project-image-container, .image-stack {
 		overflow: hidden; 
 		display: flex; 
 		justify-content: left; 
 		align-items: flex-start;
 		width: 100%;
-
+		max-width: 100%;
 	}
 
 	:global(.flicker-image) {
@@ -217,14 +227,44 @@
 
 	.image-stack {
 		width: 100%;
-		display: grid;
 		align-items: center;		
-		grid-template-columns: repeat(3, 1fr);
+		display: flex;
 		gap: var(--quarter-space);
 		max-width: var(--mobile-width-max);
 	}
 
+	.stack-container {
+		max-height: var(--mobile-height-max);
+		width: auto;
+		height: auto; /* Maintain aspect ratio */
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	:global(.stack-image) {
+		object-fit: cover !important;
+		object-position: left;
+		max-width: 100% !important;
+		max-height: var(--mobile-height-max) !important;
+		height: auto; /* Ensure the image respects the container's height */
+		width: auto !important; /* Ensure the image respects the container's width */
+	}
+
 	@media (max-width: 800px) {
+		.image-stack {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--mobile-height-max) !important;
+		}
+		
+		:global(.image-stack .stack-container img) {
+			max-height: var(--mobile-height-max) !important;
+			object-fit: contain !important;
+			object-position: left !important;
+		}
+
 		.image-stack .stack-container:nth-of-type(n+2) {
 			display: none;
 		}
@@ -233,12 +273,17 @@
 
 	/* Tablet */
 	@media (min-width: 800px) {
+
 		:global(.flicker-image) {
 			max-height: var(--tablet-height-max) !important;
 		}
 		.project-description {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
+		}
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--tablet-height-max) !important;
 		}
 
 		.image-stack {
@@ -248,6 +293,11 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--desktop-height-max) !important;
 		}
@@ -258,6 +308,11 @@
 
 	/* Desktop */
 	@media (min-width: 1700px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--large-desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--large-desktop-height-max) !important;
 		}
@@ -268,6 +323,11 @@
 
 	/* Monsters */
 	@media (min-width: 2500px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--giant-desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--giant-desktop-height-max) !important;
 		}
