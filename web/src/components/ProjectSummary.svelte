@@ -29,7 +29,6 @@
 
 <a class="work-box{visible ? ' visible' : ''}" href={`/work/${project.slug}`}>
 	<div class="project-summary" id="square">
-
 		<div class="project-image-container" class:image-loaded={imageLoaded} >
 				<Image
 					class="project-image"
@@ -39,7 +38,8 @@
 					aspectRatio={project.featured_image.asset.metadata.dimensions.aspectRatio}
 					background="#FFFFFF"
 					on:load={handleImageLoad}
-					alt="ALT NAME REPLACE"
+					sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
+					alt={project.featured_image.asset.altText}
 				/>	
 			</div>
 		<div class="project-description" id="caption">
