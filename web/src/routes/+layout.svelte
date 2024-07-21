@@ -41,7 +41,7 @@
 		background-color: transparent;
 		overflow: hidden;
 		pointer-events: none;
-		/* display: none; */
+		display: none;
 	}
 
 	.horizontal-line {
@@ -53,7 +53,7 @@
 		background-color: transparent;
 		pointer-events: none;
 		border-top: 1px dashed blue;
-		/* display: none; */
+		display: none;
 	}
 
 	/* Tablet */

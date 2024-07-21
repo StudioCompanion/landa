@@ -107,7 +107,7 @@
 		<a class="project-summary" 
 			href={`/work/${project.slug}`}
 		>
-			<div class="image-stack" bind:this={imageStackElement} style={`grid-template-columns: ${gridTemplateColumns};`}>
+			<div class="image-stack" bind:this={imageStackElement} >
 				{#each project.image_stack as image}
 				<div class="stack-container" class:image-loaded={imageLoaded}>
 					<Image
@@ -175,13 +175,13 @@
 		width: 100%;
 	}
 
-	.project-image-container {
+	.project-image-container, .image-stack {
 		overflow: hidden; 
 		display: flex; 
 		justify-content: left; 
 		align-items: flex-start;
 		width: 100%;
-
+		max-width: 100%;
 	}
 
 	:global(.flicker-image) {
@@ -227,16 +227,36 @@
 
 	.image-stack {
 		width: 100%;
-		display: grid;
 		align-items: center;		
-		grid-template-columns: repeat(3, 1fr);
+		display: flex;
 		gap: var(--quarter-space);
 		max-width: var(--mobile-width-max);
+	}
+
+	.stack-container {
+		max-height: var(--mobile-height-max);
+		width: auto;
+		height: auto; /* Maintain aspect ratio */
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	:global(.stack-image) {
+		object-fit: cover !important;
+		object-position: left;
+		max-width: 100% !important;
+		max-height: var(--mobile-height-max) !important;
+		height: auto; /* Ensure the image respects the container's height */
+		width: auto !important; /* Ensure the image respects the container's width */
 	}
 
 	@media (max-width: 800px) {
 		.image-stack {
 			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--mobile-height-max) !important;
 		}
 		
 		:global(.image-stack .stack-container img) {
@@ -253,12 +273,17 @@
 
 	/* Tablet */
 	@media (min-width: 800px) {
+
 		:global(.flicker-image) {
 			max-height: var(--tablet-height-max) !important;
 		}
 		.project-description {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
+		}
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--tablet-height-max) !important;
 		}
 
 		.image-stack {
@@ -268,6 +293,11 @@
 
 	/* Small Desktop */
 	@media (min-width: 1280px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--desktop-height-max) !important;
 		}
@@ -278,6 +308,11 @@
 
 	/* Desktop */
 	@media (min-width: 1700px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--large-desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--large-desktop-height-max) !important;
 		}
@@ -288,6 +323,11 @@
 
 	/* Monsters */
 	@media (min-width: 2500px) {
+
+		.stack-container, :global(.stack-image) {
+			max-height: var(--giant-desktop-height-max) !important;
+		}
+
 		:global(.flicker-image) {
 			max-height: var(--giant-desktop-height-max) !important;
 		}
