@@ -65,7 +65,6 @@ module.slides.forEach((slide, index) => {
       caption: slide.caption,
       columns: slide.columns, // Include column count if necessary
       items: slide.items, // This should be an array of media items
-      maxHeight: slide.maxHeight, // Ensure maxHeight is included here
       sizePreset: slide.sizePreset
     });
   }

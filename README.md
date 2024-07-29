@@ -70,7 +70,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 #New To Do Storage
 - [ ] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
-- [ ] Carousels with a mixture of single images and grids have varying image heights on mobile, you can see it shifting (e.g. Hermès Ties, Hermès Shanghai show gallery)
+- [x] Carousels with a mixture of single images and grids have varying image heights on mobile, you can see it shifting (e.g. Hermès Ties, Hermès Shanghai show gallery)
 - [x] Videos continue playing when you move through galleries. If you click right then go back, the video should play from the beginning
 - [x] Colons are very tight to italic text on mobile (screenshot attached)
 - [x] Del Core Lookbook 5 – this has only 1 slide of a grid. Can we remove image counts on carousels when there is only 1 slide or should we upload as a grid module in this scenario? Currently there is no option to select ratio/col/row numbers when uploading as a grid module, and if we upload as a grid module they appear much larger than grid carousels.
