@@ -57,8 +57,6 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 - [x] final homepage flicker speed and loading logic
 - [x] black lines on social cut downs in grid view [16:9, 3 portait]
 - [x] inline vids in carousel check 
-
-#New To Do Storage
 - [x] Always show the second post on homepage so you know something is there (to scroll)
 - [x] When projects use image stacks for homepage, the image is appearing small on mobile. Ideally these would be the same size as regular homepage portrait images (Image 00)
 - [x] Some galleries are cropping (Image 01)
@@ -68,11 +66,20 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 – [x] Can we use a tap instead of swipe to click through galleries?
 - [x] Some images within galleries aren’t aligned e.g. Shanghai Show gallery (image 04)
 - [x] Carousels with a mixture of single images and grids have varying image heights (e.g. Hermès Shanghai event design gallery: https://landa-web.vercel.app/work/hermes-shanghai)
+
+
+#New To Do Storage
+- [ ] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
+- [ ] Carousels with a mixture of single images and grids have varying image heights on mobile, you can see it shifting (e.g. Hermès Ties, Hermès Shanghai show gallery)
+- [x] Videos continue playing when you move through galleries. If you click right then go back, the video should play from the beginning
+- [x] Colons are very tight to italic text on mobile (screenshot attached)
+- [x] Del Core Lookbook 5 – this has only 1 slide of a grid. Can we remove image counts on carousels when there is only 1 slide or should we upload as a grid module in this scenario? Currently there is no option to select ratio/col/row numbers when uploading as a grid module, and if we upload as a grid module they appear much larger than grid carousels.
+- [ ] Can we increase the mobile typesize to 16px with 19px line spacing? So it’s the same as desktop.
+- [ ] We may have already asked this question but want to double check: Using Del Core campaigns as an example, is there a way we can have 1 main project page with all the campaigns, but show some separately on the ‘Work’ page. So on ‘Work’ page we could see Season 5 and Season 4 campaigns as separate modules, that both lead to the main Del Core campaigns project page?
 - [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
 - [ ] Safari homepage videos not showing
 - [ ] Some films aren’t showing on mobile
 - [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
-
 - [ ] Cross-browser test (Safari Desktop, Safari iOS, Chrome Desktop, Chrome iOS, Firefox)
 - [ ] Performance + SEO Check
 - [ ] Cleanup code (remove unused CSS, JS and comments)
