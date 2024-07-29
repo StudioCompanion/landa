@@ -69,14 +69,14 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 
 #New To Do Storage
-- [ ] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
+- [x] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
 - [x] Carousels with a mixture of single images and grids have varying image heights on mobile, you can see it shifting (e.g. Hermès Ties, Hermès Shanghai show gallery)
 - [x] Videos continue playing when you move through galleries. If you click right then go back, the video should play from the beginning
 - [x] Colons are very tight to italic text on mobile (screenshot attached)
 - [x] Del Core Lookbook 5 – this has only 1 slide of a grid. Can we remove image counts on carousels when there is only 1 slide or should we upload as a grid module in this scenario? Currently there is no option to select ratio/col/row numbers when uploading as a grid module, and if we upload as a grid module they appear much larger than grid carousels.
-- [ ] Can we increase the mobile typesize to 16px with 19px line spacing? So it’s the same as desktop.
+- [x] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
+- [x] Can we increase the mobile typesize to 16px with 19px line spacing? So it’s the same as desktop.
 - [ ] We may have already asked this question but want to double check: Using Del Core campaigns as an example, is there a way we can have 1 main project page with all the campaigns, but show some separately on the ‘Work’ page. So on ‘Work’ page we could see Season 5 and Season 4 campaigns as separate modules, that both lead to the main Del Core campaigns project page?
-- [ ] When 2 images are used for image stack e.g. Gourmand Books, can we use the regular max image height/width? Currently the height is capping.
 - [ ] Safari homepage videos not showing
 - [ ] Some films aren’t showing on mobile
 - [ ] Del Core Season 2 gallery films have black bars on mobile but not desktop (image 05)
