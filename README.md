@@ -69,7 +69,7 @@ No `.env` file is currently required as all sanity configurates are hardcoded cu
 
 
 #New To Do Storage
-- [ ] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
+- [x] Grid modules that aren’t part of a carousel are showing much larger again on desktop (Gelato invitation)
 - [x] Carousels with a mixture of single images and grids have varying image heights on mobile, you can see it shifting (e.g. Hermès Ties, Hermès Shanghai show gallery)
 - [x] Videos continue playing when you move through galleries. If you click right then go back, the video should play from the beginning
 - [x] Colons are very tight to italic text on mobile (screenshot attached)
