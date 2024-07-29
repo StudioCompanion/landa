@@ -13,7 +13,7 @@
 	});
 </script>
 
-<header>
+<header style={`background-color: ${isMenuOpen ? 'white' : 'transparent'};`}>
 	<div class="left-wrap">
 		<a class="text-link" href="/">Lane & Associates</a>
 	</div>
