@@ -1,3 +1,27 @@
-node_modules
-node_modules
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build output directories
+build/
+dist/
+
+# Ignore environment variable files
+.env
+.env.local
+.env.*.local
+
+# Ignore log files
+logs
+*.log
+
+# Ignore OS-generated files
 .DS_Store
+
+# Ignore IDE project files
+.idea/
+.vscode/
+
+# Ignore other files
+/.sanity/
+/.turbo/
+../dist/
