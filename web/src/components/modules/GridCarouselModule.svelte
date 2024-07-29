@@ -27,7 +27,6 @@
   
 	let currentPresetSize = '100%'; // Default fallback
   
-	// This function needs access to `preset`
 	function updateSize() {
 	  const preset = sizePresets[module.sizePreset || 'default'];
 	  const width = window.innerWidth;
@@ -43,6 +42,11 @@
 	  } else {
 		currentPresetSize = `${preset.mobile}px`;
 	  }
+
+	  // Remove 4px if there is only one item
+	  if (module.items.length === 1) {
+		currentPresetSize = `calc(${currentPresetSize} - 4px)`;
+	  }
 	}
   
 	onMount(() => {
@@ -51,9 +55,9 @@
 	  updateSize();
 	  return () => window.removeEventListener('resize', updateSize);
 	});
-  </script>
+</script>
   
-  <div class="carousel-container" style={`--carousel-size: ${currentPresetSize};`}>
+<div class="carousel-container" style={`--carousel-size: ${currentPresetSize};`}>
 	<section class={isInCarousel ? 'GridCarouselModule inCarousel' : 'GridCarouselModule'} id={module._type}>
 	  <div id="grid" style={`grid-template-columns: repeat(${module.columns ?? 3}, 1fr);`}>
 		{#each module.items as item}
@@ -63,7 +67,7 @@
 		{/each}
 	  </div>
 	</section>
-  </div>
+</div>
   
   <style>
 	.carousel-container {

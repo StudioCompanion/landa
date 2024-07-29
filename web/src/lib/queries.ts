@@ -103,7 +103,6 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
                 _type == "grid_module" || _type == "grid_carousel_module" => {
                     columns,
                     caption,
-                    maxHeight,
                     sizePreset,
                     items[] ${media}
                 }
@@ -116,7 +115,6 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
         (_type == "grid_module") => {
             columns,
             caption,
-            maxHeight,
             sizePreset,
             items[] ${media}
         },
