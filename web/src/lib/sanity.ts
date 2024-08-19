@@ -136,7 +136,7 @@ export const getImageProps = ({
 
 		// Let's also tell the browser what's the size of the image so it can calculate aspect ratios
 		width: medianSize,
-    height: medianSize / imageDimensions.aspectRatio,
-	imageType: imageDimensions.imageType
+		height: medianSize / imageDimensions.aspectRatio,
+		imageType: imageDimensions.imageType
 	};
 };

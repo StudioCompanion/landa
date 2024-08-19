@@ -49,6 +49,7 @@ module.slides.forEach((slide, index) => {
     });
   } else if ('media_type' in slide && slide.media_type === 'video') {
     slidesData.push({
+        mux: slide.video.everything,
         id: slide.video.asset_id, // Assuming this should be asset_id based on your data
         playbackId: slide.video.playback_id,
         video_thumbnail: slide.video_thumbnail, // Pass the video_thumbnail object as is
@@ -230,6 +231,7 @@ on:enter={() => {
 }
 
 .video-slide {
+    display: inline-flex;
 }
 
 .caption {

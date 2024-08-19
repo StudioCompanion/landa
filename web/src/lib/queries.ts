@@ -13,6 +13,7 @@ export const media = groq`{
         "playback_id": asset->playbackId,
         "upload_id": asset->uploadId,
         "asset_id": asset->assetId,
+        "everything": asset->,
       },
       video_thumbnail {
         "aspect_ratio": asset->.metadata.dimensions.aspectRatio,

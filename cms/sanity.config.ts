@@ -68,7 +68,7 @@ export default defineConfig({
       },
     }),
     visionTool(),
-    muxInput(),
+    muxInput(mp4_support: 'standard'),
     colorInput(),
     media(),
   ],
