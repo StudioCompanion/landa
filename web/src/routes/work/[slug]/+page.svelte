@@ -13,6 +13,8 @@
 	import { page } from '$app/stores';
 	export let data;
 	let root;
+	
+	console.log(data);
 
 	let visible = false;
 </script>

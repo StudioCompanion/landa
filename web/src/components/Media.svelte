@@ -20,6 +20,9 @@
 	export let isBlackControls: boolean = false;
 
 	export let media: Media | undefined;
+
+	console.log(media);
+
 	export let carousel: boolean = false;
   </script>
   
