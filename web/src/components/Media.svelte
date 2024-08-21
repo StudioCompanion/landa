@@ -7,6 +7,7 @@
 	import { Image } from "@unpic/svelte";
 
 	let imageLoaded = false;
+	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
 
 	function handleImageLoad() {
 		imageLoaded = true;
@@ -21,7 +22,32 @@
 
 	export let media: Media | undefined;
 
-	console.log(media);
+	onMount(() => {
+		if (media) {
+			console.log("Media is available on mount:", media);
+			console.log(media.video_thumbnail);
+			
+			if (media.media_type === 'video' && media.video) {
+				console.log("Video object:", media.video);
+
+				const playbackId = media.video.playback_id;  // Access playback_id from media.video
+				if (playbackId) {
+					console.log("Playback ID:", playbackId);
+					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+					console.log("MP4 Video URL:", staticVideoUrl);
+
+					const downloadableVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4?download=filename`;
+					console.log("Downloadable MP4 URL:", downloadableVideoUrl);
+				} else {
+					console.log("Playback ID is not available");
+				}
+			} else {
+				console.log("Media is not a video");
+			}
+		} else {
+			console.log("Media is not defined on mount");
+		}
+	});
 
 	export let carousel: boolean = false;
   </script>
@@ -36,7 +62,18 @@
 			{#if media.isInline}
 			<!-- Inline Video Player -->
 
-			<media-controller
+
+			<video
+				class="video"
+				muted
+				autoplay
+				loop
+				playsinline
+				src={staticVideoUrl}
+				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+			/>
+
+			<!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			class="inline"
 			>
@@ -47,7 +84,7 @@
 				playsinline
 				slot="media"
 				stream-type="on-demand"
-				playback-id={media.video.playback_id}
+				src={staticVideoUrl}
 				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
 			/>
 				<media-control-bar>
@@ -90,10 +127,19 @@
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
 			{:else}
 			<!-- Full Video Player -->
-			<media-controller
+			<video
+				class="video"
+				muted
+				controls
+				loop
+				playsinline
+				src={staticVideoUrl}
+				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+			/>
+			<!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			>
 			<mux-video
@@ -155,7 +201,7 @@
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
 			{/if}
 		{:else if media.media_type === 'image' && media.image}
 			<!-- Image Rendering -->
@@ -254,6 +300,17 @@
 		max-height: var(--mobile-height-max) !important; /* Caps the maximum height */
 		/* border: 1px red solid; */
 		max-width: var(--mobile-width-max);
+	}
+
+	.video {
+		display: inline-flex;
+		background: rgba(255,100,0,0.1);
+		height: 100%;
+	}
+
+	.video video {
+		max-width: 100%;
+		/* border: 5px solid yellow; */
 	}
 
 	:global(.media-image){
