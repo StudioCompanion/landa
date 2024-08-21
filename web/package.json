@@ -43,6 +43,7 @@
 		"js-cookie": "^3.0.5",
 		"modern-normalize": "^2.0.0",
 		"siema": "^1.5.1",
+		"styled-components": "^6.1.12",
 		"svelte-meta-tags": "^2.7.2"
 	}
 }
