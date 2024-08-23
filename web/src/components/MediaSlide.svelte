@@ -11,6 +11,8 @@
 
 
 let imageLoaded = false;
+let staticVideoUrl = '';  // Declare staticVideoUrl at the top
+
 
 function handleImageLoad() {
 	imageLoaded = true;
@@ -36,54 +38,35 @@ function handleImageLoad() {
         }
     });
 
+	onMount(() => {
+		if (media) {
+			console.log("Slide Media is available on mount:", media);
+			console.log("Slide Media Thumbnail:", media.video_thumbnail);
+			
+			if (media.type === 'video' && media.video) {
+				console.log("Slide Video object:", media.video);
+
+				const playbackId = media.video.playbackId;  // Access playback_id from media.video
+
+				if (playbackId) {
+					console.log("Playback ID:", playbackId);
+					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+					console.log("Slide MP4 Video URL:", staticVideoUrl);
+
+					const downloadableVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4?download=filename`;
+					console.log("Slide Downloadable MP4 URL:", downloadableVideoUrl);
+				} else {
+					console.log("Slide Playback ID is not available");
+				}
+			} else {
+				console.log("Slide Media is not a video");
+			}
+		} else {
+			console.log("Slide Media is not defined on mount");
+		}
+	});
+
 	export let media: Media | undefined;
-
-    $: if (media) {
-    // console.log('————Current media type————:', media.type);
-    }
-
-    onMount(() => {
-        // function adjustVideoSize() {
-        //     // console.log('Adjusting video size');
-        //     const videoContainers = document.querySelectorAll('.video-container');
-
-        //     videoContainers.forEach(container => {
-        //         const player = container.querySelector('.mux-slide-player');
-        //         if (!player) return;
-
-        //         // Dynamically determine or assume the aspect ratio
-        //         const aspectRatio = 16 / 9;
-
-        //         const containerWidth = container.offsetWidth;
-        //         const containerHeight = container.offsetHeight;
-        //         const containerRatio = containerWidth / containerHeight;
-
-        //         let playerWidth, playerHeight;
-
-        //         if (containerRatio > aspectRatio) {
-        //             playerWidth = containerWidth;
-        //             playerHeight = containerWidth / aspectRatio;
-        //         } else {
-        //             playerHeight = containerHeight;
-        //             playerWidth = containerHeight * aspectRatio;
-        //         }
-
-        //         player.style.width = `${playerWidth}px`;
-        //         player.style.height = `${playerHeight}px`;
-        //     });
-        //     // console.log(`Player dimensions set to width: ${playerWidth}px, height: ${playerHeight}px`);
-        // }
-
-        // adjustVideoSize(); // Call initially in case the component is already the correct size
-
-        // // Add event listener for resize events
-        // window.addEventListener('resize', adjustVideoSize);
-
-        // // Cleanup function to remove the event listener
-        // return () => {
-        //     window.removeEventListener('resize', adjustVideoSize);
-        // };
-    });
 
 	export let isBlackControls: boolean = false; // Default to false if not provided
 
@@ -97,7 +80,17 @@ function handleImageLoad() {
 	class:is-black={media.isBlackControls}
     >
         {#if media.isInline}
-        <media-controller
+		<video
+				class="video"
+				muted
+				autoplay
+				loop
+				controls
+				playsinline
+				src={staticVideoUrl}
+				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+			/>
+        <!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			class="inline"
 			>
@@ -152,9 +145,19 @@ function handleImageLoad() {
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
         {:else}
-        <media-controller
+		Full Video
+		<video
+			class="video"
+			muted
+			controls
+			loop
+			playsinline
+			src={staticVideoUrl}
+			poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+		/>
+        <!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			>
 			<mux-video
@@ -217,7 +220,7 @@ function handleImageLoad() {
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
         {/if}
     </div>
     {:else if media.type === 'image'}
