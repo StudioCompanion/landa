@@ -147,7 +147,6 @@ function handleImageLoad() {
 				</media-control-bar>
 			</media-controller> -->
         {:else}
-		Full Video
 		<video
 			class="video"
 			muted

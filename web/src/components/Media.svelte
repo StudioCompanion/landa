@@ -305,6 +305,8 @@
 	.video {
 		display: inline-flex;
 		height: 100%;
+		max-height: var(--mobile-height-max) !important;
+		max-width: var(--mobile-width-max);
 	}
 
 	.video video {
