@@ -1,6 +1,5 @@
 <script>
 	import inView from '$lib/inView';
-	import { getImageProps } from '$lib/sanity';
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import InlineContent from './InlineContent.svelte';
@@ -9,54 +8,57 @@
 	const dispatch = createEventDispatcher();
 
 	let imageLoaded = false;
+	let visible = false;
+	let videoElement;
+	let muxPlayerLoaded = false;
+	let staticVideoUrl = '';
+
+	export let project;
 
 	function handleImageLoad() {
 		imageLoaded = true;
 	}
 
-	export let project;
-	let visible = false;
-
-	let videoElement;
-	let muxPlayerLoaded = false;
-
 	onMount(async () => {
-		await import('@mux/mux-player');
-		await import('@mux/mux-video');
-		muxPlayerLoaded = true;
-
-		if (muxPlayerLoaded && videoElement) {
-			dispatch('videoElement', videoElement);
+		// Construct the static MP4 URL
+		if (project?.homepage_video?.metadata?.playbackId) {
+			const playbackId = project.homepage_video.metadata.playbackId;
+			staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+			console.log("Static MP4 Video URL:", staticVideoUrl);
+		} else {
+			console.log("No valid playback ID available for the video");
 		}
 	});
 
-	let videoElements = []; // Array to store video element references
+	// Handle mouseenter and mouseleave for video playback
+	function handleVideoMouseEnter(event) {
+		const videoElement = event.currentTarget.querySelector('video');
+		if (videoElement) {
+			// Ensure video is muted for Safari's autoplay restrictions
+			videoElement.muted = true;
 
-	// Function to play video on mouse over
-	function handleVideoMouseOver(event) {
-		console.log("Mouse over")
-		const projectSummary = event.currentTarget;
-		const videoElement = projectSummary.querySelector('mux-video');
-		videoElement.play();
-	}
-
-	// Function to pause video on mouse out
-	function handleVideoMouseOut(event) {
-		console.log("Mouse out")
-		// Check if the new target is outside the project-summary
-		if (!event.currentTarget.contains(event.relatedTarget)) {
-			const videoElement = event.currentTarget.querySelector('mux-video');
-			videoElement.pause();
-			videoElement.currentTime = 0; // Reset the video to the start
-			videoElement.load(); // Optionally, force the video element to reload if the poster does not show up
+			// Attempt to play the video and handle potential promise rejection
+			videoElement.play().catch(error => {
+				console.error('Video playback failed:', error);
+			});
 		}
 	}
 
+	function handleVideoMouseLeave(event) {
+		// Ensure the related target (new hovered element) is outside the project-summary
+		if (!event.currentTarget.contains(event.relatedTarget)) {
+			const videoElement = event.currentTarget.querySelector('video');
+			if (videoElement) {
+				videoElement.pause();
+				videoElement.currentTime = 0;  // Reset video to the start
+				videoElement.load();
+			}
+		}
+	}
 	let imageStackElement;
 	let numImages = 0;
 
 	$: numImages = imageStackElement ? imageStackElement.children.length : 0;
-
 	$: gridTemplateColumns = `repeat(${numImages}, 1fr)`;
 
 </script>
@@ -72,29 +74,22 @@
 		visible = true;
 	}}
 >
-	{#if project.homepage_video}
+	{#if project.homepage_video && staticVideoUrl}
 		<a class="project-summary" 
-		href={`/work/${project.slug}`}
-		on:mouseover={handleVideoMouseOver} on:focus={handleVideoMouseOver} on:mouseout={handleVideoMouseOut} on:blur={handleVideoMouseOut}
+			href={`/work/${project.slug}`}
+			on:mouseenter={handleVideoMouseEnter} 
+			on:mouseleave={handleVideoMouseLeave}
 		>
-			<div
-				class="video"
-				style={`aspect-ratio: ${project.homepage_video.metadata.data.aspect_ratio.replace(':', '/')};`}
-			>
-				<media-controller
+			<div class="video" style={`aspect-ratio: ${project.homepage_video.metadata.data.aspect_ratio.replace(':', '/')};`}>
+				<video
+					muted
+					loop
+					playsinline
+					poster={project.video_thumbnail.url}
+					src={staticVideoUrl}
 					style={`aspect-ratio: ${project.homepage_video.metadata.data.aspect_ratio.replace(':', '/')};`}
-					class="inline"
 				>
-					<mux-video
-						muted
-						loop
-						playsinline
-						slot="media"
-						stream-type="on-demand"
-						playback-id={project.homepage_video.metadata.playbackId}
-						poster={project.video_thumbnail.url}
-					/>
-				</media-controller>
+				</video>
 			</div>
 			<div class="project-description" id="caption">
 				<span class="project-title">{project.title}</span>:
@@ -104,10 +99,8 @@
 	{/if}
 
 	{#if project.image_stack && !project.homepage_image && !project.homepage_video}
-		<a class="project-summary" 
-			href={`/work/${project.slug}`}
-		>
-			<div class="image-stack" bind:this={imageStackElement} >
+		<a class="project-summary" href={`/work/${project.slug}`}>
+			<div class="image-stack" bind:this={imageStackElement}>
 				{#each project.image_stack as image}
 				<div class="stack-container" class:image-loaded={imageLoaded}>
 					<Image
@@ -119,23 +112,20 @@
 						background="#FFFFFF"
 						on:load={handleImageLoad}
 						alt={image.asset.altText}
-									sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
-					/>	
+						sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
+					/>
 				</div>
 				{/each}
 			</div>
-	
-		<div class="project-description" id="caption">
-			<span class="project-title">{project.title}</span>:
-			<InlineContent value={project.caption} />
-		</div>
+			<div class="project-description" id="caption">
+				<span class="project-title">{project.title}</span>:
+				<InlineContent value={project.caption} />
+			</div>
 		</a>
 	{/if}
 
 	{#if project.homepage_image && !project.homepage_video && !project.image_stack}
-		<a class="project-summary" 
-			href={`/work/${project.slug}`}
-		>
+		<a class="project-summary" href={`/work/${project.slug}`}>
 			<div class="project-image-container" id="image-container">
 				<div class:image-loaded={imageLoaded}>
 					<Image
@@ -147,10 +137,9 @@
 					background="#FFFFFF"
 					on:load={handleImageLoad}
 					alt={project.homepage_image.asset.altText}
-						/>	
+					/>	
 				</div>
 			</div>
-
 			<div class="project-description" id="caption">
 				<span class="project-title">{project.title}</span>:
 				<InlineContent value={project.caption} />
@@ -158,7 +147,6 @@
 		</a>
 	{/if}
 </div>
-
 
 <style>
 	.project-container {
@@ -368,16 +356,13 @@
 	}
 
 	.video {
-		display: inline-block;
-		max-width: 100%; 
+		display: inline-flex;
+		height: 100%;
 	}
 
-    .video {
-        max-width: 100%; 
-        display: flex;
-        justify-content: flex-start; 
-		max-height: var(--mobile-height-max) !important;
-		max-width: var(--mobile-width-max);
+	.video video {
+		max-width: 100%;
+		/* border: 5px solid yellow; */
 	}
 
 	:global(.media-image){

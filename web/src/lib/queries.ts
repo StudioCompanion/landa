@@ -62,6 +62,7 @@ export const projectsQuery = groq`*[_type == 'project']|order(orderRank) {
     "image_stack": image_stack[]{..., asset->},
     homepage_image{..., asset->},
     "homepage_video": homepage_video.asset->{
+     "foo": "bar",
       "metadata": {
         ...,
         "playbackId": playbackId,

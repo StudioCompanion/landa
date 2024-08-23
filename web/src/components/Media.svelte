@@ -304,7 +304,6 @@
 
 	.video {
 		display: inline-flex;
-		background: rgba(255,100,0,0.1);
 		height: 100%;
 	}
 
