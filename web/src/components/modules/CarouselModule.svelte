@@ -85,10 +85,9 @@ const onSlideChange = (event) => {
   const previousVideoElement = videoElements.get(previousIndex);
   if (previousVideoElement && typeof previousVideoElement.pause === 'function') {
       previousVideoElement.pause();
-      previousVideoElement.currentTime = 0; // Reset the video to the beginning
+      previousVideoElement.currentTime = 0;
   }
 
-  // Play the new video if the new slide has a video
   const newVideoElement = videoElements.get(newIndex);
   if (newVideoElement && typeof newVideoElement.play === 'function') {
       newVideoElement.play();
