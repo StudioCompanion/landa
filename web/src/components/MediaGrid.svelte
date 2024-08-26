@@ -5,6 +5,7 @@
 	import { Image } from "@unpic/svelte";
 
 	let imageLoaded = false;
+	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
 
 	function handleImageLoad() {
 		imageLoaded = true;
@@ -16,22 +17,57 @@
 		await import('@mux/mux-video');
 	});
 
+	onMount(() => {
+		if (media) {			
+			if (media.media_type === 'video' && media.video) {
+				console.log("———— Grid Media is a Video", media);
+				console.log("———— Grid Video object:", media.video);
+
+				const playbackId = media.video.playback_id;  // Access playback_id from media.video
+				if (playbackId) {
+					console.log("———— Grid Playback ID:", playbackId);
+					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+					console.log("———— Grid MP4 Video URL:", staticVideoUrl);
+
+					const downloadableVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4?download=filename`;
+					console.log("———— Grid Downloadable MP4 URL:", downloadableVideoUrl);
+				} else {
+					console.log("Playback ID is not available");
+				}
+			} else {
+				console.log("Media is not a video");
+			}
+		} else {
+			console.log("Media is not defined on mount");
+		}
+	});
+
 	export let media: Media | undefined;
 	export let isBlackControls: boolean = false; // Default to false if not provided
 </script>
 
 {#if media}
 	<div
-	class:is-black={media.isBlackControls}
-style={media.media_type === 'video'
+		class:is-black={media.isBlackControls}
+	style={media.media_type === 'video'
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
 			: ''}
 			
 	>
 	{#if media.media_type === 'video'}
 		{#if media.isInline}
+		<video
+				class="video"
+				muted
+				autoplay
+				controls
+				loop
+				playsinline
+				src={staticVideoUrl}
+				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+			/>
 		<!-- Inline Video Player -->
-		<media-controller
+		<!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			class="inline"
 
@@ -86,10 +122,19 @@ style={media.media_type === 'video'
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
 		{:else}
+		<video
+				class="video"
+				muted
+				controls
+				loop
+				playsinline
+				src={staticVideoUrl}
+				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+			/>
 		<!-- Full Video Player -->
-		<media-controller
+		<!-- <media-controller
 			style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 			>
 			<mux-video
@@ -151,7 +196,7 @@ style={media.media_type === 'video'
 					</svg>												
 				</media-fullscreen-button>
 				</media-control-bar>
-			</media-controller>
+			</media-controller> -->
 		{/if}
 	{:else if media.media_type === 'image' && media.image}
 		<!-- Image Rendering -->
@@ -194,43 +239,47 @@ style={media.media_type === 'video'
 		transition: opacity 1s;
 	}
 
-
-	.mux-player {
-		height: 100%;
-		width: 100%;
+	.video {
+		display: block;
+		/* max-height: var(--mobile-height-max) !important; */
+		max-width: 100% !important;
 	}
 
-	.mux-player.no-controls {
-		--controls: none;
+	.video video {
+		max-width: 100%;
+		border: 5px solid yellow;
 	}
 
-	media-controller {
-		--media-control-background: rgba(255, 255, 255, 0);
-		--media-control-hover-background: rgba(255, 255, 255, 0);
-		--media-font-family: var(--font-serif);
-		--media-primary-color: var(--white);
-		--media-font-size: var(--font-size);
-		--media-range-track-border-radius: 0px;
-		--media-range-thumb-width: 0px;
-		--media-range-thumb-height: 0px;
-		--media-control-hover-background: rgba(255, 255, 255, 0);
-	}
-	
-	.is-black media-controller {
-		--media-primary-color: var(--black);
+	/* Tablet */
+	@media (min-width: 800px) {
+		.video {
+			max-height: var(--tablet-height-max) !important;
+			max-width: calc(var(--tablet-width-max) - var(--half-space));
+		}
 	}
 
-	media-play-button svg, media-mute-button svg, media-fullscreen-button svg {
-		opacity: 1;
+	/* Small Desktop */
+	@media (min-width: 1280px) {
+		.video {
+			max-height: var(--desktop-height-max) !important;
+			max-width: calc(var(--desktop-width-max) - var(--half-space));
+		}
 	}
 
-	media-play-button:hover svg, media-mute-button:hover svg, media-fullscreen-button:hover svg{
-		opacity: 0.5;
+	/* Desktop */
+	@media (min-width: 1700px) {
+		.video {
+			max-height: var(--large-desktop-height-max) !important;
+			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
+		}
 	}
 
-	.inline media-fullscreen-button {
-		right: 0;
-		position: absolute;
+	/* Monsters */
+	@media (min-width: 2500px) {
+		.video{
+			max-height: var(--giant-desktop-height-max) !important;
+			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
+		}
 	}
-	
+
 </style>
