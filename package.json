@@ -20,6 +20,7 @@
     "@unpic/svelte": "^0.0.51",
     "media-chrome": "^3.0.1",
     "phosphor-icons": "^1.4.2",
+    "plyr": "^3.7.8",
     "react-icons": "^5.0.1",
     "sanity-plugin-mux-input": "^2.3.6",
     "styled-components": "^6.0.0",

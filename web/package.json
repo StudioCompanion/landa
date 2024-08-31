@@ -37,13 +37,16 @@
 		"@sanity/image-url": "^1.0.2",
 		"@unpic/placeholder": "^0.1.2",
 		"@unpic/svelte": "^0.0.51",
+		"@vidstack/player": "^0.13.3",
 		"framer-motion": "^10.16.3",
 		"glightbox": "^3.2.0",
 		"groq": "^3.11.3",
 		"js-cookie": "^3.0.5",
 		"modern-normalize": "^2.0.0",
+		"plyr": "^3.7.8",
 		"siema": "^1.5.1",
 		"styled-components": "^6.1.12",
-		"svelte-meta-tags": "^2.7.2"
+		"svelte-meta-tags": "^2.7.2",
+		"vidstack": "^1.12.9"
 	}
 }

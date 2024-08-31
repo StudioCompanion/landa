@@ -9,62 +9,172 @@
 	let imageLoaded = false;
 	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
 
+	let videoElement: HTMLVideoElement;
+	let isPlaying = false;
+	let isMuted = false;
+
+	export let isInline: boolean = false;
+
 	function handleImageLoad() {
 		imageLoaded = true;
 	}
+
+	function handleNonInlinePlay() {
+		if (videoElement.paused) {
+			videoElement.play();
+			isPlaying = true;
+		} else {
+			videoElement.pause();
+			isPlaying = false;
+		}
+	}
+
+	function togglePlay() {
+		if (videoElement) {
+			if (videoElement.paused) {
+				videoElement.play();
+				isPlaying = true;
+			} else {
+				videoElement.pause();
+				isPlaying = false;
+			}
+		}
+	}
+
+	function toggleMute() {
+		if (videoElement) {
+			videoElement.muted = !videoElement.muted;
+			isMuted = videoElement.muted;
+		}
+	}
+
+	let currentTime = 0;
+	let duration = 0;
+
+	function formatTime(seconds) {
+		const minutes = Math.floor(seconds / 60);
+		const remainingSeconds = Math.floor(seconds % 60);
+		return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+	}
+
+	function handleTimeUpdate(event) {
+		currentTime = event.target.currentTime;
+	}
+
+	function handleDurationChange(event) {
+		duration = event.target.duration;
+	}
+
+	function handleProgressBarChange(event) {
+		if (videoElement) {
+			videoElement.currentTime = event.target.value;
+		}
+	}
+
+	onMount(() => {
+		if (media && media.media_type === 'video' && media.video) {
+			const playbackId = media.video.playback_id;
+			if (playbackId) {
+				staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+				console.log("MP4 Video URL:", staticVideoUrl);
+
+				// Set initial state based on media.isInline
+				if (media.isInline) {
+					isMuted = true;
+					isPlaying = true;
+				} else {
+					isMuted = false;
+					isPlaying = false;
+				}
+
+				// Initialize video element
+				if (videoElement) {
+					videoElement.muted = isMuted;
+					if (isPlaying) {
+						videoElement.play().catch(error => {
+							console.log("Autoplay was prevented:", error);
+							isPlaying = false;
+						});
+					}
+				}
+			}
+		}
+	});
 
 	export let isBlackControls: boolean = false;
 
 	export let media: Media | undefined;
 
-	onMount(() => {
-		if (media) {
-			if (media.media_type === 'video' && media.video) {
-				const playbackId = media.video.playback_id;  // Access playback_id from media.video
-				if (playbackId) {
-					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
-					console.log("MP4 Video URL:", staticVideoUrl);
-				} else {
-				}
-			} else {
-			}
-		} else {
-		}
-	});
-
 	export let carousel: boolean = false;
-  </script>
+
+</script>
   
   {#if media}
 	<div
 	  class={[carousel ? 'carousel' : null, media.media_type === 'video' ? 'video' : null, media.media_type === 'image' ? 'image' : null].filter(Boolean).join(' ')}
 	  style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 	  class:is-black={media.isBlackControls}
+	  class:is-inline={media.isInline}
 	>
 		{#if media.media_type === 'video'}
-			{#if media.isInline}
-			<!-- Inline Video Player -->
-			<video
-				class="video"
-				muted
-				autoplay
-				loop
-				playsinline
-				src={staticVideoUrl}
-				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-			/>
-			{:else}
-			<!-- Full Video Player -->
-			<video
-				class="video"
-				muted
-				controls
-				loop
-				playsinline
-				src={staticVideoUrl}
-				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-			/>
-			{/if}
+			<div class="video-container">
+				{#if media.isInline}
+				Inline
+					<video
+						bind:this={videoElement}
+						class="video"
+						autoplay
+						muted
+						loop
+						playsinline
+						disablePictureInPicture
+						src={staticVideoUrl}
+						poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+						on:timeupdate={handleTimeUpdate}
+						on:durationchange={handleDurationChange}
+						on:play={() => isPlaying = true}
+						on:pause={() => isPlaying = false}
+					/>
+					<div class="video-controls inline-controls" class:black-controls={media.isBlackControls}>
+						<button on:click={togglePlay}>
+							{isPlaying ? 'Pause' : 'Play'}
+						</button>
+						<button on:click={toggleMute}>
+							{isMuted ? 'Unmute' : 'Mute'}
+						</button>
+					</div>
+				{:else}
+				Full
+					<video
+						bind:this={videoElement}
+						class="video"
+						playsinline
+						disablePictureInPicture
+						src={staticVideoUrl}
+						poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+						on:timeupdate={handleTimeUpdate}
+						on:durationchange={handleDurationChange}
+					/>
+					<div class="video-controls full-controls" class:black-controls={media.isBlackControls}>
+						<button on:click={togglePlay}>
+							{isPlaying ? 'Pause' : 'Play'}
+						</button>
+						<button on:click={toggleMute}>
+							{isMuted ? 'Unmute' : 'Mute'}
+						</button>
+						<input 
+							type="range" 
+							min="0" 
+							max={duration} 
+							value={currentTime}
+							on:input={handleProgressBarChange}
+						/>
+						<span class="time-display">
+							{formatTime(currentTime)} / {formatTime(duration)}
+						</span>
+					</div>
+				{/if}
+			</div>
 		{:else if media.media_type === 'image' && media.image}
 			<!-- Image Rendering -->
 			<div class:image-loaded={imageLoaded}>
@@ -106,9 +216,9 @@
 		/* background: yellow; */
 	}
 
-	div {
+	/* div {
 		width: 100%;
-	}
+	} */
 	
 	.image, .video {
 		display: inline-block;
@@ -185,4 +295,99 @@
 			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
 		}
 	}
+
+	.video-container {
+		position: relative;
+		display: inline-block;
+	}
+
+	.video-controls {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		background-color: rgba(255, 255, 255, 0.5);
+		padding: 5px;
+		border-radius: 4px;
+	}
+
+	.video-controls.black-controls {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	.video-controls button {
+		background-color: transparent;
+		color: black;
+		border: none;
+		padding: 5px 10px;
+		cursor: pointer;
+		border-radius: 4px;
+	}
+
+	.video-controls.black-controls button {
+		color: white;
+	}
+
+	.video-controls button:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+
+	.video-controls.black-controls button:hover {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.time-display {
+		color: black;
+		font-size: 14px;
+	}
+
+	.black-controls .time-display {
+		color: white;
+	}
+
+	/* Styles for the range input (progress bar) */
+	input[type="range"] {
+		-webkit-appearance: none;
+		width: 100%;
+		background: transparent;
+	}
+
+	input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+
+	input[type="range"]:focus {
+		outline: none;
+	}
+
+	input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background: #ffffff;
+		cursor: pointer;
+		margin-top: -5px;
+	}
+
+	.black-controls input[type="range"]::-webkit-slider-thumb {
+		background: #000000;
+	}
+
+	input[type="range"]::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: rgba(0, 0, 0, 0.6);
+		border-radius: 3px;
+	}
+
+	.black-controls input[type="range"]::-webkit-slider-runnable-track {
+		background: rgba(255, 255, 255, 0.6);
+	}
+
+	/* Add similar styles for other browsers if needed */
 </style>
