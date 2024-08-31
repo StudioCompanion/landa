@@ -5,6 +5,10 @@
 	import { onMount } from 'svelte/internal';
 	
 	import { Image } from "@unpic/svelte";
+	import PlayIcon from './icons/PlayIcon.svelte';
+	import PauseIcon from './icons/PauseIcon.svelte';
+	import MuteIcon from './icons/MuteIcon.svelte';
+	import UnmuteIcon from './icons/UnmuteIcon.svelte';
 
 	let imageLoaded = false;
 	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
@@ -55,6 +59,11 @@
 		const minutes = Math.floor(seconds / 60);
 		const remainingSeconds = Math.floor(seconds % 60);
 		return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+	}
+
+	function formatRemainingTime(currentTime, duration) {
+		const remainingSeconds = Math.max(0, duration - currentTime);
+		return formatTime(remainingSeconds);
 	}
 
 	function handleTimeUpdate(event) {
@@ -119,7 +128,6 @@
 		{#if media.media_type === 'video'}
 			<div class="video-container">
 				{#if media.isInline}
-				Inline
 					<video
 						bind:this={videoElement}
 						class="video"
@@ -136,15 +144,22 @@
 						on:pause={() => isPlaying = false}
 					/>
 					<div class="video-controls inline-controls" class:black-controls={media.isBlackControls}>
-						<button on:click={togglePlay}>
-							{isPlaying ? 'Pause' : 'Play'}
+						<button on:click={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
+							{#if isPlaying}
+								<PauseIcon />
+							{:else}
+								<PlayIcon />
+							{/if}
 						</button>
-						<button on:click={toggleMute}>
-							{isMuted ? 'Unmute' : 'Mute'}
+						<button on:click={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'}>
+							{#if isMuted}
+								<MuteIcon />
+							{:else}
+								<UnmuteIcon />
+							{/if}
 						</button>
 					</div>
 				{:else}
-				Full
 					<video
 						bind:this={videoElement}
 						class="video"
@@ -156,11 +171,19 @@
 						on:durationchange={handleDurationChange}
 					/>
 					<div class="video-controls full-controls" class:black-controls={media.isBlackControls}>
-						<button on:click={togglePlay}>
-							{isPlaying ? 'Pause' : 'Play'}
+						<button on:click={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
+							{#if isPlaying}
+								<PauseIcon />
+							{:else}
+								<PlayIcon />
+							{/if}
 						</button>
-						<button on:click={toggleMute}>
-							{isMuted ? 'Unmute' : 'Mute'}
+						<button on:click={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'}>
+							{#if isMuted}
+								<MuteIcon />
+							{:else}
+								<UnmuteIcon />
+							{/if}
 						</button>
 						<input 
 							type="range" 
@@ -170,7 +193,7 @@
 							on:input={handleProgressBarChange}
 						/>
 						<span class="time-display">
-							{formatTime(currentTime)} / {formatTime(duration)}
+							{formatRemainingTime(currentTime, duration)}
 						</span>
 					</div>
 				{/if}
@@ -303,15 +326,14 @@
 
 	.video-controls {
 		position: absolute;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
 		display: flex;
-		gap: 10px;
+		gap: 8px;
 		align-items: center;
 		background-color: rgba(255, 255, 255, 0.5);
-		padding: 5px;
-		border-radius: 4px;
+		padding: 0px;
 	}
 
 	.video-controls.black-controls {
@@ -322,13 +344,20 @@
 		background-color: transparent;
 		color: black;
 		border: none;
-		padding: 5px 10px;
+		padding: 5px;
 		cursor: pointer;
-		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.video-controls.black-controls button {
 		color: white;
+	}
+
+	.video-controls button :global(svg) {
+		width: 20px;
+		height: 20px;
 	}
 
 	.video-controls button:hover {
