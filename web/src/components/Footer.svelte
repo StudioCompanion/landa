@@ -18,8 +18,8 @@
 			<ul>
 				<li>General enquiries: <a class="footer-link" href="mailto:studio@laneandassociates.co">studio@laneandassociates.co</a></li>
 				<li>Commercial agent: <a class="footer-link" href="mailto:agent@minititle.com">Minititle</a></li>
-				<li>Literary agent: <a class="footer-link" href="https://www.wylieagency.com/">The Wylie Agency</a></li>
-				<li>Instagram: <a class="footer-link" href="https://www.instagram.com/laneandassociates/">@laneandassociates</a></li>
+				<li>Literary agent: <a class="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.wylieagency.com/">The Wylie Agency</a></li>
+				<li>Instagram: <a class="footer-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/lane_and_associates/">@lane_and_associates</a></li>
 			</ul>
 		</div>
 	</div>

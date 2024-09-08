@@ -299,6 +299,7 @@ return () => {
 		display: inline-block;
 		max-width: 100%; /* Ensures the container does not exceed the width of its parent */
 	}
+	
 
 	.image {
 		display: grid !important;
@@ -337,7 +338,7 @@ return () => {
 	@media (min-width: 800px) {
 		.video, .image, :global(.media-image) {
 			max-height: var(--tablet-height-max) !important;
-			max-width: calc(var(--tablet-width-max) - var(--half-space));
+			max-width: 100%;
 		}
 	}
 
