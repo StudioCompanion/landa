@@ -3,6 +3,7 @@
 	import type { Media } from '$lib/types';
 	import { onMount } from 'svelte/internal';
 	import { Image } from "@unpic/svelte";
+	import VideoPlayer from './VideoPlayer.svelte';
 
 	let imageLoaded = false;
 	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
@@ -12,22 +13,15 @@
 	}
 
 	onMount(() => {
-		if (media) {			
-			if (media.media_type === 'video' && media.video) {
-				const playbackId = media.video.playback_id;  // Access playback_id from media.video
-				if (playbackId) {
-					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
-
-				} else {
-				}
-			} else {
-			}
-		} else {
-		}
-	});
+    if (media && media.media_type === 'video' && media.video) {
+        const playbackId = media.video.playback_id;
+        if (playbackId) {
+            staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+        }
+    }
+});
 
 	export let media: Media | undefined;
-	export let isBlackControls: boolean = false; // Default to false if not provided
 </script>
 
 {#if media}
@@ -39,29 +33,14 @@
 			
 	>
 	{#if media.media_type === 'video'}
-		{#if media.isInline}
-		<video
-				class="video"
-				muted
-				autoplay
-				controls
-				loop
-				playsinline
-				src={staticVideoUrl}
-				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-			/>
-		{:else}
-		<video
-				class="video"
-				muted
-				controls
-				loop
-				playsinline
-				src={staticVideoUrl}
-				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-			/>
-		{/if}
-	{:else if media.media_type === 'image' && media.image}
+    <VideoPlayer
+        src={staticVideoUrl}
+        poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+        isInline={media.isInline}
+        isBlackControls={media.isBlackControls}
+        initialMuted={media.isInline}
+    />
+{:else if media.media_type === 'image' && media.image}
 		<!-- Image Rendering -->
 		<div class:image-loaded={imageLoaded}>
 			<Image
@@ -101,47 +80,4 @@
 		opacity: 1;
 		transition: opacity 1s;
 	}
-
-	.video {
-		display: block;
-		max-width: 100% !important;
-	}
-
-	.video video {
-		max-width: 100%;
-		border: 5px solid yellow;
-	}
-
-	/* Tablet */
-	@media (min-width: 800px) {
-		.video {
-			max-height: var(--tablet-height-max) !important;
-			max-width: calc(var(--tablet-width-max) - var(--half-space));
-		}
-	}
-
-	/* Small Desktop */
-	@media (min-width: 1280px) {
-		.video {
-			max-height: var(--desktop-height-max) !important;
-			max-width: calc(var(--desktop-width-max) - var(--half-space));
-		}
-	}
-
-	/* Desktop */
-	@media (min-width: 1700px) {
-		.video {
-			max-height: var(--large-desktop-height-max) !important;
-			max-width: calc(var(--large-desktop-width-max) - var(--half-space));
-		}
-	}
-
-	/* Monsters */
-	@media (min-width: 2500px) {
-		.video{
-			max-height: var(--giant-desktop-height-max) !important;
-			max-width: calc(var(--giant-desktop-width-max) - var(--half-space));
-		}
-	}
-
 </style>

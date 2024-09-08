@@ -236,7 +236,6 @@ onMount(() => {
 <style>
     .video {
         display: inline-flex;
-        height: 100%;
         justify-content: flex-start; /* Centers the video/image horizontally */
         max-height: var(--mobile-height-max) !important;
         max-width: var(--mobile-width-max);
