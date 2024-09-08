@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte/internal';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
+	import VideoPlayer from './VideoPlayer.svelte';
 
 	import { Image } from "@unpic/svelte";
 
@@ -27,14 +28,6 @@
 		}
 	});
 
-	// Use afterUpdate to dispatch the videoElement after the DOM has updated and the video element is bound
-	afterUpdate(() => {
-		if (videoElement) {
-			console.log('Dispatching videoElement event with:', videoElement);
-			dispatch('videoElement', { videoElement });
-		}
-	});
-
 	onMount(() => {
 		if (media) {
 			if (media.type === 'video' && media.video) {
@@ -54,40 +47,32 @@
 
 	export let isBlackControls: boolean = false; // Default to false if not provided
 
+	let videoPlayerComponent;
+
+function handleVideoReady(event) {
+//   console.log("Video ready in MediaSlide, methods:", event.detail);
+  dispatch('videoMethods', event.detail);
+}
+
 </script>
 
 {#if media}
     {#if media.type === 'video'}
     <div
-    class={media.type}
-    style={`${media.type === 'video' ? `aspect-ratio: ${media.aspectRatio.replace(':', '/')};` : ''}`}
-	class:is-black={media.isBlackControls}
-    >
-        {#if media.isInline}
-		<video
-				bind:this={videoElement}
-				class="video"
-				muted
-				autoplay
-				loop
-				controls
-				playsinline
-				src={staticVideoUrl}
-				poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-			/>
-        {:else}
-		<video
-			bind:this={videoElement}
-			class="video"
-			muted
-			controls
-			loop
-			playsinline
-			src={staticVideoUrl}
-			poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-		/>
-        {/if}
-    </div>
+            class={media.type}
+            style={`${media.type === 'video' ? `aspect-ratio: ${media.aspectRatio.replace(':', '/')};` : ''}`}
+            class:is-black={media.isBlackControls}
+        >
+		<VideoPlayer
+		bind:this={videoPlayerComponent}
+		src={staticVideoUrl}
+		poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+		isInline={media.isInline}
+		isBlackControls={media.isBlackControls}
+		initialMuted={media.isInline}
+		on:ready={handleVideoReady}
+	  />
+        </div>
     {:else if media.type === 'image'}
 	<div class:image-loaded={imageLoaded}>
 

@@ -74,26 +74,37 @@ module.slides.forEach((slide, index) => {
 
 slidesData = [...slidesData];
 };
+let videoMethods = new Map();
+
+function registerVideoMethods(index, methods) {
+  // console.log(`Registering methods for index ${index}:`, methods);
+  videoMethods.set(index, methods);
+}
 
 const onSlideChange = (event) => {
+  // console.log("Slide is Changing");
   const previousIndex = currentSlideIndex;
-  const newIndex = event.detail; // Get the new slide index
+  const newIndex = event.detail;
 
   currentSlideIndex = newIndex;
 
+  // console.log("All registered video methods:", [...videoMethods.entries()]);
+
   // Stop and reset the previous video if it exists
-  const previousVideoElement = videoElements.get(previousIndex);
-  if (previousVideoElement && typeof previousVideoElement.pause === 'function') {
-      previousVideoElement.pause();
-      previousVideoElement.currentTime = 0;
+  const previousMethods = videoMethods.get(previousIndex);
+  // console.log("Previous methods:", previousMethods);
+  if (previousMethods) {
+    previousMethods.pause();
+    previousMethods.reset();
   }
 
-  const newVideoElement = videoElements.get(newIndex);
-  if (newVideoElement && typeof newVideoElement.play === 'function') {
-      newVideoElement.play();
+  // Play the new video
+  const newMethods = videoMethods.get(newIndex);
+  // console.log("New methods:", newMethods);
+  if (newMethods) {
+    newMethods.play();
   }
 };
-
 
 if (browser) {
   onMount(async () => {
@@ -142,8 +153,11 @@ on:enter={() => {
             </div>
         {:else}
         <div class={slide.type + '-slide'}>
-          <MediaSlide media={slide} on:videoElement={e => registerVideoElement(index, e.detail.videoElement)} />
-          </div>
+          <MediaSlide 
+          media={slide} 
+          on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
+        />
+        </div>
         {/if}
     </div>
   {/each}
