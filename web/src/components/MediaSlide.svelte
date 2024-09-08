@@ -111,35 +111,6 @@ function handleVideoReady(event) {
 		transition: opacity 1s;
 	}
 
-	media-controller {
-		--media-control-background: rgba(255, 255, 255, 0);
-		--media-control-hover-background: rgba(255, 255, 255, 0);
-		--media-font-family: var(--font-serif);
-		--media-primary-color: var(--white);
-		--media-font-size: var(--font-size);
-		--media-range-track-border-radius: 0px;
-		--media-range-thumb-width: 0px;
-		--media-range-thumb-height: 0px;
-		--media-control-hover-background: rgba(255, 255, 255, 0);
-	}
-	
-	.is-black media-controller {
-		--media-primary-color: var(--black);
-	}
-
-	media-play-button svg, media-mute-button svg, media-fullscreen-button svg {
-		opacity: 1;
-	}
-
-	media-play-button:hover svg, media-mute-button:hover svg, media-fullscreen-button:hover svg{
-		opacity: 0.5;
-	}
-
-	.inline media-fullscreen-button {
-		right: 0;
-		position: absolute;
-	}
-
     .video {
 		display: inline-block;
 		max-width: 100%; /* Ensures the container does not exceed the width of its parent */

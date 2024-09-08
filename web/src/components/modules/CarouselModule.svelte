@@ -255,10 +255,6 @@ on:enter={() => {
   width: auto !important;
 }
 
-.grid-slide {
-  /* background: green; */
-}
-
 .video-slide {
     display: inline-flex;
 }

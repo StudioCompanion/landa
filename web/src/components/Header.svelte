@@ -101,9 +101,6 @@
 		color: var(--red);
 	}
 
-	.menu-icon, .close-icon {
-	}
-
 	.menu-icon:hover, .close-icon:hover {
 		opacity: 0.5;
 	}

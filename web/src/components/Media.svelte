@@ -2,7 +2,6 @@
 	import { getImageProps } from '$lib/sanity';
 	import type { Media } from '$lib/types';
   
-	import { onMount } from 'svelte/internal';
 	import { Image } from "@unpic/svelte";
 	import VideoPlayer from './VideoPlayer.svelte';
 
