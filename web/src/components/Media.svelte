@@ -3,34 +3,25 @@
 	import type { Media } from '$lib/types';
   
 	import { onMount } from 'svelte/internal';
-	
 	import { Image } from "@unpic/svelte";
 	import PlayIcon from './icons/PlayIcon.svelte';
 	import PauseIcon from './icons/PauseIcon.svelte';
 	import MuteIcon from './icons/MuteIcon.svelte';
 	import UnmuteIcon from './icons/UnmuteIcon.svelte';
+	import FullscreenIcon from './icons/FullscreenIcon.svelte';
 
 	let imageLoaded = false;
 	let staticVideoUrl = '';  // Declare staticVideoUrl at the top
 
+	
 	let videoElement: HTMLVideoElement;
 	let isPlaying = false;
 	let isMuted = false;
-
-	export let isInline: boolean = false;
+	let isFullscreen = false;
+	let controlsVisible = false;
 
 	function handleImageLoad() {
 		imageLoaded = true;
-	}
-
-	function handleNonInlinePlay() {
-		if (videoElement.paused) {
-			videoElement.play();
-			isPlaying = true;
-		} else {
-			videoElement.pause();
-			isPlaying = false;
-		}
 	}
 
 	function togglePlay() {
@@ -52,6 +43,66 @@
 		}
 	}
 
+	function toggleFullscreen() {
+
+if (!isFullscreen) {
+
+  if (videoElement.requestFullscreen) {
+
+	videoElement.requestFullscreen();
+
+  } else if (videoElement.webkitRequestFullscreen) { /* Safari */
+
+	videoElement.webkitRequestFullscreen();
+
+  } else if (videoElement.msRequestFullscreen) { /* IE11 */
+
+	videoElement.msRequestFullscreen();
+
+  }
+
+} else {
+
+  if (document.exitFullscreen) {
+
+	document.exitFullscreen();
+
+  } else if (document.webkitExitFullscreen) { /* Safari */
+
+	document.webkitExitFullscreen();
+
+  } else if (document.msExitFullscreen) { /* IE11 */
+
+	document.msExitFullscreen();
+
+  }
+
+}
+
+}
+
+
+
+function handleFullscreenChange() {
+
+isFullscreen = !!document.fullscreenElement;
+
+}
+
+
+
+onMount(() => {
+
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+return () => {
+
+  document.removeEventListener('fullscreenchange', handleFullscreenChange);
+
+};
+
+});
+
 	let currentTime = 0;
 	let duration = 0;
 
@@ -68,6 +119,9 @@
 
 	function handleTimeUpdate(event) {
 		currentTime = event.target.currentTime;
+		if (videoElement) {
+			videoElement.style.setProperty('--progress', `${(currentTime / duration) * 100}%`);
+		}
 	}
 
 	function handleDurationChange(event) {
@@ -110,91 +164,97 @@
 		}
 	});
 
-	export let isBlackControls: boolean = false;
-
 	export let media: Media | undefined;
 
 	export let carousel: boolean = false;
+
+	$: showControls = (!isPlaying && !media?.isInline) || controlsVisible;
+
+	function handleMouseEnter() {
+		controlsVisible = true;
+	}
+
+	function handleMouseLeave() {
+		if (media?.isInline || isPlaying) controlsVisible = false;
+	}
+
+	function handleVideoClick() {
+		togglePlay();
+	}
 
 </script>
   
   {#if media}
 	<div
-	  class={[carousel ? 'carousel' : null, media.media_type === 'video' ? 'video' : null, media.media_type === 'image' ? 'image' : null].filter(Boolean).join(' ')}
+	  class={[media.media_type === 'video' ? 'video' : null, media.media_type === 'image' ? 'image' : null].filter(Boolean).join(' ')}
 	  style={`${media.media_type === 'video' ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')};` : ''}`}
 	  class:is-black={media.isBlackControls}
 	  class:is-inline={media.isInline}
+	  on:mouseenter={handleMouseEnter}
+	  on:mouseleave={handleMouseLeave}
 	>
 		{#if media.media_type === 'video'}
 			<div class="video-container">
-				{#if media.isInline}
-					<video
-						bind:this={videoElement}
-						class="video"
-						autoplay
-						muted
-						loop
-						playsinline
-						disablePictureInPicture
-						src={staticVideoUrl}
-						poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-						on:timeupdate={handleTimeUpdate}
-						on:durationchange={handleDurationChange}
-						on:play={() => isPlaying = true}
-						on:pause={() => isPlaying = false}
-					/>
-					<div class="video-controls inline-controls" class:black-controls={media.isBlackControls}>
-						<button on:click={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
+				<video
+					bind:this={videoElement}
+					class="video"
+					autoplay={media.isInline}
+					muted={media.isInline}
+					loop={media.isInline}
+					playsinline
+					disablePictureInPicture
+					src={staticVideoUrl}
+					poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+					on:timeupdate={handleTimeUpdate}
+					on:durationchange={handleDurationChange}
+					on:play={() => isPlaying = true}
+					on:pause={() => isPlaying = false}
+					on:click={handleVideoClick}
+					on:error={(e) => console.error("Video loading error:", e.target.error)}
+				>
+					<source src={staticVideoUrl} type="video/mp4" />
+				</video>
+				{#if showControls || (!isPlaying && !media.isInline)}
+					<div 
+						class="video-controls" 
+						class:inline-controls={media.isInline} 
+						class:full-controls={!media.isInline} 
+						class:black-controls={media.isBlackControls}
+					>
+						<button on:click|stopPropagation={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
 							{#if isPlaying}
 								<PauseIcon />
 							{:else}
 								<PlayIcon />
 							{/if}
 						</button>
-						<button on:click={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'}>
-							{#if isMuted}
-								<MuteIcon />
-							{:else}
-								<UnmuteIcon />
-							{/if}
-						</button>
-					</div>
-				{:else}
-					<video
-						bind:this={videoElement}
-						class="video"
-						playsinline
-						disablePictureInPicture
-						src={staticVideoUrl}
-						poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
-						on:timeupdate={handleTimeUpdate}
-						on:durationchange={handleDurationChange}
-					/>
-					<div class="video-controls full-controls" class:black-controls={media.isBlackControls}>
-						<button on:click={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
-							{#if isPlaying}
-								<PauseIcon />
-							{:else}
-								<PlayIcon />
-							{/if}
-						</button>
-						<button on:click={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'}>
-							{#if isMuted}
-								<MuteIcon />
-							{:else}
-								<UnmuteIcon />
-							{/if}
-						</button>
-						<input 
-							type="range" 
-							min="0" 
-							max={duration} 
-							value={currentTime}
-							on:input={handleProgressBarChange}
-						/>
+						{#if !media.isInline}
 						<span class="time-display">
 							{formatRemainingTime(currentTime, duration)}
 						</span>
+						<div class="progress-container">
+							<progress value={currentTime} max={duration}></progress>
+							<input 
+								type="range" 
+								min="0" 
+								max={duration} 
+								value={currentTime}
+								on:input={handleProgressBarChange}
+							/>
+						</div>
+						{/if}
+						<button on:click={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'}>
+							{#if isMuted}
+								<MuteIcon />
+							{:else}
+								<UnmuteIcon />
+							{/if}
+						</button>
+						{#if !media.isInline}
+						<button on:click={toggleFullscreen} aria-label="Fullscreen">
+							<FullscreenIcon />
+						</button>
+						{/if}
 					</div>
 				{/if}
 			</div>
@@ -235,14 +295,6 @@
 	}
 
 
-	.carousel {
-		/* background: yellow; */
-	}
-
-	/* div {
-		width: 100%;
-	} */
-	
 	.image, .video {
 		display: inline-block;
 		max-width: 100%; /* Ensures the container does not exceed the width of its parent */
@@ -267,11 +319,6 @@
 		height: 100%;
 		max-height: var(--mobile-height-max) !important;
 		max-width: var(--mobile-width-max);
-	}
-
-	.video video {
-		max-width: 100%;
-		/* border: 5px solid yellow; */
 	}
 
 	:global(.media-image){
@@ -326,25 +373,23 @@
 
 	.video-controls {
 		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		right: 0px;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		display: flex;
-		gap: 8px;
+		gap: 12px;
 		align-items: center;
-		background-color: rgba(255, 255, 255, 0.5);
-		padding: 0px;
-	}
-
-	.video-controls.black-controls {
-		background-color: rgba(0, 0, 0, 0.5);
+		padding: 12px;
+		opacity: 1;
+		transition: opacity 0.2s ease;
+		transition-delay: 0.5s;
 	}
 
 	.video-controls button {
 		background-color: transparent;
-		color: black;
+		color: white;
 		border: none;
-		padding: 5px;
+		padding: 4px;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
@@ -352,7 +397,7 @@
 	}
 
 	.video-controls.black-controls button {
-		color: white;
+		color: black;
 	}
 
 	.video-controls button :global(svg) {
@@ -361,20 +406,24 @@
 	}
 
 	.video-controls button:hover {
-		background-color: rgba(0, 0, 0, 0.2);
+		opacity: 0.5;
 	}
 
 	.video-controls.black-controls button:hover {
-		background-color: rgba(255, 255, 255, 0.2);
+		opacity: 0.5;
 	}
 
 	.time-display {
-		color: black;
+		color: white;
+		font-family: var(--font-serif);
 		font-size: 14px;
+		margin-top: 2px;
+		/* background: red; */
+		padding: 4px 4px 4px 0px;
 	}
 
 	.black-controls .time-display {
-		color: white;
+		color: black;
 	}
 
 	/* Styles for the range input (progress bar) */
@@ -386,20 +435,12 @@
 
 	input[type="range"]::-webkit-slider-thumb {
 		-webkit-appearance: none;
-	}
-
-	input[type="range"]:focus {
-		outline: none;
-	}
-
-	input[type="range"]::-webkit-slider-thumb {
-		-webkit-appearance: none;
 		height: 16px;
 		width: 16px;
 		border-radius: 50%;
 		background: #ffffff;
 		cursor: pointer;
-		margin-top: -5px;
+		margin-top: -7px; /* Adjust this to vertically center the thumb */
 	}
 
 	.black-controls input[type="range"]::-webkit-slider-thumb {
@@ -408,15 +449,97 @@
 
 	input[type="range"]::-webkit-slider-runnable-track {
 		width: 100%;
-		height: 6px;
+		height: 2px;
 		cursor: pointer;
-		background: rgba(0, 0, 0, 0.6);
-		border-radius: 3px;
+		background: linear-gradient(to right, #ffffff var(--progress, 0%), rgba(255, 255, 255, 0.6) var(--progress, 0%));
+		border-radius: 0px;
 	}
 
 	.black-controls input[type="range"]::-webkit-slider-runnable-track {
-		background: rgba(255, 255, 255, 0.6);
+		background: linear-gradient(to right, #000000 var(--progress, 0%), rgba(0, 0, 0, 0.6) var(--progress, 0%));
 	}
 
-	/* Add similar styles for other browsers if needed */
+	/* Firefox */
+	input[type="range"]::-moz-range-thumb {
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background: #ffffff;
+		cursor: pointer;
+		border: none;
+	}
+
+	.black-controls input[type="range"]::-moz-range-thumb {
+		background: #000000;
+	}
+
+	input[type="range"]::-moz-range-track {
+		width: 100%;
+		height: 2px;
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.6);
+		border-radius: 0px;
+	}
+
+	input[type="range"]::-moz-range-progress {
+		background-color: #ffffff;
+		height: 2px;
+	}
+
+	.black-controls input[type="range"]::-moz-range-track {
+		background: rgba(0, 0, 0, 0.6);
+	}
+
+	.black-controls input[type="range"]::-moz-range-progress {
+		background-color: #000000;
+	}
+
+	video::-webkit-media-controls-start-playback-button {
+		display: none !important;
+	}
+
+	.progress-container {
+		position: relative;
+		width: 100%;
+		height: 2px;
+	}
+
+	progress {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.black-controls progress::-webkit-progress-bar {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	progress::-webkit-progress-bar {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	.black-controls progress::-webkit-progress-value {
+		background-color: black;
+	}
+
+	progress::-webkit-progress-value {
+		background-color: white;
+	}
+
+	progress::-moz-progress-bar {
+		background-color: white;
+	}
+
+	input[type="range"] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		-webkit-appearance: none;
+		cursor: pointer;
+	}
 </style>
