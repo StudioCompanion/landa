@@ -139,31 +139,47 @@ on:enter={() => {
     dots={false}
     arrows={true}
     on:pageChange={onSlideChange}
-    let:showPrevPage
-    let:showNextPage
   >
-  <div slot="prev" on:click={showPrevPage} on:keydown={showPrevPage} class="custom-arrow custom-arrow-prev" style={customArrowStyle}>
-        
-  </div>
-  {#each slidesData as slide, index}
-    <div class="slide">
-        {#if slide._type === 'grid_carousel_module'}
-            <div class="grid-slide">
-              <GridCarouselModule module={slide} isInCarousel={true} />
-            </div>
-        {:else}
-        <div class={slide.type + '-slide'}>
-          <MediaSlide 
-          media={slide} 
-          on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
-        />
-        </div>
-        {/if}
+    <div slot="prev" let:showPrevPage>
+      <div 
+        on:click={showPrevPage} 
+        on:keydown={(e) => e.key === 'Enter' && showPrevPage()} 
+        class="custom-arrow custom-arrow-prev" 
+        style={customArrowStyle}
+        role="button"
+        tabindex="0"
+      >
+        <!-- Add your previous arrow icon or text here -->
+      </div>
     </div>
-  {/each}
-  <div slot="next" on:click={showNextPage} on:keydown={showNextPage} class="custom-arrow custom-arrow-next" style={customArrowStyle}>
-        
-  </div>
+    {#each slidesData as slide, index}
+      <div class="slide">
+        {#if slide._type === 'grid_carousel_module'}
+          <div class="grid-slide">
+            <GridCarouselModule module={slide} isInCarousel={true} />
+          </div>
+        {:else}
+          <div class={slide.type + '-slide'}>
+            <MediaSlide 
+              media={slide} 
+              on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
+            />
+          </div>
+        {/if}
+      </div>
+    {/each}
+    <div slot="next" let:showNextPage>
+      <div 
+        on:click={showNextPage} 
+        on:keydown={(e) => e.key === 'Enter' && showNextPage()} 
+        class="custom-arrow custom-arrow-next" 
+        style={customArrowStyle}
+        role="button"
+        tabindex="0"
+      >
+        <!-- Add your next arrow icon or text here -->
+      </div>
+    </div>
   </svelte:component>
   <div class="caption">
     {#if slidesData.length > 1}
