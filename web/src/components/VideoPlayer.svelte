@@ -87,9 +87,11 @@
     }
 
     function handleTimeUpdate(event) {
-        currentTime = event.target.currentTime;
-        if (videoElement) {
-            videoElement.style.setProperty('--progress', `${(currentTime / duration) * 100}%`);
+        if (videoElement && !isNaN(videoElement.duration)) {
+            currentTime = event.target.currentTime;
+            duration = videoElement.duration;
+            const progress = Math.min((currentTime / duration) * 100, 100);
+            videoElement.style.setProperty('--progress', `${progress}%`);
         }
     }
 
@@ -186,6 +188,9 @@ onMount(() => {
         on:play={() => isPlaying = true}
         on:pause={() => isPlaying = false}
         on:click={togglePlay}
+        on:loadedmetadata={(event) => {
+            duration = event.target.duration;
+        }}
     >
         <source {src} type="video/mp4" />
     </video>
@@ -223,7 +228,11 @@ onMount(() => {
                     />
                 </div>
                 <span class="time-display">
-                    {formatTime(duration - currentTime)}
+                    {#if !isNaN(duration) && !isNaN(currentTime)}
+                        {formatTime(Math.max(0, duration - currentTime))}
+                    {:else}
+                        0:00
+                    {/if}
                 </span>
                 <button on:click={toggleFullscreen} aria-label="Fullscreen">
                     <FullscreenIcon />
