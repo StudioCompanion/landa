@@ -222,12 +222,12 @@ onMount(() => {
                         on:input={handleProgressBarChange}
                     />
                 </div>
-                <button on:click={toggleFullscreen} aria-label="Fullscreen">
-                    <FullscreenIcon />
-                </button>
                 <span class="time-display">
                     {formatTime(duration - currentTime)}
                 </span>
+                <button on:click={toggleFullscreen} aria-label="Fullscreen">
+                    <FullscreenIcon />
+                </button>
             {/if}
         </div>
     {/if}
