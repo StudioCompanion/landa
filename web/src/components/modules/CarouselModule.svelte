@@ -213,6 +213,7 @@ on:enter={() => {
   overflow: hidden;
   position: relative;
   max-height: var(--mobile-height-max); /* Caps the maximum height */
+  align-content: end;
 }
 
 .custom-arrow {
