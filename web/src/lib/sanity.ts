@@ -82,7 +82,7 @@ export const getImageProps = ({
 		typeof userMaxWidth === 'number' ? userMaxWidth : LARGEST_VIEWPORT;
 
 	// For all image variations, we'll use an auto format and prevent scaling it over its max dimensions
-	const builder = imageBuilder.image(image).fit('max').auto('format');
+	const builder = imageBuilder.image(image).fit('max').auto('format').format('webp');
 
 	const imageDimensions = getImageDimensions(image);
 
