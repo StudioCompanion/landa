@@ -44,14 +44,7 @@
 		<h2 class="section-title" id="section_title">Contact</h2>
 		<div class="contact-section">
 			{#if about.contact}
-				<div class="email-section">
-					{#each about.contact as contact}
-						<div class="email-container">
-							<h3 class="email-label">{contact.label}:</h3>
-							<a class="email-link" href={contact.url} target="_blank" rel="noreferrer">{contact.link_label}</a>
-						</div>
-					{/each}
-				</div>
+				<Content value={about.contact} />
 			{/if}
 			{#if about.addresses}
 				<div class="address-section" id="addresses">
@@ -231,17 +224,13 @@ section h3 {
 	gap: 2px;
 }
 
-.email-container a {
+:global(.content p a) {
+	font-family: var(--font-serif-italic);
 	text-decoration: none;
 }
 
-.email-container a:hover {
+:global(.content p a:hover){
 	color: var(--red);
-}
-
-.email-link {
-	font-family: var(--font-serif-italic);
-	line-height: 105%;
 }
 
 .address-section {
