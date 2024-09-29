@@ -16,28 +16,6 @@ const about: SchemaTypeDefinition = {
       type: 'content',
     },
     {
-      title: 'Addresses',
-      name: 'addresses',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              title: "Location",
-              name: 'location',
-              type: 'string'
-            },
-            {
-              title: 'Address',
-              name: 'address',
-              type: 'text',
-            },
-          ],
-        },
-      ],
-    },
-    {
       title: 'Services',
       name: 'services',
       type: 'content',

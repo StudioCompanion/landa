@@ -46,17 +46,6 @@
 			{#if about.contact}
 				<Content value={about.contact} />
 			{/if}
-			{#if about.addresses}
-				<div class="address-section" id="addresses">
-					{#each about.addresses as address}
-						<div class="address-container">
-							<div class="location-details">
-								{address.location}: {address.address}
-							</div>
-						</div>
-					{/each}
-					</div>
-			{/if}
 		</div>
 	</section>
 
