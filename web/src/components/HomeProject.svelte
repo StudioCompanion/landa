@@ -5,6 +5,7 @@
 	import InlineContent from './InlineContent.svelte';
 	import { Image } from "@unpic/svelte";
 	import { createEventDispatcher } from 'svelte';
+	import VideoPlayer from './VideoPlayer.svelte';
 	const dispatch = createEventDispatcher();
 
 	let imageLoaded = false;
@@ -30,31 +31,6 @@
 		}
 	});
 
-	// Handle mouseenter and mouseleave for video playback
-	function handleVideoMouseEnter(event) {
-		const videoElement = event.currentTarget.querySelector('video');
-		if (videoElement) {
-			// Ensure video is muted for Safari's autoplay restrictions
-			videoElement.muted = true;
-
-			// Attempt to play the video and handle potential promise rejection
-			videoElement.play().catch(error => {
-				console.error('Video playback failed:', error);
-			});
-		}
-	}
-
-	function handleVideoMouseLeave(event) {
-		// Ensure the related target (new hovered element) is outside the project-summary
-		if (!event.currentTarget.contains(event.relatedTarget)) {
-			const videoElement = event.currentTarget.querySelector('video');
-			if (videoElement) {
-				videoElement.pause();
-				videoElement.currentTime = 0;  // Reset video to the start
-				videoElement.load();
-			}
-		}
-	}
 	let imageStackElement;
 	let numImages = 0;
 
@@ -77,19 +53,16 @@
 	{#if project.homepage_video && staticVideoUrl}
 		<a class="project-summary" 
 			href={`/work/${project.slug}`}
-			on:mouseenter={handleVideoMouseEnter} 
-			on:mouseleave={handleVideoMouseLeave}
 		>
 			<div class="video" style={`aspect-ratio: ${project.homepage_video.metadata.data.aspect_ratio.replace(':', '/')};`}>
-				<video
-					muted
-					loop
-					playsinline
-					poster={project.video_thumbnail.url}
+				<VideoPlayer
 					src={staticVideoUrl}
-					style={`aspect-ratio: ${project.homepage_video.metadata.data.aspect_ratio.replace(':', '/')};`}
-				>
-				</video>
+					poster={project.video_thumbnail ? project.video_thumbnail.url : undefined}
+					isInline={false}
+					isBlackControls={false}
+					initialMuted={true}
+					hoverPlay={true}
+				/>
 			</div>
 			<div class="project-description" id="caption">
 				<span class="project-title">{project.title}</span>:

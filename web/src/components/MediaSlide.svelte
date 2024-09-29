@@ -66,7 +66,7 @@ function handleVideoReady(event) {
 		<VideoPlayer
 		bind:this={videoPlayerComponent}
 		src={staticVideoUrl}
-		poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 1280 }).src : undefined}
+		poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 2250 }).src : undefined}
 		isInline={media.isInline}
 		isBlackControls={media.isBlackControls}
 		initialMuted={media.isInline}

@@ -106,6 +106,14 @@ const onSlideChange = (event) => {
   }
 };
 
+$: slidesCount = slidesData.length;
+$: slideCountDigits = slidesCount.toString().length;
+$: globalCaptionPadding = slideCountDigits === 1 
+  ? 'calc(var(--full-space) + var(--half-space))' 
+  : slideCountDigits === 2
+    ? 'calc(var(--full-space) + var(--half-space) + var(--half-space))'
+    : 'calc(var(--full-space) + var(--half-space) + var(--full-space))';
+
 if (browser) {
   onMount(async () => {
     const module = await import('svelte-carousel');
@@ -186,10 +194,10 @@ on:enter={() => {
       <div class="slide-count">
         <div class="current-slide">{currentSlideIndex + 1}</div>
         <div class="slide-separator">/</div>
-        <div class="total-slides">{slidesData.length}</div>
+        <div class="total-slides">{slidesCount}</div>
       </div>
     {/if}
-    <div class="text-captions" class:no-slide-count={!hasMultipleSlides}>
+    <div class="text-captions" class:no-slide-count={!hasMultipleSlides} style="margin-left: {globalCaptionPadding};">
       {#if module.caption}
       <div class="global-caption">{module.caption}</div>
       {/if}
@@ -285,7 +293,6 @@ on:enter={() => {
 }
 
 .text-captions {
-  margin-left: calc(var(--full-space) + var(--half-space));
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -293,7 +300,7 @@ on:enter={() => {
 }
 
 .no-slide-count {
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 
 @media (min-width: 768px) {
