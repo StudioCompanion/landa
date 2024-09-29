@@ -174,7 +174,7 @@ section h3 {
 
 .intro {
 	width: 90%;
-	text-indent: 131px;
+	text-indent: 163px;
 	line-height: var(--line-height);
 	font-size: var(--font-size);
 }
