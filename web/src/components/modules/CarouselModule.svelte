@@ -213,6 +213,7 @@ on:enter={() => {
   overflow: hidden;
   position: relative;
   max-height: var(--mobile-height-max); /* Caps the maximum height */
+  align-content: end;
 }
 
 .custom-arrow {
@@ -308,6 +309,10 @@ on:enter={() => {
   }
 }
 
+.slide-caption {
+    display: none;
+}
+
 /* Tablet */
 @media (min-width: 800px) {
   .slide {
@@ -315,6 +320,10 @@ on:enter={() => {
   }
   .carousel-section {
     max-width: calc(var(--tablet-width-max) - var(--half-space));
+  }
+
+  .slide-caption {
+    display: block;
   }
 }
 
@@ -326,6 +335,9 @@ on:enter={() => {
   .carousel-section {
     max-width: calc(var(--desktop-width-max) - var(--half-space));
   }
+  .slide-caption {
+    display: block;
+  }
 }
 
 /* Desktop */
@@ -335,6 +347,9 @@ on:enter={() => {
   }
   .carousel-section {
     max-width: calc(var(--large-desktop-width-max) - var(--half-space));
+  }
+  .slide-caption {
+    display: block;
   }
 }
 
@@ -354,6 +369,9 @@ on:enter={() => {
 
   .custom-arrow-prev {
     width: 15%;
+  }
+  .slide-caption {
+    display: block;
   }
 }
 </style>

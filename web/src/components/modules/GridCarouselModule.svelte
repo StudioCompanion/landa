@@ -45,7 +45,7 @@
 
 	  // Remove 4px if there is only one item
 	  if (module.items.length === 1) {
-		currentPresetSize = `calc(${currentPresetSize} - 4px)`;
+		currentPresetSize = `calc(${currentPresetSize} - 0px)`;
 	  }
 	}
   
