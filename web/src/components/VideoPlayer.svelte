@@ -13,6 +13,7 @@
     export let isInline: boolean;
     export let isBlackControls: boolean;
     export let initialMuted: boolean = false;
+    export let hoverPlay: boolean = false; // New prop for hover functionality
 
     let videoElement: HTMLVideoElement;
     let isPlaying = false;
@@ -21,15 +22,40 @@
     let controlsVisible = false;
     let currentTime = 0;
     let duration = 0;
+    let playPromise: Promise<void> | null = null;
 
     $: showControls = (!isPlaying && !isInline) || controlsVisible;
 
-    function handleMouseEnter() {
+    async function handleMouseEnter() {
+        if (hoverPlay && videoElement) {
+            try {
+                playPromise = videoElement.play();
+                await playPromise;
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.log("Play was prevented:", error);
+                }
+            }
+        }
         controlsVisible = true;
     }
 
-    function handleMouseLeave() {
-        if (isInline || isPlaying) controlsVisible = false;
+    async function handleMouseLeave() {
+        if (hoverPlay && videoElement) {
+            try {
+                if (playPromise) {
+                    await playPromise;
+                }
+                videoElement.pause();
+                videoElement.currentTime = 0;
+                videoElement.load();
+            } catch (error) {
+                console.log("Error during pause/reset:", error);
+            }
+        }
+        if (isInline || isPlaying) {
+            controlsVisible = false;
+        }
     }
 
     function togglePlay() {
@@ -144,7 +170,11 @@ onMount(() => {
 	// console.log("VideoPlayer mounted");
 
         if (videoElement) {
-            videoElement.muted = isMuted;
+            videoElement.muted = initialMuted || hoverPlay;
+            if (hoverPlay) {
+                videoElement.loop = true;
+                videoElement.preload = 'auto'; // Preload the video for smoother playback on hover
+            }
             if (isInline) {
                 videoElement.play().catch(error => {
                     // console.log("Autoplay was prevented:", error);
@@ -179,15 +209,15 @@ onMount(() => {
         {src}
         {poster}
         autoplay={isInline}
-        muted={isMuted}
-        loop={isInline}
+        muted={isMuted || hoverPlay}
+        loop={isInline || hoverPlay}
         playsinline
         disablePictureInPicture
         on:timeupdate={handleTimeUpdate}
         on:durationchange={handleDurationChange}
         on:play={() => isPlaying = true}
         on:pause={() => isPlaying = false}
-        on:click={togglePlay}
+        on:click={hoverPlay ? null : togglePlay}
         on:loadedmetadata={(event) => {
             duration = event.target.duration;
         }}
@@ -195,11 +225,11 @@ onMount(() => {
         <source {src} type="video/mp4" />
     </video>
     
-    {#if showControls || (!isPlaying && !isInline)}
+    {#if showControls && !hoverPlay}
         <div 
-            class="video-controls" 
-            class:inline-controls={isInline} 
-            class:full-controls={!isInline} 
+            class="video-controls"
+            class:inline-controls={isInline}
+            class:full-controls={!isInline}
             class:black-controls={isBlackControls}
         >
             <button on:click|stopPropagation={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
