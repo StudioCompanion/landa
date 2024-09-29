@@ -39,9 +39,9 @@
 			</p>
 		</div>
 		<div>
-			<p>L&A Paris</p>
+			<p>L&A New York</p>
 			<p>300 Elizabeth St, Garden Level</p>
-			<p>Paris 000000</p>
+			<p> New York City NY 10012</p>
 		</div>
 	</div>
 </footer>
