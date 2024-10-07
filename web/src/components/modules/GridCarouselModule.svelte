@@ -26,6 +26,7 @@
 	};
   
 	let currentPresetSize = '100%'; // Default fallback
+	let gridElement;
   
 	function updateSize() {
 	  const preset = sizePresets[module.sizePreset || 'default'];
@@ -47,6 +48,12 @@
 	  if (module.items.length === 1) {
 		currentPresetSize = `calc(${currentPresetSize} - 0px)`;
 	  }
+	    // Force layout recalculation
+
+		if (gridElement) {
+			gridElement.style.width = currentPresetSize;
+			gridElement.offsetHeight; // Force reflow
+		}
 	}
   
 	onMount(() => {
@@ -72,6 +79,13 @@
   <style>
 	.carousel-container {
 	  max-width: var(--carousel-size, 100%);
+	  width: 100%;
+
+	  display: flex;
+
+	  justify-content: center;
+
+	  align-items: center;
 	  /* background: red; */
 	}
 
@@ -109,6 +123,28 @@
 	  /* align-items: baseline; */
 	  /* background: red; */
 	}
+
+	/* Add these new styles */
+
+	.grid-item {
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+}
+
+
+
+:global(.GridCarouselModule .MediaGrid) {
+
+width: 100%;
+
+height: 100%;
+
+}
   
   </style>
   

@@ -13,7 +13,7 @@ export default defineConfig({
 		noExternal: ['svelte-carousel']
 	  },
 	  server: {
-		host: 'localhost',
+		host: '0.0.0.0', // Changed from true to '0.0.0.0'
 		port: 5173
 	  }
 });
