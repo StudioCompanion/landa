@@ -222,6 +222,7 @@ on:enter={() => {
   position: relative;
   max-height: var(--mobile-height-max); /* Caps the maximum height */
   align-content: end;
+  /* background-color: orange; */
 }
 
 .custom-arrow {
@@ -255,6 +256,14 @@ on:enter={() => {
   position: relative;
   display: inline-flex;
   pointer-events: none;
+  /* border: 1px solid purple; */
+  /* align-items: end; */
+}
+
+:global(.image-slide .image-loaded) {
+  /* border: 1px dashed black; */
+  display: flex;
+  align-items: end;
 }
 
 :global(.image-slide img) {
@@ -262,10 +271,12 @@ on:enter={() => {
   max-width: 100% !important;
   height: auto !important;
   width: auto !important;
+  display: block;
 }
 
 .video-slide {
     display: inline-flex;
+    align-items: end;
 }
 
 .caption {
