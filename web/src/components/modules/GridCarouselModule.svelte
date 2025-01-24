@@ -46,7 +46,8 @@
 
 	  // Remove 4px if there is only one item
 	  if (module.items.length === 1) {
-		currentPresetSize = `calc(${currentPresetSize} - 0px)`;
+		console.log("Only one item");
+		currentPresetSize = `calc(${currentPresetSize} - 12px)`;
 	  }
 	    // Force layout recalculation
 
@@ -80,13 +81,9 @@
 	.carousel-container {
 	  max-width: var(--carousel-size, 100%);
 	  width: 100%;
-
 	  display: flex;
-
 	  /* justify-content: center;
-
 	  align-items: center; */
-	  /* background: red; */
 	}
 
 	/* Tablet */
@@ -119,6 +116,7 @@
   
 	.GridCarouselModule #grid {
 	  display: grid;
+	  /* border: solid blue 1px; */
 	  gap: var(--quarter-space);
 	  align-items: baseline;
 	  /* background: red; */
@@ -127,24 +125,19 @@
 	/* Add these new styles */
 
 	.grid-item {
-
-display: flex;
-
-justify-content: center;
-
-align-items: center;
-
-}
+		/* border: 1px solid red; */
+		/* margin-right: 2px; */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 
 
-:global(.GridCarouselModule .MediaGrid) {
-
-width: 100%;
-
-height: 100%;
-
-}
+	:global(.GridCarouselModule .MediaGrid) {
+		width: 100%;
+		height: 100%;
+	}
   
   </style>
   
