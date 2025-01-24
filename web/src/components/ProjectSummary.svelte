@@ -30,6 +30,7 @@
 <a class="work-box{visible ? ' visible' : ''}" href={`/work/${project.slug}`}>
 	<div class="project-summary" id="square">
 		<div class="project-image-container" class:image-loaded={imageLoaded} >
+			{#if project.featured_image?.asset}
 				<Image
 					class="project-image"
 					src={project.featured_image.asset.url}  
@@ -39,9 +40,12 @@
 					background="#FFFFFF"
 					on:load={handleImageLoad}
 					sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 960px) 960px, (max-width: 1080px) 1080px, (max-width: 1280px) 1280px, (max-width: 1668px) 1668px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, (max-width: 2560px) 2560px, (max-width: 3200px) 3200px, (max-width: 3840px) 3840px, (max-width: 4480px) 4480px, (max-width: 5120px) 5120px, (max-width: 6016px) 6016px, 100vw"
-					alt={project.featured_image.asset.altText}
+					alt={project.featured_image.asset.altText || project.title}
 				/>	
-			</div>
+			{:else}
+				<div class="placeholder-image">No image available</div>
+			{/if}
+		</div>
 		<div class="project-description" id="caption">
 			<span class="project-title">{project.title}</span>
 		</div>
@@ -49,8 +53,6 @@
 </a>
 
 <style>
-
-
 	.image-loaded {
 		
 	}
@@ -120,12 +122,22 @@
     justify-content: start;
 	}
 
+	.placeholder-image {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #f5f5f5;
+		color: #666;
+	}
+
 	:global(.project-image) {
 		object-fit: contain !important;
-	object-position: left !important;
+		object-position: left !important;
 		width: fit-content !important;
-    max-width: 100% !important;
-    max-height: calc(100% - var(--full-space)) !important;
+		max-width: 100% !important;
+		max-height: calc(100% - var(--full-space)) !important;
 	}
 
 	.work-box .project-summary {
