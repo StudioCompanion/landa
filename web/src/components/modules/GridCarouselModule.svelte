@@ -83,9 +83,9 @@
 
 	  display: flex;
 
-	  justify-content: center;
+	  /* justify-content: center;
 
-	  align-items: center;
+	  align-items: center; */
 	  /* background: red; */
 	}
 
@@ -120,7 +120,7 @@
 	.GridCarouselModule #grid {
 	  display: grid;
 	  gap: var(--quarter-space);
-	  /* align-items: baseline; */
+	  align-items: baseline;
 	  /* background: red; */
 	}
 
