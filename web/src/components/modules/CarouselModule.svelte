@@ -210,6 +210,10 @@ on:enter={() => {
 {/if}
 
 <style>
+/* .grid-slide {
+  border: 1px white dashed;
+} */
+
 .carousel-section {
   position: relative;
   margin: 0 var(--half-space);
