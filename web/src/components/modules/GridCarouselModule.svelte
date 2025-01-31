@@ -47,7 +47,12 @@
 	  // Remove 4px if there is only one item
 	  if (module.items.length === 1) {
 		console.log("Only one item");
-		currentPresetSize = `calc(${currentPresetSize} - 12px)`;
+		currentPresetSize = `calc(${currentPresetSize} + 13px)`;
+	  }
+
+	  if (module.items.length > 1) {
+		console.log("Two items or more");
+		currentPresetSize = `calc(${currentPresetSize} + 24px)`;
 	  }
 	    // Force layout recalculation
 
