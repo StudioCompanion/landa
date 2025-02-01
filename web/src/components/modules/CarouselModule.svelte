@@ -258,7 +258,7 @@ on:enter={() => {
 
 .image-slide {
   position: relative;
-  display: inline-flex;
+  display: flex;
   pointer-events: none;
   /* border: 1px solid purple; */
   /* align-items: end; */
