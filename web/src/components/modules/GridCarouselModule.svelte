@@ -47,7 +47,7 @@
 	  // Remove 4px if there is only one item
 	  if (module.items.length === 1) {
 		console.log("Only one item");
-		currentPresetSize = `calc(${currentPresetSize} + 18px)`;
+		currentPresetSize = `calc(${currentPresetSize} + 24px)`;
 	  }
 
 	  if (module.items.length > 1) {
