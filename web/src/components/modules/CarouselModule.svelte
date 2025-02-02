@@ -256,6 +256,7 @@ on:enter={() => {
   background-color: white;
   display: flex;
   align-items: flex-end;
+  max-height: var(--mobile-height-max);
 }
 
 .custom-arrow {
