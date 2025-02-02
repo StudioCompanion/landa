@@ -170,7 +170,8 @@ p, li, a, ul {
 
 strong {
 	font-size: var(--font-size);
-	font-family: 'JJannon Bold';
+	font-family: var(--font-serif-italic);
+	font-weight: 400
 }
 
 em {
