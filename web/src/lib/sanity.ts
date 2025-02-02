@@ -47,9 +47,24 @@ function getImageDimensions(image: any) {
 const LARGEST_VIEWPORT = 1920; // Retina sizes will take care of 4k (2560px) and other huge screens
 
 const DEFAULT_MIN_STEP = 0.1; // 10%
-const DEFAULT_WIDTH_STEPS = [400, 600, 850, 1000, 1150]; // arbitrary
-// Based on statcounter's most common screen sizes: https://gs.statcounter.com/screen-resolution-stats
-const DEFAULT_FULL_WIDTH_STEPS = [360, 414, 768, 1366, 1536, 1920];
+// Updated to match your breakpoint system
+const DEFAULT_FULL_WIDTH_STEPS = [
+    400,   // Mobile 1x
+    800,   // Tablet 1x / Mobile 2x
+    1600,  // Tablet 2x
+    2500,  // Desktop/Large Desktop 2x
+    3400   // Giant Desktop 2x
+]; // 5 sizes
+
+// For retina/high-DPI screens, we can add 2x sizes
+const DEFAULT_WIDTH_STEPS = [
+    400,   // Mobile 1x
+    800,   // Tablet 1x / Mobile 2x
+    1280,  // Desktop 1x
+    1700,  // Large Desktop 1x / Desktop+ 2x
+    2500,  // Giant Desktop 1x
+    3400   // Large Desktop 2x
+]; // 6 sizes
 
 export const getImageProps = ({
 	/**
