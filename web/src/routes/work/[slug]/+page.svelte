@@ -14,7 +14,7 @@
 	export let data;
 	let root;
 	
-	console.log(data);
+	// console.log(data);
 
 	let visible = false;
 </script>
@@ -103,66 +103,6 @@ on:enter={() => {
 {/if}
 
 <style>
-
-	.vertical-line {
-		width: 1px; 
-		height: 100%;
-		position: fixed;
-		margin-left: calc(100% - var(--half-space));
-		border-left: 1px dashed blue;
-	}
-
-	.horizontal-line {
-		width: 100%; 
-		height: 1px;
-		position: fixed;
-		border-top: 1px dashed red;
-	}
-
-	/* Tablet */
-	@media (min-width: 800px) {
-		.vertical-line {
-			width: 1px; 
-			height: 100%;
-			position: fixed;
-			margin-left: calc(100% - var(--half-space));
-			border-left: 1px dashed blue;
-		}
-	}
-
-	/* Small Desktop */
-	@media (min-width: 1280px) {
-		.vertical-line {
-			width: 1px; 
-			height: 100%;
-			position: fixed;
-			margin-left: 1197px;
-			border-left: 1px dashed blue;
-		}
-	}
-
-	/* Desktop */
-	@media (min-width: 1700px) {
-		.vertical-line {
-			width: 1px; 
-			height: 100%;
-			position: fixed;
-			margin-left: 1476px;
-			border-left: 1px dashed blue;
-		}
-	}
-
-	/* Monsters */
-	@media (min-width: 2500px) {
-		.vertical-line {
-			width: 1px; 
-			height: 100%;
-			position: fixed;
-			margin-left: 1791px;
-			border-left: 1px dashed blue;
-		}
-	}
-
 	.description {
 		width: 100%;
 		margin-top: calc(var(--full-space) + 2rem);

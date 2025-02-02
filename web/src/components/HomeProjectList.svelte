@@ -2,6 +2,7 @@
 	import HomeProject from './HomeProject.svelte';
 
 	export let projects;
+	export let homepage = false;
 
 	import { page } from '$app/stores';
 

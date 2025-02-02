@@ -4,7 +4,6 @@
 import { onMount } from 'svelte';
 import type { Media as MediaType } from '$lib/types';
 import MediaSlide from '../MediaSlide.svelte';
-import ModuleCaption from '../ModuleCaption.svelte';
 import GridCarouselModule from './GridCarouselModule.svelte';
 import { imageBuilder, getImageDimensions } from '$lib/sanity';
 import { browser } from '$app/environment';
@@ -22,12 +21,6 @@ type CarouselModule = {
 };
 
 let isMobileDevice = false; // Default to false
-$: customArrowStyle = isMobileDevice ? 'display: block;' : '';
-let videoElements = new Map(); // To store video elements by index
-
-const registerVideoElement = (index, videoEl) => {
-      videoElements.set(index, videoEl);
-  };
 
 let visible = false;
 
@@ -46,6 +39,7 @@ module.slides.forEach((slide, index) => {
       type: 'image',
       caption: slide.caption,
       image: slide.image,
+      alt: slide.image.asset.altText || `${module.caption || 'Project'} image ${index + 1}`
     });
   } else if ('media_type' in slide && slide.media_type === 'video') {
     slidesData.push({
@@ -58,6 +52,7 @@ module.slides.forEach((slide, index) => {
         aspectRatio: slide.video.aspect_ratio,
         isInline: slide.isInline,
         isBlackControls: slide.isBlackControls,
+        alt: slide.video_thumbnail?.asset?.altText || `${module.caption || 'Project'} video thumbnail ${index + 1}`,
         // Include other properties like aspectRatio, isInline if needed
     });
   }     else if (slide._type === 'grid_carousel_module') { // Changed condition here
@@ -171,7 +166,6 @@ on:enter={() => {
         on:click={showPrevPage} 
         on:keydown={(e) => e.key === 'Enter' && showPrevPage()} 
         class="custom-arrow custom-arrow-prev" 
-        style={customArrowStyle}
         role="button"
         tabindex="0"
       >
@@ -190,6 +184,7 @@ on:enter={() => {
           <div class={slide.type + '-slide'}>
             <MediaSlide 
               media={slide} 
+              priority={index === 0}
               on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
             />
           </div>
@@ -201,7 +196,6 @@ on:enter={() => {
         on:click={showNextPage} 
         on:keydown={(e) => e.key === 'Enter' && showNextPage()} 
         class="custom-arrow custom-arrow-next" 
-        style={customArrowStyle}
         role="button"
         tabindex="0"
       >
