@@ -10,24 +10,22 @@ const sanity = createClient({
 });
 export const imageBuilder = imageUrlBuilder(sanity);
 
-export default sanity;
+export function getImageDimensions(image: any) {
+	if (!image?.asset?._ref) {
+		return;
+	}
 
-function getImageDimensions(image: any) {
-    if (!image?.asset?._ref) {
-        return;
-    }
+	const dimensions = image.asset._ref.split('-')[2];
+	const [width, height] = dimensions.split('x').map(Number);
 
-    const dimensions = image.asset._ref.split('-')[2];
-    const [width, height] = dimensions.split('x').map(Number);
+	if (!width || !height || Number.isNaN(width) || Number.isNaN(height)) {
+		return;
+	}
 
-    if (!width || !height || Number.isNaN(width) || Number.isNaN(height)) {
-        return;
-    }
+	const ASPECT_RATIO_TOLERANCE = 0.02;
+	const aspectRatio = width / height;
 
-	const ASPECT_RATIO_TOLERANCE = 0.02;  // You can adjust this value as needed
-    const aspectRatio = width / height;
-
-    let imageType;
+	let imageType;
 	if (Math.abs(aspectRatio - 1) < ASPECT_RATIO_TOLERANCE) {
 		imageType = 'square';
 	} else if (aspectRatio > 1) {
@@ -36,34 +34,36 @@ function getImageDimensions(image: any) {
 		imageType = 'portrait';
 	}
 
-    return {
-        width,
-        height,
-        aspectRatio,
-        imageType
-    };
+	return {
+		width,
+		height,
+		aspectRatio,
+		imageType
+	};
 }
+
+export default sanity;
 
 const LARGEST_VIEWPORT = 1920; // Retina sizes will take care of 4k (2560px) and other huge screens
 
 const DEFAULT_MIN_STEP = 0.1; // 10%
 // Updated to match your breakpoint system
 const DEFAULT_FULL_WIDTH_STEPS = [
-    400,   // Mobile 1x
-    800,   // Tablet 1x / Mobile 2x
-    1600,  // Tablet 2x
-    2500,  // Desktop/Large Desktop 2x
-    3400   // Giant Desktop 2x
+	400,   // Mobile 1x
+	800,   // Tablet 1x / Mobile 2x
+	1600,  // Tablet 2x
+	2500,  // Desktop/Large Desktop 2x
+	3400   // Giant Desktop 2x
 ]; // 5 sizes
 
 // For retina/high-DPI screens, we can add 2x sizes
 const DEFAULT_WIDTH_STEPS = [
-    400,   // Mobile 1x
-    800,   // Tablet 1x / Mobile 2x
-    1280,  // Desktop 1x
-    1700,  // Large Desktop 1x / Desktop+ 2x
-    2500,  // Giant Desktop 1x
-    3400   // Large Desktop 2x
+	400,   // Mobile 1x
+	800,   // Tablet 1x / Mobile 2x
+	1280,  // Desktop 1x
+	1700,  // Large Desktop 1x / Desktop+ 2x
+	2500,  // Giant Desktop 1x
+	3400   // Large Desktop 2x
 ]; // 6 sizes
 
 export const getImageProps = ({

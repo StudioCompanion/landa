@@ -6,7 +6,7 @@ import type { Media as MediaType } from '$lib/types';
 import MediaSlide from '../MediaSlide.svelte';
 import ModuleCaption from '../ModuleCaption.svelte';
 import GridCarouselModule from './GridCarouselModule.svelte';
-import { imageBuilder } from '$lib/sanity';
+import { imageBuilder, getImageDimensions } from '$lib/sanity';
 import { browser } from '$app/environment';
 
 export let module: CarouselModule;
@@ -114,6 +114,24 @@ $: globalCaptionPadding = slideCountDigits === 1
     ? 'calc(var(--full-space) + var(--half-space) + var(--half-space))'
     : 'calc(var(--full-space) + var(--half-space) + var(--full-space))';
 
+// Pre-calculate dimensions for first slide
+function getInitialDimensions() {
+  const firstSlide = module.slides[0];
+  if (firstSlide?.image) {
+    const dimensions = getImageDimensions(firstSlide.image);
+    if (dimensions) {
+      return {
+        width: dimensions.width,
+        height: dimensions.height,
+        aspectRatio: dimensions.aspectRatio
+      };
+    }
+  }
+  return null;
+}
+
+const initialDimensions = getInitialDimensions();
+
 if (browser) {
   onMount(async () => {
     const module = await import('svelte-carousel');
@@ -161,7 +179,9 @@ on:enter={() => {
       </div>
     </div>
     {#each slidesData as slide, index}
-      <div class="slide">
+      <div class="slide" 
+        style="min-height: {initialDimensions ? `${initialDimensions.height}px` : 'var(--mobile-height-max)'}"
+      >
         {#if slide._type === 'grid_carousel_module'}
           <div class="grid-slide">
             <GridCarouselModule module={slide} isInCarousel={true} />
@@ -224,9 +244,10 @@ on:enter={() => {
 .slide {
   overflow: hidden;
   position: relative;
-  max-height: var(--mobile-height-max); /* Caps the maximum height */
-  align-content: end;
-  /* background-color: orange; */
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: flex-end;
 }
 
 .custom-arrow {
