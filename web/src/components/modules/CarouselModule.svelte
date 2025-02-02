@@ -184,6 +184,7 @@ on:enter={() => {
           <div class={slide.type + '-slide'}>
             <MediaSlide 
               media={slide} 
+              priority={index === 0}
               on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
             />
           </div>
