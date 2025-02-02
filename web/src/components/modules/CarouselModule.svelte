@@ -72,33 +72,38 @@ slidesData = [...slidesData];
 let videoMethods = new Map();
 
 function registerVideoMethods(index, methods) {
-  // console.log(`Registering methods for index ${index}:`, methods);
+  // console.log('Registering video methods for index:', index);
+  // console.log('Methods being registered:', methods);
+  // console.log('Current video methods map:', [...videoMethods.entries()]);
   videoMethods.set(index, methods);
+  // console.log('Updated video methods map:', [...videoMethods.entries()]);
 }
 
 const onSlideChange = (event) => {
-  // console.log("Slide is Changing");
+  // console.log('Slide change triggered', { previousIndex: currentSlideIndex, newIndex: event.detail });
   const previousIndex = currentSlideIndex;
   const newIndex = event.detail;
 
   currentSlideIndex = newIndex;
 
-  // console.log("All registered video methods:", [...videoMethods.entries()]);
-
   // Stop and reset the previous video if it exists
   const previousMethods = videoMethods.get(previousIndex);
-  // console.log("Previous methods:", previousMethods);
+  // console.log('Previous video methods:', previousMethods);
   if (previousMethods) {
     previousMethods.pause();
     previousMethods.reset();
   }
 
-  // Play the new video
-  const newMethods = videoMethods.get(newIndex);
-  // console.log("New methods:", newMethods);
-  if (newMethods) {
-    newMethods.play();
-  }
+  // Play the new video after a short delay to ensure it's loaded
+  setTimeout(() => {
+    const newMethods = videoMethods.get(newIndex);
+    // console.log('New video methods:', newMethods);
+    if (newMethods) {
+      newMethods.play();
+    } else {
+      // console.log('No video methods found for new slide');
+    }
+  }, 100);
 };
 
 $: slidesCount = slidesData.length;
@@ -191,7 +196,10 @@ on:enter={() => {
               media={slide} 
               priority={index === 0}
               active={index === currentSlideIndex}
-              on:registerVideo={(e) => registerVideoMethods(index, e.detail)}
+              on:registerVideo={(e) => {
+                console.log('registerVideo event received for slide:', index);
+                registerVideoMethods(index, e.detail);
+              }}
             />
           </div>
         {/if}
