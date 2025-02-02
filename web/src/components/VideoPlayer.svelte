@@ -33,7 +33,7 @@
                 await playPromise;
             } catch (error) {
                 if (error.name !== 'AbortError') {
-                    console.log("Play was prevented:", error);
+                    // console.log("Play was prevented:", error);
                 }
             }
         }
@@ -50,7 +50,7 @@
                 videoElement.currentTime = 0;
                 videoElement.load();
             } catch (error) {
-                console.log("Error during pause/reset:", error);
+                // console.log("Error during pause/reset:", error);
             }
         }
         if (isInline || isPlaying) {

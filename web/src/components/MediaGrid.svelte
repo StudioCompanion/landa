@@ -45,7 +45,7 @@
 		<div class:image-loaded={imageLoaded}>
 			<Image
 				class="media-grid-image"
-				alt={media.image.asset.altText}
+				alt={media.image.asset.altText || `${media.caption || 'Project'} grid image`}
 				src={media.image.asset.url}  
 				layout="constrained"
 				width={media.image.asset.metadata.dimensions.width}

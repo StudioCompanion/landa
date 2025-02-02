@@ -28,21 +28,6 @@
 		}
 	});
 
-	onMount(() => {
-		if (media) {
-			if (media.type === 'video' && media.video) {
-				const playbackId = media.video.playbackId;  // Access playback_id from media.video
-
-				if (playbackId) {
-					staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
-				} else {
-				}
-			} else {
-			}
-		} else {
-		}
-	});
-
 	export let media: Media | undefined;
 
 	export let isBlackControls: boolean = false; // Default to false if not provided
@@ -81,7 +66,7 @@ function handleVideoReady(event) {
 
 		<Image
 		class="media-slide-image"
-			alt={media.image.asset.altText}
+			alt={media.image.asset.altText || `${media.caption || 'Project'} image`}
 			layout="constrained"
 			width={media.image.asset.metadata.dimensions.width}
 			aspectRatio={media.image.asset.metadata.dimensions.aspectRatio}

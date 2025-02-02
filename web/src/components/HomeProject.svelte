@@ -25,9 +25,9 @@
 		if (project?.homepage_video?.metadata?.playbackId) {
 			const playbackId = project.homepage_video.metadata.playbackId;
 			staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
-			console.log("Static MP4 Video URL:", staticVideoUrl);
+			// console.log("Static MP4 Video URL:", staticVideoUrl);
 		} else {
-			console.log("No valid playback ID available for the video");
+			// console.log("No valid playback ID available for the video");
 		}
 	});
 
@@ -347,7 +347,8 @@
     :global(.media-image) {
         max-width: 100% !important; 
         max-height: var(--mobile-height-max) !important;
-        object-fit: contain;
+        aspect-ratio: attr(width) / attr(height);
+		object-fit: contain;
         width: auto; 
         height: auto;
     }

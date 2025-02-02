@@ -46,12 +46,12 @@
 
 	  // Remove 4px if there is only one item
 	  if (module.items.length === 1) {
-		console.log("Only one item");
+		// console.log("Only one item");
 		currentPresetSize = `calc(${currentPresetSize} + 24px)`;
 	  }
 
 	  if (module.items.length > 1) {
-		console.log("Two items or more");
+		// console.log("Two items or more");
 		currentPresetSize = `calc(${currentPresetSize} + 24px)`;
 	  }
 	    // Force layout recalculation
@@ -87,51 +87,15 @@
 	  max-width: var(--carousel-size, 100%);
 	  width: 100%;
 	  display: flex;
-	  /* justify-content: center;
-	  align-items: center; */
-	}
-
-	/* Tablet */
-	@media (min-width: 800px) {
-		.carousel-container {
-			/* background: blue; */
-		}
-	}
-
-	/* Small Desktop */
-	@media (min-width: 1280px) {
-		.carousel-container {
-			/* background: green; */
-		}
-	}
-
-	/* Desktop */
-	@media (min-width: 1700px) {
-		.carousel-container {
-			/* background: yellow; */
-		}
-	}
-
-	/* Monsters */
-	@media (min-width: 2500px) {
-		.carousel-container	{
-			/* background: purple; */
-		}		
 	}
   
 	.GridCarouselModule #grid {
 	  display: grid;
-	  /* border: solid blue 1px; */
 	  gap: var(--quarter-space);
 	  align-items: flex-end;
-	  /* background: red; */
 	}
 
-	/* Add these new styles */
-
 	.grid-item {
-		/* border: 1px solid red; */
-		/* margin-right: 2px; */
 		display: flex;
 		justify-content: center;
 		align-items: center;
