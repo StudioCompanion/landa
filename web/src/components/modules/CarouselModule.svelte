@@ -136,6 +136,10 @@ if (browser) {
     // console.log('slidesData after processing:', slidesData); // Check the content of slidesData
   });
 }
+
+function handleSlideChange(event) {
+  currentSlideIndex = event.detail.currentSlide;
+}
 </script>
 
 {#if CarouselComponent}
@@ -160,6 +164,7 @@ on:enter={() => {
     dots={false}
     arrows={true}
     on:pageChange={onSlideChange}
+    on:slideChange={handleSlideChange}
   >
     <div slot="prev" let:showPrevPage>
       <div 
@@ -185,7 +190,8 @@ on:enter={() => {
             <MediaSlide 
               media={slide} 
               priority={index === 0}
-              on:videoMethods={(e) => registerVideoMethods(index, e.detail)}
+              active={index === currentSlideIndex}
+              on:registerVideo={(e) => registerVideoMethods(index, e.detail)}
             />
           </div>
         {/if}

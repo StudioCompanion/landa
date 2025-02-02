@@ -42,25 +42,42 @@ function handleVideoReady(event) {
 // Add priority prop
 export let priority = false;
 
+export let active = false;
+let videoLoaded = false;
+
+$: if (active && media?.type === 'video' && !videoLoaded) {
+  loadVideo();
+}
+
+async function loadVideo() {
+  if (media?.type === 'video' && media.video) {
+    const playbackId = media.video.playbackId;
+    if (playbackId) {
+      staticVideoUrl = `https://stream.mux.com/${playbackId}/high.mp4`;
+      videoLoaded = true;
+    }
+  }
+}
+
 </script>
 
 {#if media}
-    {#if media.type === 'video'}
+    {#if media.type === 'video' && (active || videoLoaded)}
     <div
-            class={media.type}
-            style={`${media.type === 'video' ? `aspect-ratio: ${media.aspectRatio.replace(':', '/')};` : ''}`}
-            class:is-black={media.isBlackControls}
-        >
-		<VideoPlayer
-		bind:this={videoPlayerComponent}
-		src={staticVideoUrl}
-		poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 2250 }).src : undefined}
-		isInline={media.isInline}
-		isBlackControls={media.isBlackControls}
-		initialMuted={media.isInline}
-		on:ready={handleVideoReady}
-	  />
-        </div>
+        class={media.type}
+        style={media.video?.aspect_ratio ? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}` : ''}
+        class:is-black={media.isBlackControls}
+    >
+        <VideoPlayer
+            bind:this={videoPlayerComponent}
+            src={staticVideoUrl}
+            poster={media.video_thumbnail ? getImageProps({ image: media.video_thumbnail, maxWidth: 2250 }).src : undefined}
+            isInline={media.isInline}
+            isBlackControls={media.isBlackControls}
+            initialMuted={media.isInline}
+            on:ready={handleVideoReady}
+        />
+    </div>
     {:else if media.type === 'image'}
 	<div class:image-loaded={imageLoaded}>
 
