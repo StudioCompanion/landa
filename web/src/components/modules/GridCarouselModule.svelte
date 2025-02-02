@@ -123,7 +123,7 @@
 	  display: grid;
 	  /* border: solid blue 1px; */
 	  gap: var(--quarter-space);
-	  align-items: baseline;
+	  align-items: flex-end;
 	  /* background: red; */
 	}
 
