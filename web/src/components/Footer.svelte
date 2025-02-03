@@ -38,11 +38,6 @@
 				London N1 123
 			</p>
 		</div>
-		<div>
-			<p>L&A New York</p>
-			<p>300 Elizabeth St, Garden Level</p>
-			<p> New York City NY 10012</p>
-		</div>
 	</div>
 </footer>
 
@@ -56,9 +51,10 @@
 	footer {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: flex-start;
 		padding: var(--half-space);
 		row-gap: var(--half-space);
+		column-gap: var(--half-space);
 		border-top: 1px solid var(--grey);
 	}
 
