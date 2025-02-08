@@ -23,8 +23,12 @@
     let currentTime = 0;
     let duration = 0;
     let playPromise: Promise<void> | null = null;
-
+    let videoWidth = 0;
+    const MINIMUM_WIDTH_FOR_FULL_CONTROLS = 325; // Adjust this value as needed
+    
     $: showControls = (!isPlaying && !isInline) || controlsVisible;
+    $: showFullControls = !isInline && videoWidth >= MINIMUM_WIDTH_FOR_FULL_CONTROLS;
+    $: showMinimalControls = !isInline && videoWidth < MINIMUM_WIDTH_FOR_FULL_CONTROLS;
 
     async function handleMouseEnter() {
         if (hoverPlay && videoElement) {
@@ -161,13 +165,15 @@ export function reset() {
   }
 }
 
+function handleResize() {
+    if (videoElement) {
+        videoWidth = videoElement.clientWidth;
+    }
+}
+
 onMount(() => {
 //   console.log("VideoPlayer mounted");
   dispatch('ready', { play, pause, reset });
-});
-
-  onMount(() => {
-	// console.log("VideoPlayer mounted");
 
         if (videoElement) {
             videoElement.muted = initialMuted || hoverPlay;
@@ -189,7 +195,10 @@ onMount(() => {
         videoElement.controls = false;  // Explicitly disable the controls
 
         document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+        window.addEventListener('resize', handleResize);
         return () => {
+            window.removeEventListener('resize', handleResize);
             document.removeEventListener('fullscreenchange', handleFullscreenChange);
         };
 		const methods = { play, pause, reset };
@@ -205,6 +214,7 @@ onMount(() => {
 >
     <video
         bind:this={videoElement}
+        bind:clientWidth={videoWidth}
         class="video"
         {src}
         {poster}
@@ -231,6 +241,7 @@ onMount(() => {
             class:inline-controls={isInline}
             class:full-controls={!isInline}
             class:black-controls={isBlackControls}
+            class:minimal-controls={showMinimalControls}
         >
             <button on:click|stopPropagation={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
                 {#if isPlaying}
@@ -246,7 +257,7 @@ onMount(() => {
                     <UnmuteIcon />
                 {/if}
             </button>
-            {#if !isInline}
+            {#if !isInline && showFullControls}
                 <div class="progress-container">
                     <progress value={currentTime} max={duration}></progress>
                     <input 
@@ -505,6 +516,11 @@ onMount(() => {
                 display: none !important;
             }
         }
+    }
+
+    .video-controls.minimal-controls {
+        /* justify-content: center; */
+        /* gap: 12px; */
     }
 
 </style>

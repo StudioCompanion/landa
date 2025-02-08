@@ -117,20 +117,40 @@ $: globalCaptionPadding = slideCountDigits === 1
 // Pre-calculate dimensions for first slide
 function getInitialDimensions() {
   const firstSlide = module.slides[0];
-  if (firstSlide?.image) {
-    const dimensions = getImageDimensions(firstSlide.image);
-    if (dimensions) {
+  
+  // Handle grid carousel modules
+  if (firstSlide?._type === 'grid_carousel_module') {
+    return {
+      height: 'auto',
+      aspectRatio: 'auto'
+    };
+  }
+  
+  // Handle media slides
+  if ('media_type' in firstSlide) {
+    if (firstSlide.media_type === 'image' && firstSlide.image) {
+      const dimensions = getImageDimensions(firstSlide.image);
+      if (dimensions) {
+        return {
+          width: dimensions.width,
+          height: dimensions.height,
+          aspectRatio: dimensions.aspectRatio
+        };
+      }
+    } else if (firstSlide.media_type === 'video' && firstSlide.video) {
       return {
-        width: dimensions.width,
-        height: dimensions.height,
-        aspectRatio: dimensions.aspectRatio
+        height: 'auto',
+        aspectRatio: firstSlide.video.aspect_ratio
       };
     }
   }
+  
   return null;
 }
 
 const initialDimensions = getInitialDimensions();
+
+console.log(initialDimensions);
 
 if (browser) {
   onMount(async () => {
@@ -184,7 +204,9 @@ on:enter={() => {
     </div>
     {#each slidesData as slide, index}
       <div class="slide" 
-        style="min-height: {initialDimensions ? `${initialDimensions.height}px` : 'var(--mobile-height-max)'}"
+        style="min-height: {initialDimensions && initialDimensions.height !== 'auto' 
+          ? `${initialDimensions.height}px` 
+          : 'auto'}"
       >
         {#if slide._type === 'grid_carousel_module'}
           <div class="grid-slide">
