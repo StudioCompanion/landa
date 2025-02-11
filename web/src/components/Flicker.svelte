@@ -5,7 +5,7 @@
     import { animate } from 'framer-motion';
     import Cookies from 'js-cookie';
     export let images;
-    let visible = 1;
+    let visible = 0;
     let countdown = 1000;
     let hideImages = false;
     let hide = false;
