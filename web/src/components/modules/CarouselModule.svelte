@@ -349,6 +349,7 @@ on:enter={() => {
   display: flex;
   flex-direction: row;
   gap: calc(var(--quarter-space) / 2);
+  position: absolute;
 }
 
 .current-slide, .total-slides {
@@ -360,7 +361,7 @@ on:enter={() => {
 }
 
 .text-captions {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: row;
   gap: var(--half-space);
