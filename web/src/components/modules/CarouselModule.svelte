@@ -184,7 +184,7 @@ on:enter={() => {
     this={CarouselComponent} 
     bind:this={carousel} 
     autoplay={false}
-    swiping={isMobileDevice ? false : false} 
+    swiping={isMobileDevice ? true : false} 
     duration={isMobileDevice ? 0 : 0} 
     dots={false}
     arrows={true}
