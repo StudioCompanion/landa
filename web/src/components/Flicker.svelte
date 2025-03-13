@@ -26,7 +26,7 @@
         hideImages = false;
         animate(0, 80, {
             type: 'tween',
-            duration: 10,
+            duration: 5,
             ease: [0.25, 0.03, 0.84, 0],
             onComplete: completeAnimation,
             onUpdate: (v) => {
@@ -54,7 +54,7 @@
     let timeout = new Promise((resolve) => {
         setTimeout(() => {
             resolve();
-        }, 3000);
+        }, 1250);
     });
 
     onMount(() => {
