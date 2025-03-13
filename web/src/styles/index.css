@@ -112,6 +112,7 @@ html, body {
 
 p {
 	margin: 0;
+	line-height: var(--line-height);
 }
 
 h1,

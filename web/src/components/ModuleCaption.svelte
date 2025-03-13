@@ -12,5 +12,6 @@
 		font-size: var(--font-size);
 		text-align: left;
 		padding: var(--half-space) 0 0 0;
+		line-height: var(--line-height);
 	}
 </style>
