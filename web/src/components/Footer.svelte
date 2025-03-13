@@ -23,22 +23,6 @@
 			</ul>
 		</div>
 	</div>
-	<div class="column-two">
-		<div>
-			<p>
-				L&A London
-			</p>
-			<p>
-				Unit 15 Sarah Lane Studios
-			</p>
-			<p>
-				60 Stanway Street
-			</p>
-			<p>
-				London N1 123
-			</p>
-		</div>
-	</div>
 </footer>
 
 <style>
