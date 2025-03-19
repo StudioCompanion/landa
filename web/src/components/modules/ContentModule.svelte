@@ -23,7 +23,7 @@
 
 <style>
 	.content_module {
-		max-width: var(--max-text-width);
+		max-width: var(--max-text-width-smaller);
 		text-align: left;
 	}
 	

@@ -120,7 +120,7 @@ on:enter={() => {
 	.credits {
 		margin-left: var(--half-space);
 		padding: 0 var(--half-space) var(--half-space) 0;
-		max-width: var(--max-text-width);
+		max-width: var(--max-text-width-smaller);
 	}
 	
 </style>

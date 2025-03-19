@@ -336,8 +336,8 @@ on:enter={() => {
 }
 
 .caption {
-  max-width: var(--max-text-width);
-  font-size: var(--font-size);
+  max-width: var(--max-text-width-smaller);
+	font-size: var(--font-size-small);
   text-align: left;
   padding: var(--half-space) 0 0 0;
   display: flex;
