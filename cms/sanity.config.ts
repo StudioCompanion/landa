@@ -12,7 +12,7 @@ export default defineConfig({
   title: 'Lanes and Associates',
 
   projectId: 'lr8k1ek3',
-  dataset: 'prod',
+  dataset: 'production',
 
   plugins: [
     deskTool({
