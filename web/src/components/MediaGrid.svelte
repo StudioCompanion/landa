@@ -27,6 +27,7 @@
 
 {#if media}
 	<div
+		class="media-container"
 		class:is-black={media.isBlackControls}
 		style={media.media_type === 'video' && media.video?.aspect_ratio
 			? `aspect-ratio: ${media.video.aspect_ratio.replace(':', '/')}`
@@ -60,6 +61,25 @@
 {/if}
 
 <style>
+	.media-container {
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Targeted fix: Override VideoPlayer styles ONLY in grid context */
+	.media-container :global(.video-container) {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.media-container :global(.video) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
 	img {
 		width: 100%;
 		height: auto;
