@@ -2,6 +2,7 @@ import { validatePreviewUrl } from '@sanity/preview-url-secret';
 import { perspectiveCookieName } from '@sanity/preview-url-secret/constants';
 import { createClient } from '@sanity/client';
 import { env } from '$env/dynamic/private';
+import { redirect } from '@sveltejs/kit';
 import {
 	sanityApiVersion,
 	sanityDataset,
@@ -24,7 +25,7 @@ function cleanRedirectPath(redirectTo: string | undefined, origin: string) {
 	return `${target.pathname}${target.search}`;
 }
 
-export const GET: RequestHandler = async ({ url, request }) => {
+export const GET: RequestHandler = async ({ url, request, cookies }) => {
 	const token = env.SANITY_API_READ_TOKEN;
 	if (!token) {
 		return new Response('Missing SANITY_API_READ_TOKEN', { status: 500 });
@@ -48,27 +49,36 @@ export const GET: RequestHandler = async ({ url, request }) => {
 	}
 
 	const cleanRedirect = cleanRedirectPath(redirectTo, url.origin);
-
+	const perspective = studioPreviewPerspective || 'drafts';
 	const partitioned =
 		request.headers.get('sec-fetch-dest') === 'iframe' &&
 		request.headers.get('sec-fetch-site') === 'cross-site';
 
-	const perspective = studioPreviewPerspective || 'drafts';
-	const cookieAttributes = [
-		`${perspectiveCookieName}=${encodeURIComponent(perspective)}`,
-		'Path=/',
-		'HttpOnly',
-		'Secure',
-		'SameSite=None',
-		'Max-Age=3600'
-	];
 	if (partitioned) {
-		cookieAttributes.push('Partitioned');
+		const headers = new Headers();
+		headers.append(
+			'Set-Cookie',
+			[
+				`${perspectiveCookieName}=${encodeURIComponent(perspective)}`,
+				'Path=/',
+				'HttpOnly',
+				'Secure',
+				'SameSite=None',
+				'Max-Age=3600',
+				'Partitioned'
+			].join('; ')
+		);
+		headers.set('Location', cleanRedirect);
+		return new Response(null, { status: 307, headers });
 	}
 
-	const headers = new Headers();
-	headers.append('Set-Cookie', cookieAttributes.join('; '));
-	headers.set('Location', cleanRedirect);
+	cookies.set(perspectiveCookieName, encodeURIComponent(perspective), {
+		path: '/',
+		httpOnly: true,
+		secure: true,
+		sameSite: 'none',
+		maxAge: 3600
+	});
 
-	return new Response(null, { status: 307, headers });
+	throw redirect(307, cleanRedirect);
 };

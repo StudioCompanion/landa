@@ -20,10 +20,3 @@ export const load = async ({ locals }) => {
 		preview: locals.preview.enabled
 	};
 };
-
-export const config = {
-	isr: {
-		expiration: 0,
-		group: 1
-	}
-};

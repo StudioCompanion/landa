@@ -1,9 +1,13 @@
 import { projectQuery, settingsQuery } from '$lib/queries.js';
 import { getServerSanityClient } from '$lib/sanity.server';
 
-export const load = async ({ params, locals }) => {
+export const load = async ({ params, locals, setHeaders }) => {
 	const slug = params.slug as string;
 	const sanity = getServerSanityClient(locals.preview);
+
+	if (locals.preview.enabled) {
+		setHeaders({ 'Cache-Control': 'no-store' });
+	}
 
 	const project = await sanity.fetch(projectQuery, { slug });
 	const settings = await sanity.fetch(settingsQuery);
@@ -13,11 +17,4 @@ export const load = async ({ params, locals }) => {
 		slug,
 		preview: locals.preview.enabled
 	};
-};
-
-export const config = {
-	isr: {
-		expiration: 0,
-		group: 1
-	}
 };

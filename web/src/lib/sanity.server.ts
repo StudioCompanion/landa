@@ -23,13 +23,18 @@ export function getServerSanityClient(preview: PreviewState) {
 
 	const usePreview = preview.enabled && Boolean(token);
 
+	// Prefer API "drafts" perspective; fall back for older clients/tokens.
+	const perspective: ClientPerspective = usePreview
+		? preview.perspective || 'drafts'
+		: 'published';
+
 	return createClient({
 		projectId: sanityProjectId,
 		dataset: sanityDataset,
 		apiVersion: sanityApiVersion,
-		useCdn: !usePreview,
+		useCdn: false,
 		token: usePreview ? token : undefined,
-		perspective: usePreview ? preview.perspective : 'published',
+		perspective,
 		stega: usePreview
 			? {
 					enabled: true,
