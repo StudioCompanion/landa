@@ -2,4 +2,4 @@
 export const sanityProjectId = 'lr8k1ek3';
 export const sanityDataset = 'prod';
 export const sanityStudioUrl = 'https://lanesandassociates.sanity.studio';
-export const sanityApiVersion = '2023-05-03';
+export const sanityApiVersion = '2025-02-19';
