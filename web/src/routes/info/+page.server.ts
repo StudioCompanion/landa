@@ -1,22 +1,21 @@
-import sanity from '$lib/sanity';
-import {
-    settingsQuery,
-    aboutQuery
-} from '$lib/queries';
+import { settingsQuery, aboutQuery } from '$lib/queries';
+import { getServerSanityClient } from '$lib/sanity.server';
 
-export const load = async () => {
-    const about = await sanity.fetch(aboutQuery)
-    const settings = await sanity.fetch(settingsQuery);
+export const load = async ({ locals }) => {
+	const sanity = getServerSanityClient(locals.preview);
+	const about = await sanity.fetch(aboutQuery);
+	const settings = await sanity.fetch(settingsQuery);
 
-    return {
-        about,
-        settings
-    };
+	return {
+		about,
+		settings,
+		preview: locals.preview.enabled
+	};
 };
 
 export const config = {
-    isr: {
-        expiration: 0,
-        group: 1
-    }
-}
+	isr: {
+		expiration: 0,
+		group: 1
+	}
+};

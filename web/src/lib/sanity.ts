@@ -1,12 +1,17 @@
 // @ts-nocheck
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import {
+	sanityApiVersion,
+	sanityDataset,
+	sanityProjectId
+} from '$lib/sanity-config';
 
 const sanity = createClient({
-	projectId: 'lr8k1ek3',
-	dataset: 'prod',
+	projectId: sanityProjectId,
+	dataset: sanityDataset,
 	useCdn: false,
-	apiVersion: '2023-05-03'
+	apiVersion: sanityApiVersion
 });
 export const imageBuilder = imageUrlBuilder(sanity);
 
